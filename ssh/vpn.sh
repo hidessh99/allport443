@@ -15,7 +15,7 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 # ==================================================
 # Link Hosting Kalian
-wisnuvpn="raw.githubusercontent.com/samratu/large/sae/ssh"
+wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ssh"
 
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
