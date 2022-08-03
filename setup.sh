@@ -19,25 +19,25 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Link Hosting Kalian Untuk Ssh Vpn
-wisnuvpn="raw.githubusercontent.com/samratu/large/sae/ssh"
+wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ssh"
 # Link Hosting Kalian Untuk Sstp
-wisnuvpnn="raw.githubusercontent.com/samratu/large/sae/sstp"
+wisnuvpnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/sstp"
 # Link Hosting Kalian Untuk Ssr
-wisnuvpnnn="raw.githubusercontent.com/samratu/large/sae/ssr"
+wisnuvpnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ssr"
 # Link Hosting Kalian Untuk Shadowsocks
-wisnuvpnnnn="raw.githubusercontent.com/samratu/large/sae/shadowsocks"
+wisnuvpnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/shadowsocks"
 # Link Hosting Kalian Untuk Wireguard
-wisnuvpnnnnn="raw.githubusercontent.com/samratu/large/sae/wireguard"
+wisnuvpnnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/wireguard"
 # Link Hosting Kalian Untuk Xray
-wisnuvpnnnnnn="raw.githubusercontent.com/samratu/large/sae/xray"
+wisnuvpnnnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/xray"
 # Link Hosting Kalian Untuk Ipsec
-wisnuvpnnnnnnn="raw.githubusercontent.com/samratu/large/sae/ipsec"
+wisnuvpnnnnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec"
 # Link Hosting Kalian Untuk Backup
-wisnuvpnnnnnnnn="raw.githubusercontent.com/samratu/large/sae/backup"
+wisnuvpnnnnnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/backup"
 # Link Hosting Kalian Untuk Websocket
-wisnuvpnnnnnnnnn="raw.githubusercontent.com/samratu/large/sae/websocket"
+wisnuvpnnnnnnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/websocket"
 # Link Hosting Kalian Untuk Ohp
-wisnuvpnnnnnnnnnn="raw.githubusercontent.com/samratu/large/sae/ohp"
+wisnuvpnnnnnnnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ohp"
 
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
