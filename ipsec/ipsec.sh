@@ -19,7 +19,7 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 
 # ==================================================
 # Link Hosting Kalian
-wisnuvpn="raw.githubusercontent.com/samratu/large/sae/ipsec"
+wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec"
 
 VPN_IPSEC_PSK='gandring'
 NET_IFACE=$(ip -o $NET_IFACE -4 route show to default | awk '{print $5}');
