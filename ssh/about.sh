@@ -1,0 +1,21 @@
+#!/bin/bash
+
+clear
+echo -e "\033[1;31m═══════════════════════════════════════════════════\033[0m"
+echo -e "\E[44;46m    🔰 Luxury Edition by wisnu cokro satrio 🔰     \e[m "
+echo -e "\033[1;31m═══════════════════════════════════════════════════\033[0m"
+echo -e "\e[1;31m   🔰 For Debian 9 & 10 64 bit                    \e[m"
+echo -e "\e[1;31m   🔰 For Ubuntu 18.04 & Ubuntu 20.04 64bit       \e[m"
+echo -e "\e[1;31m   🔰 For VPS with KVM and VMWare virtualization  \e[m"
+echo -e "\e[1;31m   🔰 Build Up By wisnu & gandring                \e[m"
+echo -e "\033[1;46m═══════════════════════════════════════════════════\033[0m"
+echo -e "\e[1;33m   🔰 Thanks To                                   \e[m"
+echo -e "\033[1;46m═══════════════════════════════════════════════════\033[0m"
+echo -e "\e[1;33m   🔰 ALLAH SWT                                   \e[m"
+echo -e "\e[1;33m   🔰 NABI MUHAMMAD SAW                           \e[m"
+echo -e "\e[1;33m   🔰 Keluarga Besarku                            \e[m"
+echo -e "\e[1;33m   🔰 SenoVPN & geoVPN                            \e[m"
+echo -e "\e[1;33m   🔰 Dan semua yang tidak tersebut mohon maaf🙏  \e[m"
+echo -e "\033[1;31m═══════════════════════════════════════════════════\033[0m"
+echo -e "\E[44;46m          🔰 LUXURY EDITION BY ZEROSSL 🔰          \e[m "
+echo -e "\033[1;31m═══════════════════════════════════════════════════\033[0m"
