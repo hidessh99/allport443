@@ -3,7 +3,7 @@
 # wisnucokrosatrio
 # ==========================================
 # Link Hosting Kalian
-wisnuvpn="raw.githubusercontent.com/samratu/large/sae/websocket"
+wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/websocket"
 
 # Getting Proxy Template
 #wget -q -O /usr/local/bin/ws-proxy https://${wisnuvpn}/ws-proxy.js
