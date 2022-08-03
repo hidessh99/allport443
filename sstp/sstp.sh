@@ -14,7 +14,7 @@ LIGHT='\033[0;37m'
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
 # Link Hosting Kalian
-wisnuvpn="raw.githubusercontent.com/samratu/large/sae/sstp"
+wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/sstp"
 
 MYIP=$(wget -qO- ipinfo.io/ip);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
