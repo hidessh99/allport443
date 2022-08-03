@@ -19,7 +19,7 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 # ==================================================
 # Link Hosting Kalian
-wisnuvpn="raw.githubusercontent.com/samratu/large/sae/wireguard"
+wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/wireguard"
 
 # Check OS version
 if [[ -e /etc/debian_version ]]; then
