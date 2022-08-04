@@ -570,19 +570,23 @@ systemctl enable xvmess.service
 systemctl start xvmess.service
 systemctl restart xvmess.service
 
-mkdir /var/log/trojan-go/
-mkdir -p /usr/lib/trojan-go >/dev/null 2>&1
-wget -q -N --no-check-certificate https://github.com/p4gefau1t/trojan-go/releases/download/$(curl -fsSL https://api.github.com/repos/p4gefau1t/trojan-go/releases | grep '"tag_name":' | head -n 1 | sed -E 's/.*"([^"]+)".*/\1/')/trojan-go-linux-amd64.zip 
-unzip -o -d /usr/lib/trojan-go/ ./trojan-go-linux-amd64.zip >/dev/null 2>&1
-mv /usr/lib/trojan-go/trojan-go /usr/local/bin/ >/dev/null 2>&
+# Install Trojan Go
+latest_version="$(curl -s "https://api.github.com/repos/p4gefau1t/trojan-go/releases" | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
+trojango_link="https://github.com/p4gefau1t/trojan-go/releases/download/v${latest_version}/trojan-go-linux-amd64.zip"
+mkdir -p "/usr/bin/trojan-go"
+mkdir -p "/etc/trojan-go"
+cd `mktemp -d`
+curl -sL "${trojango_link}" -o trojan-go.zip
+unzip -q trojan-go.zip && rm -rf trojan-go.zip
+mv trojan-go /usr/local/bin/trojan-go
 chmod +x /usr/local/bin/trojan-go
+mkdir /var/log/trojan-go/
 touch /etc/trojan-go/akun.conf
 touch /var/log/trojan-go/trojan-go.log
-rm -rf ./trojan-go-linux-amd64.zip >/dev/null 2>&1
-sleep 1
-echo -e "[ ${green}INFO$NC ] Setting config trojan-go"
+
+domain=$(cat /root/domain)
 # Buat Config Trojan Go
-cat > /etc/trojan-go/config.json << END
+cat > /etc/trojan-go/config.json <<END
 {
   "run_type": "server",
   "local_addr": "0.0.0.0",
@@ -647,7 +651,7 @@ cat > /etc/trojan-go/config.json << END
 END
 
 # Installing Trojan Go Service
-cat > /etc/systemd/system/trojan-go.service << END
+cat > /etc/systemd/system/trojan-go.service <<END
 [Unit]
 Description=Trojan-Go Service Mod By zerossl
 Documentation=https://t.me/zerossl
@@ -665,11 +669,13 @@ RestartPreventExitStatus=23
 
 [Install]
 WantedBy=multi-user.target
+
 END
 
 # Trojan Go Uuid
 cat > /etc/trojan-go/uuid.txt << END
 $uuid
+
 END
 
 # restart
