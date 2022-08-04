@@ -4,14 +4,15 @@ import socket, threading, thread, select, signal, sys, time, getopt
 # Listen
 LISTENING_ADDR = '0.0.0.0'
 LISTENING_PORT = sys.argv[1]
+
 # Pass
 PASS = ''
 
 # CONST
-BUFLEN = 4096 * 4
-TIMEOUT = 60
-DEFAULT_HOST = '127.0.0.1:22'
-RESPONSE = 'HTTP/1.1 101 <b><h1><h><font color="blue"> Wisnu Switching Protocols</font></b>\r\n\r\nContent-Length: 104857600000\r\n\r\n'
+BUFLEN = 8192 * 4
+TIMEOUT = 300
+DEFAULT_HOST = '127.0.0.1:2242'
+RESPONSE = 'HTTP/1.1 101 <b><font color="red">SUN AMATAK AJIKU SI JARAN GOYANG TAK GOYANG ING TENGAH LATAR CEMETHIKU SODHO LANANG SAKING SWARGO TAK SABETAKE GUNUNG JUGRUG TAK SABETAKE SEGORO ASAT TAK SABETAKE MARANG ATINE SI JABANG BAYI PET SIDHO EDAN ORA EDAN SIDHO GENDENG ORA GENDENG ORA MARI MARI YEN ORA INGSUN SING NAMBANI </font></b>\r\n\r\nContent-Length: 10485760000000\r\n\r\n'
 
 class Server(threading.Thread):
     def __init__(self, host, port):
@@ -169,16 +170,6 @@ class ConnectionHandler(threading.Thread):
             if self.method=='CONNECT':
                 port = 443
             else:
-                port = 2096
-                port = 8443
-                port = 2053
-                port = 2083
-                port = 2087
-                port = 3128
-                port = 8080
-                port = 3000
-                port = 389
-                port = 3269
                 port = sys.argv[1]
 
         (soc_family, soc_type, proto, _, address) = socket.getaddrinfo(host, port)[0]
