@@ -78,6 +78,7 @@ systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvless
 systemctl restart xvmess
+systemctl restart xss
 service cron restart
 clear
 echo -e ""
