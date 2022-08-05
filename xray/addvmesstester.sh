@@ -286,7 +286,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "kcp",
-      "path": "shanumkcp",
+      "path": "/shanumkcp",
       "type": "none",
       "host": "",
       "tls": "tls"
@@ -336,7 +336,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "tcp",
-      "path": "shanumtcp",
+      "path": "/shanumtcp",
       "type": "http",
       "host": "${domain}",
       "tls": "tls"
@@ -375,6 +375,7 @@ systemctl restart xvless
 systemctl restart xray.service
 systemctl restart xvmess
 systemctl restart xtrojan
+systemctl restart xss
 service cron restart
 clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -408,6 +409,8 @@ echo -e "━━━━━━━━━━━━━━━━━━━"
 echo -e "VMESS GRPC NONTLS: ${vmessgrpcnon}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
 echo -e "VMESS H2C TLS: ${vmesshdua}"
+echo -e "━━━━━━━━━━━━━━━━━━━"
+echo -e "VMESS KCP TLS: ${vmesskcp}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
 echo -e "VMESS HTTP TLS: ${vmesshttp}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
