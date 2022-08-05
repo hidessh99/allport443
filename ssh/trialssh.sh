@@ -34,7 +34,7 @@ clear
 systemctl restart ws-tls
 systemctl restart ws-nontls
 systemctl restart ws-ovpn
-systemctl restart ovpn-tls
+systemctl restart sslh
 systemctl restart stunnel5
 systemctl restart ssh-ohp
 systemctl restart dropbear-ohp
