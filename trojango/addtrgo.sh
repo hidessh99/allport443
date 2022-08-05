@@ -35,7 +35,7 @@ exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 echo -e "### $user $exp" >> /etc/trojan-go/akun.conf
 systemctl restart trojan-go.service
-link="trojan-go://$uuid@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=%252Fgandring-go#$user"
+link="trojan-go://$uuid@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=%252Fgandring#$user"
 clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m      🔰 AKUN TROJAN-GO 🔰        \e[m"   
