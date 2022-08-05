@@ -53,6 +53,16 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
+		read -rp "User: " -e user
+		CLIENT_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+
+		if [[ ${CLIENT_EXISTS} == '1' ]]; then
+			echo ""
+			echo "A Client Username Was Already Created, Please Enter New Username"
+			exit 1
+		fi
+	done
 uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (Days): " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
@@ -65,8 +75,10 @@ sed -i '/#vmess-hdua$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/xvmess.json
 sed -i '/#vmess-hdua$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/xvless.json
-#sed -i '/#none$/a\### '"$user $exp"'\
-#},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#vmess-hdua$/a\### '"$user $exp"'\
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#vmess-hdua$/a\### '"$user $exp"'\
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/xss.json
 cat>/etc/xray/vmess-$user-tls.json<<EOF
       {
       "v": "0",
@@ -76,7 +88,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "http",
-      "path": "shanumhttp",
+      "path": "/shanumhttp",
       "type": "none",
       "host": "",
       "tls": "tls"
@@ -93,6 +105,8 @@ systemctl daemon-reload
 systemctl restart xvless
 systemctl restart xray
 systemctl restart xvmess
+systemctl restart xss
+systemctl restart xtrojan
 service cron restart
 clear
 echo -e ""
@@ -105,7 +119,7 @@ echo -e "IP  :${MYIP}"
 echo -e "Port TLS  :${vmhdua}"
 echo -e "Network  :h2"
 echo -e "Host  :${domain}"
-echo -e "Path  :shanumhttp"
+echo -e "Path  :/shanumhttp"
 echo -e "Uuid  :${uuid}"
 echo -e "Dibuat  :$hariini"
 echo -e "Kadaluarsa  :$exp"
