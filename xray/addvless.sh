@@ -60,6 +60,16 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
+		read -rp "Username : " -e user
+		CLIENT_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+
+		if [[ ${CLIENT_EXISTS} == '1' ]]; then
+			echo ""
+			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+			exit 1
+		fi
+	done
 uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (Days) : " masaaktif
 #read -p "Expired (Seconds) : " masaaktif
@@ -68,6 +78,8 @@ exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 #exp2=`date -d "$masaaktif seconds" +"%Y-%m-%d"`
 sed -i '/#vless-tls$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
+sed -i '/#vless-tls$/a\### '"$user $exp"'\
+},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xss.json
 sed -i '/#vless-tls$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvless.json
 sed -i '/#vless-tls$/a\### '"$user $exp"'\
