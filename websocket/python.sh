@@ -5,33 +5,6 @@
 # Link Hosting Kalian
 wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/websocket"
 # Getting Proxy Template
-wget -q -O /usr/local/bin/ovpn-tls https://${wisnuvpn}/ovpn-tls.py
-chmod +x /usr/local/bin/ovpn-tls
-
-# Installing Service
-cat > /etc/systemd/system/ovpn-tls.service << END
-[Unit]
-Description=OVPN WEBSOCKET ROUTING GAJAH BY WISNU
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ovpn-tls 2083
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-END
-
-systemctl daemon-reload
-systemctl enable ovpn-tls
-systemctl restart ovpn-tls
-
-# Getting Proxy Template
 wget -q -O /usr/local/bin/ws-nontls https://${wisnuvpn}/ws-nontls.py
 chmod +x /usr/local/bin/ws-nontls
 
