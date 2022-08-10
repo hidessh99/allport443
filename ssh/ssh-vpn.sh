@@ -420,7 +420,7 @@ cp /usr/local/bin/stunnel /usr/local/bin/stunnel5
 # Remove File
 rm -r -f /usr/local/share/doc/stunnel/
 rm -r -f /usr/local/etc/stunnel/
-#rm -f /usr/local/bin/stunnel
+rm -f /usr/local/bin/stunnel
 rm -f /usr/local/bin/stunnel3
 rm -f /usr/local/bin/stunnel4
 #rm -f /usr/local/bin/stunnel5
@@ -894,9 +894,6 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 100
 echo "0 4 * * * root clearlog && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 echo "0 0 * * * root delexp" >> /etc/crontab
-
-service cron restart >/dev/null 2>&1
-service cron reload >/dev/null 2>&1
 history -c
 echo "unset HISTFILE" >> /etc/profile
 
