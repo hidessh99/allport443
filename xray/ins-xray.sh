@@ -721,6 +721,9 @@ systemctl restart trojan-go
 
 cd
 mkdir /etc/stunnel5
+cp /etc/ssl/private/fullchain.pem /root/cert.pem
+cp /etc/ssl/private/privkey.pem /root/key.pem
+
 cp /root/domain /etc/xray
 cp /root/domain /usr/local/etc/xray
 cp /etc/ssl/private/fullchain.pem /etc/xray/xray.crt
