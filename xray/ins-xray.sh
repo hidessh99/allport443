@@ -723,6 +723,8 @@ cd
 mkdir /etc/stunnel5
 cp /etc/ssl/private/fullchain.pem /root/cert.pem
 cp /etc/ssl/private/privkey.pem /root/key.pem
+cat /etc/ssl/private/privkey.pem /etc/stunnel5/stunnel5.pem
+cat /etc/ssl/private/fullchain.pem /etc/stunnel5/stunnel5.pem
 
 cp /root/domain /etc/xray
 cp /root/domain /usr/local/etc/xray
