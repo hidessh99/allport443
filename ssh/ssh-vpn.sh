@@ -729,6 +729,7 @@ chmod +x addvmessgrpc
 chmod +x addvmesshdua
 chmod +x addvmessquic
 chmod +x addvmesshttp
+chmod +x addvmesskcp
 
 chmod +x addvless
 chmod +x addvlessgrpc
@@ -736,6 +737,7 @@ chmod +x addvlesshttp
 chmod +x addvlesshdua
 chmod +x addvlessxtls
 chmod +x addvlessquic
+chmod +x addvlesskcp
 
 chmod +x addtrojanxtls
 chmod +x addtrojangrpc
@@ -743,6 +745,7 @@ chmod +x addtrojanwss
 chmod +x addtrojanhttp
 chmod +x addtrojanhdua
 chmod +x addtrojanquic
+chmod +x addtrojankcp
 
 chmod +x addxtreme
 chmod +x addxrayss
