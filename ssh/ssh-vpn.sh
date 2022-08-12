@@ -299,11 +299,11 @@ systemctl daemon-reload
 systemctl enable squid
 
 # Install SSLH
-#apt -y install sslh
-#rm -f /etc/default/sslh
+apt -y install sslh
+rm -f /etc/default/sslh
 
 # Settings SSLH
-#cat > /etc/default/sslh <<-END
+cat > /etc/default/sslh <<-END
 # Default options for sslh initscript
 # sourced by /etc/init.d/sslh
 
@@ -319,18 +319,18 @@ systemctl enable squid
 
 # binary to use: forked (sslh) or single-thread (sslh-select) version
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
-#DAEMON=/usr/sbin/sslh
+DAEMON=/usr/sbin/sslh
 
-#DAEMON_OPTS="--user sslh --listen 0.0.0.0:2087 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:700 --http 127.0.0.1:2086 --pidfile /var/run/sslh/sslh.pid -n"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2087 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:700 --http 127.0.0.1:2086 --pidfile /var/run/sslh/sslh.pid -n"
 
-#END
+END
 
 # Restart Service SSLH
 #service sslh restart
-#systemctl restart sslh
-#/etc/init.d/sslh restart
-#/etc/init.d/sslh status
-#/etc/init.d/sslh restart
+systemctl restart sslh
+/etc/init.d/sslh restart
+/etc/init.d/sslh status
+/etc/init.d/sslh restart
 
 # setting vnstat
 apt -y install vnstat
@@ -366,9 +366,9 @@ chmod 644 /etc/stunnel5
 
 # Download Config Stunnel5
 cat > /etc/stunnel5/stunnel5.conf <<-END
-#cert = /etc/xray/xray.crt
-#key = /etc/xray/xray.key
-cert = /etc/stunnel5/stunnel5.pem
+key = /etc/xray/xray.key
+cert = /etc/xray/xray.crt
+#cert = /etc/stunnel5/stunnel5.pem
 client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
@@ -436,7 +436,7 @@ systemctl restart stunnel5
 /etc/init.d/stunnel5 restart
 
 #OpenVPN
-wget https://${wisnuvpn}/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+#wget https://${wisnuvpn}/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # install fail2ban
 apt -y install fail2ban
