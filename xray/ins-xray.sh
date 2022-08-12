@@ -571,71 +571,62 @@ systemctl start xvmess.service
 systemctl restart xvmess.service
 
 # Install Trojan Go
-latest_version="$(curl -s "https://api.github.com/repos/p4gefau1t/trojan-go/releases" | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
-trojango_link="https://github.com/p4gefau1t/trojan-go/releases/download/v${latest_version}/trojan-go-linux-amd64.zip"
-mkdir -p "/usr/bin/trojan-go"
-mkdir -p "/etc/trojan-go"
-cd `mktemp -d`
-curl -sL "${trojango_link}" -o trojan-go.zip
-unzip -q trojan-go.zip && rm -rf trojan-go.zip
-mv trojan-go /usr/local/bin/trojan-go
+mkdir -p /usr/lib/trojan-go >/dev/null 2>&1
+wget -q -N --no-check-certificate https://github.com/p4gefau1t/trojan-go/releases/download/$(curl -fsSL https://api.github.com/repos/p4gefau1t/trojan-go/releases | grep '"tag_name":' | head -n 1 | sed -E 's/.*"([^"]+)".*/\1/')/trojan-go-linux-amd64.zip 
+unzip -o -d /usr/lib/trojan-go/ ./trojan-go-linux-amd64.zip >/dev/null 2>&1
+mv /usr/lib/trojan-go/trojan-go /usr/local/bin/ >/dev/null 2>&1
 chmod +x /usr/local/bin/trojan-go
-mkdir /var/log/trojan-go/
+rm -rf ./trojan-go-linux-amd64.zip >/dev/null 2>&1
 touch /etc/trojan-go/akun.conf
 touch /var/log/trojan-go/trojan-go.log
 
 domain=$(cat /root/domain)
 # Buat Config Trojan Go
-cat > /etc/trojan-go/config.json <<END
+cat <<EOF > /etc/trojan-go/config.json
 {
   "run_type": "server",
   "local_addr": "0.0.0.0",
   "local_port": 2053,
   "remote_addr": "127.0.0.1",
-  "remote_port": 88,
+  "remote_port": 80,
   "log_level": 1,
-  "log_file": "/var/log/trojan-go/trojan-go.log",
+  "log_file": "/var/log/trojan-go.log",
   "password": [
-      "$uuid"
+        "$uuid"
   ],
   "disable_http_check": true,
   "udp_timeout": 60,
   "ssl": {
     "verify": false,
     "verify_hostname": false,
-    "cert": "/etc/ssl/private/fullchain.pem",
-    "key": "/etc/ssl/private/privkey.pem",
+    "cert": "/root/.acme.sh/${domain}_ecc/fullchain.cer",
+    "key": "/root/.acme.sh/${domain}_ecc/${domain}.key",
     "key_password": "",
     "cipher": "",
     "curves": "",
     "prefer_server_cipher": false,
-    "sni": "$domain",
+    "sni": "",
     "alpn": [
       "http/1.1"
     ],
     "session_ticket": true,
     "reuse_session": true,
     "plain_http_response": "",
-    "fallback_addr": "127.0.0.1",
+    "fallback_addr": "",
     "fallback_port": 0,
-    "fingerprint": "firefox"
+    "fingerprint": ""
   },
   "tcp": {
     "no_delay": true,
     "keep_alive": true,
     "prefer_ipv4": true
   },
-  "mux": {
-    "enabled": false,
-    "concurrency": 8,
-    "idle_timeout": 60
-  },
   "websocket": {
     "enabled": true,
     "path": "/gandring",
-    "host": "$domain"
+    "host": "${domain}"
   },
-    "api": {
+  "api": {
     "enabled": false,
     "api_addr": "",
     "api_port": 0,
@@ -648,37 +639,36 @@ cat > /etc/trojan-go/config.json <<END
     }
   }
 }
-END
+EOF
 
-# Installing Trojan Go Service
-cat > /etc/systemd/system/trojan-go.service <<END
+sleep 1
+echo -e "[ ${green}INFO$NC ] Creating service trojan-go"
+cat <<EOF> /etc/systemd/system/trojan-go.service
 [Unit]
-Description=Trojan-Go Service Mod By zerossl
-Documentation=https://t.me/zerossl
+Description=Trojan-Go - An unidentifiable mechanism that helps you bypass GFW
+Documentation=https://p4gefau1t.github.io/trojan-go/
 After=network.target nss-lookup.target
 
 [Service]
-User=root
+Type=simple
+StandardError=journal
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/trojan-go -config /etc/trojan-go/config.json
+ExecStart="/usr/local/bin/trojan-go" -config "/etc/trojan-go/config.json"
 LimitNOFILE=51200
 Restart=on-failure
-RestartPreventExitStatus=23
+RestartSec=1s
 
 [Install]
 WantedBy=multi-user.target
 
-END
+EOF
+chmod +x /etc/trojan-go/config.json
 
-# Trojan Go Uuid
-cat > /etc/trojan-go/uuid.txt << END
+cat <<EOF > /etc/trojan-go/uuid.txt
 $uuid
-
-END
-
-# restart
+EOF
 # // Enable & Start Service
 # Accept port Xray
 sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2096 -j ACCEPT
@@ -720,9 +710,9 @@ systemctl enable trojan-go
 systemctl restart trojan-go
 
 cd
-mkdir /etc/stunnel5
-cp /etc/ssl/private/fullchain.pem /root/cert.pem
-cp /etc/ssl/private/privkey.pem /root/key.pem
+mkdir -p /etc/stunnel5/stunnel5.pem
+cat /etc/ssl/private/fullchain.pem /root/cert.pem
+cat /etc/ssl/private/privkey.pem /root/key.pem
 cat /etc/ssl/private/privkey.pem /etc/stunnel5/stunnel5.pem
 cat /etc/ssl/private/fullchain.pem /etc/stunnel5/stunnel5.pem
 
