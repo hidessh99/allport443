@@ -543,6 +543,7 @@ wget -O portdropbear "https://${wisnuvpn}/portdropbear.sh"
 wget -O portopenssh "https://${wisnuvpn}/portopenssh.sh"
 wget -O portsshnontls "https://${wisnuvpn}/portsshnontls.sh"
 wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
+wget -O sshws-true "https://${wisnuvpn}/sshws-true.sh"
 
 wget -O addvmess "https://${wisnuvpnn}/addvmess.sh"
 wget -O addvmessgrpc "https://${wisnuvpnn}/addvmessgrpc.sh"
@@ -685,6 +686,7 @@ wget -O status4 "https://${wisnuvpnnnnn}/status4.sh"
 
 chmod +x addssh
 chmod +x ins-sshws
+chmod +x sshws-true
 chmod +x trialssh
 chmod +x delssh
 chmod +x member
