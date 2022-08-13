@@ -1,17 +1,18 @@
-#!/usr/bin/python
 import socket, threading, thread, select, signal, sys, time, getopt
 
 # Listen
-LISTENING_ADDR = '0.0.0.0'
-LISTENING_PORT = sys.argv[1]
-
-# Pass
+LISTENING_ADDR = '127.0.0.1'
+if sys.argv[1:]:
+  LISTENING_PORT = sys.argv[1]
+else:
+  LISTENING_PORT = 2083
+#Pass
 PASS = ''
 
 # CONST
-BUFLEN = 8192 * 4
-TIMEOUT = 300
-DEFAULT_HOST = '127.0.0.3:2083'
+BUFLEN = 4096 * 4
+TIMEOUT = 60
+DEFAULT_HOST = '127.0.0.1:600'
 RESPONSE = 'HTTP/1.1 101 <b><font color="red">SUN AMATAK AJIKU SI JARAN GOYANG TAK GOYANG ING TENGAH LATAR CEMETHIKU SODHO LANANG SAKING SWARGO TAK SABETAKE GUNUNG JUGRUG TAK SABETAKE SEGORO ASAT TAK SABETAKE MARANG ATINE SI JABANG BAYI PET SIDHO EDAN ORA EDAN SIDHO GENDENG ORA GENDENG ORA MARI MARI YEN ORA INGSUN SING NAMBANI </font></b>\r\n\r\nContent-Length: 10485760000000\r\n\r\n'
 
 class Server(threading.Thread):
@@ -263,4 +264,3 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
 #######    parse_args(sys.argv[1:])
 if __name__ == '__main__':
     main()
-0
