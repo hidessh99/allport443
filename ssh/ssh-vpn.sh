@@ -436,7 +436,7 @@ systemctl restart stunnel5
 /etc/init.d/stunnel5 restart
 
 #OpenVPN
-#wget https://${wisnuvpn}/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://${wisnuvpn}/vpn.sh && chmod +x vpn.sh && ./vpn.sh
 
 # install fail2ban
 apt -y install fail2ban
@@ -542,7 +542,7 @@ wget -O portstunnel5 "https://${wisnuvpn}/portstunnel5.sh"
 wget -O portdropbear "https://${wisnuvpn}/portdropbear.sh"
 wget -O portopenssh "https://${wisnuvpn}/portopenssh.sh"
 wget -O portsshnontls "https://${wisnuvpn}/portsshnontls.sh"
-#wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
+wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
 
 wget -O addvmess "https://${wisnuvpnn}/addvmess.sh"
 wget -O addvmessgrpc "https://${wisnuvpnn}/addvmessgrpc.sh"
@@ -684,7 +684,7 @@ wget -O status3 "https://${wisnuvpnnnnn}/status3.sh"
 wget -O status4 "https://${wisnuvpnnnnn}/status4.sh"
 
 chmod +x addssh
-#chmod +x ins-sshws
+chmod +x ins-sshws
 chmod +x trialssh
 chmod +x delssh
 chmod +x member
@@ -884,7 +884,7 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/sslh restart
 /etc/init.d/stunnel5 restart
 /etc/init.d/vnstat restart
-#/etc/init.d/fail2ban restart
+/etc/init.d/fail2ban restart
 #/etc/init.d/squid restart
 
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 100
