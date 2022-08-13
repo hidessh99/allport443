@@ -375,7 +375,7 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
 [dropbear]
-accept = 600
+accept = 400
 connect = 127.0.0.1:300
 
 [openssh]
@@ -529,7 +529,6 @@ wget -O changeport "https://${wisnuvpn}/changeport.sh"
 wget -O wbmn "https://${wisnuvpn}/webmin.sh"
 wget -O xp "https://${wisnuvpn}/xp.sh"
 wget -O swapkvm "https://${wisnuvpn}/swapkvm.sh"
-wget -O swapkvm "https://${wisnuvpn}/swapkvm.sh"
 
 wget -O portovpn "https://${wisnuvpn}/portovpn.sh"
 wget -O portwg "https://${wisnuvpn}/portwg.sh"
@@ -543,7 +542,7 @@ wget -O portstunnel5 "https://${wisnuvpn}/portstunnel5.sh"
 wget -O portdropbear "https://${wisnuvpn}/portdropbear.sh"
 wget -O portopenssh "https://${wisnuvpn}/portopenssh.sh"
 wget -O portsshnontls "https://${wisnuvpn}/portsshnontls.sh"
-wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
+#wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
 
 wget -O addvmess "https://${wisnuvpnn}/addvmess.sh"
 wget -O addvmessgrpc "https://${wisnuvpnn}/addvmessgrpc.sh"
@@ -685,7 +684,7 @@ wget -O status3 "https://${wisnuvpnnnnn}/status3.sh"
 wget -O status4 "https://${wisnuvpnnnnn}/status4.sh"
 
 chmod +x addssh
-chmod +x ins-sshws
+#chmod +x ins-sshws
 chmod +x trialssh
 chmod +x delssh
 chmod +x member
