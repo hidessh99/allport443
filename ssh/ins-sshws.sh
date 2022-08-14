@@ -1,13 +1,18 @@
 #!/bin/bash
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 tgl=`date +"%Y-%m-%d" -d "$dateFromServer"`
+#modding by gandring
 #########################
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
 
-portdb=`cat ~/log-install.txt | grep -w "PORT DROPBEAR" | cut -d: -f2|sed 's/ //g' | cut -f2 -d","`
-portsshws=`cat ~/log-install.txt | grep -w "WEBSOCKET NON TLS" | cut -d: -f2 | awk '{print $1}'`
-portsshwstls=`cat ~/log-install.txt | grep -w "WEBSOCKET TLS" | cut -d: -f2 | awk '{print $1}'`
+portdb=`cat /root/log-install.txt | grep -w "PORT DROPBEAR" | cut -d: -f2|sed 's/ //g' | cut -f2 -d","`
+portdb2=`cat /root/log-install.txt | grep -w "PORT DROPBEAR" | cut -d: -f2|sed 's/ //g' | cut -f1 -d","`
+portsshws=`cat /root/log-install.txt | grep -w "WEBSOCKET NON TLS" | cut -d: -f2 | awk '{print $1}'`
+portsshwstls=`cat /root/log-install.txt | grep -w "WEBSOCKET TLS" | cut -d: -f2 | awk '{print $1}'`
+portovpnws=`cat /root/log-install.txt | grep -w "OVPN WEBSOCKET NON TLS" | cut -d: -f2 | awk '{print $1}'`
+portovpnwstls=`cat /root/log-install.txt | grep -w "OVPN WEBSOCKET TLS" | cut -d: -f2 | awk '{print $1}'`
+portovpntcp=`cat /root/log-install.txt | grep -w "OVPN TCP" | cut -d: -f2 | awk '{print $1}'`
 
 if [ -f "/etc/systemd/system/sshws.service" ]; then
 clear
