@@ -59,7 +59,6 @@ systemctl daemon-reload
 systemctl enable wsstunnel
 systemctl restart wsstunnel
 
-
 # Getting Proxy Template
 wget -q -O /usr/local/bin/ws-tunnel https://${wisnuvpn}/ws-tunnel.py
 chmod +x /usr/local/bin/ws-tunnel
