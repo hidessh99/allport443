@@ -34,7 +34,7 @@ systemctl restart ws-tls
 
 # Getting Proxy Template
 wget -q -O /usr/local/bin/wsstunnel https://${wisnuvpn}/wsstunnel.py
-chmod +x /usr/local/bin/ws-tls
+chmod +x /usr/local/bin/wsstunnel
 
 # Installing Service
 cat > /etc/systemd/system/wsstunnel.service << END
@@ -58,6 +58,34 @@ END
 systemctl daemon-reload
 systemctl enable wsstunnel
 systemctl restart wsstunnel
+
+
+# Getting Proxy Template
+wget -q -O /usr/local/bin/ws-tunnel https://${wisnuvpn}/ws-tunnel.py
+chmod +x /usr/local/bin/ws-tunnel
+
+# Installing Service
+cat > /etc/systemd/system/ws-tunnel.service << END
+[Unit]
+Description=SSH WEBSOCKET TLS ROUTING INDONESIA BY ZEROSSL
+Documentation=https://t.me/zerossl
+After=network.target nss-lookup.target
+
+[Service]
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-tunnel
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+systemctl daemon-reload
+systemctl enable ws-tunnel
+systemctl restart ws-tunnel
 
 # Installing Service
 cat > /etc/systemd/system/ws-nontls.service << END
