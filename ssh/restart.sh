@@ -13,11 +13,16 @@ LIGHT='\033[0;37m'
 # ==========================================
 clear
 echo -e ""
-echo -e "Starting Restart All Service"
+echo -e "Memulai Ulang Layanan Tunnel"
 sleep 2
 systemctl restart ssrmu
 systemctl restart ws-tls
 systemctl restart ws-nontls
+systemctl restart wsstunnel
+systemctl restart ws-tunnel
+systemctl restart ws-ohp
+systemctl restart wstls-ohp
+systemctl restart ovpn-tls
 systemctl restart xray.service
 systemctl restart shadowsocks-libev
 systemctl restart xl2tpd
@@ -54,4 +59,4 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600 --max-clients 100
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700 --max-clients 100
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800 --max-clients 100
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 100
-echo -e "Restart All Service Berhasil"
+echo -e "Mulai Ulang Layanan Berhasil"
