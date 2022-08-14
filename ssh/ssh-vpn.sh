@@ -321,7 +321,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="--user sslh --listen 0.0.0.0:2443 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:600 --openvpn 127.0.0.1:700 --openvpn 127.0.0.1:100 --http 127.0.0.1:2083 --pidfile /var/run/sslh/sslh.pid -n"
+DAEMON_OPTS="--user sslh --listen :80 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:600 --openvpn 127.0.0.1:700 --openvpn 127.0.0.1:100 --http 127.0.0.1:2083 --pidfile /var/run/sslh/sslh.pid -n"
 
 END
 
@@ -391,7 +391,7 @@ accept = 550
 connect = 127.0.0.1:100
 
 [openvpn]
-accept = 900
+accept = 2087
 connect = 127.0.0.1:700
 
 END
