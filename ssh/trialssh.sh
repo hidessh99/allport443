@@ -40,7 +40,8 @@ systemctl restart stunnel5
 systemctl restart ssh-ohp
 systemctl restart dropbear-ohp
 systemctl restart openvpn-ohp
-
+systemctl restart wsstunnel
+systemctl restart ws-ohp
 useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
 exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
 hariini=`date -d "0 days" +"%Y-%m-%d"`
@@ -76,7 +77,7 @@ echo -e "━━━━━━━━━━━━━━━━━━━"
 echo -e "OVPN ZIP:http://$MYIP:88/gandring.zip"
 echo -e "━━━━━━━━━━━━━━━━━━━"
 echo -e "Payload SSH & OVPN WEBSOCKET"
-echo -e "GET ws://bugmu.com [protocol][crlf] / HTTP/1.1[crlf]Host: $domain[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf][crlf]"
+echo -e "GET ws://bugmu.com [protocol][crlf]/ HTTP/1.1[crlf]Host: $domain[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf][crlf]"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
