@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# modding by wisnucokrosatrio
 portdb=`cat /root/log-install.txt | grep -w "PORT DROPBEAR" | cut -d: -f2|sed 's/ //g' | cut -f2 -d","`
 portdb2=`cat /root/log-install.txt | grep -w "PORT DROPBEAR" | cut -d: -f2|sed 's/ //g' | cut -f1 -d","`
 portsshws=`cat /root/log-install.txt | grep -w "WEBSOCKET NON TLS" | cut -d: -f2 | awk '{print $1}'`
