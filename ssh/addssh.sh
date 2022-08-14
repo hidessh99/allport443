@@ -24,10 +24,6 @@ clear
 if [ -e "/var/log/auth.log" ]; then
         LOG="/var/log/auth.log";
 fi
-if [ -e "/var/log/secure" ]; then
-        LOG="/var/log/secure";
-fi
-                
 data=( `ps aux | grep -i dropbear | awk '{print $2}'`);
 cat $LOG | grep -i dropbear | grep -i "Password auth succeeded" > /tmp/login-db.txt;
 for PID in "${data[@]}"
@@ -71,6 +67,8 @@ systemctl restart sslh
 systemctl restart ws-ovpn
 systemctl restart ovpn-tls
 systemctl restart ssh-ohp
+systemctl restart ws-ohp
+systemctl restart wsstunnel
 systemctl restart dropbear-ohp
 systemctl restart openvpn-ohp
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -80,11 +78,11 @@ echo -e "IP : $MYIP/ ${domain}"
 echo -e "Username       $off:$Login"
 echo -e "Password       $off:$Pass"
 echo -e "Dropbear       $off:${dropbearport}"
-echo -e "SSL/TLS        $off:$ssl"
+echo -e "SSL/TLS        $off:$ssl,443"
 echo -e "Privoxy        $off:4000,5000"
 echo -e "Squid          $off:$sqd"
-echo -e "WS TLS         $off:$ws"
-echo -e "WS NON TLS     $off:$ws2"
+echo -e "WS TLS         $off:$ws,443"
+echo -e "WS NON TLS     $off:$ws2,80"
 echo -e "OVPN WS TLS    $off:$otls"
 echo -e "OVPN WS NONTLS $off:$onontls"
 echo -e "Port TCP       $off:$otcp"
@@ -102,7 +100,7 @@ echo -e "━━━━━━━━━━━━━━━━━━━"
 echo -e "OVPN ZIP:http://$MYIP:88/gandring.zip"
 echo -e "━━━━━━━━━━━━━━━━━━━"
 echo -e "Payload SSH & OVPN WEBSOCKET"
-echo -e "GET ws://bugmu.com [protocol][crlf] / HTTP/1.1[crlf]Host: $domain[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf][crlf]"
+echo -e "GET ws://bugmu.com [protocol][crlf]/ HTTP/1.1[crlf]Host: $domain[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf][crlf]"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
