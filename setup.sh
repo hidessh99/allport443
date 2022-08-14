@@ -113,7 +113,7 @@ echo -e " 🔰 PORT OPENSSH : 22" |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN TCP : 700" |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN UDP : 800" |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN SSL : 443" |tee -a log-install.txt
-echo -e " 🔰 PORT STUNNEL5 : 500, 600" |tee -a log-install.txt
+echo -e " 🔰 PORT STUNNEL5 : 443, 500, 600" |tee -a log-install.txt
 echo -e " 🔰 PORT DROPBEAR : 300, 200" |tee -a log-install.txt
 echo -e " 🔰 PORT SQUID : 3128, 3228" |tee -a log-install.txt
 echo -e " 🔰 UDPGW : 9100, 9200, 9300-9900" |tee -a log-install.txt
@@ -175,6 +175,7 @@ echo -e " 🔰 SHADOWSOCKS WS TLS : 443" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS WS NON TLS : 80" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS GRPC TLS : 443" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS GRPC NON TLS : 80" |tee -a log-install.txt
+echo -e " 🔰 SHADOWSOCKS 2022 UDP : 414" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 TCP TLS : 212" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 WS NON TLS : 80" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 WS TLS : 443" |tee -a log-install.txt
