@@ -14,17 +14,19 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 #MYIP=$(wget -qO- https://ipv4.icanhazip.com);
 MYIP6=$(wget -qO- https://ipv6.icanhazip.com);
-
 # Link Hosting Kalian
-wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ssh"
-# Link Hosting Kalian Untuk Xray
-wisnuvpnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/xray"
-# Link Hosting Kalian Untuk Trojan Go
-wisnuvpnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/trojango"
-# Link Hosting Kalian Untuk Stunnel5
-wisnuvpnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/stunnel5"
-wisnuvpnnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/update"
+wisnuvpn="raw.githubusercontent.com/samratu/large/sae/ssh"
 
+# Link Hosting Kalian Untuk Xray
+wisnuvpnn="raw.githubusercontent.com/samratu/large/sae/xray"
+
+# Link Hosting Kalian Untuk Trojan Go
+wisnuvpnnn="raw.githubusercontent.com/samratu/large/sae/trojango"
+
+# Link Hosting Kalian Untuk Stunnel5
+wisnuvpnnnn="raw.githubusercontent.com/samratu/large/sae/stunnel5"
+
+wisnuvpnnnnn="raw.githubusercontent.com/samratu/large/sae/update"
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
 MYIP=$(wget -qO- ipinfo.io/ip);
@@ -85,6 +87,15 @@ systemctl start rc-local.service
 apt update -y
 apt upgrade -y
 apt dist-upgrade -y
+apt -y install glibc
+apt -y install libc.so.6
+apt -y install libcrypt.so.1
+apt -y install libtomcrypt
+apt -y install libtomcrypt.so.1
+apt -y install libutil.so.1
+apt -y install libtommath
+apt -y install libtommath.so.1
+apt -y install libz.so.1
 apt -y install zlib
 apt -y install 
 apt install ssl-cert -y
@@ -310,12 +321,12 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="--user sslh --listen 0.0.0.0:2087 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --http 127.0.0.1:600 --openvpn 127.0.0.1:700 --http 127.0.0.1:100 --http 127.0.0.1:2083 --pidfile /var/run/sslh/sslh.pid -n"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2087 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:700 --http 127.0.0.1:2086 --pidfile /var/run/sslh/sslh.pid -n"
 
 END
 
 # Restart Service SSLH
-#service sslh restart
+service sslh restart
 systemctl restart sslh
 /etc/init.d/sslh restart
 /etc/init.d/sslh status
@@ -355,16 +366,15 @@ chmod 644 /etc/stunnel5
 
 # Download Config Stunnel5
 cat > /etc/stunnel5/stunnel5.conf <<-END
-key = /etc/xray/xray.key
-cert = /etc/xray/xray.crt
-#cert = /etc/stunnel5/stunnel5.pem
+cert = /etc/ssl/private/fullchain.pem
+key = /etc/ssl/private/privkey.pem
 client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
 [dropbear]
-accept = 400
+accept = 600
 connect = 127.0.0.1:300
 
 [openssh]
@@ -372,15 +382,7 @@ accept = 500
 connect = 127.0.0.1:2087
 
 [openvpn]
-accept = 450
-connect = 127.0.0.1:600
-
-[wsstunnel]
-accept = 550
-connect = 127.0.0.1:100
-
-[openvpn]
-accept = 2087
+accept = 900
 connect = 127.0.0.1:700
 
 END
@@ -418,7 +420,7 @@ cp /usr/local/bin/stunnel /usr/local/bin/stunnel5
 # Remove File
 rm -r -f /usr/local/share/doc/stunnel/
 rm -r -f /usr/local/etc/stunnel/
-rm -f /usr/local/bin/stunnel
+#rm -f /usr/local/bin/stunnel
 rm -f /usr/local/bin/stunnel3
 rm -f /usr/local/bin/stunnel4
 #rm -f /usr/local/bin/stunnel5
@@ -433,7 +435,7 @@ systemctl restart stunnel5
 /etc/init.d/stunnel5 restart
 
 #OpenVPN
-wget https://${wisnuvpn}/vpn.sh && chmod +x vpn.sh && ./vpn.sh
+wget https://${wisnuvpn}/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # install fail2ban
 apt -y install fail2ban
@@ -519,6 +521,7 @@ wget -O info "https://${wisnuvpn}/info.sh"
 wget -O ram "https://${wisnuvpn}/ram.sh"
 wget -O renewssh "https://${wisnuvpn}/renewssh.sh"
 wget -O autokill "https://${wisnuvpn}/autokill.sh"
+
 wget -O ceklim "https://${wisnuvpn}/ceklim.sh"
 wget -O tendang "https://${wisnuvpn}/tendang.sh"
 wget -O clearlog "https://${wisnuvpn}/clearlog.sh"
@@ -526,7 +529,8 @@ wget -O changeport "https://${wisnuvpn}/changeport.sh"
 wget -O wbmn "https://${wisnuvpn}/webmin.sh"
 wget -O xp "https://${wisnuvpn}/xp.sh"
 wget -O swapkvm "https://${wisnuvpn}/swapkvm.sh"
-
+wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
+wget -O sshws-true "https://${wisnuvpn}/sshws-true.sh"
 wget -O portovpn "https://${wisnuvpn}/portovpn.sh"
 wget -O portwg "https://${wisnuvpn}/portwg.sh"
 wget -O porttrojan "https://${wisnuvpn}/porttrojan.sh"
@@ -539,6 +543,7 @@ wget -O portstunnel5 "https://${wisnuvpn}/portstunnel5.sh"
 wget -O portdropbear "https://${wisnuvpn}/portdropbear.sh"
 wget -O portopenssh "https://${wisnuvpn}/portopenssh.sh"
 wget -O portsshnontls "https://${wisnuvpn}/portsshnontls.sh"
+wget -O portsshwstls "https://${wisnuvpn}/portsshwstls.sh"
 
 wget -O addvmess "https://${wisnuvpnn}/addvmess.sh"
 wget -O addvmessgrpc "https://${wisnuvpnn}/addvmessgrpc.sh"
@@ -546,6 +551,7 @@ wget -O addvmesshdua "https://${wisnuvpnn}/addvmesshdua.sh"
 wget -O addvmessquic "https://${wisnuvpnn}/addvmessquic.sh"
 wget -O addvmesshttp "https://${wisnuvpnn}/addvmesshttp.sh"
 wget -O addvmesskcp "https://${wisnuvpnn}/addvmesskcp.sh"
+
 wget -O addvless "https://${wisnuvpnn}/addvless.sh"
 wget -O addvlessxtls "https://${wisnuvpnn}/addvlessxtls.sh"
 wget -O addvlesshttp "https://${wisnuvpnn}/addvlesshttp.sh"
@@ -553,6 +559,7 @@ wget -O addvlesshdua "https://${wisnuvpnn}/addvlesshdua.sh"
 wget -O addvlesskcp "https://${wisnuvpnn}/addvlesskcp.sh"
 wget -O addvlessgrpc "https://${wisnuvpnn}/addvlessgrpc.sh"
 wget -O addvlessquic "https://${wisnuvpnn}/addvlessquic.sh"
+
 wget -O addtrojanxtls "https://${wisnuvpnn}/addtrojanxtls.sh"
 wget -O addtrojangrpc "https://${wisnuvpnn}/addtrojangrpc.sh"
 wget -O addtrojanwss "https://${wisnuvpnn}/addtrojanwss.sh"
@@ -560,6 +567,7 @@ wget -O addtrojanhttp "https://${wisnuvpnn}/addtrojanhttp.sh"
 wget -O addtrojanhdua "https://${wisnuvpnn}/addtrojanhdua.sh"
 wget -O addtrojanquic "https://${wisnuvpnn}/addtrojanquic.sh"
 wget -O addtrojankcp "https://${wisnuvpnn}/addtrojankcp.sh"
+
 wget -O addxrayss "https://${wisnuvpnn}/addxrayss.sh"
 wget -O addvmesstester "https://${wisnuvpnn}/addvmesstester.sh"
 wget -O addvlesstester "https://${wisnuvpnn}/addvlesstester.sh"
@@ -575,13 +583,15 @@ wget -O cekvmesshdua "https://${wisnuvpnn}/cekvmesshdua.sh"
 wget -O cekvmessquic "https://${wisnuvpnn}/cekvmessquic.sh"
 wget -O cekvmesshttp "https://${wisnuvpnn}/cekvmesshttp.sh"
 wget -O cekvmesskcp "https://${wisnuvpnn}/cekvmesskcp.sh"
+
 wget -O cekvlessquic "https://${wisnuvpnn}/cekvlessquic.sh"
 wget -O cekvlesskcp "https://${wisnuvpnn}/cekvlesskcp.sh"
 wget -O cekvlessxtls "https://${wisnuvpnn}/cekvlessxtls.sh"
 wget -O cekvlesshttp "https://${wisnuvpnn}/cekvlesshttp.sh"
 wget -O cekvlesshdua "https://${wisnuvpnn}/cekvlesshdua.sh"
 wget -O cekvless "https://${wisnuvpnn}/cekvless.sh"
-wget -O cekvlessgrpc "https://${wisnuvpnn}/cekvlessgrpc.sh
+wget -O cekvlessgrpc "https://${wisnuvpnn}/cekvlessgrpc.sh"
+
 wget -O cektrojankcp "https://${wisnuvpnn}/cektrojankcp.sh"
 wget -O cektrojanxtls "https://${wisnuvpnn}/cektrojanxtls.sh"
 wget -O cektrojangrpc "https://${wisnuvpnn}/cektrojangrpc.sh"
@@ -596,6 +606,7 @@ wget -O delvmesshdua "https://${wisnuvpnn}/delvmesshdua.sh"
 wget -O delvmesshttp "https://${wisnuvpnn}/delvmesshttp.sh"
 wget -O delvmesskcp "https://${wisnuvpnn}/delvmesskcp.sh"
 wget -O delvmessquic "https://${wisnuvpnn}/delvmessquic.sh"
+
 wget -O delvless "https://${wisnuvpnn}/delvless.sh"
 wget -O delvlessgrpc "https://${wisnuvpnn}/delvlessgrpc.sh"
 wget -O delvlessxtls "https://${wisnuvpnn}/delvlessxtls.sh"
@@ -603,9 +614,8 @@ wget -O delvlesshttp "https://${wisnuvpnn}/delvlesshttp.sh"
 wget -O delvlesshdua "https://${wisnuvpnn}/delvlesshdua.sh"
 wget -O delvlessquic "https://${wisnuvpnn}/delvlessquic.sh"
 wget -O delvlesskcp "https://${wisnuvpnn}/delvlesskcp.sh"
+
 wget -O deltrojankcp "https://${wisnuvpnn}/deltrojankcp.sh"
-wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
-wget -O sshws-true "https://${wisnuvpn}/sshws-true.sh"
 wget -O deltrojanxltls "https://${wisnuvpnn}/deltrojanxtls.sh"
 wget -O deltrojangrpc "https://${wisnuvpnn}/deltrojangrpc.sh"
 wget -O deltrojanwss "https://${wisnuvpnn}/deltrojanwss.sh"
@@ -619,6 +629,7 @@ wget -O renewvmesshdua "https://${wisnuvpnn}/renewvmesshdua.sh"
 wget -O renewvmessquic "https://${wisnuvpnn}/renewvmessquic.sh"
 wget -O renewvmesshttp "https://${wisnuvpnn}/renewvmesshttp.sh"
 wget -O renewvmesskcp "https://${wisnuvpnn}/renewvmesskcp.sh"
+
 wget -O renewvlessxtls "https://${wisnuvpnn}/renewvlessxtls.sh"
 wget -O renewvlesshttp "https://${wisnuvpnn}/renewvlesshttp.sh"
 wget -O renewvlessquic "https://${wisnuvpnn}/renewvlessquic.sh"
@@ -626,6 +637,7 @@ wget -O renewvlesshdua "https://${wisnuvpnn}/renewvlesshdua.sh"
 wget -O renewvless "https://${wisnuvpnn}/renewvless.sh"
 wget -O renewvlessgrpc "https://${wisnuvpnn}/renewvlessgrpc.sh"
 wget -O renewvlesskcp "https://${wisnuvpnn}/renewvlesskcp.sh"
+
 wget -O renewtrojankcp "https://${wisnuvpnn}/renewtrojankcp.sh"
 wget -O renewtrojanxtls "https://${wisnuvpnn}/renewtrojanxtls.sh"
 wget -O renewtrojangrpc "https://${wisnuvpnn}/renewtrojangrpc.sh"
@@ -649,13 +661,15 @@ wget -O renewxrayss "https://${wisnuvpnn}/renewxrayss.sh"
 wget -O deltrojantester "https://${wisnuvpnn}/deltrojantester.sh"
 wget -O delvlesstester "https://${wisnuvpnn}/delvlesstester.sh"
 wget -O delvmesstester "https://${wisnuvpnn}/delvmesstester.sh"
-
 wget -O cektrojantester "https://${wisnuvpnn}/cektrojantester.sh"
+
 wget -O certv2ray "https://${wisnuvpnn}/certv2ray.sh"
+
 wget -O addtrgo "https://${wisnuvpnnn}/addtrgo.sh"
 wget -O deltrgo "https://${wisnuvpnnn}/deltrgo.sh"
 wget -O renewtrgo "https://${wisnuvpnnn}/renewtrgo.sh"
 wget -O cektrgo "https://${wisnuvpnnn}/cektrgo.sh"
+
 wget -O trojanmenu "https://${wisnuvpnnnnn}/trojanmenu.sh"
 wget -O sshovpnmenu "https://${wisnuvpnnnnn}/sshovpnmenu.sh"
 wget -O l2tppmenu "https://${wisnuvpnnnnn}/l2tppmenu.sh"
@@ -688,7 +702,6 @@ chmod +x renewssh
 chmod +x clearlog
 chmod +x wbmn
 chmod +x xp
-
 chmod +x addhost
 chmod +x swapkvm
 chmod +x portsshnontls
@@ -717,23 +730,21 @@ chmod +x addvmessgrpc
 chmod +x addvmesshdua
 chmod +x addvmessquic
 chmod +x addvmesshttp
-chmod +x addvmesskcp
+
 chmod +x addvless
 chmod +x addvlessgrpc
 chmod +x addvlesshttp
 chmod +x addvlesshdua
-chmod +x ins-sshws
-chmod +x sshws-true
 chmod +x addvlessxtls
 chmod +x addvlessquic
-chmod +x addvlesskcp
+
 chmod +x addtrojanxtls
 chmod +x addtrojangrpc
 chmod +x addtrojanwss
 chmod +x addtrojanhttp
 chmod +x addtrojanhdua
 chmod +x addtrojanquic
-chmod +x addtrojankcp
+
 chmod +x addxtreme
 chmod +x addxrayss
 chmod +x addss22
@@ -759,6 +770,7 @@ chmod +x delvmesshdua
 chmod +x delvmessquic
 chmod +x delvmesshttp
 chmod +x delvmesskcp
+
 chmod +x delvless
 chmod +x delvlessgrpc
 chmod +x delvlessxtls
@@ -766,6 +778,7 @@ chmod +x delvlesshttp
 chmod +x delvlesshdua
 chmod +x delvlessquic
 chmod +x delvlesskcp
+
 chmod +x deltrojanxtls
 chmod +x deltrojangrpc
 chmod +x deltrojanwss
@@ -773,6 +786,7 @@ chmod +x deltrojanhttp
 chmod +x deltrojanhdua
 chmod +x deltrojanquic
 chmod +x deltrojankcp
+
 chmod +x delvlesstester
 chmod +x deltrojantester
 chmod +x delvmesstester
@@ -786,19 +800,24 @@ chmod +x cekxrayss
 chmod +x cekss22
 chmod +x ceksocks
 chmod +x cekssws
+
 chmod +x cekvmess
 chmod +x cekvmesshttp
 chmod +x cekvmesshdua
 chmod +x cekvmessgrpc
 chmod +x cekvmessquic
 chmod +x cekvmesskcp
+
 chmod +x cekvless
 chmod +x cekvlesshttp
 chmod +x cekvlesshdua
 chmod +x cekvlessgrpc
 chmod +x cekvlessquic
+
 chmod +x cekvlesskcp
 chmod +x cekvlessxtls
+chmod +x ins-sshws
+chmod +x sshws-true
 chmod +x cektrojanxtls
 chmod +x cektrojangrpc
 chmod +x cektrojanwss
@@ -806,6 +825,7 @@ chmod +x cektrojanhttp
 chmod +x cektrojanquic
 chmod +x cektrojanhdua
 chmod +x cektrojankcp
+
 chmod +x cektrojantester
 
 chmod +x renewvmess
@@ -814,6 +834,7 @@ chmod +x renewvmesshdua
 chmod +x renewvmessquic
 chmod +x renewvmesshttp
 chmod +x renewvmesskcp
+
 chmod +x renewvless
 chmod +x renewvlesshdua
 chmod +x renewvlessgrpc
@@ -821,6 +842,7 @@ chmod +x renewvlesskcp
 chmod +x renewvlessquic
 chmod +x renewvlesshttp
 chmod +x renewvlessxtls
+
 chmod +x renewtrojanquic
 chmod +x renewtrojanxtls
 chmod +x renewtrojangrpc
@@ -828,10 +850,12 @@ chmod +x renewtrojanwss
 chmod +x renewtrojanhttp
 chmod +x renewtrojanhdua
 chmod +x renewtrojankcp
+
 chmod +x renewss22
 chmod +x renewssws
 chmod +x renewsocks
 chmod +x renewxrayss
+
 chmod +x certv2ray
 chmod +x addtrgo
 chmod +x deltrgo
@@ -860,7 +884,7 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/stunnel5 restart
 /etc/init.d/vnstat restart
 /etc/init.d/fail2ban restart
-#/etc/init.d/squid restart
+/etc/init.d/squid restart
 
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 100
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200 --max-clients 100
@@ -874,6 +898,9 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 100
 echo "0 4 * * * root clearlog && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 echo "0 0 * * * root delexp" >> /etc/crontab
+
+service cron restart >/dev/null 2>&1
+service cron reload >/dev/null 2>&1
 history -c
 echo "unset HISTFILE" >> /etc/profile
 
@@ -882,3 +909,4 @@ rm -f /root/key.pem
 rm -f /root/cert.pem
 rm -f /root/ssh-vpn.sh
 # finishing
+clear
