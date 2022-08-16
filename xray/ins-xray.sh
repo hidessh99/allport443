@@ -786,16 +786,9 @@ systemctl start trojan-go
 systemctl enable trojan-go
 systemctl restart trojan-go
 
-cd
-mkdir -p /etc/stunnel5/stunnel5.pem
-cat /etc/ssl/private/fullchain.pem /root/cert.pem
-cat /etc/ssl/private/privkey.pem /root/key.pem
-cat /etc/ssl/private/privkey.pem /etc/stunnel5/stunnel5.pem
-cat /etc/ssl/private/fullchain.pem /etc/stunnel5/stunnel5.pem
-
 cp /root/domain /etc/xray
 cp /root/domain /usr/local/etc/xray
 cp /etc/ssl/private/fullchain.pem /etc/xray/xray.crt
 cp /etc/ssl/private/privkey.pem /etc/xray/xray.key
-touch /etc/trojan-go/akun.conf
+
 rm -f ins-xray.sh >/dev/null 2>&1
