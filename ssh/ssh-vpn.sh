@@ -14,19 +14,17 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 #MYIP=$(wget -qO- https://ipv4.icanhazip.com);
 MYIP6=$(wget -qO- https://ipv6.icanhazip.com);
+
 # Link Hosting Kalian
 wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ssh"
-
 # Link Hosting Kalian Untuk Xray
 wisnuvpnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/xray"
-
 # Link Hosting Kalian Untuk Trojan Go
 wisnuvpnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/trojango"
-
 # Link Hosting Kalian Untuk Stunnel5
 wisnuvpnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/stunnel5"
-
 wisnuvpnnnnn="raw.githubusercontent.com/inoyaksorojawi/large/sae/update"
+
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
 MYIP=$(wget -qO- ipinfo.io/ip);
@@ -87,15 +85,6 @@ systemctl start rc-local.service
 apt update -y
 apt upgrade -y
 apt dist-upgrade -y
-apt -y install glibc
-apt -y install libc.so.6
-apt -y install libcrypt.so.1
-apt -y install libtomcrypt
-apt -y install libtomcrypt.so.1
-apt -y install libutil.so.1
-apt -y install libtommath
-apt -y install libtommath.so.1
-apt -y install libz.so.1
 apt -y install zlib
 apt -y install 
 apt install ssl-cert -y
@@ -321,7 +310,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="--user sslh --listen 0.0.0.0:2443 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:600 --openvpn 127.0.0.1:700 --openvpn 127.0.0.1:100 --http 127.0.0.1:2083 --pidfile /var/run/sslh/sslh.pid -n"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2087 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --http 127.0.0.1:600 --openvpn 127.0.0.1:700 --http 127.0.0.1:100 --http 127.0.0.1:2083 --pidfile /var/run/sslh/sslh.pid -n"
 
 END
 
@@ -380,7 +369,7 @@ connect = 127.0.0.1:300
 
 [openssh]
 accept = 500
-connect = 127.0.0.1:2443
+connect = 127.0.0.1:2087
 
 [openvpn]
 accept = 450
