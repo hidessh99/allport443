@@ -87,17 +87,6 @@ systemctl start rc-local.service
 apt update -y
 apt upgrade -y
 apt dist-upgrade -y
-apt -y install glibc
-apt -y install libc.so.6
-apt -y install libcrypt.so.1
-apt -y install libtomcrypt
-apt -y install libtomcrypt.so.1
-apt -y install libutil.so.1
-apt -y install libtommath
-apt -y install libtommath.so.1
-apt -y install libz.so.1
-apt -y install zlib
-apt -y install 
 apt install ssl-cert -y
 apt install ca-certificate -y
 apt-get remove --purge ufw firewalld -y
@@ -321,7 +310,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="--user sslh --listen 0.0.0.0:2087 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:700 --http 127.0.0.1:2086 --pidfile /var/run/sslh/sslh.pid -n"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2087 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --ssh 127.0.0.1:100 --openvpn 127.0.0.1:700 --http 127.0.0.1:2083 --pidfile /var/run/sslh/sslh.pid -n"
 
 END
 
@@ -374,8 +363,16 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
 [dropbear]
-accept = 600
+accept = 400
 connect = 127.0.0.1:300
+
+[dropbear]
+accept = 450
+connect = 127.0.0.1:600
+
+[dropbear]
+accept = 100
+connect = 127.0.0.1:2083
 
 [openssh]
 accept = 500
