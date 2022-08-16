@@ -12,6 +12,8 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Getting
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+datr=`date +"%Y-%m-%d" -d "$dateFromServer"`
 MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 echo -n > /tmp/other.txt
