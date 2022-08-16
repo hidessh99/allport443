@@ -674,7 +674,6 @@ wget -O status "https://${wisnuvpnnnnn}/status.sh"
 wget -O status2 "https://${wisnuvpnnnnn}/status2.sh"
 wget -O status3 "https://${wisnuvpnnnnn}/status3.sh"
 wget -O status4 "https://${wisnuvpnnnnn}/status4.sh"
-
 chmod +x addssh
 chmod +x trialssh
 chmod +x delssh
@@ -715,14 +714,12 @@ chmod +x portgrpc
 chmod +x portsstp
 chmod +x portsquid
 chmod +x portvlm
-
 chmod +x addvmess
 chmod +x addvmessgrpc
 chmod +x addvmesshdua
 chmod +x addvmessquic
 chmod +x addvmesshttp
 chmod +x addvmesskcp
-
 chmod +x addvless
 chmod +x addvlessgrpc
 chmod +x addvlesshttp
@@ -732,7 +729,6 @@ chmod +x sshws-true
 chmod +x addvlessxtls
 chmod +x addvlessquic
 chmod +x addvlesskcp
-
 chmod +x addtrojanxtls
 chmod +x addtrojangrpc
 chmod +x addtrojanwss
@@ -740,7 +736,6 @@ chmod +x addtrojanhttp
 chmod +x addtrojanhdua
 chmod +x addtrojanquic
 chmod +x addtrojankcp
-
 chmod +x addxtreme
 chmod +x addxrayss
 chmod +x addss22
@@ -749,7 +744,6 @@ chmod +x addsocks
 chmod +x addtrojantester
 chmod +x addvmesstester
 chmod +x addvlesstester
-
 chmod +x menutester
 chmod +x sshovpnmenu
 chmod +x l2tppmenu
@@ -759,14 +753,12 @@ chmod +x vlessmenu
 chmod +x trojanmenu
 chmod +x setmenu
 chmod +x menu
-
 chmod +x delvmess
 chmod +x delvmessgrpc
 chmod +x delvmesshdua
 chmod +x delvmessquic
 chmod +x delvmesshttp
 chmod +x delvmesskcp
-
 chmod +x delvless
 chmod +x delvlessgrpc
 chmod +x delvlessxtls
@@ -774,7 +766,6 @@ chmod +x delvlesshttp
 chmod +x delvlesshdua
 chmod +x delvlessquic
 chmod +x delvlesskcp
-
 chmod +x deltrojanxtls
 chmod +x deltrojangrpc
 chmod +x deltrojanwss
@@ -782,7 +773,6 @@ chmod +x deltrojanhttp
 chmod +x deltrojanhdua
 chmod +x deltrojanquic
 chmod +x deltrojankcp
-
 chmod +x delvlesstester
 chmod +x deltrojantester
 chmod +x delvmesstester
@@ -791,19 +781,16 @@ chmod +x delxrayss
 chmod +x delss22
 chmod +x delssws
 chmod +x delsocks
-
 chmod +x cekxrayss
 chmod +x cekss22
 chmod +x ceksocks
 chmod +x cekssws
-
 chmod +x cekvmess
 chmod +x cekvmesshttp
 chmod +x cekvmesshdua
 chmod +x cekvmessgrpc
 chmod +x cekvmessquic
 chmod +x cekvmesskcp
-
 chmod +x cekvless
 chmod +x cekvlesshttp
 chmod +x cekvlesshdua
@@ -811,7 +798,6 @@ chmod +x cekvlessgrpc
 chmod +x cekvlessquic
 chmod +x cekvlesskcp
 chmod +x cekvlessxtls
-
 chmod +x cektrojanxtls
 chmod +x cektrojangrpc
 chmod +x cektrojanwss
@@ -819,16 +805,13 @@ chmod +x cektrojanhttp
 chmod +x cektrojanquic
 chmod +x cektrojanhdua
 chmod +x cektrojankcp
-
 chmod +x cektrojantester
-
 chmod +x renewvmess
 chmod +x renewvmessgrpc
 chmod +x renewvmesshdua
 chmod +x renewvmessquic
 chmod +x renewvmesshttp
 chmod +x renewvmesskcp
-
 chmod +x renewvless
 chmod +x renewvlesshdua
 chmod +x renewvlessgrpc
@@ -836,7 +819,6 @@ chmod +x renewvlesskcp
 chmod +x renewvlessquic
 chmod +x renewvlesshttp
 chmod +x renewvlessxtls
-
 chmod +x renewtrojanquic
 chmod +x renewtrojanxtls
 chmod +x renewtrojangrpc
@@ -844,12 +826,10 @@ chmod +x renewtrojanwss
 chmod +x renewtrojanhttp
 chmod +x renewtrojanhdua
 chmod +x renewtrojankcp
-
 chmod +x renewss22
 chmod +x renewssws
 chmod +x renewsocks
 chmod +x renewxrayss
-
 chmod +x certv2ray
 chmod +x addtrgo
 chmod +x deltrgo
