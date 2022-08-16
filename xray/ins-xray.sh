@@ -1,5 +1,7 @@
- #!/bin/bash
+#!/bin/bash
 # @ Copyrigt 2017 By zerossl
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date=`date +"%Y-%m-%d" -d "$dateFromServer"`
 # Color
 RED='\033[0;31m'
 NC='\033[0m'
@@ -49,6 +51,15 @@ mv xray /usr/local/bin/xray
 chmod +x /usr/local/bin/xray
 
 # Make Folder XRay
+domainSock_dir="/run/xray";! [ -d $domainSock_dir ] && mkdir  $domainSock_dir
+chown www-data.www-data $domainSock_dir
+# Make Folder XRay
+mkdir -p /var/log/xray
+mkdir -p /etc/xray
+chown www-data.www-data /var/log/xray
+chmod +x /var/log/xray
+touch /var/log/xray/access.log
+touch /var/log/xray/error.log
 mkdir -p /var/log/xray/
 uuid=$(cat /proc/sys/kernel/random/uuid)
 #bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
@@ -611,6 +622,21 @@ LimitNOFILE=1000000
 WantedBy=multi-user.target
 END
 
+cat > /etc/systemd/system/run.service <<EOF
+[Unit]
+Description=DATA XRAY ACTIVATED BY GANDRING
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/mkdir -p /var/run/xray
+ExecStart=/bin/chown www-data:www-data /var/run/xray
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
 systemctl daemon-reload
 systemctl enable xray.service
 systemctl start xray.service
@@ -643,6 +669,12 @@ systemctl daemon-reload
 systemctl enable xvmess.service
 systemctl start xvmess.service
 systemctl restart xvmess.service
+
+##restart&start service
+systemctl daemon-reload
+systemctl enable run.service
+systemctl start run.service
+systemctl restart run.service
 
 # Install Trojan Go
 latest_version="$(curl -s "https://api.github.com/repos/p4gefau1t/trojan-go/releases" | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
