@@ -21,6 +21,8 @@ export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
 # ==========================================
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+datr=`date +"%Y-%m-%d" -d "$dateFromServer"`
 clear
 function cekss22() {
 clear
