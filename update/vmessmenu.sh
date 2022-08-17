@@ -35,6 +35,7 @@ echo -e "22\e[1;33m) Hapus Akun VMESS KCP \e[m"
 echo -e "23\e[1;33m) Perpanjang Masa Aktif Akun VMESS KCP \e[m"
 echo -e "24\e[1;33m) Cek User Login VMESS KCP \e[m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "25\e[1;31m) Cek Trafik User \e[m"
 echo -e "00\e[1;31m) Menu Utama \e[m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "xx\e[1;31m) Keluar \e[m"
@@ -115,6 +116,9 @@ renewvmesskcp
 ;;
 24)
 cekvmesskcp
+;;
+25)
+trafikcek
 ;;
 0)
 menu
