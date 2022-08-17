@@ -1,8 +1,9 @@
 #!/bin/bash
 
-_APISERVER=127.0.0.1:10085 
+_APISERVER=127.0.0.1:10809
 _Xray=/usr/local/bin/xray
-
+_APISERVER=127.0.0.1:10808
+_Xray=/usr/local/bin/xray
 apidata () {
     local ARGS=
     if [[ $1 == "reset" ]]; then
