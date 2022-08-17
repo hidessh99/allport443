@@ -46,6 +46,7 @@ echo -e "30\e[1;33m) Hapus Akun TROJAN KCP  \e[m"
 echo -e "31\e[1;33m) Perpanjang Masa Aktif Akun TROJAN KCP \e[m"
 echo -e "32\e[1;33m) Cek User Login TROJAN KCP \e[m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "33\e[1;31m) Cek Trafik User \e[m"
 echo -e "00\e[1;31m) Menu Utama \e[m"
 echo -e "xx\e[1;31m) Keluar \e[m"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -149,6 +150,9 @@ renewtrojankcp
 ;;
 32)
 cektrojankcp
+;;
+33)
+trafikcek
 ;;
 0)
 menu
