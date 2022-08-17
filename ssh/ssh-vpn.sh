@@ -595,6 +595,7 @@ wget -O cektrojangrpc "https://${wisnuvpnn}/cektrojangrpc.sh"
 wget -O cektrojanwss "https://${wisnuvpnn}/cektrojanwss.sh"
 wget -O cektrojanhttp "https://${wisnuvpnn}/cektrojanhttp.sh"
 wget -O cektrojanhdua "https://${wisnuvpnn}/cektrojanhdua.sh"
+wget -O trafikcek "https://${wisnuvpnn}/trafikcek.sh"
 wget -O cektrojanquic "https://${wisnuvpnn}/cektrojanquic.sh"
 
 wget -O delvmess "https://${wisnuvpnn}/delvmess.sh"
@@ -718,6 +719,7 @@ chmod +x portwg
 chmod +x porttrojan
 chmod +x porttrojango
 chmod +x portgrpc
+chmod +x trafikcek
 chmod +x portsstp
 chmod +x portsquid
 chmod +x portvlm
