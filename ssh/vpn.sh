@@ -102,8 +102,24 @@ auth-user-pass
 comp-lzo
 verb 3
 END
-
 sed -i $MYIP2 /etc/openvpn/ssl.ovpn;
+# Buat config client ws
+cat > /etc/openvpn/ws.ovpn <<-END
+client
+dev tun
+proto tcp
+remote xxxxxxxxx 443
+resolv-retry infinite
+route-method exe
+nobind
+persist-key
+persist-tun
+auth-user-pass
+comp-lzo
+verb 3
+END
+
+sed -i $MYIP2 /etc/openvpn/ws.ovpn;
 
 cd
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
@@ -111,11 +127,11 @@ cd
 
 # masukkan certificatenya ke dalam config client TCP 600
 echo '<ca>' >> /etc/openvpn/tcp.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/tcp.ovpn
+cat /etc/openvpn/ca.crt >> /etc/openvpn/tcp.ovpn
 echo '</ca>' >> /etc/openvpn/tcp.ovpn
 
 #echo '<cert>' >> /etc/openvpn/tcp.ovpn
-#cat /etc/openvpn/server/server.crt >> /etc/openvpn/tcp.ovpn
+#cat /etc/openvpn/server.crt >> /etc/openvpn/tcp.ovpn
 #echo '</cert>' >> /etc/openvpn/tcp.ovpn
 
 #echo '<key>' >> /etc/openvpn/tcp.ovpn
@@ -161,6 +177,23 @@ echo '</ca>' >> /etc/openvpn/ssl.ovpn
 #echo '<key>' >> /etc/openvpn/ssl.ovpn
 #cat /etc/openvpn/server/server.key >> /etc/openvpn/ssl.ovpn
 #echo '</key>' >> /etc/openvpn/ssl.ovpn
+
+#echo '<tls-auth>' >> /etc/openvpn/ssl.ovpn
+#cat /etc/openvpn/server/ta.key >> /etc/openvpn/ssl.ovpn
+#echo '</tls-auth>' >> /etc/openvpn/ssl.ovpn
+
+# masukkan certificatenya ke dalam config client SSL 900
+echo '<ca>' >> /etc/openvpn/ws.ovpn
+cat /etc/xray/xray.crt >> /etc/openvpn/ws.ovpn
+echo '</ca>' >> /etc/openvpn/ws.ovpn
+
+#echo '<cert>' >> /etc/openvpn/ssl.ovpn
+#cat /etc/openvpn/server/server.crt >> /etc/openvpn/ssl.ovpn
+#echo '</cert>' >> /etc/openvpn/ssl.ovpn
+
+echo '<key>' >> /etc/openvpn/ws.ovpn
+cat /etc/xray/xray.key >> /etc/openvpn/ws.ovpn
+echo '</key>' >> /etc/openvpn/ws.ovpn
 
 #echo '<tls-auth>' >> /etc/openvpn/ssl.ovpn
 #cat /etc/openvpn/server/ta.key >> /etc/openvpn/ssl.ovpn
