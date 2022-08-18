@@ -53,34 +53,17 @@ sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 
 # Buat config client TCP 700
 cat > /etc/openvpn/tcp.ovpn <<-END
-#client
-#dev tun
-#proto tcp
-#remote xxxxxxxxx 700
-#resolv-retry infinite
-#route-method exe
-#nobind
-#persist-key
-#persist-tun
-#auth-user-pass
-#comp-lzo
-#verb 3
 client
-proto tcp
 dev tun
-setenv FRIENDLY_NAME "TCP"
+proto tcp
 remote xxxxxxxxx 700
 resolv-retry infinite
-auth-user-pass
+route-method exe
 nobind
 persist-key
 persist-tun
-remote-cert-tls server
-auth SHA512
-auth-nocache
-cipher AES-256-CBC
-setenv opt block-outside-dns
-setenv CLIENT_CERT 0
+auth-user-pass
+comp-lzo
 verb 3
 END
 
@@ -88,34 +71,17 @@ sed -i $MYIP2 /etc/openvpn/tcp.ovpn;
 
 # Buat config client UDP 800
 cat > /etc/openvpn/udp.ovpn <<-END
-#client
-#dev tun
-#proto udp
-#remote xxxxxxxxx 800
-#resolv-retry infinite
-#route-method exe
-#nobind
-#persist-key
-#persist-tun
-#auth-user-pass
-#comp-lzo
-#verb 3
 client
-proto udp
 dev tun
-setenv FRIENDLY_NAME "UDP"
+proto udp
 remote xxxxxxxxx 800
 resolv-retry infinite
-auth-user-pass
+route-method exe
 nobind
 persist-key
 persist-tun
-remote-cert-tls server
-auth SHA512
-auth-nocache
-cipher AES-256-CBC
-setenv opt block-outside-dns
-setenv CLIENT_CERT 0
+auth-user-pass
+comp-lzo
 verb 3
 END
 
@@ -123,35 +89,17 @@ sed -i $MYIP2 /etc/openvpn/udp.ovpn;
 
 # Buat config client SSL
 cat > /etc/openvpn/ssl.ovpn <<-END
-#client
-#dev tun
-#proto tcp
-#remote xxxxxxxxx 2087
-#resolv-retry infinite
-#route-method exe
-#nobind
-#persist-key
-#persist-tun
-#auth-user-pass
-#comp-lzo
-#verb 3
-
 client
-proto tcp
 dev tun
-setenv FRIENDLY_NAME "TCP"
-remote xxxxxxxxx 443
+proto tcp
+remote xxxxxxxxx 2087
 resolv-retry infinite
-auth-user-pass
+route-method exe
 nobind
 persist-key
 persist-tun
-remote-cert-tls server
-auth SHA512
-auth-nocache
-cipher AES-256-CBC
-setenv opt block-outside-dns
-setenv CLIENT_CERT 0
+auth-user-pass
+comp-lzo
 verb 3
 END
 
@@ -166,17 +114,17 @@ echo '<ca>' >> /etc/openvpn/tcp.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/tcp.ovpn
 echo '</ca>' >> /etc/openvpn/tcp.ovpn
 
-echo '<cert>' >> /etc/openvpn/tcp.ovpn
-cat /etc/openvpn/server/server.crt >> /etc/openvpn/tcp.ovpn
-echo '</cert>' >> /etc/openvpn/tcp.ovpn
+#echo '<cert>' >> /etc/openvpn/tcp.ovpn
+#cat /etc/openvpn/server/server.crt >> /etc/openvpn/tcp.ovpn
+#echo '</cert>' >> /etc/openvpn/tcp.ovpn
 
-echo '<key>' >> /etc/openvpn/tcp.ovpn
-cat /etc/openvpn/server/server.key >> /etc/openvpn/tcp.ovpn
-echo '</key>' >> /etc/openvpn/tcp.ovpn
+#echo '<key>' >> /etc/openvpn/tcp.ovpn
+#cat /etc/openvpn/server/server.key >> /etc/openvpn/tcp.ovpn
+#echo '</key>' >> /etc/openvpn/tcp.ovpn
 
-echo '<tls-auth>' >> /etc/openvpn/tcp.ovpn
-cat /etc/openvpn/server/ta.key >> /etc/openvpn/tcp.ovpn
-echo '</tls-auth>' >> /etc/openvpn/tcp.ovpn
+#echo '<tls-auth>' >> /etc/openvpn/tcp.ovpn
+#cat /etc/openvpn/server/ta.key >> /etc/openvpn/tcp.ovpn
+#echo '</tls-auth>' >> /etc/openvpn/tcp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 700 )
 cp /etc/openvpn/tcp.ovpn /home/vps/public_html/tcp.ovpn
@@ -186,17 +134,17 @@ echo '<ca>' >> /etc/openvpn/udp.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/udp.ovpn
 echo '</ca>' >> /etc/openvpn/udp.ovpn
 
-echo '<cert>' >> /etc/openvpn/udp.ovpn
-cat /etc/openvpn/server/server.crt >> /etc/openvpn/udp.ovpn
-echo '</cert>' >> /etc/openvpn/udp.ovpn
+#echo '<cert>' >> /etc/openvpn/udp.ovpn
+#cat /etc/openvpn/server/server.crt >> /etc/openvpn/udp.ovpn
+#echo '</cert>' >> /etc/openvpn/udp.ovpn
 
-echo '<key>' >> /etc/openvpn/udp.ovpn
-cat /etc/openvpn/server/server.key >> /etc/openvpn/udp.ovpn
-echo '</key>' >> /etc/openvpn/udp.ovpn
+#echo '<key>' >> /etc/openvpn/udp.ovpn
+#cat /etc/openvpn/server/server.key >> /etc/openvpn/udp.ovpn
+#echo '</key>' >> /etc/openvpn/udp.ovpn
 
-echo '<tls-auth>' >> /etc/openvpn/udp.ovpn
-cat /etc/openvpn/server/ta.key >> /etc/openvpn/udp.ovpn
-echo '</tls-auth>' >> /etc/openvpn/udp.ovpn
+#echo '<tls-auth>' >> /etc/openvpn/udp.ovpn
+#cat /etc/openvpn/server/ta.key >> /etc/openvpn/udp.ovpn
+#echo '</tls-auth>' >> /etc/openvpn/udp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 800 )
 cp /etc/openvpn/udp.ovpn /home/vps/public_html/udp.ovpn
@@ -206,17 +154,17 @@ echo '<ca>' >> /etc/openvpn/ssl.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/ssl.ovpn
 echo '</ca>' >> /etc/openvpn/ssl.ovpn
 
-echo '<cert>' >> /etc/openvpn/ssl.ovpn
-cat /etc/openvpn/server/server.crt >> /etc/openvpn/ssl.ovpn
-echo '</cert>' >> /etc/openvpn/ssl.ovpn
+#echo '<cert>' >> /etc/openvpn/ssl.ovpn
+#cat /etc/openvpn/server/server.crt >> /etc/openvpn/ssl.ovpn
+#echo '</cert>' >> /etc/openvpn/ssl.ovpn
 
-echo '<key>' >> /etc/openvpn/ssl.ovpn
-cat /etc/openvpn/server/server.key >> /etc/openvpn/ssl.ovpn
-echo '</key>' >> /etc/openvpn/ssl.ovpn
+#echo '<key>' >> /etc/openvpn/ssl.ovpn
+#cat /etc/openvpn/server/server.key >> /etc/openvpn/ssl.ovpn
+#echo '</key>' >> /etc/openvpn/ssl.ovpn
 
-echo '<tls-auth>' >> /etc/openvpn/ssl.ovpn
-cat /etc/openvpn/server/ta.key >> /etc/openvpn/ssl.ovpn
-echo '</tls-auth>' >> /etc/openvpn/ssl.ovpn
+#echo '<tls-auth>' >> /etc/openvpn/ssl.ovpn
+#cat /etc/openvpn/server/ta.key >> /etc/openvpn/ssl.ovpn
+#echo '</tls-auth>' >> /etc/openvpn/ssl.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( SSL 900 )
 cp /etc/openvpn/ssl.ovpn /home/vps/public_html/ssl.ovpn
