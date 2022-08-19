@@ -132,17 +132,17 @@ echo '<ca>' >> /etc/openvpn/tcp.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/tcp.ovpn
 echo '</ca>' >> /etc/openvpn/tcp.ovpn
 
-#echo '<cert>' >> /etc/openvpn/tcp.ovpn
-#cat /etc/openvpn/server.crt >> /etc/openvpn/tcp.ovpn
-#echo '</cert>' >> /etc/openvpn/tcp.ovpn
+echo '<cert>' >> /etc/openvpn/tcp.ovpn
+cat /etc/openvpn/server.crt >> /etc/openvpn/tcp.ovpn
+echo '</cert>' >> /etc/openvpn/tcp.ovpn
 
-#echo '<key>' >> /etc/openvpn/tcp.ovpn
-#cat /etc/openvpn/server/server.key >> /etc/openvpn/tcp.ovpn
-#echo '</key>' >> /etc/openvpn/tcp.ovpn
+echo '<key>' >> /etc/openvpn/tcp.ovpn
+cat /etc/openvpn/server/server.key >> /etc/openvpn/tcp.ovpn
+echo '</key>' >> /etc/openvpn/tcp.ovpn
 
-#echo '<tls-auth>' >> /etc/openvpn/tcp.ovpn
-#cat /etc/openvpn/server/ta.key >> /etc/openvpn/tcp.ovpn
-#echo '</tls-auth>' >> /etc/openvpn/tvpp.ovpn
+echo '<tls-auth>' >> /etc/openvpn/tcp.ovpn
+cat /etc/openvpn/server/ta.key >> /etc/openvpn/tcp.ovpn
+echo '</tls-auth>' >> /etc/openvpn/tvpp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 700 )
 cp /etc/openvpn/tcp.ovpn /home/vps/public_html/tcp.ovpn
