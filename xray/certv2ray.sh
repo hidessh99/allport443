@@ -27,9 +27,10 @@ bash acme.sh --install >/dev/null 2>&1
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade >/dev/null 2>&1
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt >/dev/null 2>&1
 /root/.acme.sh/acme.sh --issue -d $domain --standalone --force --keylength ec-256 --server letsencrypt
-/root/.acme.sh/acme.sh --issue -d $domain --standalone --force --keylength ec-256 --server letsencrypt --listen-v6
+#/root/.acme.sh/acme.sh --issue -d $domain --standalone --force --keylength ec-256 --server letsencrypt --listen-v6
 /root/.acme.sh/acme.sh --installcert -d $domain --ecc --fullchainpath /etc/ssl/private/fullchain.pem --keypath /etc/ssl/private/privkey.pem
 echo -e "[ ${green}INFO${NC} ] Renew cert done... "
 sleep 5
 rm acme.sh >/dev/null 2>&1
 echo -e "[ ${green}INFO${NC} ] Renew cert done... "
+restart
