@@ -102,7 +102,9 @@ auth-user-pass
 comp-lzo
 verb 3
 END
+
 sed -i $MYIP2 /etc/openvpn/ssl.ovpn;
+
 # Buat config client ws
 cat > /etc/openvpn/ws.ovpn <<-END
 client
@@ -140,7 +142,7 @@ echo '</ca>' >> /etc/openvpn/tcp.ovpn
 
 #echo '<tls-auth>' >> /etc/openvpn/tcp.ovpn
 #cat /etc/openvpn/server/ta.key >> /etc/openvpn/tcp.ovpn
-#echo '</tls-auth>' >> /etc/openvpn/tcp.ovpn
+#echo '</tls-auth>' >> /etc/openvpn/tvpp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 700 )
 cp /etc/openvpn/tcp.ovpn /home/vps/public_html/tcp.ovpn
@@ -200,7 +202,7 @@ echo '</key>' >> /etc/openvpn/ws.ovpn
 #echo '</tls-auth>' >> /etc/openvpn/ssl.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( SSL 900 )
-cp /etc/openvpn/ssl.ovpn /home/vps/public_html/ssl.ovpn
+cp /etc/openvpn/ws.ovpn /home/vps/public_html/ws.ovpn
 
 #firewall untuk memperbolehkan akses UDP dan akses jalur TCP
 
@@ -219,7 +221,7 @@ systemctl start openvpn
 /etc/init.d/openvpn restart
 
 cd /home/vps/public_html/
-zip gandring.zip tcp.ovpn udp.ovpn ssl.ovpn > /dev/null 2>&1
+zip gandring.zip tcp.ovpn udp.ovpn ssl.ovpn ws.ovpn > /dev/null 2>&1
 cd
 cat <<'mySiteOvpn' > /home/vps/public_html/index.html
 <!DOCTYPE html>
@@ -234,6 +236,8 @@ cat <<'mySiteOvpn' > /home/vps/public_html/index.html
 <li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>UDP <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/udp.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
 <li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>SSL <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/ssl.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
+
+<li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>WS <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/ws.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
 <li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p> ALL.zip <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/gandring.zip" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
