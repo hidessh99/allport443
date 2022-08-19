@@ -17,7 +17,7 @@ MYIP6=$(wget -qO- https://ipv6.icanhazip.com);
 clear
 domain=$(cat /etc/xray/domain)
 
-uuid=$(cat /proc/sys/kernel/random/uuid)
+#uuid=$(cat /proc/sys/kernel/random/uuid)
 tquic="$(cat ~/log-install.txt | grep -w "TROJAN QUIC TLS" | cut -d: -f2|sed 's/ //g')"
 tgrpc="$(cat ~/log-install.txt | grep -w "TROJAN GRPC" | cut -d: -f2|sed 's/ //g')"
 txtls="$(cat ~/log-install.txt | grep -w "TROJAN XTLS" | cut -d: -f2|sed 's/ //g')"
@@ -51,7 +51,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid=$(openssl rand -base64 16)
 read -p "Expired (Days) : " masaaktif
 #read -p "Expired (Seconds) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
@@ -118,7 +118,7 @@ trojannontls="trojan://${uuid}@${domain}:$tnontls?type=ws&security=none&host=$do
 trojanhttp="trojan://${uuid}@${domain}:$thttp?sni=gesekan.penghancur-janda.com&type=tcp&security=tls&host=$domain&path=/gandringtcp&headerType=http#%F0%9F%94%B0+HTTP+TLS+${user}"
 trojanhttpnon="trojan://${uuid}@${domain}:$thttpnon?sni=gesekan.penghancur-janda.com&type=tcp&security=none&host=$domain&headerType=http#%F0%9F%94%B0TROJAN+HTTP+NONTLS+${user}"
 trojanquic="trojan://$uuid@$MYIP:$tquic?sni=$domain&quicSecurity=$domain&key=gandringquic&security=tls&type=quic&headerType=none#%F0%9F%94%B0TROJAN+QUIC+TLS+$user"
-trojankcp="trojan://$uuid@$domain:$tkcp?sni=minakdjinggo.org&type=http&security=tls&path=/gandringkcp#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
+trojankcp="trojan://$uuid@$domain:$tkcp?sni=minakdjinggo.org&type=http&security=tls&seed=gandringkcp#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
 systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvless
@@ -131,7 +131,7 @@ echo -e "\033[1;46m 🔰 AKUN TROJAN TESTER 🔰 \e[m"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "IP  :${MYIP} / $domain"
 echo -e "NAMA  :${user}"
-echo -e "Protokol  :GRPC,H2C,GFW,XTLS,WS,HTTP,GO,QUIC"
+echo -e "Protokol  :GRPC,H2C,GFW,XTLS,WS,KCP,HTTP,GO,QUIC"
 echo -e "Flow xtls  :only origin type not supported"
 echo -e "ServiceName  :gandringrpc"
 echo -e "Path HTTP  :/gandringtcp"
