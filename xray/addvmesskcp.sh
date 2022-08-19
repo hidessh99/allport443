@@ -69,7 +69,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /proc/sys/kernel/random/uuid)
+#uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid=$(openssl rand -base64 16)
 read -p "Expired (Days) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
@@ -92,7 +93,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "kcp",
-      "path": "/shanumkcp",
+      "path": "shanumkcp",
       "type": "none",
       "host": "",
       "tls": "none"
@@ -120,7 +121,7 @@ echo -e "Alamat  :${domain}"
 echo -e "Port TLS  :${tls}"
 echo -e "Port No TLS  :${nontls}"
 echo -e "Protokol  :KCP"
-echo -e "Path  :/shanumkcp"
+echo -e "Path  :shanumkcp"
 echo -e "UserID  :${uuid}"
 echo -e "Dibuat  :$hariini"
 echo -e "Kadaluarsa  :$exp"
