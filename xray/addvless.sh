@@ -70,7 +70,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid=$(openssl rand -base64 16)
 read -p "Expired (Days) : " masaaktif
 #read -p "Expired (Seconds) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
@@ -91,6 +91,7 @@ vlessnontls="vless://${uuid}@${domain}:$vlnontls?host=${domain}&security=none&ty
 systemctl restart xray.service
 systemctl restart xvless
 systemctl restart xvmess
+systemctl restart xvless
 service cron restart
 clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
