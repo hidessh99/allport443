@@ -129,20 +129,8 @@ cd
 
 # masukkan certificatenya ke dalam config client TCP 600
 echo '<ca>' >> /etc/openvpn/tcp.ovpn
-cat /etc/openvpn/ca.crt >> /etc/openvpn/tcp.ovpn
+cat /etc/openvpn/server/ca.crt >> /etc/openvpn/tcp.ovpn
 echo '</ca>' >> /etc/openvpn/tcp.ovpn
-
-echo '<cert>' >> /etc/openvpn/tcp.ovpn
-cat /etc/openvpn/server.crt >> /etc/openvpn/tcp.ovpn
-echo '</cert>' >> /etc/openvpn/tcp.ovpn
-
-echo '<key>' >> /etc/openvpn/tcp.ovpn
-cat /etc/openvpn/server/server.key >> /etc/openvpn/tcp.ovpn
-echo '</key>' >> /etc/openvpn/tcp.ovpn
-
-echo '<tls-auth>' >> /etc/openvpn/tcp.ovpn
-cat /etc/openvpn/server/ta.key >> /etc/openvpn/tcp.ovpn
-echo '</tls-auth>' >> /etc/openvpn/tvpp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 700 )
 cp /etc/openvpn/tcp.ovpn /home/vps/public_html/tcp.ovpn
@@ -152,18 +140,6 @@ echo '<ca>' >> /etc/openvpn/udp.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/udp.ovpn
 echo '</ca>' >> /etc/openvpn/udp.ovpn
 
-#echo '<cert>' >> /etc/openvpn/udp.ovpn
-#cat /etc/openvpn/server/server.crt >> /etc/openvpn/udp.ovpn
-#echo '</cert>' >> /etc/openvpn/udp.ovpn
-
-#echo '<key>' >> /etc/openvpn/udp.ovpn
-#cat /etc/openvpn/server/server.key >> /etc/openvpn/udp.ovpn
-#echo '</key>' >> /etc/openvpn/udp.ovpn
-
-#echo '<tls-auth>' >> /etc/openvpn/udp.ovpn
-#cat /etc/openvpn/server/ta.key >> /etc/openvpn/udp.ovpn
-#echo '</tls-auth>' >> /etc/openvpn/udp.ovpn
-
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 800 )
 cp /etc/openvpn/udp.ovpn /home/vps/public_html/udp.ovpn
 
@@ -172,13 +148,13 @@ echo '<ca>' >> /etc/openvpn/ssl.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/ssl.ovpn
 echo '</ca>' >> /etc/openvpn/ssl.ovpn
 
-#echo '<cert>' >> /etc/openvpn/ssl.ovpn
-#cat /etc/openvpn/server/server.crt >> /etc/openvpn/ssl.ovpn
-#echo '</cert>' >> /etc/openvpn/ssl.ovpn
+echo '<cert>' >> /etc/openvpn/ssl.ovpn
+cat /etc/openvpn/server/server.crt >> /etc/openvpn/ssl.ovpn
+echo '</cert>' >> /etc/openvpn/ssl.ovpn
 
-#echo '<key>' >> /etc/openvpn/ssl.ovpn
-#cat /etc/openvpn/server/server.key >> /etc/openvpn/ssl.ovpn
-#echo '</key>' >> /etc/openvpn/ssl.ovpn
+echo '<key>' >> /etc/openvpn/ssl.ovpn
+cat /etc/openvpn/server/server.key >> /etc/openvpn/ssl.ovpn
+echo '</key>' >> /etc/openvpn/ssl.ovpn
 
 #echo '<tls-auth>' >> /etc/openvpn/ssl.ovpn
 #cat /etc/openvpn/server/ta.key >> /etc/openvpn/ssl.ovpn
