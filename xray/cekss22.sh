@@ -20,11 +20,11 @@ export SEND="[${YELLOW} SEND ${NC}]"
 export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
 # ==========================================
 # Getting
-MYIP=$(wget -qO- ipinfo.io/ip);
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-datr=`date +"%Y-%m-%d" -d "$dateFromServer"`
+date=`date +"%Y-%m-%d" -d "$dateFromServer"`
+MYIP=$(wget -qO- ipinfo.io/ip);
 clear
-function cekss22() {
+function cektrojangrpc() {
 clear
 echo -n > /tmp/other.txt
 data=( `cat /etc/xray/config.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
@@ -35,6 +35,17 @@ data=( `cat /etc/xray/xss.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
 echo "-------------------------------";
 echo "-----=[ XRAY User Login ]=-----";
 echo "-------------------------------";
+for akun in "${data[@]}"
+do
+if [[ -z "$akun" ]]; then
+akun="tidakada"
+fi
+echo -n > /tmp/ipxray.txt
+data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
+data2=( netstat -anp | grep ESTABLISHED | grep 'tcp\|tcp6\|udp\|udp6' | grep nginx | awk '{print $5}' | cut -d: -f1 | sort | uniq);
+for ip in "${data2[@]}"
+do
+jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 for akun in "${data[@]}"
 do
 if [[ -z "$akun" ]]; then
