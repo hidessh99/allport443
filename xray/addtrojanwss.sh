@@ -16,7 +16,7 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 domain=$(cat /etc/xray/domain)
 
-uuid=$(cat /proc/sys/kernel/random/uuid)
+#uuid=$(cat /proc/sys/kernel/random/uuid)
 ttls="$(cat ~/log-install.txt | grep -w "TROJAN WS TLS" | cut -d: -f2|sed 's/ //g')"
 tnontls="$(cat ~/log-install.txt | grep -w "TROJAN WS NON TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
@@ -69,12 +69,14 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid=$(openssl rand -base64 16)
 read -p "Expired (Days) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#trojan-tls$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
+sed -i '/#trojan-tls$/a\### '"$user $exp"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvless.json
 sed -i '/#trojan-tls$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xtrojan.json
 sed -i '/#trojan-nontls$/a\### '"$user $exp"'\
