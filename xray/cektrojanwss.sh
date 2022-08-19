@@ -20,9 +20,11 @@ export SEND="[${YELLOW} SEND ${NC}]"
 export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
 # ==========================================
 # Getting
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date=`date +"%Y-%m-%d" -d "$dateFromServer"`
 MYIP=$(wget -qO- ipinfo.io/ip);
 clear
-function cektrojanwss() {
+function cektrojangrpc() {
 clear
 echo -n > /tmp/other.txt
 data=( `cat /etc/xray/config.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
@@ -38,8 +40,9 @@ do
 if [[ -z "$akun" ]]; then
 akun="tidakada"
 fi
-echo -n > /tmp/ipvless.txt
+echo -n > /tmp/ipxray.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
+data2=( netstat -anp | grep ESTABLISHED | grep 'tcp\|tcp6\|udp\|udp6' | grep nginx | awk '{print $5}' | cut -d: -f1 | sort | uniq);
 for ip in "${data2[@]}"
 do
 jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
