@@ -40,8 +40,9 @@ do
 if [[ -z "$akun" ]]; then
 akun="tidakada"
 fi
-echo -n > /tmp/ipvless.txt
+echo -n > /tmp/ipxray.txt
 data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep xray | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
+data2=( netstat -anp | grep ESTABLISHED | grep 'tcp\|tcp6\|udp\|udp6' | grep nginx | awk '{print $5}' | cut -d: -f1 | sort | uniq);
 for ip in "${data2[@]}"
 do
 jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
