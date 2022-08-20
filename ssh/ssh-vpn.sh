@@ -310,7 +310,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="--user sslh --listen 0.0.0.0:2087 --tls 127.0.0.1:8443 --ssh 127.0.0.1:300 --ssh 127.0.0.1:600 --openvpn 127.0.0.1:700 --http 127.0.0.1:900 --pidfile /var/run/sslh/sslh.pid"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2087 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:700 --tls 127.0.0.1:600 --pidfile /var/run/sslh/sslh.pid"
 
 END
 
@@ -361,21 +361,18 @@ client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
-[openssh]
-accept = 500
-connect = 127.0.0.1:2087
-
 [dropbear]
-accept = 400
+accept = 500
 connect = 127.0.0.1:300
-
-[ws-tunnel]
-accept = 2083
-connect = 127.0.0.1:600
 
 [openvpn]
 accept = 900
 connect = 127.0.0.1:700
+
+[stunnelws]
+accept = 100
+connect = 600
+
 END
 
 # make a certificate
@@ -520,8 +517,8 @@ wget -O changeport "https://${wisnuvpn}/changeport.sh"
 wget -O wbmn "https://${wisnuvpn}/webmin.sh"
 wget -O xp "https://${wisnuvpn}/xp.sh"
 wget -O swapkvm "https://${wisnuvpn}/swapkvm.sh"
-wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
-wget -O sshws-true "https://${wisnuvpn}/sshws-true.sh"
+#wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
+#wget -O sshws-true "https://${wisnuvpn}/sshws-true.sh"
 wget -O portovpn "https://${wisnuvpn}/portovpn.sh"
 wget -O portwg "https://${wisnuvpn}/portwg.sh"
 wget -O porttrojan "https://${wisnuvpn}/porttrojan.sh"
@@ -809,8 +806,8 @@ chmod +x cekvlessquic
 
 chmod +x cekvlesskcp
 chmod +x cekvlessxtls
-chmod +x ins-sshws
-chmod +x sshws-true
+#chmod +x ins-sshws
+#chmod +x sshws-true
 chmod +x cektrojanxtls
 chmod +x cektrojangrpc
 chmod +x cektrojanwss
