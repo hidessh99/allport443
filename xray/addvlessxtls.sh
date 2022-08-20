@@ -61,7 +61,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		fi
 	done
 #uuid=$(cat /proc/sys/kernel/random/uuid)
-uuid=$(openssl rand -base64 16)
+#uuid=$(openssl rand -base64 16)
+uuid=$(openssl rand -hex 7)
 read -p "Expired (Days) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
@@ -75,7 +76,7 @@ sed -i '/#vless-xtls$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","flow": "'""xtls-rprx-direct""'", "email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#vless-xtls$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","flow": "'""xtls-rprx-direct""'", "email": "'""$user""'"' /etc/xray/xss.json
-vlessxtls="vless://${user}@${domain}:$vlxtls?type=tcp&security=xtls&headerType=none&flow=xtls-rprx-splice-udp443&encryption=none#%F0%9F%94%B0VLESS+XTLS+${user}"
+vlessxtls="vless://${uuid}@${domain}:$vlxtls?type=tcp&security=xtls&headerType=none&flow=xtls-rprx-splice-udp443&encryption=none#%F0%9F%94%B0VLESS+XTLS+${user}"
 vlessgfw="vless://${uuid}@${domain}:$vlxtls?security=tls&type=tcp&headerType=none&encryption=none#%F0%9F%94%B0VLESS+GFW+TLS+${user}"
 systemctl restart xray.service
 systemctl restart xvless.service
