@@ -51,7 +51,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(openssl rand -base64 16)
+#uuid=$(openssl rand -base64 16)
+uuid=$(openssl rand -hex 7)
 read -p "Expired (Days) : " masaaktif
 #read -p "Expired (Seconds) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
@@ -108,7 +109,7 @@ exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 echo -e "### $user $exp" >> /etc/trojan-go/akun.conf
 systemctl restart trojan-go.service
-trojango="trojan-go://$uuid@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=/gandring#%F0%9F%94%B0TROJAN+GO+$user"
+trojango="trojan-go://$uuid@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=/gandring-go#%F0%9F%94%B0TROJAN+GO+$user"
 trojanhdua="trojan://${uuid}@${domain}:$thdua?sni=jambualas.id&type=http&security=tls&path=/gandringhttp#%F0%9F%94%B0TROJAN+H2C+TLS+${user}"
 trojangrpc="trojan://${uuid}@${domain}:$tgrpc?mode=gun&security=tls&type=grpc&serviceName=gandringgrpc&sni=${domain}#%F0%9F%94%B0TROJAN+GRPC+TLS+${user}"
 trojanxtls="trojan://${uuid}@${domain}:$txtls?sni=kimcil.kepolen.net&security=xtls&type=tcp&headerType=none&flow=xtls-rprx-splice-udp443#%F0%9F%94%B0TROJAN+XTLS+${user}"
