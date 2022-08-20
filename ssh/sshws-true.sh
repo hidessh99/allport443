@@ -10,6 +10,6 @@ portovpntcp=`cat /root/log-install.txt | grep -w "OVPN TCP" | cut -d: -f2 | awk 
 
 tmux new-session -d -s sshws "node /usr/bin/proxy3.js -dport $portdb -mport $portsshws -o /root/sshws.log"
 tmux new-session -d -s ovpnws "node /usr/bin/proxy3.js -dport $portovpntcp -mport $portovpnws -o /root/sshws.log"
-tmux new-session -d -s sshwsssl "node /usr/bin/proxy3.js -dport $portdb -mport 600"
+tmux new-session -d -s sshwsssl "node /usr/bin/proxy3.js -dport $portdb -mport 2087"
 tmux new-session -d -s ovpnwsssl "node /usr/bin/proxy3.js -dport $portovpntcp -mport 700"
 importantfile
