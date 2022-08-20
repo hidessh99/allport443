@@ -68,7 +68,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(openssl rand -base64 16)
+#uuid=$(openssl rand -base64 16)
+uuid=$(openssl rand -hex 7)
 read -p "Expired (Days) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
@@ -82,7 +83,7 @@ sed -i '/#trojan-kcp$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xss.json
 sed -i '/#trojan-kcp$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
-trojankcp="trojan://$uuid@$domain:$tkcp?sni=$domain&seed=/gandringkcp&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
+trojankcp="trojan://$uuid@$domain:$tkcp?sni=$domain&seed=gandringkcp&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
 systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvmess.service
@@ -98,7 +99,7 @@ echo -e "Nama  :${user}"
 echo -e "IP/Host  :${MYIP}"
 echo -e "Address  :${domain}"
 echo -e "Protocol  :KCP"
-echo -e "Path  :/gandringkcp"
+echo -e "Path  :gandringkcp"
 echo -e "Port  :${tkcp}"
 echo -e "Password  :${uuid}"
 echo -e "Dibuat  :$hariini"
