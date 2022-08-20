@@ -21,7 +21,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-tls 2087
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-tls
 Restart=on-failure
 
 [Install]
@@ -33,11 +33,11 @@ systemctl enable ws-tls
 systemctl restart ws-tls
 
 # Getting Proxy Template
-wget -q -O /usr/local/bin/wsstunnel https://${wisnuvpn}/wsstunnel.py
-chmod +x /usr/local/bin/wsstunnel
+#wget -q -O /usr/local/bin/wsstunnel https://${wisnuvpn}/wsstunnel.py
+#chmod +x /usr/local/bin/wsstunnel
 
 # Installing Service
-cat > /etc/systemd/system/wsstunnel.service << END
+#cat > /etc/systemd/system/wsstunnel.service << END
 [Unit]
 Description=SSH WEBSOCKET TLS ROUTING INDONESIA BY ZEROSSL
 Documentation=https://t.me/zerossl
@@ -60,11 +60,11 @@ systemctl enable wsstunnel
 systemctl restart wsstunnel
 
 # Getting Proxy Template
-wget -q -O /usr/local/bin/ws-tunnel https://${wisnuvpn}/ws-tunnel.py
-chmod +x /usr/local/bin/ws-tunnel
+#wget -q -O /usr/local/bin/ws-tunnel https://${wisnuvpn}/ws-tunnel.py
+#chmod +x /usr/local/bin/ws-tunnel
 
 # Installing Service
-cat > /etc/systemd/system/ws-tunnel.service << END
+#cat > /etc/systemd/system/ws-tunnel.service << END
 [Unit]
 Description=SSH WEBSOCKET TLS ROUTING INDONESIA BY ZEROSSL
 Documentation=https://t.me/zerossl
