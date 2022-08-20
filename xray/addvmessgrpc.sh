@@ -73,7 +73,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		fi
 	done
 #uuid=$(cat /proc/sys/kernel/random/uuid)
-uuid=$(openssl rand -base64 16)
+#uuid=$(openssl rand -base64 16)
+uuid=$(openssl rand -hex 7)
 read -p "Expired (Days): " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
