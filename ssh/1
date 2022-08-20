@@ -1,1 +1,384 @@
-1
+{
+  "log" : {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+  },
+  "inbounds": [
+    {
+      "port": 443,
+        "protocol": "trojan",
+          "settings": {
+            "clients": [
+              {
+                "password":"daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#trojan-xtls
+              }
+            ],
+            "decryption": "none",
+             "fallbacks": [
+              {
+               "path": "/trojan-ws",
+                 "dest": 28497
+              },
+              {
+            "path": "/vmess",
+            "dest": 32462
+              },
+              {
+            "path": "/vless",
+            "dest": 28415
+              },
+              {
+            "path": "/ss-ws",
+            "dest": 21230
+              },
+              {
+            "path": "/socks-ws",
+            "dest": 20660
+              },
+              {
+            "alpn": "h2",
+            "dest": 34804,
+            "xver": 0
+              },
+              {
+            "dest": 6443,
+            "xver": 0
+              },
+              {
+            "dest": 2053,
+            "xver": 0
+              }
+            ]
+          },
+          "streamSettings": {
+            "network": "tcp",
+              "security": "xtls",
+                "xtlsSettings": {
+                  "minVersion": "1.2",
+                    "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+                      "alpn": [
+                        "h2",
+                         "http/1.1"
+             ],
+             "certificates": [
+                {
+                "ocspStapling": 3600,
+                  "certificateFile": "/etc/xray/xray.crt",
+                    "keyFile": "/etc/xray/xray.key"
+                }
+             ]
+          }
+       }
+    },
+    {
+      "port": 28497,
+        "listen": "127.0.0.1",
+          "protocol": "trojan",
+            "settings": {
+              "clients": [
+                {
+                  "password":"daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#trojan-tls
+                }
+             ],
+             "decryption": "none"
+          },
+          "streamSettings": {
+            "network": "ws",
+              "security": "none",
+                "wsSettings": {
+                  "path": "/gandring" 
+          }
+       }
+    },
+    {
+      "listen": "127.0.0.1",
+        "port": 6443,
+          "protocol": "trojan",
+            "settings": {
+              "clients": [
+                {
+                  "password":"daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#trojan-gfw"
+                }
+             ]
+          },
+          "streamSettings": {
+            "network": "tcp",
+              "security": "none",
+                "tcpSettings": {
+                  "acceptProxyProtocol": true
+          }
+       }
+    },
+    {
+      "port": 28415,
+        "listen": "127.0.0.1",
+          "protocol": "vless",
+            "settings": {
+              "decryption":"none",
+                "clients": [
+                {
+                  "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#vless-tls
+                }
+             ]
+          },
+          "streamSettings":{
+            "network": "ws",
+              "wsSettings": {
+                "path": "/wisnu"
+          }
+       }
+    },
+    {
+      "port": 32462,
+        "listen": "127.0.0.1",
+          "protocol": "vmess",
+            "settings": {
+              "clients": [
+                {
+                  "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7",
+                    "alterId": 0
+#vmess-tls
+                }
+             ]
+          },
+          "streamSettings":{
+            "network": "ws",
+              "wsSettings": {
+                "path": "/shanum"
+          }
+       }
+    },
+    {
+      "port": 21230,
+        "listen": "127.0.0.1",
+          "protocol": "shadowsocks",
+            "settings": {
+              "method": "2022-blake3-aes-128-gcm",
+                "password": "dJc8baHRhb3Flh9l+69Gsw==",
+                  "clients": [
+                {
+                  "password": "OKZrSb3MWkFkQkUKyB9o2A=="
+#ss-tls
+                }
+             ],
+             "network": "tcp,udp"
+          },
+          "streamSettings":{
+            "network": "ws",
+              "wsSettings": {
+                "path": "/gandring-ws"
+          }
+       }
+    },
+    {
+      "port": 20660,
+        "listen": "127.0.0.1",
+          "protocol": "socks",
+            "settings": {
+              "auth": "password",
+                "accounts": [
+                {
+                  "user": "dot",
+                    "pass": "com"
+#socks-tls
+                }
+             ],
+             "level": 0,
+               "udp": true
+          },
+          "streamSettings":{
+            "network": "ws",
+              "wsSettings": {
+                "path": "/wisnu-ws"
+          }
+       }
+    },
+    {
+      "port": 22009,
+        "listen": "127.0.0.1", 
+          "protocol": "vless",
+            "settings": {
+              "decryption":"none",
+                "clients": [
+                {
+                  "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#vless-grpc
+                }
+             ]
+          },
+          "streamSettings":{
+             "network": "grpc",
+               "grpcSettings": {
+                 "acceptProxyProtocol": true,
+                   "serviceName": "wisnugrpc"
+          }
+       }
+    },
+    {
+      "port":13176,
+        "listen": "127.0.0.1", 
+          "protocol": "vmess",
+            "settings": {
+              "clients": [
+                {
+                  "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7",
+                  "alterId": 0
+#vmess-grpc
+                }
+             ]
+          },
+          "streamSettings":{
+            "network": "grpc",
+              "grpcSettings": {
+                "acceptProxyProtocol": true,
+                  "serviceName": "shanumgrpc"
+          }
+       }
+    },
+    {
+      "port": 25868,
+        "listen": "127.0.0.1", 
+          "protocol": "trojan",
+            "settings": {
+              "decryption":"none",
+                "clients": [
+                {
+                  "password": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#trojan-grpc
+                }
+             ]
+          },
+          "streamSettings":{
+            "network": "grpc",
+              "grpcSettings": {
+                "acceptProxyProtocol": true,
+                  "serviceName": "gandringgrpc"
+          }
+       }
+    },
+    {
+      "port": 30952,
+        "listen": "127.0.0.1", 
+          "protocol": "socks",
+            "settings": {
+              "auth": "password",
+                "accounts": [
+                {
+                  "user": "dot",
+                  "pass": "com"
+#socksgrpc
+                }
+             ],
+             "level": 0,
+               "udp": true
+          },
+          "streamSettings":{
+            "network": "grpc",
+              "grpcSettings": {
+                "acceptProxyProtocol": true,
+                  "serviceName": "wisnu-grpc"
+          }
+       }
+    },
+    {
+      "port": 28739,
+        "listen": "127.0.0.1", 
+          "protocol": "shadowsocks",
+            "settings": {
+              "method": "2022-blake3-aes-128-gcm",
+                "password": "dJc8baHRhb3Flh9l+69Gsw==",
+                  "clients": [
+                {
+                  "password": "OKZrSb3MWkFkQkUKyB9o2A=="
+#ss-grpc
+                }
+             ],
+           "network": "tcp,udp"
+          },
+          "streamSettings":{
+            "network": "grpc",
+              "grpcSettings": {
+                "acceptProxyProtocol": true,
+                  "serviceName": "gandring-grpc"
+          }
+       }
+    },
+    {
+      "listen": "127.0.0.1",
+        "port": 10085,
+          "protocol": "dokodemo-door",
+            "settings": {
+              "address": "127.0.0.1"
+      },
+      "tag": "api"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "block"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "block"
+    }
+  ],
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": false,
+      "statsInboundDownlink": false,
+      "statsOutboundUplink": false,
+      "statsOutboundDownlink": false
+    }
+  }
+}
