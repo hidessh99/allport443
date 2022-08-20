@@ -524,8 +524,8 @@ wget -O changeport "https://${wisnuvpn}/changeport.sh"
 wget -O wbmn "https://${wisnuvpn}/webmin.sh"
 wget -O xp "https://${wisnuvpn}/xp.sh"
 wget -O swapkvm "https://${wisnuvpn}/swapkvm.sh"
-wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
-wget -O sshws-true "https://${wisnuvpn}/sshws-true.sh"
+#wget -O ins-sshws "https://${wisnuvpn}/ins-sshws.sh"
+#wget -O sshws-true "https://${wisnuvpn}/sshws-true.sh"
 wget -O portovpn "https://${wisnuvpn}/portovpn.sh"
 wget -O portwg "https://${wisnuvpn}/portwg.sh"
 wget -O porttrojan "https://${wisnuvpn}/porttrojan.sh"
@@ -813,8 +813,8 @@ chmod +x cekvlessquic
 
 chmod +x cekvlesskcp
 chmod +x cekvlessxtls
-chmod +x ins-sshws
-chmod +x sshws-true
+#chmod +x ins-sshws
+#chmod +x sshws-true
 chmod +x cektrojanxtls
 chmod +x cektrojangrpc
 chmod +x cektrojanwss
