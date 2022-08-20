@@ -86,6 +86,9 @@ systemctl daemon-reload
 systemctl enable ws-tunnel
 systemctl restart ws-tunnel
 
+# Getting Proxy Template
+wget -q -O /usr/local/bin/ws-nontls https://${wisnuvpn}/ws-nontls.py
+chmod +x /usr/local/bin/ws-nontls
 # Installing Service
 cat > /etc/systemd/system/ws-nontls.service << END
 [Unit]
