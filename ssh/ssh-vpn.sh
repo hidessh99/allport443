@@ -310,7 +310,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="-user sslh -listen 0.0.0.0:2053 -ssl 127.0.0.1:500 -ssh 127.0.0.1:22 -ssh 127.0.0.1:2083 -ssh 127.0.0.1:8080 -openvpn 127.0.0.1:700 -tls 127.0.0.1:600 -pidfile /var/run/sslh/sslh.pid"
+DAEMON_OPTS="-user sslh -listen 0.0.0.0:2053 -ssh 127.0.0.1:22 -openvpn 127.0.0.1:700 -tls 127.0.0.1:600 -pidfile /var/run/sslh/sslh.pid"
 
 END
 
@@ -355,9 +355,9 @@ chmod 644 /etc/stunnel5
 
 # Download Config Stunnel5
 cat > /etc/stunnel5/stunnel5.conf <<-END
-#cert = /etc/ssl/private/fullchain.pem
-#key = /etc/ssl/private/privkey.pem
-cert = /etc/stunnel5/stunnel5.pem
+cert = /etc/ssl/private/fullchain.pem
+key = /etc/ssl/private/privkey.pem
+#cert = /etc/stunnel5/stunnel5.pem
 client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
@@ -371,7 +371,7 @@ accept = 500
 connect = 127.0.0.1:22
 
 [openvpn]
-accept = 2083
+accept = 900
 connect = 127.0.0.1:700
 
 [stunnelws]
