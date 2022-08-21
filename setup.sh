@@ -150,7 +150,7 @@ echo -e " 🔰 VLESS WS NON TLS               : 80" |tee -a log-install.txt
 echo -e " 🔰 VLESS GRPC TLS                 : 443" |tee -a log-install.txt
 echo -e " 🔰 VLESS GRPC NON TLS             : 80" |tee -a log-install.txt
 echo -e " 🔰 VLESS H2C TLS                  : 1150" |tee -a log-install.txt
-echo -e " 🔰 VLESS QUIC TLS                 : 401" |tee -a log-install.txt
+echo -e " 🔰 VLESS QUIC TLS                 : 443" |tee -a log-install.txt
 echo -e " 🔰 VLESS KCP TLS                  : 402" |tee -a log-install.txt
 echo -e " 🔰 VLESS HTTP TLS                 : 443" |tee -a log-install.txt
 echo -e " 🔰 VLESS HTTP NON TLS             : 8088" |tee -a log-install.txt
@@ -160,7 +160,7 @@ echo -e " 🔰 TROJAN HTTP TLS                : 443" |tee -a log-install.txt
 echo -e " 🔰 TROJAN HTTP NON TLS            : 880" |tee -a log-install.txt
 echo -e " 🔰 TROJAN H2C                     : 1120" |tee -a log-install.txt
 echo -e " 🔰 TROJAN XTLS                    : 1440" |tee -a log-install.txt
-echo -e " 🔰 TROJAN QUIC TLS                : 443" |tee -a log-install.txt
+echo -e " 🔰 TROJAN QUIC TLS                : 401" |tee -a log-install.txt
 echo -e " 🔰 TROJAN KCP TLS                 : 202" |tee -a log-install.txt
 echo -e " 🔰 TROJAN GFW                     : 443" |tee -a log-install.txt
 echo -e " 🔰 TROJAN WS TLS                  : 443" |tee -a log-install.txt
