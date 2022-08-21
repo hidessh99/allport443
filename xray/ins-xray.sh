@@ -51,16 +51,15 @@ mv xray /usr/local/bin/xray
 chmod +x /usr/local/bin/xray
 
 # Make Folder XRay
-domainSock_dir="/run/xray";! [ -d $domainSock_dir ] && mkdir  $domainSock_dir
-chown www-data.www-data $domainSock_dir
+#domainSock_dir="/run/xray";! [ -d $domainSock_dir ] && mkdir  $domainSock_dir
+#chown www-data.www-data $domainSock_dir
 # Make Folder XRay
-mkdir -p /var/log/xray
+mkdir -p /var/log/xray/
 mkdir -p /etc/xray
 chown www-data.www-data /var/log/xray
 chmod +x /var/log/xray
 touch /var/log/xray/access.log
 touch /var/log/xray/error.log
-mkdir -p /var/log/xray/
 uuid=$(cat /proc/sys/kernel/random/uuid)
 #bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
 cd /root/
@@ -317,6 +316,7 @@ cat > /etc/xray/xvless.json << END
 END
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
+
 domain=$(cat /root/domain)
 # // Certificate File
 path_crt="/etc/xray/xray.crt"
