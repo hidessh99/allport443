@@ -23,9 +23,7 @@ export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date=`date +"%Y-%m-%d" -d "$dateFromServer"`
 MYIP=$(wget -qO- ipinfo.io/ip);
-clear
-function cektrojangrpc() {
-clear
+
 echo -n > /tmp/other.txt
 data=( `cat /etc/xray/config.json | grep '###' | cut -d ' ' -f2 | sort | uniq`);
 data=( `cat /etc/xray/xvmess.json | grep '###' | cut -d ' ' -f2 | sort | uniq`);
