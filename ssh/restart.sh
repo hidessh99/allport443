@@ -18,10 +18,8 @@ sleep 2
 systemctl restart ssrmu
 systemctl restart ws-tls
 systemctl restart ws-nontls
-systemctl restart wsstunnel
-systemctl restart ws-tunnel
-systemctl restart ws-ohp
-systemctl restart wstls-ohp
+#systemctl restart ws-ohp
+#systemctl restart wstls-ohp
 systemctl restart ovpn-tls
 systemctl restart xray.service
 systemctl restart shadowsocks-libev
