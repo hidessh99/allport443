@@ -68,8 +68,6 @@ systemctl restart ws-ovpn
 systemctl restart ovpn-tls
 systemctl restart ssh-ohp
 systemctl restart ws-ohp
-systemctl restart wsstunnel
-systemctl restart ws-tunnel
 systemctl restart wstls-ohp
 systemctl restart dropbear-ohp
 systemctl restart openvpn-ohp
