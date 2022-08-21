@@ -33,7 +33,7 @@ hari="1"
 Pass=1
 clear
 systemctl restart ws-tls
-systemctl restart ws-nontls
+#systemctl restart ws-nontls
 systemctl restart ws-ovpn
 systemctl restart sslh
 systemctl restart stunnel5
