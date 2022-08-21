@@ -86,8 +86,8 @@ systemctl enable ws-ovpn
 systemctl restart ws-ovpn
 
 # Getting Proxy Template
-wget -q -O /usr/local/bin/ovpn-tls https://${wisnuvpn}/ovpn-tls.py
-chmod +x /usr/local/bin/ovpn-tls
+#wget -q -O /usr/local/bin/ovpn-tls https://${wisnuvpn}/ovpn-tls.py
+#chmod +x /usr/local/bin/ovpn-tls
 
 # Installing Service
 cat > /etc/systemd/system/ovpn-tls.service << END
