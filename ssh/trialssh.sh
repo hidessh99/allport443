@@ -33,12 +33,13 @@ hari="1"
 Pass=1
 clear
 systemctl restart ws-tls
-systemctl restart ws-nontls
+#systemctl restart ws-nontls
 systemctl restart ws-ovpn
 systemctl restart ovpn-tls
 systemctl restart sslh
 systemctl restart stunnel5
 systemctl restart ssh-ohp
+systemctl restart ws-ohp
 systemctl restart dropbear-ohp
 systemctl restart openvpn-ohp
 useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
