@@ -363,11 +363,11 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 dropbear]
-accept = 400
+accept = 447
 connect = 127.0.0.1:300
 
 [dropbear]
-accept = 500
+accept = 777
 connect = 127.0.0.1:22
 
 [openvpn]
@@ -375,7 +375,7 @@ accept = 900
 connect = 127.0.0.1:700
 
 [stunnelws]
-accept = 200
+accept = 222
 connect = 600
 
 END
