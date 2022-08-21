@@ -61,7 +61,6 @@ hariini=`date -d "0 days" +"%Y-%m-%d"`
 expi=`date -d "$masaaktif days" +"%Y-%m-%d"`
 
 systemctl restart ws-tls
-systemctl restart ws-nontls
 systemctl restart stunnel5
 systemctl restart sslh
 systemctl restart ws-ovpn
