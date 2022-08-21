@@ -83,4 +83,4 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu
 
 echo "----------------------------------------"
-echo "Script By @zerossl"
+echo -e "Script By @zerossl"
