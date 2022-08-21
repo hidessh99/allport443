@@ -7,48 +7,73 @@
   "inbounds": [
     {
       "port": 443,
-        "protocol": "trojan",
+        "protocol": "vless",
           "settings": {
             "clients": [
               {
-                "password":"daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
-#trojan-xtls
+                "id":"daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#vless-xtls
               }
             ],
             "decryption": "none",
              "fallbacks": [
               {
-               "path": "/trojan-ws",
-                 "dest": 28497
+               "path": "/gandring",
+               "dest": 28497
               },
               {
-            "path": "/vmess",
-            "dest": 32462
+               "path": "/shanum",
+               "dest": 32462
               },
               {
-            "path": "/vless",
-            "dest": 28415
+               "path": "/wisnu",
+               "dest": 28415
               },
               {
-            "path": "/ss-ws",
-            "dest": 21230
+               "path": "/gandring-ws",
+               "dest": 21230
               },
               {
-            "path": "/socks-ws",
-            "dest": 20660
+               "path": "/wisnu-ws",
+               "dest": 20660
               },
               {
-            "alpn": "h2",
-            "dest": 34804,
-            "xver": 0
+               "path": "/gandringtcp",
+               "dest": 6010,
+               "xver": 1
               },
               {
-            "dest": 6443,
-            "xver": 0
+               "path": "/wisnutcp",
+               "dest": 6011,
+               "xver": 1
               },
               {
-            "dest": 2053,
-            "xver": 0
+               "path": "/shanumtcp",
+               "dest": 6012,
+               "xver": 1
+              },
+              {
+               "dest": 6013,
+               "path": "/gandring-tcp",
+               "xver": 1
+              },
+              {
+               "dest": 6014,
+               "path": "/wisnu-tcp",
+               "xver": 1
+              },
+              {
+               "alpn": "h2",
+               "dest": 34804,
+               "xver": 0
+              },
+              {
+               "dest": 6443,
+               "xver": 0
+              },
+              {
+               "dest": 2053,
+               "xver": 0
               }
             ]
           },
@@ -64,9 +89,9 @@
              ],
              "certificates": [
                 {
-                "ocspStapling": 3600,
-                  "certificateFile": "/etc/xray/xray.crt",
-                    "keyFile": "/etc/xray/xray.key"
+                  "ocspStapling": 3600,
+                    "certificateFile": "/etc/xray/xray.crt",
+                      "keyFile": "/etc/xray/xray.key"
                 }
              ]
           }
@@ -134,32 +159,12 @@
        }
     },
     {
-      "port": 32462,
-        "listen": "127.0.0.1",
-          "protocol": "vmess",
-            "settings": {
-              "clients": [
-                {
-                  "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7",
-                    "alterId": 0
-#vmess-tls
-                }
-             ]
-          },
-          "streamSettings":{
-            "network": "ws",
-              "wsSettings": {
-                "path": "/shanum"
-          }
-       }
-    },
-    {
       "port": 21230,
         "listen": "127.0.0.1",
           "protocol": "shadowsocks",
             "settings": {
               "method": "2022-blake3-aes-128-gcm",
-                "password": "dJc8baHRhb3Flh9l+69Gsw==",
+                "password": "GANdRinGcq34MSCDTOck0g==",
                   "clients": [
                 {
                   "password": "OKZrSb3MWkFkQkUKyB9o2A=="
@@ -176,29 +181,6 @@
        }
     },
     {
-      "port": 20660,
-        "listen": "127.0.0.1",
-          "protocol": "socks",
-            "settings": {
-              "auth": "password",
-                "accounts": [
-                {
-                  "user": "dot",
-                    "pass": "com"
-#socks-tls
-                }
-             ],
-             "level": 0,
-               "udp": true
-          },
-          "streamSettings":{
-            "network": "ws",
-              "wsSettings": {
-                "path": "/wisnu-ws"
-          }
-       }
-    },
-    {
       "port": 22009,
         "listen": "127.0.0.1", 
           "protocol": "vless",
@@ -207,7 +189,7 @@
                 "clients": [
                 {
                   "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
-#vless-grpc
+#vless-grpc-tls
                 }
              ]
           },
@@ -228,7 +210,7 @@
                 {
                   "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7",
                   "alterId": 0
-#vmess-grpc
+#vmess-grpc-tls
                 }
              ]
           },
@@ -269,19 +251,168 @@
               "auth": "password",
                 "accounts": [
                 {
-                  "user": "dot",
-                  "pass": "com"
-#socksgrpc
+                  "user": "solo",
+                  "pass": "demak"
+#socks-grpc
                 }
              ],
              "level": 0,
-               "udp": true
+             "udp": true
           },
           "streamSettings":{
             "network": "grpc",
               "grpcSettings": {
                 "acceptProxyProtocol": true,
-                  "serviceName": "wisnu-grpc"
+                  "serviceName": "socks-grpc"
+          }
+       }
+    },
+    {
+      "port": 6010,
+        "listen": "127.0.0.1",
+          "protocol": "trojan",
+            "settings": {
+              "clients": [
+                {
+                  "password": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#trojan-http-tls
+                }
+             ],
+             "decryption": "none"
+          },
+          "streamSettings": {
+            "network": "tcp",
+              "security": "none",
+                "tcpSettings": {
+                  "acceptProxyProtocol": true,
+                    "header": {
+                      "type": "http",
+                        "request": {
+                          "path": [
+                            "/gandringtcp"
+                   ]
+                }
+             }
+          }
+       }
+    },
+    {
+      "port": 6011,
+        "listen": "127.0.0.1",
+          "protocol": "vless",
+            "settings": {
+              "clients": [
+                {
+                 "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#vless-http-tls
+                }
+             ],
+             "decryption": "none"
+          },
+          "streamSettings": {
+            "network": "tcp",
+              "tcpSettings": {
+                "acceptProxyProtocol": true,
+                  "header": {
+                    "type": "http",
+                      "request": {
+                        "path": [
+                          "/wisnutcp"
+                   ]
+                }
+             }
+          }
+       }
+    },
+    {
+      "port": 6012,
+        "listen": "127.0.0.1",
+          "protocol": "vmess",
+            "settings": {
+              "clients": [
+                {
+                 "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7"
+#vmess-http-tls
+                }
+             ],
+             "decryption": "none"
+          },
+          "streamSettings": {
+            "network": "tcp",
+              "security": "none",
+                "tcpSettings": {
+                  "acceptProxyProtocol": true,
+                    "header": {
+                      "type": "http",
+                        "request": {
+                          "path": [
+                            "/shanumtcp"
+                   ]
+                }
+             }
+          }
+       }
+    },
+    {
+      "port": 6013,
+        "listen": "127.0.0.1",
+          "protocol": "shadowsocks",
+            "settings": {
+              "method": "2022-blake3-aes-128-gcm",
+                "password": "GANdRinGcq34MSCDTOck0g==",
+                  "clients": [
+                {
+                  "password": "OKZrSb3MWkFkQkUKyB9o2A=="
+#ss-http-tls
+                }
+             ],
+             "network": "tcp,udp"
+          },
+          "streamSettings": {
+            "network": "tcp",
+              "security": "none",
+                "tcpSettings": {
+                  "acceptProxyProtocol": true,
+                    "header": {
+                      "type": "http",
+                        "request": {
+                          "path": [
+                            "/gandring-tcp"
+                   ]
+                }
+             }
+          }
+       }
+    },
+    {
+      "port": 6014,
+        "listen": "127.0.0.1",
+          "protocol": "socks",
+            "settings": {
+              "auth": "password",
+                "accounts": [
+                {
+                  "user": "dot",
+                  "pass": "com"
+#socks-http-tls
+                }
+             ],
+             "level": 0,
+             "udp": true
+          },
+          "streamSettings": {
+            "network": "tcp",
+              "security": "none",
+                "tcpSettings": {
+                  "acceptProxyProtocol": true,
+                    "header": {
+                      "type": "http",
+                        "request": {
+                          "path": [
+                            "/wisnu-tcp"
+                   ]
+                }
+             }
           }
        }
     },
@@ -291,20 +422,63 @@
           "protocol": "shadowsocks",
             "settings": {
               "method": "2022-blake3-aes-128-gcm",
-                "password": "dJc8baHRhb3Flh9l+69Gsw==",
+                "password": "GANdRinGcq34MSCDTOck0g==",
                   "clients": [
                 {
                   "password": "OKZrSb3MWkFkQkUKyB9o2A=="
 #ss-grpc
                 }
              ],
-           "network": "tcp,udp"
+             "network": "tcp,udp"
           },
           "streamSettings":{
             "network": "grpc",
               "grpcSettings": {
                 "acceptProxyProtocol": true,
-                  "serviceName": "gandring-grpc"
+                  "serviceName": "ss-grpc"
+          }
+       }
+    },
+    {
+      "port": 32462,
+        "listen": "127.0.0.1",
+          "protocol": "vmess",
+            "settings": {
+              "clients": [
+                {
+                  "id": "daffe1d1-dcbb-42cd-8ed0-8549e216bde7",
+                  "alterId": 0
+#vmess-tls
+                }
+             ]
+          },
+          "streamSettings":{
+            "network": "ws",
+              "wsSettings": {
+                "path": "/shanum"
+          }
+       }
+    },
+    {
+      "port": 20660,
+        "listen": "127.0.0.1",
+          "protocol": "socks",
+            "settings": {
+              "auth": "password",
+                "accounts": [
+                {
+                  "user": "dot",
+                    "pass": "com"
+#socks-tls
+                }
+             ],
+             "level": 0,
+               "udp": true
+          },
+          "streamSettings":{
+            "network": "ws",
+              "wsSettings": {
+                "path": "/wisnu-ws"
           }
        }
     },
@@ -314,15 +488,15 @@
           "protocol": "dokodemo-door",
             "settings": {
               "address": "127.0.0.1"
-      },
-      "tag": "api"
-    }
-  ],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
+           },
+           "tag": "api"
+        }
+     ],
+     "routing": {
+       "rules": [
+        {
+          "type": "field",
+          "ip": [
           "0.0.0.0/8",
           "10.0.0.0/8",
           "100.64.0.0/10",
@@ -339,20 +513,20 @@
           "fe80::/10"
         ],
         "outboundTag": "block"
-      },
-      {
+     },
+     {
         "inboundTag": [
           "api"
         ],
         "outboundTag": "api",
         "type": "field"
-      }
-    ]
-  },
-  "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
+     }
+   ]
+ },
+ "outbounds": [
+   {
+     "protocol": "freedom",
+     "settings": {}
     },
     {
       "protocol": "blackhole",
@@ -361,24 +535,24 @@
     }
   ],
   "stats": {},
-  "api": {
-    "services": [
-      "StatsService"
-    ],
-    "tag": "api"
+    "api": {
+      "services": [
+        "StatsService"
+     ],
+     "tag": "api"
   },
   "policy": {
     "levels": {
       "0": {
         "statsUserDownlink": true,
-        "statsUserUplink": true
-      }
-    },
-    "system": {
-      "statsInboundUplink": false,
+          "statsUserUplink": true
+       }
+  },
+  "system": {
+    "statsInboundUplink": false,
       "statsInboundDownlink": false,
-      "statsOutboundUplink": false,
-      "statsOutboundDownlink": false
-    }
-  }
+        "statsOutboundUplink": false,
+          "statsOutboundDownlink": false
+      }
+   }
 }
