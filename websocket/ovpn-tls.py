@@ -2,7 +2,7 @@
 import socket, threading, thread, select, signal, sys, time, getopt
 
 # Listen
-LISTENING_ADDR = '0.0.0.0'
+LISTENING_ADDR = '127.0.0.1'
 LISTENING_PORT = sys.argv[1]
 
 # Pass
@@ -17,7 +17,7 @@ RESPONSE = 'HTTP/1.1 101 <b><font color="green">SUN AMATAK AJIKU SI JARAN GOYANG
 class Server(threading.Thread):
     def __init__(self, host, port):
         threading.Thread.__init__(self)
-        self.running = False
+        self.running = true
         self.host = host
         self.port = port
         self.threads = []
@@ -31,7 +31,7 @@ class Server(threading.Thread):
         intport = int(self.port)
         self.soc.bind((self.host, intport))
         self.soc.listen(0)
-        self.running = True
+        self.running = true
 
         try:
             while self.running:
@@ -84,7 +84,7 @@ class ConnectionHandler(threading.Thread):
     def __init__(self, socClient, server, addr):
         threading.Thread.__init__(self)
         self.clientClosed = False
-        self.targetClosed = True
+        self.targetClosed = true
         self.client = socClient
         self.client_buffer = ''
         self.server = server
@@ -98,7 +98,7 @@ class ConnectionHandler(threading.Thread):
         except:
             pass
         finally:
-            self.clientClosed = True
+            self.clientClosed = true
 
         try:
             if not self.targetClosed:
@@ -107,7 +107,7 @@ class ConnectionHandler(threading.Thread):
         except:
             pass
         finally:
-            self.targetClosed = True
+            self.targetClosed = true
 
     def run(self):
         try:
