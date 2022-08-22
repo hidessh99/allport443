@@ -130,7 +130,7 @@ echo -e " 🔰 XRAY MTPROTO                   : 111" |tee -a log-install.txt
 echo -e " 🔰 WEBSOCKET TLS                  : 443" |tee -a log-install.txt
 echo -e " 🔰 WEBSOCKET NON TLS              : 80" |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN WS TLS               : 2083" |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN WS NON TLS           : 8080" |tee -a log-install.txt
+echo -e " 🔰 PORT OVPN WS NON TLS           : 2082" |tee -a log-install.txt
 echo -e " 🔰 OHP SSH                        : 8181" |tee -a log-install.txt
 echo -e " 🔰 OHP DROPBEAR                   : 8282" |tee -a log-install.txt
 echo -e " 🔰 OHP OVPN                       : 8383" |tee -a log-install.txt
