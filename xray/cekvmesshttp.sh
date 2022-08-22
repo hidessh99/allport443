@@ -21,15 +21,13 @@ export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
 # ==========================================
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
-clear
-function cekvmesshttp() {
-clear
+
 echo -n > /tmp/other.txt
-data=( `cat /etc/xray/config.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
-data=( `cat /etc/xray/xvmess.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
-data=( `cat /etc/xray/xvless.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
-data=( `cat /etc/xray/xtrojan.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
-data=( `cat /etc/xray/xss.json | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
+data=( `cat /etc/xray/config.json | grep '###' | cut -d ' ' -f2 | sort | uniq`);
+data=( `cat /etc/xray/xvmess.json | grep '###' | cut -d ' ' -f2 | sort | uniq`);
+data=( `cat /etc/xray/xvless.json | grep '###' | cut -d ' ' -f2 | sort | uniq`);
+data=( `cat /etc/xray/xtrojan.json | grep '###' | cut -d ' ' -f2 | sort | uniq`);
+data=( `cat /etc/xray/xss.json | grep '###' | cut -d ' ' -f2 | sort | uniq`);
 echo "-------------------------------";
 echo "-----=[ XRAY User Login ]=-----";
 echo "-------------------------------";
@@ -39,10 +37,10 @@ if [[ -z "$akun" ]]; then
 akun="tidakada"
 fi
 echo -n > /tmp/ipxray.txt
-data2=( `cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq`);
+data2=( `cat /var/log/xray/access.log | tail -n 500 | cut -d " " -f2 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq`);
 for ip in "${data2[@]}"
 do
-jum=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
+jum=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f2 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$ip" | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
 echo "$jum" >> /tmp/ipxray.txt
 else
@@ -56,7 +54,7 @@ if [[ -z "$jum" ]]; then
 echo > /dev/null
 else
 jum2=$(cat /tmp/ipxray.txt | nl)
-lastlogin=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 2 | tail -1)
+lastlogin=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -d " " -f2 | tail -1)
 echo -e "user :${GREEN} ${akun} ${NC}
 ${RED}Online Jam ${NC}: ${lastlogin} wib";
 echo -e "$jum2";
@@ -65,9 +63,5 @@ fi
 rm -rf /tmp/ipxray.txt
 done
 rm -rf /tmp/other.txt
-echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-menu
-}
 echo "----------------------------------------"
 echo "Script By @zerossl"
