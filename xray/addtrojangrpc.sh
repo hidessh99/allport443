@@ -74,15 +74,15 @@ exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 #exp2=`date -d "$masaaktif seconds" +"%Y-%m-%d"`
 #sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
 #},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xtrojan.json
-#sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
-#},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
+sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
 sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvless.json
 trojangrpc="trojan://${uuid}@${domain}:$tgrpc?mode=gun&security=tls&type=grpc&serviceName=gandringgrpc&sni=${domain}#%F0%9F%94%B0TROJAN+GRPC+TLS+${user}"
 systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvless
-#systemctl restart xvmess
+systemctl restart xvmess
 systemctl restart xss
 service cron restart
 clear
