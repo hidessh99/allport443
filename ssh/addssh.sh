@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # ==========================================
 # Color
 RED='\033[0;31m'
@@ -64,6 +63,8 @@ systemctl restart ws-tls
 systemctl restart stunnel5
 systemctl restart sslh
 systemctl restart ws-ovpn
+systemctl restart ovpn-tls
+systemctl restart ovpn-nontls
 systemctl restart ssh-ohp
 systemctl restart dropbear-ohp
 systemctl restart openvpn-ohp
