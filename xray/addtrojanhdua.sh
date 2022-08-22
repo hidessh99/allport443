@@ -67,8 +67,8 @@ hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#trojan-hdua$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xtrojan.json
-#sed -i '/#trojan-hdua$/a\### '"$user $exp"'\
-#},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
+sed -i '/#trojan-hdua$/a\### '"$user $exp"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
 #sed -i '/#trojan-hdua$/a\### '"$user $exp"'\
 #},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#trojan-hdua$/a\### '"$user $exp"'\
@@ -77,7 +77,7 @@ trojanhdua="trojan://${uuid}@${domain}:$thdua?sni=${domain}&type=http&security=t
 systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvless
-#systemctl restart xvmess.service
+systemctl restart xvmess.service
 systemctl restart xss
 service cron restart
 clear
