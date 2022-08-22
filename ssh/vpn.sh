@@ -56,7 +56,7 @@ cat > /etc/openvpn/tcp.ovpn <<-END
 client
 dev tun
 proto tcp
-remote xxxxxxxxx 700
+remote xxxxxxxxx 600
 resolv-retry infinite
 route-method exe
 nobind
