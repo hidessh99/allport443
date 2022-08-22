@@ -310,7 +310,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="-user sslh -listen 0.0.0.0:2053 -ssh 127.0.0.1:22 -openvpn 127.0.0.1:700 -tls 127.0.0.1:600 -pidfile /var/run/sslh/sslh.pid"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2053 --ssh 127.0.0.1:22 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:900 --openvpn 127.0.0.1:700 --tls 127.0.0.1:600 --pidfile /var/run/sslh/sslh.pid"
 
 END
 
@@ -357,22 +357,25 @@ chmod 644 /etc/stunnel5
 cat > /etc/stunnel5/stunnel5.conf <<-END
 cert = /etc/ssl/private/fullchain.pem
 key = /etc/ssl/private/privkey.pem
-#cert = /etc/stunnel5/stunnel5.pem
 client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 dropbear]
-accept = 447
+accept = 400
 connect = 127.0.0.1:300
 
-[dropbear]
-accept = 777
+[openssh]
+accept = 425
 connect = 127.0.0.1:22
 
 [openvpn]
-accept = 900
+accept = 525
 connect = 127.0.0.1:700
+
+[openvpn]
+accept = 550
+connect = 127.0.0.1:900
 
 [stunnelws]
 accept = 222
@@ -381,10 +384,10 @@ connect = 600
 END
 
 # make a certificate
-openssl genrsa -out key.pem 2048
-openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
--subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
-cat cert.pem key.pem >> /etc/stunnel5/stunnel5.pem
+#openssl genrsa -out key.pem 2048
+#openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
+#-subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
+#cat cert.pem key.pem >> /etc/stunnel5/stunnel5.pem
 
 # Service Stunnel5 systemctl restart stunnel5
 cat > /etc/systemd/system/stunnel5.service << END
