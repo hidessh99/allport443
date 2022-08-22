@@ -382,7 +382,7 @@ base64=$(openssl rand -base64 16)
 #path_crt="/root/.acme.sh/$domain_ecc/fullchain.cer"
 #path_key="/root/.acme.sh/$domain_ecc/$domain.key"
 # Buat Config Xray
-cat > /etc/xray/xvmess.json << END
+#cat > /etc/xray/xvmess.json << END
 {
   "log": {
     "access": "/var/log/xray/access.log",
@@ -425,7 +425,7 @@ cat > /etc/xray/xvmess.json << END
         "quicSettings": {}
       }
     }
-END
+#END
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
 base64=$(openssl rand -base64 16)
@@ -531,7 +531,7 @@ LimitNOFILE=1000000
 WantedBy=multi-user.target
 END
 
-cat > /etc/systemd/system/xvmess.service << END
+#cat > /etc/systemd/system/xvmess.service << END
 [Unit]
 Description=XVMESS ROUTING GAJAH DEMAK BY GANDRING
 Documentation=https://t.me/zerossl
@@ -551,7 +551,7 @@ LimitNOFILE=1000000
 
 [Install]
 WantedBy=multi-user.target
-END
+#END
 
 # / / Installation Xray Service
 cat > /etc/systemd/system/xss.service << END
