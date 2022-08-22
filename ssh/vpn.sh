@@ -56,7 +56,7 @@ cat > /etc/openvpn/tcp.ovpn <<-END
 client
 dev tun
 proto tcp
-remote xxxxxxxxx 600
+remote xxxxxxxxx 700
 resolv-retry infinite
 route-method exe
 nobind
@@ -166,7 +166,7 @@ cp /etc/openvpn/ssl.ovpn /home/vps/public_html/ssl.ovpn
 # masukkan certificatenya ke dalam config client SSL 900
 echo '<ca>' >> /etc/openvpn/ws.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/ws.ovpn
-echo '</ca-cert>' >> /etc/openvpn/ws.ovpn
+echo '</ca>' >> /etc/openvpn/ws.ovpn
 
 #echo '<cert>' >> /etc/openvpn/ssl.ovpn
 #cat /etc/openvpn/server/server.crt >> /etc/openvpn/ssl.ovpn
