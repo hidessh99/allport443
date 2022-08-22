@@ -72,10 +72,10 @@ read -p "Expired (Days) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 #exp2=`date -d "$masaaktif seconds" +"%Y-%m-%d"`
-sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
-},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xtrojan.json
-sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
-},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
+#sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
+#},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xtrojan.json
+#sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
+#},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
 sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvless.json
 trojangrpc="trojan://${uuid}@${domain}:$tgrpc?mode=gun&security=tls&type=grpc&serviceName=gandringgrpc&sni=${domain}#%F0%9F%94%B0TROJAN+GRPC+TLS+${user}"
@@ -95,7 +95,7 @@ echo -e "IP/Host  :${MYIP}"
 echo -e "Address  :${domain}"
 echo -e "Protocol  :grpc"
 echo -e "ServiceName  :gandringgrpc"
-echo -e "Port  :${tgrpc},2096"
+echo -e "Port  :${tgrpc},8443"
 echo -e "Password  :${uuid}"
 echo -e "Created  :$hariini"
 echo -e "Expired  :$exp"
