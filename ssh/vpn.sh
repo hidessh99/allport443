@@ -214,13 +214,13 @@ cat <<'mySiteOvpn' > /home/vps/public_html/index.html
 
 <li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>TCP <span class="badge light-blue darken-4">KONFIG PENAKLUK JANDA</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/tcp.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
-<li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>UDP <span class="badge light-blue darken-4">KONFIG PILEM KARTUN</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/udp.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
+<li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>UDP <span class="badge light-blue darken-4">KONFIG PENAKLUK PERAWAN</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/udp.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
 <li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>SSL <span class="badge light-blue darken-4">KONFIG RUSAK</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/ssl.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
 <li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>WS <span class="badge light-blue darken-4">KONFIG REMOK</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/ws.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
-<li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>GANDRING.zip <span class="badge light-blue darken-4">KONFIG JAMU KOMPLET PAK MANTEB</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/gandring.zip" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
+<li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>GANDRING.zip <span class="badge light-blue darken-4">JANGAN LUPA HATI YANG GEMBIRA ADALAH OBAT AWET MUDA</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/gandring.zip" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
 </ul></div></div></div></div></body></html>
 mySiteOvpn
