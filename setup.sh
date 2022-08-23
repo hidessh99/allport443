@@ -180,8 +180,9 @@ echo -e " 🔰 SHADOWSOCKS WS NON TLS         : 80" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS GRPC TLS           : 443" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS GRPC NON TLS       : 80" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 HTTP TLS      : 443" |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 HTTP NON TLS  : 8088" |tee -a log-install.txt
+echo -e " 🔰 SHADOWSOCKS 2022 HTTP NON TLS  : 2052" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 UDP           : 212" |tee -a log-install.txt
+echo -e " 🔰 SHADOWSOCKS 2022 TCP           : 414" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 WS NON TLS    : 80" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 WS TLS        : 443" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 GRPC TLS      : 443" |tee -a log-install.txt
