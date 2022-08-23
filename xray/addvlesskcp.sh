@@ -19,7 +19,7 @@ clear
 domain=$(cat /etc/xray/domain)
 
 vlkcp="$(cat ~/log-install.txt | grep -w "VLESS KCP TLS" | cut -d: -f2|sed 's/ //g')"
-vlhduanon="$(cat ~/log-install.txt | grep -w "VLESS H2C NON TLS" | cut -d: -f2|sed 's/ //g')"
+vlkcpnon="$(cat ~/log-install.txt | grep -w "VLESS KCP NON TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		read -rp "Username : " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
@@ -80,13 +80,15 @@ sed -i '/#vless-kcp$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
 sed -i '/#vless-kcp$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xtrojan.json
-sed -i '/#vless-kcp$/a\### '"$user $exp"'\
-},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xss.json
+sed -i '/#vless-kcp-nontls$/a\### '"$user $exp"'\
+},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xtrojan.json
 sed -i '/#vless-kcp$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvless.json
 sed -i '/#vless-kcp$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 vlesskcp="vless://$uuid@$domain:$vlkcp?sni=$domain&seed=wisnukcp&type=kcp&security=tls&headerType=none&encryption=none#%F0%9F%94%B0VLESS+KCP+TLS+$user"
+vlesskcpnon="vless://$uuid@$domain:$vlkcpnon?sni=$domain&seed=wisnukcp&type=kcp&security=none&headerType=none&encryption=none#%F0%9F%94%B0VLESS+KCP+NONTLS+$user"
+
 systemctl restart xvless.service
 systemctl restart xray.service
 systemctl restart xtrojan
@@ -101,6 +103,7 @@ echo -e "Nama  :${user}"
 echo -e "IP/Host  :${MYIP}"
 echo -e "Address  :${domain}"
 echo -e "Port  :$vlkcp"
+echo -e "Port  :$vlkcpnon"
 echo -e "Protokol  :KCP"
 echo -e "Path  :wisnukcp"
 echo -e "UserID  :${uuid}"
