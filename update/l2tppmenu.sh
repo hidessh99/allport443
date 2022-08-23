@@ -47,9 +47,13 @@ echo -e "10\e[1;33m) Cek User Login SSTP \e[m "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "11\e[1;33m) Buat Akun WIREGUARD \e[m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "12\e[1;33m) Hapus Akun WIREGUARD \e[m "
+echo -e "12\e[1;33m) Buat Trial WIREGUARD \e[m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "13\e[1;33m) Perpanjang Masa Aktif Akun WIREGUARD \e[m"
+echo -e "13\e[1;33m) Cek User WIREGUARD \e[m"
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "14\e[1;33m) Hapus Akun WIREGUARD \e[m "
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "15\e[1;33m) Perpanjang Masa Aktif Akun WIREGUARD \e[m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "0\e[1;31m) Menu Utama \e[m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -95,9 +99,16 @@ ceksstp
 addwg
 ;;
 12)
-delwg
+trialwg
 ;;
 13)
+;;
+cekwg
+;;
+14)
+delwg
+;;
+15)
 renewwg
 ;;
 0)
