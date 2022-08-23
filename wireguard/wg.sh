@@ -109,7 +109,7 @@ cd /usr/bin
 wget -O addwg "https://${wisnuvpn}/addwg.sh"
 wget -O delwg "https://${wisnuvpn}/delwg.sh"
 wget -O renewwg "https://${wisnuvpn}/renewwg.sh"
-wget -O trial-wg "https://${wisnuvpn}/trialwg.sh"
+wget -O trialwg "https://${wisnuvpn}/trialwg.sh"
 wget -O portwg "https://${wisnuvpn}/portwg.sh"
 wget -O cekwg "https://${wisnuvpn}/cekwg.sh"
 chmod +x addwg
