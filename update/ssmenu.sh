@@ -26,31 +26,23 @@ echo -e "07\e[1;33m) Perpanjang Masa Aktif Akun ShadowsocksR \e[m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "08\e[1;33m) Menu seting ShadowsocksR \e[m"
 echo -e "\033[0;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "09\e[1;33m) Buat Akun Shadowsocks AEAD \e[m "
+echo -e "09\e[1;33m) Buat Akun Socks5 \e[m "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "10\e[1;33m) Hapus Akun Shadowsocks AEAD \e[m "
+echo -e "10\e[1;33m) Hapus Akun Socks5 \e[m "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "11\e[1;33m) Perpanjang Masa Aktif Akun Shadowsocks AEAD \e[m "
+echo -e "11\e[1;33m) Perpanjang Masa Aktif Akun Socks5 \e[m "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "12\e[1;33m) Cek User Login Shadowsocks AEAD \e[m  "
+echo -e "12\e[1;33m) Cek User Login Socks5 \e[m  "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "13\e[1;33m) Buat Akun Socks5 \e[m "
+echo -e "13\e[1;33m) Buat Akun Shadowsocks 2022 \e[m "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "14\e[1;33m) Hapus Akun Socks5 \e[m "
+echo -e "14\e[1;33m) Hapus Akun Shadowsocks 2022 \e[m "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "15\e[1;33m) Perpanjang Masa Aktif Akun Socks5 \e[m "
+echo -e "15\e[1;33m) Perpanjang Masa Aktif Akun Shadowsocks 2022 \e[m "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "16\e[1;33m) Cek User Login Socks5 \e[m  "
+echo -e "16\e[1;33m) Cek User Login Shadowsocks AEAD \e[m  "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "17\e[1;33m) Buat Akun Shadowsocks 2022 \e[m "
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "18\e[1;33m) Hapus Akun Shadowsocks 2022 \e[m "
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "19\e[1;33m) Perpanjang Masa Aktif Akun Shadowsocks 2022 \e[m "
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "20\e[1;33m) Cek User Login Shadowsocks AEAD \e[m  "
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "21\e[1;31m) Cek Trafik User \e[m"
+echo -e "17\e[1;31m) Cek Trafik User \e[m"
 echo -e "00\e[1;31m) Menu Utama \e[m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "xx\e[1;31m) Keluar \e[m "
@@ -85,42 +77,30 @@ renewssr
 ssr
 ;;
 9)
-addxrayss
-;;
-10)
-delxrayss
-;;
-11)
-renewxrayss
-;;
-12)
-cekxrayss
-;;
-13)
 addsocks
 ;;
-14)
+10)
 delsocks
 ;;
-15)
+11)
 renewsocks
 ;;
-16)
+12)
 ceksocks
 ;;
-17)
+13)
 addss22
 ;;
-18)
+14)
 delss22
 ;;
-19)
+15)
 renewss22
 ;;
-20)
+16)
 cekss22
 ;;
-21)
+17)
 trafikcek
 ;;
 0)
