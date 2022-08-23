@@ -310,7 +310,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="--user sslh --listen 0.0.0.0:2053 --ssh 127.0.0.1:22 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:900 --openvpn 127.0.0.1:600 --tls 127.0.0.1:700 --pidfile /var/run/sslh/sslh.pid"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2053 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:900 --openvpn 127.0.0.1:600 --tls 127.0.0.1:700 --pidfile /var/run/sslh/sslh.pid"
 
 END
 
@@ -728,6 +728,7 @@ chmod +x addvmessgrpc
 chmod +x addvmesshdua
 chmod +x addvmessquic
 chmod +x addvmesshttp
+chmod +x addvmesskcpp
 
 chmod +x addvless
 chmod +x addvlessgrpc
@@ -735,18 +736,20 @@ chmod +x addvlesshttp
 chmod +x addvlesshdua
 chmod +x addvlessxtls
 chmod +x addvlessquic
+chmod +x addvlesskcp
 
 chmod +x addtrojanxtls
 chmod +x addtrojangrpc
 chmod +x addtrojanwss
 chmod +x addtrojanhttp
 chmod +x addtrojanhdua
+chmod +x addtrojankcp
 chmod +x addtrojanquic
 
 chmod +x addxtreme
 #chmod +x addxrayss
 chmod +x addss22
-chmod +x addssws
+#chmod +x addssws
 chmod +x addsocks
 chmod +x addtrojantester
 chmod +x addvmesstester
@@ -797,7 +800,7 @@ chmod +x delsocks
 #chmod +x cekxrayss
 chmod +x cekss22
 chmod +x ceksocks
-chmod +x cekssws
+#chmod +x cekssws
 
 chmod +x cekvmess
 chmod +x cekvmesshttp
