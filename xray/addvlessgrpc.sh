@@ -86,7 +86,7 @@ echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━�
 echo -e "Nama  :${user}"
 echo -e "IP/Host  :${MYIP}"
 echo -e "Address  :${domain}"
-echo -e "Port TLS  :$vlgrpc,8443"
+echo -e "Port TLS  :$vlgrpc"
 echo -e "Port NON TLS  :$vlgrpcnon"
 echo -e "Protokol  :GRPC"
 echo -e "ServiceName  :wisnugrpc"
