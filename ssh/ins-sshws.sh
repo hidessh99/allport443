@@ -25,6 +25,7 @@ Documentation=https://t.me/zerossl
 
 [Service]
 Type=simple
+User=root
 ExecStart=/usr/bin/ssh-wsenabler
 KillMode=process
 Restart=on-failure
