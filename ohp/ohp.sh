@@ -78,28 +78,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8383 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:700
-Restart=on-failure
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# OpenVPN OHP 8484
-cat > /etc/systemd/system/stunnel-ohp.service << END
-[Unit]]
-Description=OpenVPN OHP Redirection Service
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8484 -proxy 127.0.0.1:4000 -tunnel 127.0.0.1:2053
+ExecStart=/usr/local/bin/ohpserver -port 8383 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:2083
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -114,8 +93,6 @@ systemctl enable dropbear-ohp
 systemctl restart dropbear-ohp
 systemctl enable openvpn-ohp
 systemctl restart openvpn-ohp
-systemctl enable stunnel-ohp
-systemctl restart stunnel-ohp
 #------------------------------
 printf 'INSTALLATION COMPLETED !\n'
 sleep 0.5
