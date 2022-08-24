@@ -64,6 +64,8 @@ systemctl restart ws-tls
 systemctl restart stunnel5
 systemctl restart sslh
 systemctl restart ws-ovpn
+systemctl restart ws-nontls
+systemctl restart ovpn-tls
 systemctl restart ssh-ohp
 systemctl restart dropbear-ohp
 systemctl restart openvpn-ohp
