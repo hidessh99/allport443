@@ -367,8 +367,8 @@ accept = 500
 connect = 127.0.0.1:300
 
 [openvpn]
-accept = 600
-connect 127.0.0.1:900
+accept = 900
+connect 127.0.0.1:600
 
 [stunnelws]
 accept = 222
@@ -877,7 +877,7 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/stunnel5 restart
 /etc/init.d/vnstat restart
 /etc/init.d/fail2ban restart
-/etc/init.d/squid restart
+#/etc/init.d/squid restart
 
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 100
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200 --max-clients 100
