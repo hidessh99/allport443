@@ -371,7 +371,7 @@ connect = 127.0.0.1:300
 
 [openvpn]
 accept = 900
-connect 127.0.0.1:2083
+connect 127.0.0.1:600
 
 [stunnelws]
 accept = 222
