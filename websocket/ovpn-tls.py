@@ -1,23 +1,24 @@
-#!/usr/bin/python
 import socket, threading, thread, select, signal, sys, time, getopt
 
 # Listen
-LISTENING_ADDR = '0.0.0.0'
-LISTENING_PORT = sys.argv[1]
-
-# Pass
+LISTENING_ADDR = '127.0.0.1'
+if sys.argv[1:]:
+  LISTENING_PORT = sys.argv[1]
+else:
+  LISTENING_PORT = 2053
+#Pass
 PASS = ''
 
 # CONST
 BUFLEN = 8192 * 4
-TIMEOUT = 300
-DEFAULT_HOST = '127.0.0.1:300'
+TIMEOUT = 999
+DEFAULT_HOST = '127.0.0.1:600'
 RESPONSE = 'HTTP/1.1 101 <b><font color="green">SUN AMATAK AJIKU SI JARAN GOYANG TAK GOYANG ING TENGAH LATAR CEMETHIKU SODHO LANANG SAKING SWARGO TAK SABETAKE GUNUNG JUGRUG TAK SABETAKE SEGORO ASAT TAK SABETAKE MARANG ATINE SI JABANG BAYI PET SIDHO EDAN ORA EDAN SIDHO GENDENG ORA GENDENG ORA MARI MARI YEN ORA INGSUN SING NAMBANI </font></b>\r\n\r\nContent-Length: 10485760000000\r\n\r\n'
 
 class Server(threading.Thread):
     def __init__(self, host, port):
         threading.Thread.__init__(self)
-        self.running = true
+        self.running = False
         self.host = host
         self.port = port
         self.threads = []
@@ -31,7 +32,7 @@ class Server(threading.Thread):
         intport = int(self.port)
         self.soc.bind((self.host, intport))
         self.soc.listen(0)
-        self.running = true
+        self.running = True
 
         try:
             while self.running:
@@ -84,7 +85,7 @@ class ConnectionHandler(threading.Thread):
     def __init__(self, socClient, server, addr):
         threading.Thread.__init__(self)
         self.clientClosed = False
-        self.targetClosed = true
+        self.targetClosed = True
         self.client = socClient
         self.client_buffer = ''
         self.server = server
@@ -98,7 +99,7 @@ class ConnectionHandler(threading.Thread):
         except:
             pass
         finally:
-            self.clientClosed = true
+            self.clientClosed = True
 
         try:
             if not self.targetClosed:
@@ -107,7 +108,7 @@ class ConnectionHandler(threading.Thread):
         except:
             pass
         finally:
-            self.targetClosed = true
+            self.targetClosed = True
 
     def run(self):
         try:
