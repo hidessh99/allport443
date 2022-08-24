@@ -34,6 +34,61 @@ systemctl enable ws-tls
 systemctl restart ws-tls
 
 # Getting Proxy Template
+wget -q -O /usr/local/bin/ws-tls https://${wisnuvpn}/ws-tls.py
+chmod +x /usr/local/bin/ws-tls
+
+# Installing Service
+cat > /etc/systemd/system/ws-nontls.service << END
+[Unit]
+Description=SSH WEBSOCKET NON TLS ROUTING INDONESIA BY ZEROSSL
+Documentation=https://t.me/zerossl
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-nontls 2052
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+systemctl daemon-reload
+systemctl enable ws-tls
+systemctl restart ws-tls
+
+# Getting Proxy Template
+wget -q -O /usr/local/bin/ovpn-tls https://${wisnuvpn}/ovpn-tls.py
+chmod +x /usr/local/bin/ovpn-tls
+# Installing Service
+cat > /etc/systemd/system/ovpn-tls.service << END
+[Unit]
+Description=OVPN WEBSOCKET TLS ROUTING INDONESIA BY ZEROSSL
+Documentation=https://t.me/zerossl
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/ovpn-tls
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+systemctl daemon-reload
+systemctl enable ovpn-tls
+systemctl restart ovpn-tls
+
+# Getting Proxy Template
 wget -q -O /usr/local/bin/ws-ovpn https://${wisnuvpn}/ws-ovpn.py
 chmod +x /usr/local/bin/ws-ovpn
 
