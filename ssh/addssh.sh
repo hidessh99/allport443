@@ -67,6 +67,7 @@ systemctl restart ws-ovpn
 systemctl restart ovpn-tls
 systemctl restart ovpn-nontls
 systemctl restart ssh-ohp
+systemctl restart stunnel-ohp
 systemctl restart dropbear-ohp
 systemctl restart openvpn-ohp
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
