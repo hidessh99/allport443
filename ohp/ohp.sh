@@ -36,7 +36,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8181 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:22
+ExecStart=/usr/local/bin/ohpserver -port 8181 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:22
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -57,7 +57,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8282 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:300
+ExecStart=/usr/local/bin/ohpserver -port 8282 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:300
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -78,7 +78,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8383 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:900
+ExecStart=/usr/local/bin/ohpserver -port 8383 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:700
 Restart=on-failure
 LimitNOFILE=infinity
 
