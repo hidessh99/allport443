@@ -35,7 +35,7 @@ hari="1"
 Pass=1
 clear
 systemctl restart ws-tls
-#systemctl restart ovpn-nontls
+#systemctl restart ws-nontls
 #systemctl restart ovpn-tls
 systemctl restart ws-ovpn
 #systemctl restart stunnel-ohp
