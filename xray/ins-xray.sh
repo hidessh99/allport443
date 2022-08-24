@@ -18,6 +18,7 @@ domain=$(cat /root/domain)
 apt update ; apt upgrade -y
 apt install python -y ; apt install python3-pip -y
 apt install iptables iptables-persistent -y
+apt install caddy -y
 apt-get install libpcre3 libpcre3-dev zlib1g-dev dbus -y
 apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
 apt install socat cron bash-completion ntpdate -y
@@ -636,6 +637,33 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 EOF
+
+cat > /etc/systemd/system/run.service <<EOF
+[Unit]
+Description=Caddy
+Documentation=https://caddyserver.com/docs/
+After=network.target
+
+[Service]
+User=root
+User=www-data
+ExecStart=/usr/local/bin/caddy/caddy run --environ --config /usr/local/etc/caddy/caddy2.json
+ExecReload=/usr/local/bin/caddy/caddy reload --config /usr/local/etc/caddy/caddy2.json
+TimeoutStopSec=5s
+LimitNOFILE=1000000
+LimitNPROC=10000
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable caddy.service
+systemctl start caddy.service
+systemctl restart caddy.service
 
 systemctl daemon-reload
 systemctl enable xray.service
