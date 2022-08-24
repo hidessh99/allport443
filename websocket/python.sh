@@ -50,7 +50,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-ovpn 2052
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-ovpn
 Restart=on-failure
 
 [Install]
@@ -89,3 +89,32 @@ END
 systemctl daemon-reload
 systemctl enable ovpn-tls
 systemctl restart ovpn-tls
+
+# Getting Proxy Template
+wget -q -O /usr/local/bin/ovpn-nontls https://${wisnuvpn}/ovpn-nontls.py
+chmod +x /usr/local/bin/ovpn-nontls
+
+# Installing Service
+cat > /etc/systemd/system/ovpn-nontls.service << END
+[Unit]
+Description=OVPN WEBSOCKET ROTING PENGKOL BY GANDRING
+Documentation=https://t.me/zerossl
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python -O /usr/local/bin/ovpn-nontls 2052
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+END
+
+systemctl daemon-reload
+systemctl enable ovpn-nontls
+systemctl restart ovpn-nontls
