@@ -17,8 +17,8 @@ echo -e "Memulai Ulang Layanan Tunnel"
 sleep 2
 systemctl restart ssrmu
 systemctl restart ws-tls
-#systemctl restart ovpn-tls
-#systemctl restart ovpn-nontls
+systemctl restart ovpn-tls
+systemctl restart ws-nontls
 #systemctl restart stunnel-ohp
 systemctl restart xray.service
 systemctl restart shadowsocks-libev
