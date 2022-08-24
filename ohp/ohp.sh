@@ -86,6 +86,27 @@ LimitNOFILE=infinity
 WantedBy=multi-user.target
 END
 
+# OpenVPN OHP 8484
+cat > /etc/systemd/system/stunnel-ohp.service << END
+[Unit]]
+Description=OpenVPN OHP Redirection Service
+Documentation=https://t.me/zerossl
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/ohpserver -port 8484 -proxy 127.0.0.1:4000 -tunnel 127.0.0.1:2053
+Restart=on-failure
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
+END
+
 systemctl daemon-reload
 systemctl enable ssh-ohp
 systemctl restart ssh-ohp
@@ -93,6 +114,8 @@ systemctl enable dropbear-ohp
 systemctl restart dropbear-ohp
 systemctl enable openvpn-ohp
 systemctl restart openvpn-ohp
+systemctl enable stunnel-ohp
+systemctl restart stunnel-ohp
 #------------------------------
 printf 'INSTALLATION COMPLETED !\n'
 sleep 0.5
@@ -112,6 +135,13 @@ else
 fi
 sleep 0.5
 if [ -n "$(ss -tupln | grep ohpserver | grep -w 8383)" ]
+then
+	echo 'OpenVPN OHP Redirection Running'
+else
+	echo 'OpenVPN OHP Redirection Not Found, please check manually'
+fi
+sleep 0.5
+if [ -n "$(ss -tupln | grep ohpserver | grep -w 8484)" ]
 then
 	echo 'OpenVPN OHP Redirection Running'
 else
