@@ -34,10 +34,10 @@ Login=tes`</dev/urandom tr -dc X-Z0-9 | head -c2`
 hari="1"
 Pass=1
 clear
-systemctl restart ws-tls
-systemctl restart ws-nontls
-systemctl restart ovpn-tls
-systemctl restart ws-ovpn
+systemctl restart tls
+systemctl restart nontls
+systemctl restart otls
+systemctl restart wsovpn
 systemctl restart stunnel-ohp
 systemctl restart sslh
 systemctl restart stunnel5
