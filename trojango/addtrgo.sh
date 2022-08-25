@@ -34,7 +34,7 @@ exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 echo -e "### $user $exp" >> /etc/trojan-go/akun.conf
 systemctl restart trojan-go.service
-link="trojan-go://$uuid@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=%252Fgandring-go#%F0%9F%94%B0TROJAN+GO+$user"
+link="trojan-go://$user@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=%252Fgandring-go#%F0%9F%94%B0TROJAN+GO+$user"
 clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m      🔰 AKUN TROJAN-GO 🔰        \e[m"   
@@ -43,13 +43,13 @@ echo -e "Remarks: ${user}"
 echo -e "IP/Host: ${MYIP}"
 echo -e "Address: ${domain}"
 echo -e "Port: ${trgo}"
-echo -e "Key: ${uuid}"
+echo -e "Key: ${user}"
 echo -e "Encryption: none"
 echo -e "Path: /gandring-go"
 echo -e "Created: $hariini"
 echo -e "Expired: $exp"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "Link : ${link}"
+echo -e "Link Trojan-GO : ${link}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m  🔰LUXURY EDITION BY ZEROSSL🔰   \e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
