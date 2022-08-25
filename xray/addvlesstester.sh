@@ -139,6 +139,7 @@ systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvmess
 service cron restart
+systemctl restart nginx
 clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m 🔰 AKUN VLESS TESTER 🔰  \e[m"   
