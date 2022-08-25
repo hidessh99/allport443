@@ -16,9 +16,9 @@ echo -e ""
 echo -e "Memulai Ulang Layanan Tunnel"
 sleep 2
 systemctl restart ssrmu
-systemctl restart ws-tls
-systemctl restart ovpn-tls
-systemctl restart ws-nontls
+systemctl restart tls
+systemctl restart otls
+systemctl restart nontls
 systemctl restart stunnel-ohp
 systemctl restart xray.service
 systemctl restart shadowsocks-libev
@@ -26,7 +26,7 @@ systemctl restart xl2tpd
 systemctl restart pptpd
 systemctl restart ipsec
 systemctl restart accel-ppp
-systemctl restart ws-ovpn
+systemctl restart wsovpn
 systemctl restart wg-quick@wg0
 systemctl restart sslh
 systemctl restart xtrojan
