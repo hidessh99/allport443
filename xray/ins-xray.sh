@@ -720,12 +720,12 @@ chmod +x /etc/trojan-go/trojan-go
 cat <<EOF > /etc/trojan-go/config.json
 {
     "run_type": "server",
-    "local_addr": "0.0.0.0",
+    "local_addr": "127.0.0.1",
     "local_port": 10101,
     "remote_addr": "127.0.0.1",
     "remote_port": 88,
     "log_level": 1,
-    "log_file": "/var/log/trojan-go.log",
+    "log_file": "/var/log/xray/access.log",
     "password": [
         "$uuid"
     ],
@@ -742,7 +742,8 @@ cat <<EOF > /etc/trojan-go/config.json
     "prefer_server_cipher": true,
     "sni": "$domain",
     "alpn": [
-      "http/1.1"
+    "h2", 
+    "http/1.1"
     ],
     "session_ticket": true,
     "reuse_session": true,
@@ -758,8 +759,8 @@ cat <<EOF > /etc/trojan-go/config.json
   },
   "mux": {
     "enabled": true,
-    "concurrency": 64,
-    "idle_timeout": 60
+    "concurrency": 8,
+    "idle_timeout": 300
   },
   "router": {
     "enabled": true,
@@ -821,7 +822,7 @@ cat <<EOF > /etc/trojan-go/config.json
 EOF
 cat <<EOF > /etc/systemd/system/trojan-go.service
 [Unit]
-Description=Trojan-Go 
+Description=TROJAN-GO ROUTING GAJAH DEMAK BY ZEROSSL
 Documentation=https://p4gefau1t.github.io/trojan-go/
 After=network.target nss-lookup.target
 
@@ -840,7 +841,7 @@ EOF
 
 cat <<EOF > /etc/systemd/system/trojan-go@.service 
 [Unit]
-Description=Trojan-Go
+Description=TROJAN-GO ROUTING DAM COL PENGKOL BY WISNU
 Documentation=https://p4gefau1t.github.io/trojan-go/
 After=network.target nss-lookup.target
 
