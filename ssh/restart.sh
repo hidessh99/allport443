@@ -25,6 +25,7 @@ systemctl restart shadowsocks-libev
 systemctl restart xl2tpd
 systemctl restart pptpd
 systemctl restart ipsec
+systemctl restart privoxy
 systemctl restart accel-ppp
 systemctl restart wsovpn
 systemctl restart wg-quick@wg0
