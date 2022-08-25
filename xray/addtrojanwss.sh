@@ -93,6 +93,7 @@ systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvless
 systemctl restart xss
+systemctl restart nginx
 service cron restart
 clear
 echo -e ""
