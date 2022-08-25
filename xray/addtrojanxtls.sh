@@ -94,6 +94,7 @@ systemctl restart xtrojan.service
 systemctl restart xvmess
 systemctl restart xss
 systemctl restart xvless
+systemctl restart nginx
 clear
 echo -e ""
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
