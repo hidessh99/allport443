@@ -36,7 +36,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8181 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:5015
+ExecStart=/usr/local/bin/ohpserver -port 8181 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:5015
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -57,7 +57,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8282 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:300
+ExecStart=/usr/local/bin/ohpserver -port 8282 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:200
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -78,7 +78,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8383 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:900
+ExecStart=/usr/local/bin/ohpserver -port 8383 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:900
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -86,6 +86,26 @@ LimitNOFILE=infinity
 WantedBy=multi-user.target
 END
 
+# OpenVPN OHP 8383
+cat > /etc/systemd/system/stunnel-ohp.service << END
+[Unit]]
+Description=OpenVPN OHP Redirection Service
+Documentation=https://t.me/zerossl
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/ohpserver -port 8484 -proxy 127.0.0.1:5000 -tunnel 127.0.0.1:2083
+Restart=on-failure
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
+END
 systemctl daemon-reload
 systemctl enable ssh-ohp
 systemctl restart ssh-ohp
@@ -93,6 +113,8 @@ systemctl enable dropbear-ohp
 systemctl restart dropbear-ohp
 systemctl enable openvpn-ohp
 systemctl restart openvpn-ohp
+systemctl enable stunnel-ohp
+systemctl restart stunnel-ohp
 #------------------------------
 printf 'INSTALLATION COMPLETED !\n'
 sleep 0.5
