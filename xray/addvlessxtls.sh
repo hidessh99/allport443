@@ -83,6 +83,7 @@ systemctl restart xvless.service
 systemctl restart xvmess
 systemctl restart xtrojan
 service cron restart
+systemctl restart nginx
 clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰 AKUN VLESS XTLS GFW 🔰 \e[m"   
