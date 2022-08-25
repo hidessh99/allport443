@@ -88,7 +88,7 @@ sed -i '/#vless-kcp$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 vlesskcp="vless://$uuid@$domain:$vlkcp?sni=$domain&seed=wisnukcp&type=kcp&security=tls&headerType=none&encryption=none#%F0%9F%94%B0VLESS+KCP+TLS+$user"
 vlesskcpnon="vless://$uuid@$domain:$vlkcpnon?sni=$domain&seed=wisnukcp&type=kcp&security=none&headerType=none&encryption=none#%F0%9F%94%B0VLESS+KCP+NONTLS+$user"
-
+systemctl restart nginx
 systemctl restart xvless.service
 systemctl restart xray.service
 systemctl restart xtrojan
