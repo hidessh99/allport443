@@ -146,8 +146,8 @@ apt-get install dsniff -y
 apt install grepcidr -y
 
 # Privoxy Ports
-Privoxy_Port1='4000'
-Privoxy_Port2='5000'
+Privoxy_Port1='3128'
+Privoxy_Port2='3228'
 
  # Creating Privoxy server config using cat eof tricks
 cd
@@ -158,8 +158,8 @@ confdir /etc/privoxy
 logdir /var/log/privoxy
 filterfile default.filter
 logfile logfile
-listen-address 0.0.0.0:4000
-listen-address 0.0.0.0:5000
+listen-address 0.0.0.0:3128
+listen-address 127.0.0.1:3228
 toggle 1
 enable-remote-toggle 0
 enable-remote-http-toggle 0
@@ -372,10 +372,10 @@ connect = 127.0.0.1:300
 
 [openvpn]
 accept = 900
-connect 127.0.0.1:2083
+connect 127.0.0.1:2053
 
 [stunnelws]
-accept = 222
+accept = 5015
 connect = 700
 
 END
