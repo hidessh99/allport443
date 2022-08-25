@@ -161,10 +161,10 @@ logfile logfile
 listen-address 0.0.0.0:3128
 listen-address 127.0.0.1:3228
 toggle 1
-enable-remote-toggle 0
-enable-remote-http-toggle 0
-enable-edit-actions 0
-enforce-blocks 0
+enable-remote-toggle 1
+enable-remote-http-toggle 1
+enable-edit-actions 1
+enforce-blocks 1
 buffer-limit 4096
 enable-proxy-authentication-forwarding 1
 forwarded-connect-retries 1
