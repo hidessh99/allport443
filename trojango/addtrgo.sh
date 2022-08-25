@@ -30,12 +30,14 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 	done
 #uuid=$(cat /proc/sys/kernel/random/uuid)
 uuid=$(cat /etc/trojan-go/uuid.txt)
-sed -i '/"'""$uuid""'"$/a\,"'""$user""'"' /etc/trojan-go/config.json
+pass=$(openssl rand -hex 7)
+
+sed -i '/"'""$uuid""'"$/a\,"'""$password""'"' /etc/trojan-go/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 hariini=`date -d "0 days" +"%Y-%m-%d"`
-echo -e "### $user $exp" >> /etc/trojan-go/akun.conf
+echo -e "### $user\t$pass\t$$exp" >> /etc/trojan-go/akun.conf
 systemctl restart trojan-go.service
-link="trojan-go://$user@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=%252Fgandring-go#%F0%9F%94%B0TROJAN+GO+$user""
+link="trojan-go://$pass@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=%252Fgandring-go#%F0%9F%94%B0TROJAN+GO+$user""
 clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m      🔰 AKUN TROJAN-GO 🔰        \e[m"   
