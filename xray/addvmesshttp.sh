@@ -124,6 +124,7 @@ systemctl restart  xvmess
 systemctl restart xray
 systemctl restart xss
 systemctl restart xvless
+systemctl restart nginx
 service cron restart
 clear
 echo -e ""
