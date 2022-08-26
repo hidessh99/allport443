@@ -16,3 +16,5 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 accel-cmd show sessions
 echo ""
+read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
+menu
