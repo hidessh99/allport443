@@ -154,4 +154,4 @@ echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━�
 echo ""
 read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
     
-menu
+trojanmenu
