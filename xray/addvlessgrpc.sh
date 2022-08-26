@@ -78,7 +78,7 @@ systemctl restart xvless.service
 systemctl restart xray.service
 systemctl restart xvmess
 systemctl restart xtrojan
-systemctl restart nginx
+#systemctl restart nginx
 service cron restart
 clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
