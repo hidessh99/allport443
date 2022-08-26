@@ -137,6 +137,10 @@ sed -i "/^### $user $exp/,/^},{/d" /etc/xray/xss.json
 rm -f /etc/xray/vmess-$user-tls.json /etc/xray/vmess-$user-tls.json
 rm -f /etc/xray/vmess-$user-nontls.json /etc/xray/vmess-$user-nontls.json
 systemctl restart xray.service
+systemctl restart xvless
+systemctl restart xvmess
+systemctl restart xtrojan
+systemctl restart xss
 clear
 echo ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
