@@ -188,4 +188,6 @@ echo -e "VLESS KCP TLS: ${vlesskcp}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
+echo ""
+read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
+menu
