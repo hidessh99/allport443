@@ -96,10 +96,21 @@ status67=$(systemctl status xray             | grep -i "active (running)")
 status68=$(systemctl status xray             | grep -i "active (running)")
 status69=$(systemctl status xray             | grep -i "active (running)")
 status70=$(systemctl status xray             | grep -i "active (running)")
-status67=$(systemctl status xray             | grep -i "active (running)")
-status67=$(systemctl status xray             | grep -i "active (running)")
-status57=$(systemctl status xray             | grep -i "active (running)")
-status67=$(systemctl status xray             | grep -i "active (running)")
+status71=$(systemctl status xray             | grep -i "active (running)")
+status72=$(systemctl status xray             | grep -i "active (running)")
+status73=$(systemctl status xray             | grep -i "active (running)")
+status74=$(systemctl status xray             | grep -i "active (running)")
+status75=$(systemctl status xray             | grep -i "active (running)")
+status76=$(systemctl status xray             | grep -i "active (running)")
+status77=$(systemctl status xray             | grep -i "active (running)")
+status78=$(systemctl status xray             | grep -i "active (running)")
+status79=$(systemctl status xray             | grep -i "active (running)")
+status80=$(systemctl status xray             | grep -i "active (running)")
+status81=$(systemctl status xray             | grep -i "active (running)")
+status82=$(systemctl status xray             | grep -i "active (running)")
+status83=$(systemctl status xray             | grep -i "active (running)")
+status84=$(systemctl status xray             | grep -i "active (running)")
+status85=$(systemctl status xray             | grep -i "active (running)")
 
 #======================================
 if [[ $status01 == "" ]]; then
@@ -601,7 +612,7 @@ else
 fi
 if [[ $status60 == "" ]]; then
       sstatus60=$ERROR
-      ingfo+=("SHADOWSOCKS WS TLS")
+      ingfo+=("SOCKS5 KCP TLS")
       dahlah+=("err62")
 else
       sstatus60=$AKTIF
@@ -609,7 +620,7 @@ else
 fi
 if [[ $status61 == "" ]]; then
       sstatus61=$ERROR
-      ingfo+=("SHADOWSOCKS WS NON TLS")
+      ingfo+=("SOCKS5 H2C TLS")
       dahlah+=("err63")
 else
       sstatus61=$AKTIF
@@ -617,7 +628,7 @@ else
 fi
 if [[ $status62 == "" ]]; then
       sstatus62=$ERROR
-      ingfo+=("SHADOWSOCKS TCP TLS")
+      ingfo+=("SOCKS5 UDP")
       dahlah+=("err64")
 else
       sstatus62=$AKTIF
@@ -625,15 +636,7 @@ else
 fi
 if [[ $status63 == "" ]]; then
       sstatus63=$ERROR
-      ingfo+=("SHADOWSOCKS GRPC TLS")
-      dahlah+=("err65")
-else
-      sstatus63=$AKTIF
-      mantap+=("hore65")
-fi
-if [[ $status63 == "" ]]; then
-      sstatus63=$ERROR
-      ingfo+=("SHADOWSOCKS GRPC NON TLS")
+      ingfo+=("SOCKS5 QUIC TLS")
       dahlah+=("err65")
 else
       sstatus63=$AKTIF
@@ -641,7 +644,7 @@ else
 fi
 if [[ $status64 == "" ]]; then
       sstatus64=$ERROR
-      ingfo+=("SS 2022 WS TLS")
+      ingfo+=("SOCKS5 HTTP TLS")
       dahlah+=("err66")
 else
       sstatus64=$AKTIF
@@ -649,7 +652,7 @@ else
 fi
 if [[ $status65 == "" ]]; then
       sstatus65=$ERROR
-      ingfo+=("SS 2022 WS NON TLS")
+      ingfo+=("SOCKS5 HTTP NON TLS")
       dahlah+=("err67")
 else
       sstatus65=$AKTIF
@@ -657,7 +660,7 @@ else
 fi
 if [[ $status66 == "" ]]; then
       sstatus66=$ERROR
-      ingfo+=("SS 2022 TCP TLS")
+      ingfo+=("SS 2022 QUIC TLS")
       dahlah+=("err68")
 else
       sstatus66=$AKTIF
@@ -665,19 +668,83 @@ else
 fi
 if [[ $status67 == "" ]]; then
       sstatus67=$ERROR
-      ingfo+=("SS 2022 GRPC TLS")
+      ingfo+=("SS 2022 HTTP TLS")
       dahlah+=("err69")
 else
       sstatus67=$AKTIF
       mantap+=("hore69")
 fi
-if [[ $status67 == "" ]]; then
-      sstatus67=$ERROR
-      ingfo+=("SS 2022 GRPC NON TLS")
-      dahlah+=("err69")
+if [[ $status68 == "" ]]; then
+      sstatus68=$ERROR
+      ingfo+=("SS 2022 HTTP NON TLS")
+      dahlah+=("err70")
 else
-      sstatus67=$AKTIF
-      mantap+=("hore69")
+      sstatus68=$AKTIF
+      mantap+=("hore70")
+fi
+if [[ $status69 == "" ]]; then
+      sstatus69=$ERROR
+      ingfo+=("SS 2022 KCP TLS")
+      dahlah+=("err71")
+else
+      sstatus69=$AKTIF
+      mantap+=("hore71")
+fi
+if [[ $status70 == "" ]]; then
+      sstatus70=$ERROR
+      ingfo+=("SS 2022 H2C TLS")
+      dahlah+=("err72")
+else
+      sstatus70=$AKTIF
+      mantap+=("hore72")
+fi
+if [[ $status71 == "" ]]; then
+      sstatus71=$ERROR
+      ingfo+=("SS 2022 UDP")
+      dahlah+=("err73")
+else
+      sstatus71=$AKTIF
+      mantap+=("hore73")
+fi
+if [[ $status72 == "" ]]; then
+      sstatus72=$ERROR
+      ingfo+=("SS 2022 WS TLS")
+      dahlah+=("err74")
+else
+      sstatus72=$AKTIF
+      mantap+=("hore74")
+fi
+if [[ $status73 == "" ]]; then
+      sstatus73=$ERROR
+      ingfo+=("SS 2022 WS NON TLS")
+      dahlah+=("err75")
+else
+      sstatus73=$AKTIF
+      mantap+=("hore75")
+fi
+if [[ $status74 == "" ]]; then
+      sstatus74=$ERROR
+      ingfo+=("SS 2022 TCP TLS")
+      dahlah+=("err76")
+else
+      sstatus74=$AKTIF
+      mantap+=("hore76")
+fi
+if [[ $status75 == "" ]]; then
+      sstatus75=$ERROR
+      ingfo+=("SS 2022 GRPC TLS")
+      dahlah+=("err77")
+else
+      sstatus75=$AKTIF
+      mantap+=("hore77")
+fi
+if [[ $status76 == "" ]]; then
+      sstatus76=$ERROR
+      ingfo+=("SS 2022 GRPC NON TLS")
+      dahlah+=("err78")
+else
+      sstatus76=$AKTIF
+      mantap+=("hore78")
 fi
 jumlah1="${#mantap[@]}"
 jumlah2="${#dahlah[@]}"
@@ -874,23 +941,30 @@ echo -e "$bl🔰 $off $bd TROJAN QUIC TLS             $off : $sstatus51🔰"
 echo -e "$bl🔰 $off $bd TROJAN GRPC TLS             $off : $sstatus52🔰"
 echo -e "$bl🔰 $off $bd TROJAN WS TLS               $off : $sstatus53🔰"
 echo -e "$bl🔰 $off $bd TROJAN WS NON TLS           $off : $sstatus54🔰"
-echo -e "$bl🔰 $off $bd TROJAN GO                   $off : $sstatus56🔰"
-echo -e "$bl🔰 $off $bd XRAY MT PROTO               $off : $sstatus57🔰"
-echo -e "$bl🔰 $off $bd SOCKS5 WS TLS               $off : $sstatus58🔰"
-echo -e "$bl🔰 $off $bd SOCKS5 WS NON TLS           $off : $sstatus59🔰"
-echo -e "$bl🔰 $off $bd SOCKS5 TCP TLS              $off : $sstatus60🔰"
-echo -e "$bl🔰 $off $bd SOCKS5 GRPC TLS             $off : $sstatus61🔰"
+echo -e "$bl🔰 $off $bd TROJAN GO                   $off : $sstatus55🔰"
+echo -e "$bl🔰 $off $bd XRAY MT PROTO               $off : $sstatus56🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 WS TLS               $off : $sstatus57🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 WS NON TLS           $off : $sstatus58🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 TCP TLS              $off : $sstatus59🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 GRPC TLS             $off : $sstatus60🔰"
 echo -e "$bl🔰 $off $bd SOCKS5 GRPC NON TLS         $off : $sstatus61🔰"
-echo -e "$bl🔰 $off $bd SHADOWSOCKS WS TLS          $off : $sstatus62🔰"
-echo -e "$bl🔰 $off $bd SHADOWSOCKS WS NON TLS      $off : $sstatus63🔰"
-echo -e "$bl🔰 $off $bd SHADOWSOCKS TCP TLS         $off : $sstatus64🔰"
-echo -e "$bl🔰 $off $bd SHADOWSOCKS GRPC TLS        $off : $sstatus65🔰"
-echo -e "$bl🔰 $off $bd SHADOWSOCKS GRPC NON TLS    $off : $sstatus65🔰"
-echo -e "$bl🔰 $off $bd SS 2022 WS TLS              $off : $sstatus65🔰"
-echo -e "$bl🔰 $off $bd SS 2022 WS NON TLS          $off : $sstatus65🔰"
-echo -e "$bl🔰 $off $bd SS 2022 TCP TLS             $off : $sstatus66🔰"
-echo -e "$bl🔰 $off $bd SS 2022 GRPC TLS            $off : $sstatus67🔰"
-echo -e "$bl🔰 $off $bd SS 2022 GRPC NON TLS        $off : $sstatus67🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 KCP TLS              $off : $sstatus62🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 H2C TLS              $off : $sstatus63🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 UDP                  $off : $sstatus64🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 QUIC TLS             $off : $sstatus65🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 HTTP TLS             $off : $sstatus66🔰"
+echo -e "$bl🔰 $off $bd SOCKS5 HTTP NON TLS         $off : $sstatus67🔰"
+echo -e "$bl🔰 $off $bd SS 2022 QUIC TLS            $off : $sstatus68🔰"
+echo -e "$bl🔰 $off $bd SS 2022 HTTP TLS            $off : $sstatus69🔰"
+echo -e "$bl🔰 $off $bd SS 2022 HTTP NON TLS        $off : $sstatus70🔰"
+echo -e "$bl🔰 $off $bd SS 2022 KCP TLS             $off : $sstatus71🔰"
+echo -e "$bl🔰 $off $bd SS 2022 H2C TLS             $off : $sstatus72🔰"
+echo -e "$bl🔰 $off $bd SS 2022 UDP                 $off : $sstatus73🔰"
+echo -e "$bl🔰 $off $bd SS 2022 WS TLS              $off : $sstatus74🔰"
+echo -e "$bl🔰 $off $bd SS 2022 WS NON TLS          $off : $sstatus75🔰"
+echo -e "$bl🔰 $off $bd SS 2022 TCP TLS             $off : $sstatus76🔰"
+echo -e "$bl🔰 $off $bd SS 2022 GRPC TLS            $off : $sstatus77🔰"
+echo -e "$bl🔰 $off $bd SS 2022 GRPC NON TLS        $off : $sstatus78🔰"
 echo -e "\033[0;31m╒━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╕\033[0m"
 echo -e "\E[46;1;46m             🔰 SOLO THE SPIRIT OF JAVA 🔰              \E[0m"
 echo -e "\033[0;31m╘━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╛\033[0m"
