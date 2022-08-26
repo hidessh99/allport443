@@ -139,10 +139,15 @@ rm -f /etc/xray/vmess-$user-nontls.json /etc/xray/vmess-$user-nontls.json
 systemctl restart xray.service
 clear
 echo ""
-echo "==============================="
-echo "  Shadowsocks 2022 Account Deleted  "
-echo "==============================="
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[1;46m🔰Akun SS 2022 Dihapus🔰 \E[0m"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo "Username  : $user"
 echo "Expired   : $exp"
-echo "==============================="
-echo "Script By @zerossl"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo ""
+read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
+    
+ssmenu
