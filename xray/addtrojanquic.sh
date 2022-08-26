@@ -44,7 +44,7 @@ systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvmess.service
 systemctl restart xvless
-systemctl restart nginx
+#systemctl restart nginx
 service cron restart
 clear
 echo -e ""
