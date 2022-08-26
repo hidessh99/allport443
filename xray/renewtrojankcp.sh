@@ -117,12 +117,19 @@ sed -i "s/### $user $exp/### $user $exp4/g" /etc/xray/xtrojan.json
 sed -i "s/### $user $exp/### $user $exp4/g" /etc/xray/xvmess.json
 sed -i "s/### $user $exp/### $user $exp4/g" /etc/xray/xvless.json
 sed -i "s/### $user $exp/### $user $exp4/g" /etc/xray/config.json
-clear
-echo ""
-echo "================================"
-echo "  TROJAN Account Renewed  "
-echo "================================"
+systemctl restart xray.service
+systemctl restart xvless
+systemctl restart xvmess
+systemctl restart xtrojan
+systemctl restart xss
+echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[1;46m  🔰Akun Trojan DiRENEW🔰 \E[m"
+echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo "Username  : $user"
-echo "Expired  : $exp4"
-echo "================================"
-echo "Script By @zerossl"
+echo "Expired   : $exp4"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo ""
+read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
+trojanmenu
