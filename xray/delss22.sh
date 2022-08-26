@@ -25,7 +25,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/xss.json")
 	echo ""
 	echo " Select the existing client you want to remove"
 	echo " Press CTRL+C to return"
-	echo " ==============================="
+	echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	echo "     No  Expired   User"
 	grep -E "^### " "/etc/xray/xss.json" | cut -d ' ' -f 2-3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
@@ -46,7 +46,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/xvless.json")
 	echo ""
 	echo " Select the existing client you want to remove"
 	echo " Press CTRL+C to return"
-	echo " ==============================="
+	echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	echo "     No  Expired   User"
 	grep -E "^### " "/etc/xray/xvless.json" | cut -d ' ' -f 2-3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
@@ -67,7 +67,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/xvmess.json")
 	echo ""
 	echo " Select the existing client you want to remove"
 	echo " Press CTRL+C to return"
-	echo " ==============================="
+	echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	echo "     No  Expired   User"
 	grep -E "^### " "/etc/xray/xvmess.json" | cut -d ' ' -f 2-3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
@@ -88,7 +88,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/xtrojan.json")
 	echo ""
 	echo " Select the existing client you want to remove"
 	echo " Press CTRL+C to return"
-	echo " ==============================="
+	echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	echo "     No  Expired   User"
 	grep -E "^### " "/etc/xray/xtrojan.json" | cut -d ' ' -f 2-3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
@@ -109,7 +109,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/xss.json")
 	echo ""
 	echo " Select the existing client you want to remove"
 	echo " Press CTRL+C to return"
-	echo " ==============================="
+	echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	echo "     No  Expired   User"
 	grep -E "^### " "/etc/xray/xss.json" | cut -d ' ' -f 2-3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
