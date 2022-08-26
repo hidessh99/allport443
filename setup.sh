@@ -173,10 +173,10 @@ echo -e " 🔰 SOCKS5 GRPC NON TLS            : 80" |tee -a log-install.txt
 echo -e " 🔰 SOCKS5 HTTP TLS                : 443" |tee -a log-install.txt
 echo -e " 🔰 SOCKS5 HTTP NON TLS            : 888" |tee -a log-install.txt
 echo -e " 🔰 SOCKS5 TCP TLS                 : 10809 |tee -a log-install.txt
-#echo -e " 🔰 SHADOWSOCKS HTTP TLS           : 443" |tee -a log-install.txt
-#echo -e " 🔰 SHADOWSOCKS UDP                : 333" |tee -a log-install.txt
-#echo -e " 🔰 SHADOWSOCKS WS TLS             : 443" |tee -a log-install.txt
-#echo -e " 🔰 SHADOWSOCKS WS NON TLS         : 80" |tee -a log-install.txt
+echo -e " 🔰 SOCKS QUIC TLS                 : 443" |tee -a log-install.txt
+echo -e " 🔰 SOCKS UDP                      : 999" |tee -a log-install.txt
+echo -e " 🔰 SOCKS5 KCP TLS                 : 443" |tee -a log-install.txt
+echo -e " 🔰 SOCKS5 H2C TLS                 : 80" |tee -a log-install.txt
 #echo -e " 🔰 SHADOWSOCKS GRPC TLS           : 443" |tee -a log-install.txt
 #echo -e " 🔰 SHADOWSOCKS GRPC NON TLS       : 80" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 HTTP TLS      : 443" |tee -a log-install.txt
