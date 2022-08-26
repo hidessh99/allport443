@@ -45,7 +45,7 @@ systemctl restart ssh-ohp
 systemctl restart dropbear-ohp
 systemctl restart openvpn-ohp
 systemctl restart privoxy
-systemctl restart nginx
+#systemctl restart nginx
 useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
 exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
 hariini=`date -d "0 days" +"%Y-%m-%d"`
@@ -63,7 +63,7 @@ echo -e "SSL/TLS        $off:$ssl"
 echo -e "Privoxy        $off:4000,5000"
 echo -e "Squid          $off:$sqd"
 echo -e "WS TLS         $off:$ws"
-echo -e "WS NON TLS     $off:$ws2/wait fix"
+echo -e "WS NON TLS     $off:$ws2"
 echo -e "OVPN WS TLS    $off:$otls/wait fix"
 echo -e "OVPN WS NONTLS $off:$onontls/red/green response"
 echo -e "Port TCP       $off:$otcp"
@@ -75,7 +75,7 @@ echo -e "Expired :$expi"
 echo -e "Link OVPN:http://$MYIP:88/"
 echo -e "━━━━━━━━━━━━━━━━━━━"
 echo -e "Payload SSH & OVPN WEBSOCKET"
-echo -e "GET ws://bugmu.com [protocol][crlf]/ HTTP/1.1[crlf]Host: $domain[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf][crlf]"
+echo -e "GET ws://bugmu.com [protocol][crlf]\/ HTTP/1.1\[crlf]Host: $domain[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf][crlf]"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
