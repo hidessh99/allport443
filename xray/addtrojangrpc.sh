@@ -84,7 +84,7 @@ systemctl restart xtrojan.service
 systemctl restart xvless
 systemctl restart xvmess
 systemctl restart xss
-systemctl restart nginx
+#systemctl restart nginx
 service cron restart
 clear
 echo -e ""
