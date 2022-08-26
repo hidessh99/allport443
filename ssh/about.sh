@@ -22,5 +22,5 @@ echo -e "\033[1;31m════════════════════�
 echo -e "\e[1;46m          🔰 LUXURY EDITION BY ZEROSSL 🔰          \e[m "
 echo -e "\033[1;31m═══════════════════════════════════════════════════\033[0m"
 echo ""
-read -n 1 -s -g -p "Ketik Bebas Untuk Ke Menu Utama"
+read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
 menu
