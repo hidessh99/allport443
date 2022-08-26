@@ -109,14 +109,15 @@ echo -e "\E[44;1;41m           🔰 SETUP SERVER BY ZEROSSL 🔰            \E[0
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""  |tee -a log-install.txt
 echo -e " 🔰 >>> Service & Port" |tee -a log-install.txt
-echo -e " 🔰 PORT OPENSSH                   : 443" |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN TCP                  : 700" |tee -a log-install.txt
+echo -e " 🔰 PORT OPENSSH                   : not publish" |tee -a log-install.txt
+echo -e " 🔰 PORT OVPN TCP                  : 600" |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN UDP                  : 800" |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN SSL                  : 443" |tee -a log-install.txt
-echo -e " 🔰 PORT STUNNEL5                  : 443, 500, 600" |tee -a log-install.txt
+echo -e " 🔰 PORT OVPN SSL                  : 900,443" |tee -a log-install.txt
+echo -e " 🔰 PORT STUNNEL5                  : 400, 500" |tee -a log-install.txt
 echo -e " 🔰 PORT DROPBEAR                  : 300, 200" |tee -a log-install.txt
-echo -e " 🔰 PORT SQUID                     : 3128, 3228" |tee -a log-install.txt
-echo -e " 🔰 UDPGW                          : 9100, 9200, 9300-9900" |tee -a log-install.txt
+echo -e " 🔰 PORT SQUID                     : 4000, 5000" |tee -a log-install.txt
+echo -e " 🔰 PORT PRIVOXY                   : 3128, 3228" |tee -a log-install.txt
+echo -e " 🔰 UDPGW                          : 9100,9200,9300-9900" |tee -a log-install.txt
 echo -e " 🔰 NGINX                          : 88" |tee -a log-install.txt
 echo -e " 🔰 WIREGUARD                      : 591" |tee -a log-install.txt
 echo -e " 🔰 L2TP/IPSEC VPN                 : 1701" |tee -a log-install.txt
@@ -126,9 +127,9 @@ echo -e " 🔰 SHADOWSOCKS-R                  : 1444-1543" |tee -a log-install.t
 echo -e " 🔰 SS-OBFS TLS                    : 2444-2943" |tee -a log-install.txt
 echo -e " 🔰 SS-OBFS HTTP                   : 2944-3442" |tee -a log-install.txt
 echo -e " 🔰 WEBSOCKET TLS                  : 443" |tee -a log-install.txt
-echo -e " 🔰 WEBSOCKET NON TLS              : 80" |tee -a log-install.txt
+echo -e " 🔰 WEBSOCKET NON TLS              : 8880,80" |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN WS TLS               : 443" |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN WS NON TLS           : 80,8080" |tee -a log-install.txt
+echo -e " 🔰 PORT OVPN WS NON TLS           : 8080,80" |tee -a log-install.txt
 echo -e " 🔰 OHP SSH                        : 8181" |tee -a log-install.txt
 echo -e " 🔰 OHP DROPBEAR                   : 8282" |tee -a log-install.txt
 echo -e " 🔰 OHP OVPN                       : 8383" |tee -a log-install.txt
