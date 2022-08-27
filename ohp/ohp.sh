@@ -106,6 +106,27 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 END
+
+# OpenVPN OHP 8383
+cat > /etc/systemd/system/stunnelws-ohp.service << END
+[Unit]]
+Description=OpenVPN OHP Redirection Service
+Documentation=https://t.me/zerossl
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/ohpserver -port 8585 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:650
+Restart=on-failure
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
+END
 systemctl daemon-reload
 systemctl enable ssh-ohp
 systemctl restart ssh-ohp
