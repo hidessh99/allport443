@@ -217,25 +217,24 @@ wget -O /home/vps/public_html/index.html "https://${wisnuvpn}/index.html"
 cd
 wget -O /usr/bin/badvpn-udpgw "https://${wisnuvpn}/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 100' /etc/rc.local
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200 --max-clients 100' /etc/rc.local
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300 --max-clients 100' /etc/rc.local
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400 --max-clients 100' /etc/rc.local
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500 --max-clients 100' /etc/rc.local
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600 --max-clients 100' /etc/rc.local
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700 --max-clients 100' /etc/rc.local
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800 --max-clients 100' /etc/rc.local
-sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 100' /etc/rc.local
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200 --max-clients 100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300 --max-clients 100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400 --max-clients 100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500 --max-clients 100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600 --max-clients 100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700 --max-clients 100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800 --max-clients 100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 100
-
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900' /etc/rc.local
 # setting port ssh
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 5015' /etc/ssh/sshd_config
@@ -310,7 +309,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="--user sslh --listen 0.0.0.0:2053 --ssl 127.0.0.1:900 --ssh 127.0.0.1:22 --openvpn 127.0.0.1:600 --http 127.0.0.1:700 --pidfile /var/run/sslh/sslh.pid"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2053 --ssl 127.0.0.1:8443 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:600 --http 127.0.0.1:700 --pidfile /var/run/sslh/sslh.pid"
 
 END
 
@@ -364,7 +363,7 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 [openssh]
 accept = 400
-connect = 127.0.0.1:22
+connect = 127.0.0.1:2053
 
 [dropbear]
 accept = 500
@@ -372,7 +371,7 @@ connect = 127.0.0.1:300
 
 [openvpn]
 accept = 900
-connect = 127.0.0.1:2053
+connect = 127.0.0.1:8443
 
 [openvpn]
 accept = 425
@@ -381,6 +380,7 @@ connect = 127.0.0.1:600
 [stunnelws]
 accept = 222
 connect = 700
+
 END
 
 # make a certificate
