@@ -246,7 +246,7 @@ echo "Port 5015" >> /etc/ssh/sshd_config
 apt -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=250/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 300 -p 200"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 300"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
@@ -309,7 +309,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="--user sslh --listen 0.0.0.0:2053 --ssl 127.0.0.1:8443 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:600 --http 127.0.0.1:700 --pidfile /var/run/sslh/sslh.pid"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2053 --ssl 127.0.0.1:8443 --ssh 127.0.0.1:443 --openvpn 127.0.0.1:600 --http 127.0.0.1:700 --pidfile /var/run/sslh/sslh.pid"
 
 END
 
@@ -363,18 +363,14 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 [openssh]
 accept = 400
-connect = 127.0.0.1:2053
+connect = 127.0.0.1:443
 
 [dropbear]
 accept = 500
-connect = 127.0.0.1:300
+connect = 127.0.0.1:2053
 
 [openvpn]
 accept = 900
-connect = 127.0.0.1:8443
-
-[openvpn]
-accept = 425
 connect = 127.0.0.1:600
 
 [stunnelws]
