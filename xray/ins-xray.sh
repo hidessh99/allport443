@@ -742,7 +742,6 @@ cat <<EOF > /etc/trojan-go/config.json
     "prefer_server_cipher": true,
     "sni": "$domain",
     "alpn": [
-    "h2", 
     "http/1.1"
     ],
     "session_ticket": true,
