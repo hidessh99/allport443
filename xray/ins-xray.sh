@@ -710,102 +710,71 @@ touch /etc/trojan-go/akun.conf
 touch /etc/trojan-go/uuid.txt
 
 # Installing Trojan Go
-mkdir -p /etc/trojan-go/
-chmod 777 /etc/trojan-go/
-touch /etc/trojan-go/trojan-go.pid
-wget -O /etc/trojan-go/trojan-go https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/trojan-go
-wget -O /etc/trojan-go/geoip.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geoip.dat
-wget -O /etc/trojan-go/geosite.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geosite.dat
-chmod +x /etc/trojan-go/trojan-go
-cat <<EOF > /etc/trojan-go/config.json
+mkd# Install Trojan Go
+latest_version="$(curl -s "https://api.github.com/repos/p4gefau1t/trojan-go/releases" | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
+trojango_link="https://github.com/p4gefau1t/trojan-go/releases/download/v${latest_version}/trojan-go-linux-amd64.zip"
+mkdir -p "/usr/bin/trojan-go"
+mkdir -p "/etc/trojan-go"
+cd `mktemp -d`
+curl -sL "${trojango_link}" -o trojan-go.zip
+unzip -q trojan-go.zip && rm -rf trojan-go.zip
+mv trojan-go /usr/local/bin/trojan-go
+chmod +x /usr/local/bin/trojan-go
+mkdir /var/log/trojan-go/
+touch /etc/trojan-go/akun.conf
+touch /var/log/trojan-go/trojan-go.log
+
+# Buat Config Trojan Go
+cat > /etc/trojan-go/config.json << END
 {
-    "run_type": "server",
-    "local_addr": "0.0.0.0",
-    "local_port": 2087,
-    "remote_addr": "127.0.0.1",
-    "remote_port": 88,
-    "log_level": 1,
-    "log_file": "/var/log/trojan-go/trojan-go.log",
-    "password": [
-        "$uuid"
-    ],
-  "disable_http_check": false,
+  "run_type": "server",
+  "local_addr": "0.0.0.0",
+  "local_port": 2087,
+  "remote_addr": "127.0.0.1",
+  "remote_port": 88,
+  "log_level": 1,
+  "log_file": "/var/log/trojan-go/trojan-go.log",
+  "password": [
+      "$uuid"
+  ],
+  "disable_http_check": true,
   "udp_timeout": 60,
   "ssl": {
-    "verify": true,
-    "verify_hostname": true,
-    "cert": "/etc/xray/xray.crt",
-    "key": "/etc/xray/xray.key",
+    "verify": false,
+    "verify_hostname": false,
+    "cert": "/etc/ssl/private/fullchain.pem",
+    "key": "/etc/ssl/private/privkey.pem",
     "key_password": "",
-    "cipher": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+    "cipher": "",
     "curves": "",
-    "prefer_server_cipher": true,
+    "prefer_server_cipher": false,
     "sni": "$domain",
     "alpn": [
-    "http/1.1"
+      "http/1.1"
     ],
     "session_ticket": true,
     "reuse_session": true,
     "plain_http_response": "",
     "fallback_addr": "127.0.0.1",
-    "fallback_port": 443,
-    "fingerprint": ""
+    "fallback_port": 2053,
+    "fingerprint": "firefox"
   },
   "tcp": {
     "no_delay": true,
     "keep_alive": true,
-    "prefer_ipv4": false
+    "prefer_ipv4": true
   },
   "mux": {
-    "enabled": true,
+    "enabled": false,
     "concurrency": 8,
-    "idle_timeout": 300
-  },
-  "router": {
-    "enabled": true,
-    "bypass": [],
-    "proxy": [],
-    "block": [],
-    "default_policy": "proxy",
-    "domain_strategy": "as_is",
-    "geoip": "/etc/trojan-go/geoip.dat",
-    "geosite": "/etc/trojan-go/geosite.dat"
+    "idle_timeout": 60
   },
   "websocket": {
     "enabled": true,
     "path": "/gandring-go",
     "host": "$domain"
   },
-  "shadowsocks": {
-    "enabled": false,
-    "method": "AES-128-GCM",
-    "password": ""
-  },
-  "transport_plugin": {
-    "enabled": false,
-    "type": "",
-    "command": "",
-    "plugin_option": "",
-    "arg": [],
-    "env": []
-  },
-  "forward_proxy": {
-    "enabled": false,
-    "proxy_addr": "",
-    "proxy_port": 0,
-    "username": "",
-    "password": ""
-  },
-  "mysql": {
-    "enabled": false,
-    "server_addr": "localhost",
-    "server_port": 3306,
-    "database": "",
-    "username": "",
-    "password": "",
-    "check_rate": 60
-  },
-  "api": {
+    "api": {
     "enabled": false,
     "api_addr": "",
     "api_port": 0,
@@ -818,7 +787,7 @@ cat <<EOF > /etc/trojan-go/config.json
     }
   }
 }
-EOF
+END
 cat <<EOF > /etc/systemd/system/trojan-go.service
 [Unit]
 Description=TROJAN-GO ROUTING GAJAH DEMAK BY ZEROSSL
@@ -837,25 +806,6 @@ LimitNOFILE=infinity
 WantedBy=multi-user.target
 
 EOF
-
-cat <<EOF > /etc/systemd/system/trojan-go@.service 
-[Unit]
-Description=TROJAN-GO ROUTING DAM COL PENGKOL BY WISNU
-Documentation=https://p4gefau1t.github.io/trojan-go/
-After=network.target nss-lookup.target
-
-[Service]
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/etc/trojan-go/trojan-go -config /etc/trojan-go/%i.json
-Restart=on-failure
-RestartSec=10s
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
 
 cat <<EOF > /etc/trojan-go/uuid.txt
 $uuid
