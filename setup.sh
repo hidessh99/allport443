@@ -112,11 +112,11 @@ echo -e " 🔰 >>> Service & Port" |tee -a log-install.txt
 echo -e " 🔰 PORT OPENSSH                   : not publish" |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN TCP                  : 600" |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN UDP                  : 800" |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN SSL                  : 900,443" |tee -a log-install.txt
-echo -e " 🔰 PORT STUNNEL5                  : 400, 500" |tee -a log-install.txt
-echo -e " 🔰 PORT DROPBEAR                  : 300, 200" |tee -a log-install.txt
-echo -e " 🔰 PORT SQUID                     : 4000, 5000" |tee -a log-install.txt
-echo -e " 🔰 PORT PRIVOXY                   : 3128, 3228" |tee -a log-install.txt
+echo -e " 🔰 PORT OVPN SSL                  : 443" |tee -a log-install.txt
+echo -e " 🔰 PORT STUNNEL5                  : 443,400,500" |tee -a log-install.txt
+echo -e " 🔰 PORT DROPBEAR                  : 443,300,200" |tee -a log-install.txt
+echo -e " 🔰 PORT SQUID                     : 4000,5000" |tee -a log-install.txt
+echo -e " 🔰 PORT PRIVOXY                   : 3128,3228" |tee -a log-install.txt
 echo -e " 🔰 UDPGW                          : 9100,9200,9300-9900" |tee -a log-install.txt
 echo -e " 🔰 NGINX                          : 88" |tee -a log-install.txt
 echo -e " 🔰 WIREGUARD                      : 591" |tee -a log-install.txt
