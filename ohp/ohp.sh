@@ -136,6 +136,8 @@ systemctl enable openvpn-ohp
 systemctl restart openvpn-ohp
 systemctl enable stunnel-ohp
 systemctl restart stunnel-ohp
+systemctl enable stunnelws-ohp
+systemctl restart stunnelws-ohp
 #------------------------------
 printf 'INSTALLATION COMPLETED !\n'
 sleep 0.5
@@ -162,6 +164,13 @@ else
 fi
 sleep 0.5
 if [ -n "$(ss -tupln | grep ohpserver | grep -w 8484)" ]
+then
+	echo 'OpenVPN OHP Redirection Running'
+else
+	echo 'OpenVPN OHP Redirection Not Found, please check manually'
+fi
+sleep 0.5
+if [ -n "$(ss -tupln | grep ohpserver | grep -w 8585)" ]
 then
 	echo 'OpenVPN OHP Redirection Running'
 else
