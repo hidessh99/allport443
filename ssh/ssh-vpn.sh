@@ -378,6 +378,10 @@ accept = 900
 connect = 127.0.0.1:600
 
 [stunnelws]
+accept = 555
+connect = 650
+
+[stunnelws]
 accept = 222
 connect = 700
 
