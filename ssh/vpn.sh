@@ -42,8 +42,9 @@ cp /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so /usr/lib
 sed -i 's/#AUTOSTART="all"/AUTOSTART="all"/g' /etc/default/openvpn
 
 # restart openvpn dan cek status openvpn
-systemctl enable --now openvpn-server@server-tcp
-systemctl enable --now openvpn-server@server-udp
+systemctl enable --now openvpn-server@server-GANDRING-TCP
+systemctl enable --now openvpn-server@server-GANDRING-UDP
+systemctl enable --now openvpn-server@server-GANDRING-SSL-WS
 /etc/init.d/openvpn restart
 /etc/init.d/openvpn status
 
@@ -209,7 +210,7 @@ cp /etc/openvpn/GANDRING-SSL-WS.ovpn /home/vps/public_html/GANDRING-SSL-WS.ovpn
 
 iptables -t nat -I POSTROUTING -s 10.1.0.0/32 -o $ANU -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 10.2.0.0/32 -o $ANU -j MASQUERADE
-#iptables -t nat -I POSTROUTING -s 10.3.0.0/32 -o $ANU -j MASQUERADE
+iptables -t nat -I POSTROUTING -s 10.3.0.0/32 -o $ANU -j MASQUERADE
 #iptables -t nat -I POSTROUTING -s 10.4.0.0/32 -o $ANU -j MASQUERADE
 iptables-save > /etc/iptables.up.rules
 chmod +x /etc/iptables.up.rules
