@@ -430,8 +430,6 @@ END
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
 base64=$(openssl rand -base64 16)
-password=$base64
-cp password /etc/xray/passwd
 domain=$(cat /root/domain)
 # // Certificate File
 path_crt="/etc/xray/xray.crt"
@@ -728,66 +726,69 @@ touch /var/log/trojan-go/trojan-go.log
 cat > /etc/trojan-go/config.json << END
 {
   "run_type": "server",
-  "local_addr": "0.0.0.0",
-  "local_port": 2087,
-  "remote_addr": "127.0.0.1",
-  "remote_port": 88,
-  "log_level": 1,
-  "log_file": "/var/log/trojan-go/trojan-go.log",
-  "password": [
-      "$uuid"
+   "local_addr": "0.0.0.0",
+    "local_port": 2087,
+     "remote_addr": "127.0.0.1",
+      "remote_port": 88,
+       "log_level": 1,
+        "log_file": "/var/log/trojan-go/trojan-go.log",
+         "password": [
+          "$uuid"
   ],
   "disable_http_check": true,
-  "udp_timeout": 60,
-  "ssl": {
-    "verify": false,
-    "verify_hostname": false,
-    "cert": "/etc/ssl/private/fullchain.pem",
-    "key": "/etc/ssl/private/privkey.pem",
-    "key_password": "",
-    "cipher": "",
-    "curves": "",
-    "prefer_server_cipher": false,
-    "sni": "$domain",
-    "alpn": [
-      "http/1.1"
-    ],
-    "session_ticket": true,
-    "reuse_session": true,
+   "udp_timeout": 60,
+    "ssl": {
+     "verify": false,
+      "verify_hostname": false,
+       "cert": "/etc/xray/xray.crt",
+        "key": "/etc/xray/xray.key",
+         "key_password": "",
+          "cipher": "",
+           "curves": "",
+            "prefer_server_cipher": false,
+             "sni": "$domain",
+              "alpn": [
+               "h2",
+                "http/1.1"
+  ],
+  "session_ticket": true,
+   "reuse_session": true,
     "plain_http_response": "",
-    "fallback_addr": "127.0.0.1",
-    "fallback_port": 2053,
-    "fingerprint": "firefox"
+     "fallback_addr": "127.0.0.1",
+      "fallback_port": 9443,
+       "fingerprint": "chrome"
   },
   "tcp": {
-    "no_delay": true,
+   "no_delay": true,
     "keep_alive": true,
-    "prefer_ipv4": true
+     "prefer_ipv4": true
   },
   "mux": {
-    "enabled": false,
+   "enabled": true,
     "concurrency": 8,
-    "idle_timeout": 60
+     "idle_timeout": 3060
   },
   "websocket": {
-    "enabled": true,
+   "enabled": true,
     "path": "/gandring-go",
-    "host": "$domain"
+     "host": "$domain"
   },
-    "api": {
-    "enabled": false,
-    "api_addr": "",
-    "api_port": 0,
-    "ssl": {
-      "enabled": false,
-      "key": "",
-      "cert": "",
-      "verify_client": false,
-      "client_cert": []
+  "api": {
+   "enabled": true,
+    "api_addr": "127.0.0.1",
+     "api_port": 10808,
+      "ssl": {
+       "enabled": true,
+        "key": "/etc/xray/xray.crt",
+         "cert": "etc/xray/xray.key",
+          "verify_client": false,
+           "client_cert": []
     }
   }
 }
 END
+chmod +x /etc/trojan-go/config.json
+
 cat <<EOF > /etc/systemd/system/trojan-go.service
 [Unit]
 Description=Trojan-Go Service Mod By zerossl
