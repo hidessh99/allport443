@@ -114,6 +114,18 @@ echo '<ca>' >> /etc/openvpn/GANDRING-TCP.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/GANDRING-TCP.ovpn
 echo '</ca>' >> /etc/openvpn/GANDRING-TCP.ovpn
 
+echo '<cert>' >> /etc/openvpn/GANDRING-TCP.ovpn
+cat /etc/openvpn/server/server.crt >> /etc/openvpn/GANDRING-TCP.ovpn
+echo '</cert>' >> /etc/openvpn/GANDRING-TCP.ovpn
+
+echo '<key>' >> /etc/openvpn/GANDRING-TCP.ovpn
+cat /etc/openvpn/server/server.key >> /etc/openvpn/GANDRING-TCP.ovpn
+echo '</key>' >> /etc/openvpn/GANDRING-TCP.ovpn
+
+echo '<tls-auth>' >> /etc/openvpn/GANDRING-TCP.ovpn
+cat /etc/openvpn/server/tls-auth.key >> /etc/openvpn/GANDRING-TCP.ovpn
+echo '</tls-auth>' >> /etc/openvpn/GANDRING-TCP.ovpn
+
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 600 )
 cp /etc/openvpn/GANDRING-TCP.ovpn /home/vps/public_html/GANDRING-TCP.ovpn
 
@@ -121,6 +133,18 @@ cp /etc/openvpn/GANDRING-TCP.ovpn /home/vps/public_html/GANDRING-TCP.ovpn
 echo '<ca>' >> /etc/openvpn/GANDRING-UDP.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/GANDRING-UDP.ovpn
 echo '</ca>' >> /etc/openvpn/GANDRING-UDP.ovpn
+
+echo '<cert>' >> /etc/openvpn/GANDRING-UDP.ovpn
+cat /etc/openvpn/server/server.crt >> /etc/openvpn/GANDRING-UDP.ovpn
+echo '</cert>' >> /etc/openvpn/GANDRING-UDP.ovpn
+
+echo '<key>' >> /etc/openvpn/GANDRING-UDP.ovpn
+cat /etc/openvpn/server/server.key >> /etc/openvpn/GANDRING-UDP.ovpn
+echo '</key>' >> /etc/openvpn/GANDRING-UDP.ovpn
+
+echo '<tls-auth>' >> /etc/openvpn/GANDRING-UDP.ovpn
+cat /etc/openvpn/server/tls-auth.key >> /etc/openvpn/GANDRING-UDP.ovpn
+echo '</tls-auth>' >> /etc/openvpn/GANDRING-UDP.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 800 )
 cp /etc/openvpn/GANDRING-UDP.ovpn /home/vps/public_html/GANDRING-UDP.ovpn
@@ -130,17 +154,17 @@ echo '<ca>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 echo '</ca>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 
-#echo '<cert>' >> /etc/openvpn/ssl.ovpn
-#cat /etc/openvpn/server/server.crt >> /etc/openvpn/ssl.ovpn
-#echo '</cert>' >> /etc/openvpn/ssl.ovpn
+echo '<cert>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+cat /etc/openvpn/server/server.crt >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+echo '</cert>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 
-#echo '<key>' >> /etc/openvpn/ssl.ovpn
-#cat /etc/openvpn/server/server.key >> /etc/openvpn/ssl.ovpn
-#echo '</key>' >> /etc/openvpn/ssl.ovpn
+echo '<key>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+cat /etc/openvpn/server/server.key >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+echo '</key>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 
-#echo '<tls-auth>' >> /etc/openvpn/ssl.ovpn
-#cat /etc/openvpn/server/ta.key >> /etc/openvpn/ssl.ovpn
-#echo '</tls-auth>' >> /etc/openvpn/ssl.ovpn
+echo '<tls-auth>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+cat /etc/openvpn/server/tls-auth.key >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+echo '</tls-auth>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 800 )
 cp /etc/openvpn/GANDRING-SSL-WS.ovpn /home/vps/public_html/GANDRING-SSL-WS.ovpn
@@ -178,7 +202,7 @@ cat <<'mySiteOvpn' > /home/vps/public_html/index.html
 
 <li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>UDP <span class="badge light-blue darken-4">KONFIG PENAKLUK PERAWAN</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/GANDRING-UDP.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
-<li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>WS/SSL <span class="badge light-blue darken-4">KONFIG WS/SSL</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/GANDRING-SSL-WS.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
+<li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>SSL-WS <span class="badge light-blue darken-4">KONFIG SSL-WS</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/GANDRING-SSL-WS.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
 <li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>GANDRING.zip <span class="badge light-blue darken-4">HATI YANG GEMBIRA ADALAH OBAT AWET MUDA</span><br /><small></small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESSS:88/GANDRING.zip" style="float:right;"><i class="fa fa-download"></i> Download</a></li>
 
