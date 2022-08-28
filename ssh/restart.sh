@@ -13,7 +13,7 @@ LIGHT='\033[0;37m'
 # ==========================================
 clear
 echo -e ""
-echo -e "Memulai Ulang Layanan Tunnel"
+echo -e "🔰RESTART LAYANAN TUNNEL DIMULAI🏁"
 sleep 2
 systemctl restart ssrmu
 systemctl restart tls
@@ -48,13 +48,13 @@ systemctl restart trojan-go
 /etc/init.d/cron restart
 /etc/init.d/nginx restart
 systemctl restart ssrmu
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500 
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900
-echo -e "Mulai Ulang Layanan Berhasil"
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 500 >/dev/null 2>&1
+echo -e "🔰RESTART LAYANAN TUNNEL SELESAI✅"
