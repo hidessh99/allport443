@@ -34,7 +34,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 #uuid=$(cat /proc/sys/kernel/random/uuid)
 #uuid=$(openssl rand -base64 16)
 uuid=$(openssl rand -hex 7)
-tgrpc="$(cat ~/log-install.txt | grep -w "TROJAN GRPC" | cut -d: -f2|sed 's/ //g')"
+tgrpc="$(cat ~/log-install.txt | grep -w "TROJAN GRPC TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 		read -rp "Password : " -e user
 		user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
