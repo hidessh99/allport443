@@ -16,7 +16,7 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 # ==================================================
 # Link Hosting Kalian
 wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ssh"
-domain=$(cat /etc/xray/domain)
+
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
@@ -105,10 +105,11 @@ END
 
 sed -i $MYIP2 /etc/openvpn/GANDRING-SSL-WS.ovpn;
 
-cd
+
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
 /etc/init.d/openvpn restart
-
+cd
+domain=$(cat /etc/xray/domain)
 # masukkan certificatenya ke dalam config client TCP 600
 #echo '<ca>' >> /etc/openvpn/GANDRING-TCP.ovpn
 #cat /etc/openvpn/server/ca.crt >> /etc/openvpn/GANDRING-TCP.ovpn
