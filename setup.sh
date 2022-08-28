@@ -139,8 +139,8 @@ echo -e " 🔰 VMESS GRPC TLS                 : 443" |tee -a log-install.txt
 echo -e " 🔰 VMESS GRPC NON TLS             : 80" |tee -a log-install.txt
 echo -e " 🔰 VMESS H2C TLS                  : 1130" |tee -a log-install.txt
 echo -e " 🔰 VMESS QUIC TLS                 : 801" |tee -a log-install.txt
-echo -e " 🔰 VMESS KCP TLS                  : 802" |tee -a log-install.txt
-echo -e " 🔰 VMESS KCP NON TLS              : 803" |tee -a log-install.txt
+echo -e " 🔰 VMESS KCP TLS                  : 402" |tee -a log-install.txt
+echo -e " 🔰 VMESS KCP NON TLS              : 403" |tee -a log-install.txt
 echo -e " 🔰 VMESS HTTP TLS                 : 443" |tee -a log-install.txt
 echo -e " 🔰 VMESS HTTP NON TLS             : 808" |tee -a log-install.txt
 echo -e " 🔰 VLESS XTLS                     : 443" |tee -a log-install.txt
@@ -151,15 +151,15 @@ echo -e " 🔰 VLESS GRPC TLS                 : 443" |tee -a log-install.txt
 echo -e " 🔰 VLESS GRPC NON TLS             : 80" |tee -a log-install.txt
 echo -e " 🔰 VLESS H2C TLS                  : 1120" |tee -a log-install.txt
 echo -e " 🔰 VLESS QUIC TLS                 : 443" |tee -a log-install.txt
-echo -e " 🔰 VLESS KCP TLS                  : 402" |tee -a log-install.txt
-echo -e " 🔰 VLESS KCP NON TLS              : 403" |tee -a log-install.txt
+echo -e " 🔰 VLESS KCP TLS                  : 302" |tee -a log-install.txt
+echo -e " 🔰 VLESS KCP NON TLS              : 303" |tee -a log-install.txt
 echo -e " 🔰 VLESS HTTP TLS                 : 443" |tee -a log-install.txt
 echo -e " 🔰 VLESS HTTP NON TLS             : 8088" |tee -a log-install.txt
 echo -e " 🔰 TROJAN GO                      : 2087" |tee -a log-install.txt
-echo -e " 🔰 TROJAN GRPC                    : 443" |tee -a log-install.txt
+echo -e " 🔰 TROJAN GRPC TLS                : 443" |tee -a log-install.txt
 echo -e " 🔰 TROJAN HTTP TLS                : 443" |tee -a log-install.txt
 echo -e " 🔰 TROJAN HTTP NON TLS            : 880" |tee -a log-install.txt
-echo -e " 🔰 TROJAN H2C                     : 1110" |tee -a log-install.txt
+echo -e " 🔰 TROJAN H2C TLS                 : 1110" |tee -a log-install.txt
 echo -e " 🔰 TROJAN XTLS                    : 1440" |tee -a log-install.txt
 echo -e " 🔰 TROJAN QUIC TLS                : 401" |tee -a log-install.txt
 echo -e " 🔰 TROJAN KCP TLS                 : 202" |tee -a log-install.txt
@@ -176,11 +176,11 @@ echo -e " 🔰 SOCKS5 HTTP NON TLS            : 888" |tee -a log-install.txt
 echo -e " 🔰 SOCKS5 TCP TLS                 : 10809 |tee -a log-install.txt
 echo -e " 🔰 SOCKS QUIC TLS                 : 443" |tee -a log-install.txt
 echo -e " 🔰 SOCKS UDP                      : 999" |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 KCP TLS                 : 443" |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 H2C TLS                 : 80" |tee -a log-install.txt
+echo -e " 🔰 SOCKS5 KCP TLS                 : 602" |tee -a log-install.txt
+echo -e " 🔰 SOCKS5 H2C TLS                 : 1150" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 QUIC TLS      : 443" |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 KCP TLS       : 80" |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 J2C TLS       : 80" |tee -a log-install.txt
+echo -e " 🔰 SHADOWSOCKS 2022 KCP TLS       : 502" |tee -a log-install.txt
+echo -e " 🔰 SHADOWSOCKS 2022 H2C TLS       : 1140" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 HTTP TLS      : 443" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 HTTP NON TLS  : 8888" |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 UDP           : 212" |tee -a log-install.txt
