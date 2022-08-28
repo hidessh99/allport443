@@ -65,6 +65,7 @@ persist-tun
 auth-user-pass
 comp-lzo
 verb 3
+
 END
 
 sed -i $MYIP2 /etc/openvpn/GANDRING-TCP.ovpn;
@@ -83,6 +84,7 @@ persist-tun
 auth-user-pass
 comp-lzo
 verb 3
+
 END
 
 sed -i $MYIP2 /etc/openvpn/GANDRING-UDP.ovpn;
@@ -101,10 +103,10 @@ persist-tun
 auth-user-pass
 comp-lzo
 verb 3
+
 END
 
 sed -i $MYIP2 /etc/openvpn/GANDRING-SSL-WS.ovpn;
-
 
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
 /etc/init.d/openvpn restart
@@ -115,18 +117,21 @@ domain=$(cat /etc/xray/domain)
 #cat /etc/openvpn/server/ca.crt >> /etc/openvpn/GANDRING-TCP.ovpn
 #echo '</ca>' >> /etc/openvpn/GANDRING-TCP.ovpn
 echo '<ca>' >> /etc/openvpn/GANDRING-TCP.ovpn
-cat /root/.acme.sh/$domain_ecc/ca.cer >> /etc/openvpn/GANDRING-TCP.ovpn
+cd /root/.acme.sh/$domain_ecc/ca.cer >> /etc/openvpn/GANDRING-TCP.ovpn
+cp /root/.acme.sh/$domain_ecc/ca.cer >> /etc/openvpn/GANDRING-TCP.ovpn
 echo '</ca>' >> /etc/openvpn/GANDRING-TCP.ovpn
 
 echo '<cert>' >> /etc/openvpn/GANDRING-TCP.ovpn
-cat /root/.acme.sh/$domain_ecc/$domain.cer >> /etc/openvpn/GANDRING-TCP.ovpn
+cd /root/.acme.sh/$domain_ecc/$domain.cer >> /etc/openvpn/GANDRING-TCP.ovpn
+cp /root/.acme.sh/$domain_ecc/$domain.cer >> /etc/openvpn/GANDRING-TCP.ovpn
 echo '</cert>' >> /etc/openvpn/GANDRING-TCP.ovpn
 
 #echo '<key>' >> /etc/openvpn/GANDRING-TCP.ovpn
 #cat /etc/openvpn/server/server.key >> /etc/openvpn/GANDRING-TCP.ovpn
 #echo '</key>' >> /etc/openvpn/GANDRING-TCP.ovpn
 echo '<key>' >> /etc/openvpn/GANDRING-TCP.ovpn
-cat /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-TCP.ovpn
+cd /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-TCP.ovpn
+cp /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-TCP.ovpn
 echo '</key>' >> /etc/openvpn/GANDRING-TCP.ovpn
 
 #echo '<tls-auth>' >> /etc/openvpn/GANDRING-TCP.ovpn
@@ -141,21 +146,24 @@ cp /etc/openvpn/GANDRING-TCP.ovpn /home/vps/public_html/GANDRING-TCP.ovpn
 #cat /etc/openvpn/server/ca.crt >> /etc/openvpn/GANDRING-UDP.ovpn
 #echo '</ca>' >> /etc/openvpn/GANDRING-UDP.ovpn
 echo '<ca>' >> /etc/openvpn/GANDRING-UDP.ovpn
-cat /root/.acme.sh/$domain_ecc/ca.cer >> /etc/openvpn/GANDRING-UDP.ovpn
+cd /root/.acme.sh/$domain_ecc/ca.cer >> /etc/openvpn/GANDRING-UDP.ovpn
+cp /root/.acme.sh/$domain_ecc/ca.cer >> /etc/openvpn/GANDRING-UDP.ovpn
 echo '</ca>' >> /etc/openvpn/GANDRING-UDP.ovpn
 
 #echo '<cert>' >> /etc/openvpn/GANDRING-UDP.ovpn
 #cat /etc/openvpn/server/server.crt >> /etc/openvpn/GANDRING-UDP.ovpn
 #echo '</cert>' >> /etc/openvpn/GANDRING-UDP.ovpn
 echo '<cert>' >> /etc/openvpn/GANDRING-UDP.ovpn
-cat /root/.acme.sh/$domain_ecc/$domain.cer >> /etc/openvpn/GANDRING-UDP.ovpn
+cd /root/.acme.sh/$domain_ecc/$domain.cer >> /etc/openvpn/GANDRING-UDP.ovpn
+cp /root/.acme.sh/$domain_ecc/$domain.cer >> /etc/openvpn/GANDRING-UDP.ovpn
 echo '</cert>' >> /etc/openvpn/GANDRING-UDP.ovpn
 
 #echo '<key>' >> /etc/openvpn/GANDRING-UDP.ovpn
 #cat /etc/openvpn/server/server.key >> /etc/openvpn/GANDRING-UDP.ovpn
 #echo '</key>' >> /etc/openvpn/GANDRING-UDP.ovpn
 echo '<key>' >> /etc/openvpn/GANDRING-UDP.ovpn
-cat /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-UDP.ovpn
+cd /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-UDP.ovpn
+cp /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-UDP.ovpn
 echo '</key>' >> /etc/openvpn/GANDRING-UDP.ovpn
 
 #echo '<tls-auth>' >> /etc/openvpn/GANDRING-UDP.ovpn
@@ -170,26 +178,29 @@ cp /etc/openvpn/GANDRING-UDP.ovpn /home/vps/public_html/GANDRING-UDP.ovpn
 #cat /etc/openvpn/server/ca.crt >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 #echo '</ca>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 echo '<ca>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
-cat /root/.acme.sh/$domain_ecc/ca.cer >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+cd /root/.acme.sh/$domain_ecc/ca.cer >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+cp /root/.acme.sh/$domain_ecc/ca.cer >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 echo '</ca>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 
 #echo '<cert>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 #cat /etc/openvpn/server/server.crt >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 #echo '</cert>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 echo '<cert>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
-cat /root/.acme.sh/$domain_ecc/$domain.cer >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+cd /root/.acme.sh/$domain_ecc/$domain.cer >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+cp /root/.acme.sh/$domain_ecc/$domain.cer >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 echo '</cert>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 
 #echo '<key>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 #cat /etc/openvpn/server/server.key >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 #echo '</key>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 echo '<key>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
-cat /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+cd /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+cp /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 echo '</key>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 
-echo '<tls-auth>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
-cat /etc/openvpn/server/tls-auth.key >> /etc/openvpn/GANDRING-SSL-WS.ovpn
-echo '</tls-auth>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+#echo '<tls-auth>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+#cat /etc/openvpn/server/tls-auth.key >> /etc/openvpn/GANDRING-SSL-WS.ovpn
+#echo '</tls-auth>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 800 )
 cp /etc/openvpn/GANDRING-SSL-WS.ovpn /home/vps/public_html/GANDRING-SSL-WS.ovpn
