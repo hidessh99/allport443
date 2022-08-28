@@ -52,7 +52,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 
 # Buat config client TCP 600
-cat > /etc/openvpn/OVPN-TCP.ovpn <<-END
+cat > /etc/openvpn/GANDRING-TCP.ovpn <<-END
 client
 dev tun
 proto tcp
@@ -67,10 +67,10 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP2 /etc/openvpn/tcp.ovpn;
+sed -i $MYIP2 /etc/openvpn/GANDRING-TCP.ovpn;
 
 # Buat config client UDP 800
-cat > /etc/openvpn/OVPN-UDP.ovpn <<-END
+cat > /etc/openvpn/GANDRING-UDP.ovpn <<-END
 client
 dev tun
 proto udp
@@ -85,10 +85,10 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP2 /etc/openvpn/OVPN-UDP.ovpn;
+sed -i $MYIP2 /etc/openvpn/GANDRING-UDP.ovpn;
 
 # Buat config client SSL
-cat > /etc/openvpn/OVPN-SSL-WS.ovpn <<-END
+cat > /etc/openvpn/GANDRING-SSL-WS.ovpn <<-END
 client
 dev tun
 proto tcp
@@ -103,7 +103,7 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP2 /etc/openvpn/OVPN-SSL-WS.ovpn;
+sed -i $MYIP2 /etc/openvpn/GANDRING-SSL-WS.ovpn;
 
 cd
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
