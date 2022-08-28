@@ -790,21 +790,21 @@ cat > /etc/trojan-go/config.json << END
 END
 cat <<EOF > /etc/systemd/system/trojan-go.service
 [Unit]
-Description=TROJAN-GO ROUTING GAJAH DEMAK BY ZEROSSL
-Documentation=https://p4gefau1t.github.io/trojan-go/
+Description=Trojan-Go Service Mod By zerossl
+Documentation=https://t.me/zerossl
 After=network.target nss-lookup.target
 
 [Service]
 User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/etc/trojan-go/trojan-go -config /etc/trojan-go/config.json
+ExecStart=/usr/local/bin/trojan-go -config /etc/trojan-go/config.json
 Restart=on-failure
-RestartSec=10s
-LimitNOFILE=infinity
+RestartPreventExitStatus=23
 
 [Install]
 WantedBy=multi-user.target
-
 EOF
 
 cat <<EOF > /etc/trojan-go/uuid.txt
