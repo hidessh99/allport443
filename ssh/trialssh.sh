@@ -38,7 +38,6 @@ systemctl restart tls
 systemctl restart nontls
 systemctl restart otls
 systemctl restart wsovpn
-systemctl restart stunnel-ohp
 systemctl restart sslh
 systemctl restart stunnel5
 systemctl restart ssh-ohp
