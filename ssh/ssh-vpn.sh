@@ -227,15 +227,16 @@ sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600' /etc/r
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900' /etc/rc.local
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 100
+
 # setting port ssh
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 5015' /etc/ssh/sshd_config
@@ -883,15 +884,15 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/fail2ban restart
 #/etc/init.d/squid restart
 
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800 --max-clients 500 >/dev/null 2>&1
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 500 >/dev/null 2>&1
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800 --max-clients 100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900 --max-clients 100
 echo "0 4 * * * root clearlog && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 echo "0 0 * * * root delexp" >> /etc/crontab
