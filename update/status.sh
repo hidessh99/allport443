@@ -970,6 +970,7 @@ echo -e "\E[46;1;46m             🇮🇩 SOLO THE SPIRIT OF JAVA🇮🇩       
 echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " ✅ JUMLAH LAYANAN RUNNING [${green}$jumlah_aktif${off}]"
 echo -e " ⛔ JUMLAH LAYANAN TROUBLE [ ${red}$jumlah_error${off} ]"
+echo -e " 🈯️ 443 PORT PROTOCOL HAS ✅ 24 PROTOCOL"
 echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[46;1;46m            🇮🇩 LUXURY EDITION BY ZEROSSL🇮🇩           \E[0m"
 echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
