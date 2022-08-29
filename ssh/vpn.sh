@@ -202,14 +202,14 @@ cp /etc/openvpn/GANDRING-UDP.ovpn /home/vps/public_html/GANDRING-UDP.ovpn
 #cp /etc/openvpn/GANDRING-SSL-WS.ovpn /home/vps/public_html/GANDRING-SSL-WS.ovpn
 
 #firewall untuk memperbolehkan akses UDP dan akses jalur TCP
-iptables -t nat -A PREROUTING -p udp -d $MYIP --dport 53 -j REDIRECT --to-port 443
+iptables -t nat -A PREROUTING -p udp -d $MYIP --dport 53 -j REDIRECT --to-port 600
 iptables -t nat -I POSTROUTING -s 10.1.0.0/32 -o $ANU -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 10.2.0.0/32 -o $ANU -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 10.3.0.0/32 -o $ANU -j MASQUERADE
 #iptables -t nat -I POSTROUTING -s 10.4.0.0/32 -o $ANU -j MASQUERADE
 iptables-save > /etc/iptables.up.rules
 chmod +x /etc/iptables.up.rules
-sed -i "/# By default this script does nothing./a\iptables -t nat -A PREROUTING -p udp -d $IP --dport 53 -j REDIRECT --to-port 443" /etc/rc.local
+sed -i "/# By default this script does nothing./a\iptables -t nat -A PREROUTING -p udp -d $IP --dport 53 -j REDIRECT --to-port 600" /etc/rc.local
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
