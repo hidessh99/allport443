@@ -154,7 +154,7 @@ echo -e " 🔰 PORT OVPN WS NON TLS           : 8080,80"     |tee -a log-install
 echo -e " 🔰 OHP SSH                        : 8181"        |tee -a log-install.txt
 echo -e " 🔰 OHP DROPBEAR                   : 8282"        |tee -a log-install.txt
 echo -e " 🔰 OHP OVPN                       : 8383"        |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN TCP                  : 700"         |tee -a log-install.txt
+echo -e " 🔰 PORT OVPN TCP                  : 443"         |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN UDP                  : 800"         |tee -a log-install.txt
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" |tee -a log-install.txt
 echo -e " 🔰 TROJAN KCP TLS                 : 202"         |tee -a log-install.txt
