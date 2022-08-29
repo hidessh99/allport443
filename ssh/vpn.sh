@@ -52,12 +52,12 @@ systemctl enable --now openvpn-server@server-GANDRING-SSL-WS
 echo 1 > /proc/sys/net/ipv4/ip_forward
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 
-# Buat config client TCP 600
+# Buat config client TCP 700
 cat > /etc/openvpn/GANDRING-TCP.ovpn <<-END
 client
 dev tun
 proto tcp
-remote xxxxxxxxx 600
+remote xxxxxxxxx 700
 resolv-retry infinite
 route-method exe
 nobind
@@ -139,7 +139,7 @@ echo '<key>' >> /etc/openvpn/GANDRING-TCP.ovpn
 #cat /etc/openvpn/server/tls-auth.key >> /etc/openvpn/GANDRING-TCP.ovpn
 #echo '</tls-auth>' >> /etc/openvpn/GANDRING-TCP.ovpn
 
-# Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 600 )
+# Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 700 )
 cp /etc/openvpn/GANDRING-TCP.ovpn /home/vps/public_html/GANDRING-TCP.ovpn
 
 # masukkan certificatenya ke dalam config client UDP 800
