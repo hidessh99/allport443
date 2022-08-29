@@ -78,91 +78,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8383 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:700
-Restart=on-failure
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# OpenVPN OHP 8484
-cat > /etc/systemd/system/tls-ohp.service << END
-[Unit]]
-Description=WEBSOCKET OHP Redirection Service
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8484 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:600
-Restart=on-failure
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# OpenVPN OHP 8585
-cat > /etc/systemd/system/wsovpn-ohp.service << END
-[Unit]]
-Description=WEBSOCKET OHP Redirection Service
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8585 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:650
-Restart=on-failure
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# OpenVPN OHP 8383
-cat > /etc/systemd/system/xray-ohp.service << END
-[Unit]]
-Description=OpenVPN OHP Redirection Service
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8686 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:8443
-Restart=on-failure
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# OpenVPN OHP 8383
-cat > /etc/systemd/system/otls-ohp.service << END
-[Unit]]
-Description=OpenVPN OHP Redirection Service
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8787 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:2083
+ExecStart=/usr/local/bin/ohpserver -port 8383 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:800
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -177,14 +93,6 @@ systemctl enable dropbear-ohp
 systemctl restart dropbear-ohp
 systemctl enable openvpn-ohp
 systemctl restart openvpn-ohp
-systemctl enable otls-ohp
-systemctl restart otls-ohp
-systemctl enable wsovpn-ohp
-systemctl restart wsovpn-ohp
-systemctl enable tls-ohp
-systemctl restart tls-ohp
-systemctl enable xray-ohp
-systemctl restart xray-ohp
 #------------------------------
 printf 'INSTALLATION COMPLETED !\n'
 sleep 0.5
@@ -208,33 +116,5 @@ then
 	echo 'OpenVPN OHP Redirection Running'
 else
 	echo 'OpenVPN OHP Redirection Not Found, please check manually'
-fi
-sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 8585)" ]
-then
-	echo 'wsovpn OHP Redirection Running'
-else
-	echo 'wsovpn OHP Redirection Not Found, please check manually'
-fi
-sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 8787)" ]
-then
-	echo 'otls OHP Redirection Running'
-else
-	echo 'otls OHP Redirection Not Found, please check manually'
-fi
-sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 8484)" ]
-then
-	echo 'tls OHP Redirection Running'
-else
-	echo 'tls OHP Redirection Not Found, please check manually'
-fi
-sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 8686)" ]
-then
-	echo 'xray OHP Redirection Running'
-else
-	echo 'xray OHP Redirection Not Found, please check manually'
 fi
 sleep 0.5
