@@ -787,7 +787,6 @@ cat > /etc/trojan-go/config.json << END
   }
 }
 END
-chmod +x /etc/trojan-go/config.json
 
 cat <<EOF > /etc/systemd/system/trojan-go.service
 [Unit]
