@@ -133,7 +133,7 @@ vlesshdua="vless://${uuid}@${domain}:$vlhdua?sni=pemburu.rondoanyaran.yes&type=h
 vlesskcp="vless://$uuid@$domain:$vlkcp?sni=$domain&seed=wisnukcp&type=kcp&security=tls&headerType=none&encryption=none#%F0%9F%94%B0VLESS+KCP+TLS+$user"
 vlessxtls="vless://${uuid}@${domain}:$vlxtls?sni=remang-remang.night&security=xtls&encryption=none&flow=xtls-rprx-splice-udp443#%F0%9F%94%B0VLESS+XTLS+${user}"
 vlessgfw="vless://${uuid}@${domain}:$vlxtls?sni=istimiwir.co.id&security=tls&encryption=none#%F0%9F%94%B0VLESS+GFW+${user}"
-vlessquic="vless://$uuid@$MYIP:$vquic?sni=$domain&key=wisnuquic&security=tls&encryption=none&headerType=none&quicSecurity=$domain&type=quic#%F0%9F%94%B0VLESS+QUIC+TLS+$user"
+vlessquic="vless://$uuid@$MYIP:$vlquic?sni=$domain&key=wisnuquic&security=tls&encryption=none&headerType=none&quicSecurity=$domain&type=quic#%F0%9F%94%B0VLESS+QUIC+TLS+$user"
 systemctl restart xvless.service
 systemctl restart xray.service
 systemctl restart xtrojan.service
