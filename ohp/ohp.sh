@@ -87,7 +87,7 @@ WantedBy=multi-user.target
 END
 
 # OpenVPN OHP 8383
-cat > /etc/systemd/system/stunnel-ohp.service << END
+cat > /etc/systemd/system/ssl-ohp.service << END
 [Unit]]
 Description=OpenVPN OHP Redirection Service
 Documentation=https://t.me/zerossl
@@ -127,6 +127,48 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 END
+
+# OpenVPN OHP 8383
+cat > /etc/systemd/system/websocket-ohp.service << END
+[Unit]]
+Description=OpenVPN OHP Redirection Service
+Documentation=https://t.me/zerossl
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/ohpserver -port 8686 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:600
+Restart=on-failure
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
+END
+
+# OpenVPN OHP 8383
+cat > /etc/systemd/system/stunnel-ohp.service << END
+[Unit]]
+Description=OpenVPN OHP Redirection Service
+Documentation=https://t.me/zerossl
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/ohpserver -port 8787 -proxy 0.0.0.0:3128 -tunnel 0.0.0.0:443
+Restart=on-failure
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
+END
 systemctl daemon-reload
 systemctl enable ssh-ohp
 systemctl restart ssh-ohp
@@ -138,6 +180,10 @@ systemctl enable stunnel-ohp
 systemctl restart stunnel-ohp
 systemctl enable stunnelws-ohp
 systemctl restart stunnelws-ohp
+systemctl enable websocket-ohp
+systemctl restart websocket-ohp
+systemctl enable ssl-ohp
+systemctl restart ssl-ohp
 #------------------------------
 printf 'INSTALLATION COMPLETED !\n'
 sleep 0.5
@@ -171,6 +217,24 @@ else
 fi
 sleep 0.5
 if [ -n "$(ss -tupln | grep ohpserver | grep -w 8585)" ]
+then
+	echo 'OpenVPN OHP Redirection Running'
+else
+	echo 'OpenVPN OHP Redirection Not Found, please check manually'
+fi
+sleep 0.5
+fi
+sleep 0.5
+if [ -n "$(ss -tupln | grep ohpserver | grep -w 8686)" ]
+then
+	echo 'OpenVPN OHP Redirection Running'
+else
+	echo 'OpenVPN OHP Redirection Not Found, please check manually'
+fi
+sleep 0.5
+fi
+sleep 0.5
+if [ -n "$(ss -tupln | grep ohpserver | grep -w 8787)" ]
 then
 	echo 'OpenVPN OHP Redirection Running'
 else
