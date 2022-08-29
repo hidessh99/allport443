@@ -208,5 +208,3 @@ then
 	echo 'OpenVPN OHP Redirection Running'
 else
 	echo 'OpenVPN OHP Redirection Not Found, please check manually'
-fi
-sleep 0.5
