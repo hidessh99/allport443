@@ -19,7 +19,7 @@ systemctl restart ssrmu
 systemctl restart tls
 systemctl restart otls
 systemctl restart nontls
-systemctl restart stunnel-ohp
+#systemctl restart stunnel-ohp
 systemctl restart xray.service
 systemctl restart shadowsocks-libev
 systemctl restart xl2tpd
