@@ -67,10 +67,9 @@ systemctl restart wsovpn
 systemctl restart nontls
 systemctl restart otls
 systemctl restart ssh-ohp
-systemctl restart stunnel-ohp
 systemctl restart dropbear-ohp
 systemctl restart openvpn-ohp
-#systemctl restart privoxy
+systemctl restart privoxy
 #systemctl restart nginx
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m 🔰 AKUN SSH DAN OVPN 🔰  \e[m"   
