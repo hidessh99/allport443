@@ -223,15 +223,11 @@ else
 	echo 'OpenVPN OHP Redirection Not Found, please check manually'
 fi
 sleep 0.5
-fi
-sleep 0.5
 if [ -n "$(ss -tupln | grep ohpserver | grep -w 8686)" ]
 then
 	echo 'OpenVPN OHP Redirection Running'
 else
 	echo 'OpenVPN OHP Redirection Not Found, please check manually'
-fi
-sleep 0.5
 fi
 sleep 0.5
 if [ -n "$(ss -tupln | grep ohpserver | grep -w 8787)" ]
