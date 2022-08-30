@@ -34,10 +34,10 @@ Login=tes`</dev/urandom tr -dc X-Z0-9 | head -c2`
 hari="1"
 Pass=1
 clear
-systemctl restart tls
+systemctl restart stunnelws
 systemctl restart nontls
 systemctl restart otls
-systemctl restart wsovpn
+systemctl restart openvpnws
 systemctl restart sslh
 systemctl restart stunnel5
 systemctl restart ssh-ohp
@@ -67,7 +67,6 @@ echo -e "🔵Link OVPN ➡️ http://$MYIP:88/"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "🔵WS NONTLS ➡️ 8880red,80green"
 echo -e "🔵OVPN WS ➡️ $onontls"
-echo -e "🔵OVPN TCP ➡️ $otcp"
 echo -e "🔵OVPN UDP ➡️ $oudp"
 echo -e "🔵PRIVOXY ➡️ 3128,3228"
 echo -e "🔵SQUID 4 ➡️ $sqd"
