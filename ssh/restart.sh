@@ -48,13 +48,13 @@ systemctl restart trojan-go
 /etc/init.d/cron restart
 /etc/init.d/nginx restart
 systemctl restart ssrmu
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7400
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7500
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7600
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7700
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7800
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900
 echo -e "🔰RESTART LAYANAN TUNNEL SELESAI✅"
