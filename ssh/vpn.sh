@@ -157,7 +157,7 @@ echo '</ca>' >> /etc/openvpn/GANDRING-UDP.ovpn
 #echo '<key>' >> /etc/openvpn/GANDRING-UDP.ovpn
 #cat /etc/openvpn/server/server.key >> /etc/openvpn/GANDRING-UDP.ovpn
 #echo '</key>' >> /etc/openvpn/GANDRING-UDP.ovpn
-echo '<key>' >> /etc/openvpn/GANDRING-UDP.ovpn
+#echo '<key>' >> /etc/openvpn/GANDRING-UDP.ovpn
 #cd /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-UDP.ovpn
 #cp /root/.acme.sh/$domain_ecc/$domain.key >> /etc/openvpn/GANDRING-UDP.ovpn
 #echo '</key>' >> /etc/openvpn/GANDRING-UDP.ovpn
