@@ -60,10 +60,10 @@ echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 expi=`date -d "$masaaktif days" +"%Y-%m-%d"`
 
-systemctl restart tls
+systemctl restart stunnelws
 systemctl restart stunnel5
 systemctl restart sslh
-systemctl restart wsovpn
+systemctl restart openvpnws
 systemctl restart nontls
 systemctl restart otls
 systemctl restart ssh-ohp
