@@ -16,7 +16,7 @@ echo -e ""
 echo -e "🔰RESTART LAYANAN TUNNEL DIMULAI🔰"
 sleep 2
 systemctl restart ssrmu
-systemctl restart tls
+systemctl restart stunnelws
 systemctl restart otls
 systemctl restart nontls
 #systemctl restart stunnel-ohp
@@ -27,7 +27,7 @@ systemctl restart pptpd
 systemctl restart ipsec
 systemctl restart privoxy
 systemctl restart accel-ppp
-systemctl restart wsovpn
+systemctl restart openvpnws
 systemctl restart wg-quick@wg0
 systemctl restart sslh
 systemctl restart xtrojan
