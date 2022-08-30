@@ -213,30 +213,6 @@ cd /home/vps/public_html
 wget -O /home/vps/public_html/index.html "https://${wisnuvpn}/index.html"
 /etc/init.d/nginx restart
 
-# install badvpn
-cd
-wget -O /usr/bin/badvpn-udpgw "https://${wisnuvpn}/badvpn-udpgw64"
-chmod +x /usr/bin/badvpn-udpgw
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100' /etc/rc.local
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200' /etc/rc.local
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300' /etc/rc.local
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400' /etc/rc.local
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500' /etc/rc.local
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600' /etc/rc.local
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700  /etc/rc.local
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800' /etc/rc.local
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900' /etc/rc.local
-
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900
-
 # setting port ssh
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 5015' /etc/ssh/sshd_config
@@ -872,6 +848,21 @@ apt autoremove -y
 # finishing
 cd
 chown -R www-data:www-data /home/vps/public_html
+
+# install badvpn
+cd
+wget -O /usr/bin/badvpn-udpgw "https://${wisnuvpn}/badvpn-udpgw64"
+chmod +x /usr/bin/badvpn-udpgw
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700  /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800' /etc/rc.local
+sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900' /etc/rc.local
+
 /etc/init.d/nginx restart
 /etc/init.d/openvpn restart
 /etc/init.d/cron restart
@@ -884,15 +875,15 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/fail2ban restart
 #/etc/init.d/squid restart
 
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900
 echo "0 4 * * * root clearlog && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 echo "0 0 * * * root delexp" >> /etc/crontab
