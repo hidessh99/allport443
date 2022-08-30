@@ -214,14 +214,6 @@ wget -O /home/vps/public_html/index.html "https://${wisnuvpn}/index.html"
 /etc/init.d/nginx restart
 
 # install badvpn
-cd <badvpn-source-dir>
-mkdir build
-cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=<install-dir>
-make install
-cmake
-DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_TUN2SOCKS=1 -DBUILD_UDPGW=1
-
 cd
 wget -O /usr/bin/badvpn-udpgw "https://${wisnuvpn}/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
@@ -234,6 +226,7 @@ sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600' /etc/
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700  /etc/rc.local
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800' /etc/rc.local
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900' /etc/rc.local
+
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300
@@ -243,6 +236,7 @@ screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900
+
 # setting port ssh
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 5015' /etc/ssh/sshd_config
