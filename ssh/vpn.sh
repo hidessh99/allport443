@@ -39,7 +39,7 @@ mkdir -p /usr/lib/openvpn/
 cp /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so /usr/lib/openvpn/openvpn-plugin-auth-pam.so
 
 # nano /etc/default/openvpn
-sed -i 's/#AUTOSTART="all"/AUTOSTART="all"/g' /etc/default/openvpn
+sed -i 's/AUTOSTART="all"/AUTOSTART="all"/g' /etc/default/openvpn
 
 # restart openvpn dan cek status openvpn
 #systemctl enable --now openvpn-server@server-GANDRING-TCP
@@ -55,23 +55,23 @@ sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 # Buat config client TCP 700
 cat > /etc/openvpn/GANDRING-SSL.ovpn <<-END
 client
-proto tcp 
-persist-key 
-persist-tun 
-dev tun 
-pull 
-comp-lzo 
-ns-cert-type server 
-verb 3 
-mute 2 
-mute-replay-warnings 
-auth-user-pass 
-redirect-gateway def1 
-script-security 2 
-route-method exe 
-route-delay 2 
+proto tcp
 remote xxxxxxxxx 443
-cipher AES-128-CBC 
+persist-key
+persist-tun
+dev tun
+pull
+comp-lzo
+ns-cert-type server
+verb 3
+mute 2
+mute-replay-warnings
+auth-user-pass
+redirect-gateway def1
+script-security 2
+route-method exe
+route-delay 2
+cipher AES-128-CBC
 ca [inline]
 
 END
@@ -81,23 +81,23 @@ sed -i $MYIP2 /etc/openvpn/GANDRING-SSL.ovpn;
 # Buat config client UDP 800
 cat > /etc/openvpn/GANDRING-UDP.ovpn <<-END
 client
-proto tcp 
-persist-key 
-persist-tun 
-dev tun 
-pull 
-comp-lzo 
-ns-cert-type server 
-verb 3 
-mute 2 
-mute-replay-warnings 
-auth-user-pass 
-redirect-gateway def1 
-script-security 2 
-route-method exe 
-route-delay 2 
+proto tcp
 remote xxxxxxxxx 800
-cipher AES-128-CBC 
+persist-key
+persist-tun
+dev tun
+pull
+comp-lzo
+ns-cert-type server
+verb 3
+mute 2
+mute-replay-warnings
+auth-user-pass
+redirect-gateway def1
+script-security 2
+route-method exe
+route-delay 2
+cipher AES-128-CBC
 ca [inline]
 
 END
@@ -209,7 +209,7 @@ iptables -t nat -I POSTROUTING -s 10.2.0.0/32 -o $ANU -j MASQUERADE
 #iptables -t nat -I POSTROUTING -s 10.4.0.0/32 -o $ANU -j MASQUERADE
 iptables-save > /etc/iptables.up.rules
 chmod +x /etc/iptables.up.rules
-sed -i "/# By default this script does nothing./a\iptables -t nat -A PREROUTING -p udp -d $IP --dport 53 -j REDIRECT --to-port 600" /etc/rc.local
+#sed -i "/# By default this script does nothing./a\iptables -t nat -A PREROUTING -p udp -d $IP --dport 53 -j REDIRECT --to-port 600" /etc/rc.local
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
