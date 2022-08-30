@@ -135,7 +135,7 @@ echo '</ca>' >> /etc/openvpn/GANDRING-SSL.ovpn
 #echo '</tls-auth>' >> /etc/openvpn/GANDRING-TCP.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 700 )
-cp /etc/openvpn/GANDRING-TCP.ovpn /home/vps/public_html/GANDRING-TCP.ovpn
+cp /etc/openvpn/GANDRING-SSL.ovpn /home/vps/public_html/GANDRING-SSL.ovpn
 
 # masukkan certificatenya ke dalam config client UDP 800
 echo '<ca>' >> /etc/openvpn/GANDRING-UDP.ovpn
