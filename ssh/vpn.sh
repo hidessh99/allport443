@@ -88,6 +88,25 @@ END
 
 sed -i $MYIP2 /etc/openvpn/gandring-udp.ovpn;
 
+
+# Buat config client UDP 443
+cat > /etc/openvpn/gandring-ssl-ws.ovpn <<-END
+client
+dev tun
+proto tcp
+remote xxxxxxxxx 443
+resolv-retry infinite
+route-method exe
+nobind
+persist-key
+persist-tun
+auth-user-pass
+comp-lzo
+verb 3
+END
+
+sed -i $MYIP2 /etc/openvpn/gandring-ssl-ws.ovpn;
+
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
 /etc/init.d/openvpn restart
 cd
