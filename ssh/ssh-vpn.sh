@@ -393,21 +393,6 @@ rm -f /usr/local/bin/stunnel3
 rm -f /usr/local/bin/stunnel4
 #rm -f /usr/local/bin/stunnel5
 
-# install stunnel 5 
-cd /root/
-wget -q -O badvpn.zip "https://${wisnuvpn}/badvpn.zip"
-unzip -o badvpn.zip
-cd /root/badvpn
-chmod +x configure
-./configure
-make
-make install
-cd /root
-rm -r -f badvpn
-rm -f badvpn.zip
-mkdir -p /etc/badvpn
-chmod 644 /etc/badvpn
-
 # Restart Stunnel 5
 systemctl stop stunnel5
 systemctl enable stunnel5
