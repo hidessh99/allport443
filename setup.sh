@@ -139,7 +139,7 @@ echo -e " 🔰 SHADOWSOCKS 2022 HTTP TLS      : 443"         |tee -a log-install
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " 🔰 PORT SQUID                     : 4000,5000"   |tee -a log-install.txt
 echo -e " 🔰 PORT PRIVOXY                   : 3128,3228"   |tee -a log-install.txt
-echo -e " 🔰 UDPGW                          : 9100,9200,9300-9900" |tee -a log-install.txt
+echo -e " 🔰 PORT UDPGW                     : 99" |tee -a log-install.txt
 echo -e " 🔰 NGINX                          : 88"          |tee -a log-install.txt
 echo -e " 🔰 WIREGUARD                      : 591"         |tee -a log-install.txt
 echo -e " 🔰 L2TP/IPSEC VPN                 : 1701"        |tee -a log-install.txt
