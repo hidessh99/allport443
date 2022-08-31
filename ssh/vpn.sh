@@ -42,9 +42,9 @@ cp /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so /usr/lib
 sed -i 's/AUTOSTART="all"/AUTOSTART="all"/g' /etc/default/openvpn
 
 # restart openvpn dan cek status openvpn
-systemctl enable --now openvpn-server@server-gandring-tcp
-systemctl enable --now openvpn-server@server-gandring-udp
-systemctl enable --now openvpn-server@server-gandring-ssl-ws
+systemctl enable --now openvpn-server@server-GANDRING-TCP
+systemctl enable --now openvpn-server@server-GANDRING-UDP
+systemctl enable --now openvpn-server@server-GANDRING-SSL-WS
 /etc/init.d/openvpn restart
 /etc/init.d/openvpn status
 
