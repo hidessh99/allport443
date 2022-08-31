@@ -40,7 +40,7 @@ cd
 wget -O /usr/local/bin/ohp "https://raw.githubusercontent.com/geovpn/bc/main/ohp/ohp"
 chmod +x /usr/local/bin/ohp
 # Buat File OpenVPN TCP OHP
-cat > /etc/openvpn/GANDRING-SSL-WS.ovpn <<END
+cat > /etc/openvpn/gandring-ssl-ws.ovpn <<END
 setenv CLIENT_CERT 0
 setenv opt block-outside-dns
 client
@@ -70,13 +70,13 @@ http-proxy-option CUSTOM-HEADER "Host: "
 http-proxy-option CUSTOM-HEADER "X-Forwarded-Host: "
 http-proxy-option CUSTOM-HEADER ""
 END
-sed -i $MYIP2 /etc/openvpn/GANDRING-SSL-WS.ovpn;
+sed -i $MYIP2 /etc/openvpn/gandring-ssl-ws.ovpn;
 
 # masukkan certificatenya ke dalam config client TCP 443
-echo '<ca>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/GANDRING-SSL-WS.ovpn
-echo '</ca>' >> /etc/openvpn/GANDRING-SSL-WS.ovpn
-cp /etc/openvpn/GANDRING-SSL-WS.ovpn /home/vps/public_html/GANDRING-SSL-WS.ovpn
+echo '<ca>' >> /etc/openvpn/gandring-ssl-ws.ovpn
+cat /etc/openvpn/server/ca.crt >> /etc/openvpn/gandring-ssl-ws.ovpn
+echo '</ca>' >> /etc/openvpn/gandring-ssl-ws.ovpn
+cp /etc/openvpn/gandring-ssl-ws.ovpn /home/vps/public_html/gandring-ssl-ws.ovpn
 clear
 cd 
 # Download File Ohp
