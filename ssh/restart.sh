@@ -14,7 +14,7 @@ LIGHT='\033[0;37m'
 clear
 echo -e ""
 echo -e "🔰RESTART LAYANAN TUNNEL DIMULAI🔰"
-sleep 2
+systemctl daemon-reload
 systemctl restart ssrmu
 systemctl restart stunnelws
 systemctl restart otls
@@ -48,13 +48,5 @@ systemctl restart trojan-go
 /etc/init.d/cron restart
 /etc/init.d/nginx restart
 systemctl restart ssrmu
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9100
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9200
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9300
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9400
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9500
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9600
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9700
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9800
-screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:9900
+screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:99
 echo -e "🔰RESTART LAYANAN TUNNEL SELESAI✅"
