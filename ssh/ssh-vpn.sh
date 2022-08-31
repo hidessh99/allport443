@@ -879,7 +879,6 @@ sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:99' /etc/rc.
 /etc/init.d/vnstat restart
 /etc/init.d/fail2ban restart
 #/etc/init.d/squid restart
-
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:99
 echo "0 4 * * * root clearlog && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
