@@ -64,7 +64,7 @@ do
                 echo "$PID - $USER - $IP";
         fi
 done
-if [ -f "/etc/openvpn/server/openvpn-tcp.log" ]; then
+if [ -f "/etc/openvpn/server/openvpn-gandring-tcp.log" ]; then
 echo ""
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m 🔰 CEK USER SENYAP TAPI GANAS 🔰  \e[m"       
@@ -73,19 +73,32 @@ echo "  ID               |  Username         |  IP Address";
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "OPENVPN"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        cat /etc/openvpn/server/openvpn-tcp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-tcp.txt
+        cat /etc/openvpn/server/openvpn-gandring-tcp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-tcp.txt
         cat /tmp/vpn-login-tcp.txt
 fi
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-if [ -f "/etc/openvpn/server/openvpn-udp.log" ]; then
+if [ -f "/etc/openvpn/server/openvpn-gandring-ssl-ws.log" ]; then
+echo ""
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[1;46m 🔰 CEK USER SENYAP TAPI GANAS 🔰  \e[m"       
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo "  ID               |  Username         |  IP Address";
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "OPENVPN"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        cat /etc/openvpn/server/openvpn-gandring-ssl-ws.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-tcp.txt
+        cat /tmp/vpn-login-tcp.txt
+fi
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+if [ -f "/etc/openvpn/server/openvpn-gandring-udp.log" ]; then
 echo " "
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m 🔰 CEK USER SENYAP TAPI GANAS 🔰  \e[m"       
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo "  ID               |  Username         |  IP Address";
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        cat /etc/openvpn/server/openvpn-udp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-udp.txt
+        cat /etc/openvpn/server/openvpn-gandring-udp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-udp.txt
         cat /tmp/vpn-login-udp.txt
 fi
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
