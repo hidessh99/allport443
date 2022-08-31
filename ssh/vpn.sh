@@ -152,7 +152,7 @@ echo '</ca>' >> /etc/openvpn/gandring-udp.ovpn
 #echo '</tls-auth>' >> /etc/openvpn/gandring-udp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 800 )
-cp /etc/openvpn/gandring-udp.ovpn /home/vps/public_html/gandring-tcp.ovpn
+cp /etc/openvpn/gandring-udp.ovpn /home/vps/public_html/gandring-udp.ovpn
 
 #firewall untuk memperbolehkan akses UDP dan akses jalur TCP
 #iptables -t nat -A PREROUTING -p udp -d $MYIP --dport 53 -j REDIRECT --to-port 600
