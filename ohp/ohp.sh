@@ -86,48 +86,6 @@ LimitNOFILE=infinity
 WantedBy=multi-user.target
 END
 
-# OpenVPN OHP 8383
-cat > /etc/systemd/system/openvpnws-ohp.service << END
-[Unit]]
-Description=OpenVPN WEBSOCKET Redirection Service
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8484 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:650
-Restart=on-failure
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# OpenVPN OHP 8383
-cat > /etc/systemd/system/stunnelws-ohp.service << END
-[Unit]]
-Description=STUNNEL WEBSOCKET Redirection Service
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8585 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:600
-Restart=on-failure
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-END
-
 systemctl daemon-reload
 systemctl enable ssh-ohp
 systemctl restart ssh-ohp
@@ -158,19 +116,5 @@ then
 	echo 'OpenVPN OHP Redirection Running'
 else
 	echo 'OpenVPN OHP Redirection Not Found, please check manually'
-fi
-sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 8484)" ]
-then
-	echo 'openvpnws OHP Redirection Running'
-else
-	echo 'openvpnws Redirection Not Found, please check manually'
-fi
-sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 8585)" ]
-then
-	echo 'stunnelws OHP Redirection Running'
-else
-	echo 'stunnelws OHP Redirection Not Found, please check manually'
 fi
 sleep 0.5
