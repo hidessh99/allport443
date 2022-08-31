@@ -109,6 +109,7 @@ sed -i $MYIP2 /etc/openvpn/GANDRING-SSL-WS.ovpn;
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
 /etc/init.d/openvpn restart
 cd
+cp ca.crt ca.key dh1024.pem server.crt server.key /etc/openvpn
 domain=$(cat /etc/xray/domain)
 # masukkan certificatenya ke dalam config client TCP 600
 echo '<ca>' >> /etc/openvpn/GANDRING-TCP.ovpn
