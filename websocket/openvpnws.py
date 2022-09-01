@@ -171,15 +171,6 @@ class ConnectionHandler(threading.Thread):
             if self.method=='CONNECT':
                 port = 443
             else:
-                port = 8080
-                port = 3128
-                port = 3228
-                port = 2083
-                port = 300
-                port = 600
-                port = 700
-                port = 650
-                port = 443
                 port = sys.argv[1]
 
         (soc_family, soc_type, proto, _, address) = socket.getaddrinfo(host, port)[0]
