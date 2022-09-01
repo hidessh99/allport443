@@ -44,7 +44,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8181 -proxy 127.0.0.1:3228 -tunnel 127.0.0.1:200
+ExecStart=/usr/local/bin/ohpserver -port 8181 -proxy 127.0.0.1:3228 -tunnel 127.0.0.1:650
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -65,7 +65,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 2082 -proxy 127.0.0.1:3228 -tunnel 127.0.0.1:300
+ExecStart=/usr/local/bin/ohpserver -port 8282 -proxy 127.0.0.1:3228 -tunnel 127.0.0.1:300
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -86,49 +86,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8383 -proxy 127.0.0.1:3228 -tunnel 127.0.0.1:700
-Restart=on-failure
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# OpenVPN OHP 8080
-cat > /etc/systemd/system/stunnelws-ohp.service << END
-[Unit]]
-Description=OpenVPN OHP Redirection Service
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 8282 -proxy 127.0.0.1:3228 -tunnel 127.0.0.1:600
-Restart=on-failure
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-END
-
-# OpenVPN OHP 8080
-cat > /etc/systemd/system/openvpnws-ohp.service << END
-[Unit]]
-Description=OpenVPN OHP Redirection Service
-Documentation=https://t.me/zerossl
-After=network.target nss-lookup.target
-
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 2086 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:8443
+ExecStart=/usr/local/bin/ohpserver -port 2086 -proxy 127.0.0.1:3228 -tunnel 127.0.0.1:600
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -143,12 +101,6 @@ systemctl enable dropbear-ohp
 systemctl restart dropbear-ohp
 systemctl enable openvpn-ohp
 systemctl restart openvpn-ohp
-systemctl enable openvpnws-ohp
-systemctl restart openvpnws-ohp
-systemctl enable stunnelws-ohp
-systemctl restart stunnelws-ohp
-systemctl enable ohp
-systemctl restart ohp
 #------------------------------
 printf 'INSTALLATION COMPLETED !\n'
 sleep 0.5
@@ -160,7 +112,7 @@ else
 	echo 'SSH OHP Redirection Not Found, please check manually'
 fi
 sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 2082)" ]
+if [ -n "$(ss -tupln | grep ohpserver | grep -w 8282)" ]
 then
 	echo 'Dropbear OHP Redirection Running'
 else
@@ -168,20 +120,6 @@ else
 fi
 sleep 0.5
 if [ -n "$(ss -tupln | grep ohpserver | grep -w 2086)" ]
-then
-	echo 'OpenVPN OHP Redirection Running'
-else
-	echo 'OpenVPN OHP Redirection Not Found, please check manually'
-fi
-sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 8282)" ]
-then
-	echo 'OpenVPN OHP Redirection Running'
-else
-	echo 'OpenVPN OHP Redirection Not Found, please check manually'
-fi
-sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 8383)" ]
 then
 	echo 'OpenVPN OHP Redirection Running'
 else
