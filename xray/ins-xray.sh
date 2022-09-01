@@ -721,7 +721,10 @@ chmod +x /usr/local/bin/trojan-go
 mkdir /var/log/trojan-go/
 touch /etc/trojan-go/akun.conf
 touch /var/log/trojan-go/trojan-go.log
+touch /etc/trojan-go/trojan-go.pid
 
+wget -O /etc/trojan-go/geoip.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/geoip.dat
+wget -O /etc/trojan-go/geosite.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/geosite.dat
 # Buat Config Trojan Go
 cat > /etc/trojan-go/config.json << END
 {
