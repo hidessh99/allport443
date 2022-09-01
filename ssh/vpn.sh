@@ -173,6 +173,14 @@ echo '</ca>' >> /etc/openvpn/gandring-udp.ovpn
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 800 )
 cp /etc/openvpn/gandring-udp.ovpn /home/vps/public_html/gandring-udp.ovpn
 
+# masukkan certificatenya ke dalam config client SSL 443
+echo '<ca>' >> /etc/openvpn/gandring-ssl-ws.ovpn
+cat /etc/openvpn/server/ca.crt >> /etc/openvpn/gandring-ssl-ws.ovpn
+echo '</ca>' >> /etc/openvpn/gandring-ssl-ws.ovpn
+
+# Copy config OpenVPN client ke home directory root agar mudah didownload ( SSL 443 )
+cp /etc/openvpn/gandring-ssl-ws.ovpn /home/vps/public_html/gandring-ssl-ws.ovpn
+
 #firewall untuk memperbolehkan akses UDP dan akses jalur TCP
 #iptables -t nat -A PREROUTING -p udp -d $MYIP --dport 53 -j REDIRECT --to-port 600
 iptables -t nat -I POSTROUTING -s 10.1.0.0/32 -o $ANU -j MASQUERADE
