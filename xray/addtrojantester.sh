@@ -114,7 +114,7 @@ trojannontls="trojan://${uuid}@${domain}:$tnontls?type=ws&security=none&host=$do
 trojanhttp="trojan://${uuid}@${domain}:$thttp?sni=gesekan.penghancur-janda.com&type=tcp&security=tls&host=$domain&path=/GANDRING-GRPC&headerType=http#%F0%9F%94%B0+HTTP+TLS+${user}"
 trojanhttpnon="trojan://${uuid}@${domain}:$thttpnon?sni=gesekan.penghancur-janda.com&type=tcp&security=none&host=$domain&headerType=http#%F0%9F%94%B0TROJAN+HTTP+NONTLS+${user}"
 trojanquic="trojan://$uuid@$MYIP:$tquic?sni=$domain&quicSecurity=$domain&key=GANDRING-QUIC&security=tls&type=quic&headerType=none#%F0%9F%94%B0TROJAN+QUIC+TLS+$user"
-trojankcp="trojan://$uuid@$domain:$tkcp?sni=minakdjinggo.org&type=http&security=tls&seed=gandringkcp#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
+trojankcp="trojan://$uuid@$domain:$tkcp?sni=minakdjinggo.org&seed=gandringkcp&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
 
 uid=$(cat /etc/trojan-go/uuid.txt)
 sed -i '/"'""$uid""'"$/a\,"'""$user""'"' /etc/trojan-go/config.json
