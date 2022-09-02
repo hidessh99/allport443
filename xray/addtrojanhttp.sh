@@ -73,7 +73,7 @@ sed -i '/#trojan-http-nontls$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xtrojan.json
 sed -i '/#trojan-http-nontls$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
-trojanhttp="trojan://$uuid@${domain}:$thttp?type=tcp&security=tls&path=/gandringtcp&host=${domain}&headerType=http#%F0%9F%94%B0TROJAN+HTTP+TLS+${user}"
+trojanhttp="trojan://$uuid@${domain}:$thttp?type=tcp&security=tls&path=/GANDRING-TCP&host=${domain}&headerType=http#%F0%9F%94%B0TROJAN+HTTP+TLS+${user}"
 trojanhttpnon="trojan://$uuid@${domain}:$thttpnon?type=tcp&security=none&host=${domain}&headerType=http#%F0%9F%94%B0TROJAN+HTTP+NONTLS+${user}"
 systemctl restart xray.service
 systemctl restart xtrojan.service
@@ -90,7 +90,7 @@ echo -e "Nama : ${user}"
 echo -e "IP/Host : ${MYIP}"
 echo -e "Address : ${domain}"
 echo -e "Protocol : tcp"
-echo -e "Path : /gandringtcp"
+echo -e "Path : /GANDRING-TCP"
 echo -e "Port : ${thttp}"
 echo -e "Password : ${uuid}"
 echo -e "Created : $hariini"
