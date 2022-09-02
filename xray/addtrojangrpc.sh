@@ -78,7 +78,7 @@ sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
 sed -i '/#trojan-grpc$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvless.json
-trojangrpc="trojan://${uuid}@${domain}:$tgrpc?mode=gun&security=tls&type=grpc&serviceName=gandringgrpc&sni=${domain}#%F0%9F%94%B0TROJAN+GRPC+TLS+${user}"
+trojangrpc="trojan://${uuid}@${domain}:$tgrpc?mode=gun&security=tls&type=grpc&serviceName=GANDRING-GRPC&sni=${domain}#%F0%9F%94%B0TROJAN+GRPC+TLS+${user}"
 systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvless
@@ -95,7 +95,7 @@ echo -e "Nama : ${user}"
 echo -e "IP/Host : ${MYIP}"
 echo -e "Address : ${domain}"
 echo -e "Protocol : grpc"
-echo -e "ServiceName : gandringgrpc"
+echo -e "ServiceName : GANDRING-GRPC"
 echo -e "Port : ${tgrpc}"
 echo -e "Password : ${uuid}"
 echo -e "Created : $hariini"
