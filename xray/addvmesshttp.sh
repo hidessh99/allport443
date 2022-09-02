@@ -92,7 +92,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "tcp",
-      "path": "/shanumtcp",
+      "path": "/SHANUM-TCP",
       "type": "http",
       "host": "ngerinya.bayanganmantan.net",
       "tls": "tls"
@@ -138,7 +138,7 @@ echo -e "Port TLS  :${vmhttp}"
 echo -e "Port NON TLS  :${vmhttpnon}"
 echo -e "Network  :tcp"
 echo -e "Host  :${domain}"
-echo -e "Path  :/shanumtcp"
+echo -e "Path  :/SHANUM-TCP"
 echo -e "uuId  :${uuid}"
 echo -e "Dibuat  :$hariini"
 echo -e "Kadaluarsa  :$exp"
