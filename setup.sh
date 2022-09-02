@@ -103,20 +103,20 @@ history -c
 echo "1.2" > /home/ver
 echo " "
 echo "Installation has been completed!!"
-echo ""  |tee -a log-install.txt
+echo ""                                                    |tee -a log-install.txt
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" |tee -a log-install.txt
 echo -e "\E[44;1;41m           🔰 SETUP SERVER BY ZEROSSL 🔰            \E[0m"  |tee -a log-install.txt
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" |tee -a log-install.txt
-echo ""  |tee -a log-install.txt
+echo ""                                                    |tee -a log-install.txt
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" |tee -a log-install.txt
-echo -e " 🔰 >>> Service & Port" |tee -a log-install.txt
-echo -r " 🔰 MULTI PROTOCOL TUNNEL GANDRING" |tee -a log-install.txt
+echo -e " 🔰 >>> Service & Port"                           |tee -a log-install.txt
+echo -r " 🔰 MULTI PROTOCOL TUNNEL GANDRING"               |tee -a log-install.txt
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" |tee -a log-install.txt
 echo -e " 🔰 PORT OPENSSH                   : 443"         |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN SSL                  : 443"         |tee -a log-install.txt
-echo -e " 🔰 PORT STUNNEL5                  : 443,400,500" |tee -a log-install.txt
-echo -e " 🔰 PORT DROPBEAR                  : 443,300,200" |tee -a log-install.txt
-echo -e " 🔰 WEBSOCKET TLS                  : 443"         |tee -a log-install.txt
+echo -e " 🔰 PORT DROPBEAR                  : 443"         |tee -a log-install.txt
+echo -e " 🔰 PORT OVPN WS TLS               : 443"         |tee -a log-install.txt
+echo -e " 🔰 WEBSOCKET TLS                  : 8443"        |tee -a log-install.txt
 echo -e " 🔰 VLESS XTLS                     : 443"         |tee -a log-install.txt
 echo -e " 🔰 VLESS GFW                      : 443"         |tee -a log-install.txt
 echo -e " 🔰 VLESS WS TLS                   : 443"         |tee -a log-install.txt
@@ -138,8 +138,9 @@ echo -e " 🔰 SHADOWSOCKS 2022 GRPC TLS      : 443"         |tee -a log-install
 echo -e " 🔰 SHADOWSOCKS 2022 HTTP TLS      : 443"         |tee -a log-install.txt  
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " 🔰 PORT SQUID                     : 4000,5000"   |tee -a log-install.txt
+echo -e " 🔰 PORT STUNNEL5                  : 500"         |tee -a log-install.txt
 echo -e " 🔰 PORT PRIVOXY                   : 3128,3228"   |tee -a log-install.txt
-echo -e " 🔰 PORT UDPGW                     : 99" |tee -a log-install.txt
+echo -e " 🔰 PORT UDPGW                     : 99"          |tee -a log-install.txt
 echo -e " 🔰 NGINX                          : 88"          |tee -a log-install.txt
 echo -e " 🔰 WIREGUARD                      : 591"         |tee -a log-install.txt
 echo -e " 🔰 L2TP/IPSEC VPN                 : 1701"        |tee -a log-install.txt
@@ -149,7 +150,6 @@ echo -e " 🔰 SHADOWSOCKS-R                  : 1444-1543"   |tee -a log-install
 echo -e " 🔰 SS-OBFS TLS                    : 2444-2943"   |tee -a log-install.txt
 echo -e " 🔰 SS-OBFS HTTP                   : 2944-3442"   |tee -a log-install.txt
 echo -e " 🔰 WEBSOCKET NON TLS              : 8880,80"     |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN WS TLS               : 8443,443"    |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN WS NON TLS           : 8080,80"     |tee -a log-install.txt
 echo -e " 🔰 OHP SSH                        : 8181"        |tee -a log-install.txt
 echo -e " 🔰 OHP DROPBEAR                   : 8282"        |tee -a log-install.txt
