@@ -94,7 +94,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "quic",
-      "path": "shanumquic",
+      "path": "SHANUM-QUIC",
       "type": "none",
       "host": "${domain}",
       "tls": "none"
@@ -123,7 +123,7 @@ echo -e "Alamat  :${domain}"
 echo -e "Port TLS  :${vmquic}"
 #echo -e "Port No TLS  :${nontls}"
 echo -e "Protokol  :QUIC"
-echo -e "Path  :shanumquic"
+echo -e "Path  :SHANUM-QUIC"
 echo -e "UserID  :${uuid}"
 echo -e "Dibuat  :$hariini"
 echo -e "Kadaluarsa  :$exp"
