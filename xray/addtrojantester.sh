@@ -121,7 +121,7 @@ sed -i '/"'""$uid""'"$/a\,"'""$user""'"' /etc/trojan-go/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 echo -e "### $user $exp" >> /etc/trojan-go/akun.conf
-link="trojan-go://$user@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=%252Fgandring-go#%F0%9F%94%B0TROJAN+GO+$user"
+trojango="trojan-go://$user@$domain:$trgo?type=ws&sni=$domain&host=$domain&path=%252Fgandring-go#%F0%9F%94%B0TROJAN+GO+$user"
 systemctl restart trojan-go.service
 systemctl restart xray.service
 systemctl restart xtrojan.service
