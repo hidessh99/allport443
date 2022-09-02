@@ -111,7 +111,7 @@ trojanxtls="trojan://${uuid}@${domain}:$txtls?sni=kimcil.kepolen.net&security=xt
 trojangfw="trojan://$uuid@$domain:$tgfw?sni=angeladesah.com&type=tcp&security=tls&headerType=none#%F0%9F%94%B0TROJAN+GFW+TLS+$user"
 trojantls="trojan://${uuid}@${domain}:$ttls?type=ws&security=tls&host=$domain&path=%2fgandring&sni=$domain#%F0%9F%94%B0TROJAN+WS+TLS+${user}"
 trojannontls="trojan://${uuid}@${domain}:$tnontls?type=ws&security=none&host=$domain&path=%2fgandring#%F0%9F%94%B0TROJAN+WS+NONTLS+${user}"
-trojanhttp="trojan://${uuid}@${domain}:$thttp?sni=gesekan.penghancur-janda.com&type=tcp&security=tls&host=$domain&path=/GANDRING-GRPC&headerType=http#%F0%9F%94%B0+HTTP+TLS+${user}"
+trojanhttp="trojan://${uuid}@${domain}:$thttp?sni=gesekan.penghancur-janda.com&type=tcp&security=tls&host=$domain&path=/GANDRING-TCP&headerType=http#%F0%9F%94%B0+HTTP+TLS+${user}"
 trojanhttpnon="trojan://${uuid}@${domain}:$thttpnon?sni=gesekan.penghancur-janda.com&type=tcp&security=none&host=$domain&headerType=http#%F0%9F%94%B0TROJAN+HTTP+NONTLS+${user}"
 trojanquic="trojan://$uuid@$MYIP:$tquic?sni=$domain&quicSecurity=$domain&key=GANDRING-QUIC&security=tls&type=quic&headerType=none#%F0%9F%94%B0TROJAN+QUIC+TLS+$user"
 trojankcp="trojan://$uuid@$domain:$tkcp?sni=minakdjinggo.org&seed=gandringkcp&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
