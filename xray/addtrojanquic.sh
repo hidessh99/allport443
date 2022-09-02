@@ -39,7 +39,7 @@ sed -i '/#trojan-quic$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvlessjson
 sed -i '/#trojan-quic$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvmess.json
-trojanquic="trojan://$uuid@$MYIP:$tquic?sni=$domain&quicSecurity=$domain&key=gandringquic&security=tls&type=quic&headerType=none#%F0%9F%94%B0TROJAN+QUIC+TLS+$user"
+trojanquic="trojan://$uuid@$MYIP:$tquic?sni=$domain&quicSecurity=$domain&key=GANDRING-QUIC&security=tls&type=quic&headerType=none#%F0%9F%94%B0TROJAN+QUIC+TLS+$user"
 systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvmess.service
@@ -55,7 +55,7 @@ echo -e "Nama  :${user}"
 echo -e "IP/Host  :${MYIP}"
 echo -e "Address  :${domain}"
 echo -e "Protocol  :QUIC"
-echo -e "Path  :gandringquic"
+echo -e "Path  :GANDRING-QUIC"
 echo -e "Port  :${tquic}"
 echo -e "Password  :${uuid}"
 echo -e "Dibuat  :$hariini"
