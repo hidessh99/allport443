@@ -155,7 +155,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "grpc",
-      "path": "shanumgrpc",
+      "path": "SHANUM-GRPC",
       "type": "none",
       "host": "${domain}",
       "tls": "tls"
@@ -170,7 +170,7 @@ cat>/etc/xray/vmess-$user-nontls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "grpc",
-      "path": "shanumgrpc",
+      "path": "SHANUM-GRPC",
       "type": "none",
       "host": "${domain}",
       "tls": "none"
@@ -230,7 +230,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "quic",
-      "path": "shanumquic",
+      "path": "SHANUM-QUIC",
       "type": "none",
       "host": "$domain",
       "tls": "tls"
@@ -338,7 +338,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "tcp",
-      "path": "/shanumtcp",
+      "path": "/SHANUM-TCP",
       "type": "http",
       "host": "${domain}",
       "tls": "tls"
@@ -392,11 +392,11 @@ echo -e "Port H2C  :${vmhdua}"
 echo -e "Port HTTP  :${vmhttp}/${vmhttpnon}"
 #echo -e "Port QUIC  :${vmquic}"
 echo -e "Protokol  :WS,GRPC,QUIC,KCP,H2C,HTTP"
-echo -e "Path GRPC  :shanumgrpc"
-echo -e "Path HTTP  :/shanumgtcp"
+echo -e "Path GRPC  :SHANUM-GRPC"
+echo -e "Path HTTP  :/SHANUM-TCP"
 echo -e "Path H2C  :shanumhttp"
 echo -e "Path WS  :/shanum"
-#echo -e "Path QUIC  :shanumquic"
+#echo -e "Path QUIC  :SHANUM-QUIC"
 echo -e "UserID  :${uuid}"
 echo -e "Dibuat  :$hariini"
 echo -e "Kadaluarsa  :$exp"
