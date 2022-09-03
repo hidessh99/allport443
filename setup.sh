@@ -142,7 +142,7 @@ echo -e " 🔰 PORT STUNNEL5                  : 500"         |tee -a log-install
 echo -e " 🔰 PORT PRIVOXY                   : 3128,3228"   |tee -a log-install.txt
 echo -e " 🔰 PORT UDPGW                     : 99"          |tee -a log-install.txt
 echo -e " 🔰 NGINX                          : 88"          |tee -a log-install.txt
-echo -e " 🔰 WIREGUARD                      : 591"         |tee -a log-install.txt
+echo -e " 🔰 WIREGUARD                      : 443"         |tee -a log-install.txt
 echo -e " 🔰 L2TP/IPSEC VPN                 : 1701"        |tee -a log-install.txt
 echo -e " 🔰 PPTP VPN                       : 1732"        |tee -a log-install.txt
 echo -e " 🔰 SSTP VPN                       : 443"         |tee -a log-install.txt
