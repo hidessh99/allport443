@@ -86,8 +86,8 @@ sed -i '/#vless-kcp$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvless.json
 sed -i '/#vless-kcp$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
-vlesskcp="vless://$uuid@$domain:$vlkcp?sni=$domain&seed=wisnukcp&type=kcp&security=tls&headerType=none&encryption=none#%F0%9F%94%B0VLESS+KCP+TLS+$user"
-vlesskcpnon="vless://$uuid@$domain:$vlkcpnon?sni=$domain&seed=wisnukcp&type=kcp&security=none&headerType=none&encryption=none#%F0%9F%94%B0VLESS+KCP+NONTLS+$user"
+vlesskcp="vless://$uuid@$domain:$vlkcp?sni=$domain&seed=WISNU-KCP&type=kcp&security=tls&headerType=none&encryption=none#%F0%9F%94%B0VLESS+KCP+TLS+$user"
+vlesskcpnon="vless://$uuid@$domain:$vlkcpnon?sni=$domain&seed=WISNU-KCP&type=kcp&security=none&headerType=none&encryption=none#%F0%9F%94%B0VLESS+KCP+NONTLS+$user"
 #systemctl restart nginx
 systemctl restart xvless.service
 systemctl restart xray.service
@@ -105,7 +105,7 @@ echo -e "Address  :${domain}"
 echo -e "Port  :$vlkcp"
 #echo -e "Port  :$vlkcpnon"
 echo -e "Protokol  :KCP"
-echo -e "Path  :wisnukcp"
+echo -e "Path  :WISNU-KCP"
 echo -e "UserID  :${uuid}"
 echo -e "Dibuat  :$hariini"
 echo -e "Kadaluarsa  :$exp"
