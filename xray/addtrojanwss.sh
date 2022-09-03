@@ -86,8 +86,8 @@ sed -i '/#trojan-nontls$/a\### '"$user $exp"'\
 sed -i '/#trojan-nontls$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 
-trojantls="trojan://${uuid}@${domain}:$ttls?type=ws&security=tls&host=$domain&path=%2fgandring&sni=$domain#%F0%9F%94%B0TROJAN+WS+TLS+${user}"
-trojannontls="trojan://${uuid}@${domain}:$tnontls?type=ws&security=none&host=$domain&path=%2fgandring#%F0%9F%94%B0TROJAN+WS+NONTLS+${user}"
+trojantls="trojan://${uuid}@${domain}:$ttls?type=ws&security=tls&host=$domain&path=%2fGANDRING&sni=$domain#%F0%9F%94%B0TROJAN+WS+TLS+${user}"
+trojannontls="trojan://${uuid}@${domain}:$tnontls?type=ws&security=none&host=$domain&path=%2fGANDRING#%F0%9F%94%B0TROJAN+WS+NONTLS+${user}"
 systemctl restart xvmess
 systemctl restart xray.service
 systemctl restart xtrojan.service
@@ -104,7 +104,7 @@ echo -e "Nama  :${user}"
 echo -e "IP/Host  :${MYIP}"
 echo -e "Address  :${domain}"
 echo -e "Protocol  :websocket"
-echo -e "Path  :/gandring"
+echo -e "Path  :/GANDRING"
 echo -e "Port tls  :${ttls}"
 echo -e "Port nontls  :${tnontls}"
 echo -e "Password  :${uuid}"
