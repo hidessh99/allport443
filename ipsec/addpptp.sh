@@ -51,16 +51,18 @@ EOF
 chmod 600 /etc/ppp/chap-secrets*
 echo -e "### $VPN_USER $exp">>"/var/lib/wisnucs/data-user-pptp"
 cat <<EOF
-
-============================
-PPTP VPN
-============================
-IP/Host   : $PUBLIC_IP
-Domain    : $domain
-Username  : $VPN_USER
-Password  : $VPN_PASSWORD
-Created   : $hariini
-Expired   : $exp
-============================
-Script By @zerossl
+echo -e ""
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m        🔰 AKUN L2TP 🔰           \E[0m"   
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "✨ IP ➡️ $PUBLIC_IP"
+echo -e "✨ Domain ➡️ $domain"
+echo -e "✨ Username➡️ $VPN_USER"
+echo -e "✨ Password ➡️ $VPN_PASSWORD"
+echo -e "✨ Dibuat ➡️ $hariini"
+echo -e "✨ Kadaluarsa ➡️ $exp"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m  🔰LUXURY EDITION BY ZEROSSL🔰   \E[0m"   
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
 EOF
