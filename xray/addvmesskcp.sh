@@ -95,7 +95,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "kcp",
-      "path": "shanumkcp",
+      "path": "SHANUM-KCP",
       "type": "none",
       "host": "",
       "tls": "tls"
@@ -111,7 +111,7 @@ cat>/etc/xray/vmess-$user-nontls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "kcp",
-      "path": "shanumkcp",
+      "path": "SHANUM-KCP",
       "type": "none",
       "host": "",
       "tls": "none"
@@ -141,7 +141,7 @@ echo -e "Alamat  :${domain}"
 echo -e "Port TLS  :${tls}"
 echo -e "Port No TLS  :${nontls}"
 echo -e "Protokol  :KCP"
-echo -e "Path  :shanumkcp"
+echo -e "Path  :SHANUM-KCP"
 echo -e "UserID  :${uuid}"
 echo -e "Dibuat  :$hariini"
 echo -e "Kadaluarsa  :$exp"
