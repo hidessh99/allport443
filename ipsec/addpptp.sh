@@ -53,7 +53,7 @@ echo -e "### $VPN_USER $exp">>"/var/lib/wisnucs/data-user-pptp"
 cat <<EOF
 echo -e ""
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[46;1;46m        🔰 AKUN L2TP 🔰           \E[0m"   
+echo -e "\E[46;1;46m        🔰 AKUN PPTP 🔰           \E[0m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "✨ IP ➡️ $PUBLIC_IP"
 echo -e "✨ Domain ➡️ $domain"
