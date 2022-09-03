@@ -145,7 +145,7 @@ echo -e " 🔰 NGINX                          : 88"          |tee -a log-install
 echo -e " 🔰 WIREGUARD                      : 591"         |tee -a log-install.txt
 echo -e " 🔰 L2TP/IPSEC VPN                 : 1701"        |tee -a log-install.txt
 echo -e " 🔰 PPTP VPN                       : 1732"        |tee -a log-install.txt
-echo -e " 🔰 SSTP VPN                       : 666"         |tee -a log-install.txt
+echo -e " 🔰 SSTP VPN                       : 443"         |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS-R                  : 1444-1543"   |tee -a log-install.txt
 echo -e " 🔰 SS-OBFS TLS                    : 2444-2943"   |tee -a log-install.txt
 echo -e " 🔰 SS-OBFS HTTP                   : 2944-3442"   |tee -a log-install.txt
