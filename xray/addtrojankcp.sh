@@ -86,8 +86,8 @@ sed -i '/#trojan-kcp$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#trojan-kcp-nontls$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xtrojan.json
-trojankcp="trojan://$uuid@$domain:$tkcp?sni=$domain&seed=gandringkcp&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
-trojankcpnon="trojan://$uuid@$domain:$tkcpnon?sni=$domain&seed=gandringkcp&security=none&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+NONTLS+$user"
+trojankcp="trojan://$uuid@$domain:$tkcp?sni=$domain&seed=GANDRING-KCP&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
+trojankcpnon="trojan://$uuid@$domain:$tkcpnon?sni=$domain&seed=GANDRING-KCP&security=none&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+NONTLS+$user"
 systemctl restart xray.service
 systemctl restart xtrojan.service
 systemctl restart xvmess.service
@@ -104,7 +104,7 @@ echo -e "Nama  :${user}"
 echo -e "IP/Host  :${MYIP}"
 echo -e "Address  :${domain}"
 echo -e "Protocol  :KCP"
-echo -e "Path  :gandringkcp"
+echo -e "Path  :GANDRING-KCP"
 echo -e "Port  :${tkcp}"
 echo -e "Password  :${uuid}"
 echo -e "Dibuat  :$hariini"
