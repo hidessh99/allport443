@@ -105,7 +105,7 @@ sed -i '/#trojan-kcp$/a\### '"$user $exp"'\
 sed -i '/#trojan-kcp$/a\### '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/xvless.json
 
-trojanhdua="trojan://${uuid}@${domain}:$thdua?sni=jambualas.id&type=http&security=tls&path=/gandringhttp#%F0%9F%94%B0TROJAN+H2C+TLS+${user}"
+trojanhdua="trojan://${uuid}@${domain}:$thdua?sni=jambualas.id&type=http&security=tls&path=/GANDRING-HTTP#%F0%9F%94%B0TROJAN+H2C+TLS+${user}"
 trojangrpc="trojan://${uuid}@${domain}:$tgrpc?mode=multi&security=tls&type=grpc&serviceName=SATRIO&sni=${domain}#%F0%9F%94%B0TROJAN+GRPC+TLS+${user}"
 trojanxtls="trojan://${uuid}@${domain}:$txtls?sni=kimcil.kepolen.net&security=xtls&type=tcp&headerType=none&flow=xtls-rprx-splice-udp443#%F0%9F%94%B0TROJAN+XTLS+${user}"
 trojangfw="trojan://$uuid@$domain:$tgfw?sni=angeladesah.com&type=tcp&security=tls&headerType=none#%F0%9F%94%B0TROJAN+GFW+TLS+$user"
@@ -114,7 +114,7 @@ trojannontls="trojan://${uuid}@${domain}:$tnontls?type=ws&security=none&host=$do
 trojanhttp="trojan://${uuid}@${domain}:$thttp?sni=gesekan.penghancur-janda.com&type=tcp&security=tls&host=$domain&path=/GANDRING-TCP&headerType=http#%F0%9F%94%B0+HTTP+TLS+${user}"
 trojanhttpnon="trojan://${uuid}@${domain}:$thttpnon?sni=gesekan.penghancur-janda.com&type=tcp&security=none&host=$domain&headerType=http#%F0%9F%94%B0TROJAN+HTTP+NONTLS+${user}"
 trojanquic="trojan://$uuid@$MYIP:$tquic?sni=$domain&quicSecurity=$domain&key=GANDRING-QUIC&security=tls&type=quic&headerType=none#%F0%9F%94%B0TROJAN+QUIC+TLS+$user"
-trojankcp="trojan://$uuid@$domain:$tkcp?sni=minakdjinggo.org&seed=gandringkcp&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
+trojankcp="trojan://$uuid@$domain:$tkcp?sni=minakdjinggo.org&seed=GANDRING-TCP&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
 
 uid=$(cat /etc/trojan-go/uuid.txt)
 sed -i '/"'""$uid""'"$/a\,"'""$user""'"' /etc/trojan-go/config.json
@@ -140,11 +140,11 @@ echo -e "Protokol  :GRPC,H2C,GFW,XTLS,WS,KCP,HTTP,GO,QUIC"
 echo -e "Flow xtls  :only origin type not supported"
 echo -e "ServiceName  :SATRIO"
 echo -e "Path HTTP  :/GANDRING-TCP"
-echo -e "Path H2C  :/gandringhttp"
+echo -e "Path H2C  :/GANDRING-HTTP"
 echo -e "Path WS  :/GANDRING"
 echo -e "Path QUIC  :GANDRING-QUIC"
 echo -e "Path GO    :/gandring-go"
-echo -e "Path KCP  :gandringkcp"
+echo -e "Path KCP  :GANDRING-KCP"
 echo -e "Port GRPC  :${tgrpc}"
 echo -e "Port WSTLS  :${ttls} , $tnontls"
 echo -e "Port H2C  :${thdua}"
