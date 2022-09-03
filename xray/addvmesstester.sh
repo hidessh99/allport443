@@ -260,7 +260,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "http",
-      "path": "shanumhttp",
+      "path": "SHANUM-HTTP",
       "type": "none",
       "host": "",
       "tls": "tls"
@@ -290,7 +290,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "kcp",
-      "path": "shanumkcp",
+      "path": "SHANUM-KCP",
       "type": "none",
       "host": "",
       "tls": "tls"
@@ -420,7 +420,7 @@ echo -e "Port HTTP  :${vmhttp}/${vmhttpnon}"
 echo -e "Protokol  :WS,GRPC,QUIC,KCP,H2C,HTTP"
 echo -e "Path GRPC  :AYESHA"
 echo -e "Path HTTP  :/SHANUM-TCP"
-echo -e "Path H2C  :shanumhttp"
+echo -e "Path H2C  :SHANUM-HTTP"
 echo -e "Path WS  :/SHANUM"
 echo -e "Path QUIC  :SHANUM-QUIC"
 echo -e "UserID  :${uuid}"
