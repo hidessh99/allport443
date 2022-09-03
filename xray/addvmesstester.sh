@@ -68,7 +68,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/shanum",
+      "path": "/SHANUM",
       "type": "none",
       "host": "${domain}",
       "tls": "tls"
@@ -83,7 +83,7 @@ cat>/etc/xray/vmess-$user-nontls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/shanum",
+      "path": "/SHANUM",
       "type": "none",
       "host": "${domain}",
       "tls": "none"
@@ -155,7 +155,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "grpc",
-      "path": "SHANUM-GRPC",
+      "path": "AYESHA",
       "type": "none",
       "host": "${domain}",
       "tls": "tls"
@@ -170,7 +170,7 @@ cat>/etc/xray/vmess-$user-nontls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "grpc",
-      "path": "SHANUM-GRPC",
+      "path": "AYESHA",
       "type": "none",
       "host": "${domain}",
       "tls": "none"
@@ -418,32 +418,32 @@ echo -e "Port H2C  :${vmhdua}"
 echo -e "Port HTTP  :${vmhttp}/${vmhttpnon}"
 #echo -e "Port QUIC  :${vmquic}"
 echo -e "Protokol  :WS,GRPC,QUIC,KCP,H2C,HTTP"
-echo -e "Path GRPC  :SHANUM-GRPC"
+echo -e "Path GRPC  :AYESHA"
 echo -e "Path HTTP  :/SHANUM-TCP"
 echo -e "Path H2C  :shanumhttp"
-echo -e "Path WS  :/shanum"
-#echo -e "Path QUIC  :SHANUM-QUIC"
+echo -e "Path WS  :/SHANUM"
+echo -e "Path QUIC  :SHANUM-QUIC"
 echo -e "UserID  :${uuid}"
 echo -e "Dibuat  :$hariini"
 echo -e "Kadaluarsa  :$exp"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "VMESS QUIC TLS: ${vmessquic}"
+echo -e "QUIC TLS: ${vmessquic}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "VMESS WS TLS: ${vmess1}"
+echo -e "WS TLS: ${vmess1}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "VMESS WS NONTLS: ${vmess2}"
+echo -e "WS NONTLS: ${vmess2}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "VMESS GRPC TLS: ${vmessgrpc}"
+echo -e "GRPC TLS: ${vmessgrpc}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-#echo -e "VMESS GRPC NONTLS: ${vmessgrpcnon}"
+#echo -e "GRPC NONTLS: ${vmessgrpcnon}"
 #echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "VMESS H2C TLS: ${vmesshdua}"
+echo -e "H2C TLS: ${vmesshdua}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "VMESS KCP TLS: ${vmesskcp}"
+echo -e "KCP TLS: ${vmesskcp}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "VMESS HTTP TLS: ${vmesshttp}"
+echo -e "HTTP TLS: ${vmesshttp}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "VMESS HTTP NONTLS: ${vmesshttpnon}"
+echo -e "HTTP NONTLS: ${vmesshttpnon}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
