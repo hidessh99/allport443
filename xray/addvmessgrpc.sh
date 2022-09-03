@@ -99,7 +99,7 @@ cat>/etc/xray/vmess-$user-tls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "grpc",
-      "path": "SHANUM-GRPC",
+      "path": "AYESHA",
       "type": "none",
       "host": "${domain}",
       "tls": "tls"
@@ -114,7 +114,7 @@ cat>/etc/xray/vmess-$user-nontls.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "grpc",
-      "path": "SHANUM-GRPC",
+      "path": "AYESHA",
       "type": "none",
       "host": "${domain}",
       "tls": "none"
@@ -144,7 +144,7 @@ echo -e "IP  :${MYIP}"
 echo -e "Port TLS  :${vmgrpc}"
 #echo -e "Port no TLS  :${vmgrpcnon}"
 echo -e "Protokol  :grpc"
-echo -e "serviceName  :SHANUM-GRPC"
+echo -e "serviceName  :AYESHA"
 echo -e "UserId  :${uuid}"
 echo -e "Dibuat  :$hariini"
 echo -e "Kadaluarsa  :$exp"
