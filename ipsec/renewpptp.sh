@@ -1,4 +1,5 @@
 #!/bin/bash
+#Mod by Zerossl
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
@@ -8,19 +9,18 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/var/lib/wisnucs/data-user-pptp")
 		clear
         echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\E[46;1;46m    🔰 PERPANJANG AKUN PPTP 🔰    \E[0m"
-        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"		
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	echo ""
 	echo "You have no existing clients!"
 	echo ""
-	echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"		
-        read -n 1 -s -r -p "Press any key to back on menu"
+	echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
         l2tppmenu
 	fi
-
 	clear
 	echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\E[46;1;46m    🔰 PERPANJANG AKUN PPTP 🔰    \E[0m"
-        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"			
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	grep -E "^### " "/var/lib/wisnucs/data-user-pptp" | cut -d ' ' -f 2-3 | nl -s ') '
 	echo -e "     0) Cancel"
         echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -29,14 +29,14 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/var/lib/wisnucs/data-user-pptp")
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
 			read -rp "Select one client [1]: " CLIENT_NUMBER
 	    elif [[ ${CLIENT_NUMBER} == '0' ]]; then
-            ipsec-menu
+            l2tppmenu
 		else
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
 read -p "Expired (days): " masaaktif
-user=$(grep -E "^### " "/var/lib/wisnucs/data-user-pptp" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
-exp=$(grep -E "^### " "/var/lib/wisnucs/data-user-pptp" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
+user=$(grep -E "^### " "/var/lib/wisnucs/data-user-pptp" | cut -d ' ' -f2 | sed -n "${CLIENT_NUMBER}"p)
+exp=$(grep -E "^### " "/var/lib/wisnucs/data-user-pptp" | cut -d ' ' -f3 | sed -n "${CLIENT_NUMBER}"p)
 now=$(date +%Y-%m-%d)
 d1=$(date -d "$exp" +%s)
 d2=$(date -d "$now" +%s)
@@ -47,14 +47,12 @@ sed -i "s/### $user $exp/### $user $exp4/g" /var/lib/wisnucs/data-user-pptp
 clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[46;1;46m    🔰 PERPANJANG AKUN PPTP 🔰    \E[0m"
-echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"	
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo "✨Nama User ➡️ $user"
 echo "✨Kadaluarsa ➡️ $exp4"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"
-echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"		
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
-
 l2tppmenu
-
