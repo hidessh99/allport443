@@ -140,8 +140,8 @@ if [[ ${OS} == "centos" ]]; then
 }
 Start_SSR(){
 	check_pid
-	wget -O /etc/init.d/ssrmu "https://${wisnuvpn}/ssrmu"
-	/etc/init.d/ssrmu start
+	wget -O /etc/init.d/ssrku "https://${wisnuvpn}/ssrku"
+	/etc/init.d/ssrku start
 }
 Install_SSR(){
 Set_user_api_server_pub_addr
@@ -156,7 +156,7 @@ Save_iptables
 Start_SSR
 }
 Install_SSR
-wget -O /usr/bin/ssr https://${wisnuvpn}/ssrmu.sh && chmod +x /usr/bin/ssr
+wget -O /usr/bin/ssr https://${wisnuvpn}/ssrku.sh && chmod +x /usr/bin/ssr
 wget -O /usr/bin/addssr https://${wisnuvpn}/addssr.sh && chmod +x /usr/bin/addssr
 wget -O /usr/bin/delssr https://${wisnuvpn}/delssr.sh && chmod +x /usr/bin/delssr
 wget -O /usr/bin/renewssr https://${wisnuvpn}/renewssr.sh && chmod +x /usr/bin/renewssr
