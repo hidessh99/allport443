@@ -154,20 +154,20 @@ echo -e " 🔰 PORT OVPN WS NON TLS           : 8080,80"     |tee -a log-install
 echo -e " 🔰 OHP SSH                        : 8181"        |tee -a log-install.txt
 echo -e " 🔰 OHP DROPBEAR                   : 8282"        |tee -a log-install.txt
 echo -e " 🔰 OHP OVPN                       : 8383"        |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN TCP                  : 443"         |tee -a log-install.txt
+echo -e " 🔰 PORT OVPN TCP                  : 700"         |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN UDP                  : 800"         |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " 🔰 TROJAN KCP TLS                 : 202"         |tee -a log-install.txt
-echo -e " 🔰 VLESS KCP TLS                  : 302"         |tee -a log-install.txt
-echo -e " 🔰 VMESS KCP TLS                  : 402"         |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 KCP TLS       : 502"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 KCP TLS                 : 602"         |tee -a log-install.txt
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " 🔰 TROJAN H2C TLS                 : 1110"        |tee -a log-install.txt
 echo -e " 🔰 VLESS H2C TLS                  : 1120"        |tee -a log-install.txt
 echo -e " 🔰 VMESS H2C TLS                  : 1130"        |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 H2C TLS       : 1140"        |tee -a log-install.txt
 echo -e " 🔰 SOCKS5 H2C TLS                 : 1150"        |tee -a log-install.txt
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " 🔰 TROJAN KCP TLS                 : 202"         |tee -a log-install.txt
+echo -e " 🔰 VLESS KCP TLS                  : 302"         |tee -a log-install.txt
+echo -e " 🔰 VMESS KCP TLS                  : 402"         |tee -a log-install.txt
+echo -e " 🔰 SHADOWSOCKS 2022 KCP TLS       : 502"         |tee -a log-install.txt
+echo -e " 🔰 SOCKS5 KCP TLS                 : 602"         |tee -a log-install.txt
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " 🔰 TROJAN KCP NON TLS             : 203"         |tee -a log-install.txt
 echo -e " 🔰 VLESS KCP NON TLS              : 303"         |tee -a log-install.txt
