@@ -1,12 +1,12 @@
 #!/bin/bash
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+date=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 MYIP=$(curl -sS ipv4.icanhazip.com)
 
 clear
 # Load params
-WgTrial=tes`</dev/urandom tr -dc A-Z0-9 | head -c4`
+WgTrial=tes`</dev/urandom tr -dc A-Z0-9 | head -c2`
 Hariii=1
 source /etc/wireguard/params
 source /var/lib/wisnucs/ipvps.conf
@@ -15,26 +15,28 @@ SERVER_PUB_IP=$(curl -sS ifconfig.me);
 else
 SERVER_PUB_IP=$IP
 fi
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\E[44;1;39m       ⇱ TRIAL WG ACCOUNT ⇲        \E[0m"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+            echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+            echo -e "\033[1;46m    🔰 AKUN TRIAL WIREGUARD 🔰     \e[m"
+            echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-	until [[ ${WgTrial} =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		#read -rp "Client name: " -e WgTrial
-		CLIENT_EXISTS=$(grep -w $WgTrial /etc/wireguard/wg0.conf | wc -l)
+	    until [[ ${WgTrial} =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
+	    #read -rp "Client name: " -e WgTrial
+	    CLIENT_EXISTS=$(grep -w $WgTrial /etc/wireguard/wg0.conf | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-            echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-            echo -e "\E[44;1;39m       ⇱ TRIAL WG ACCOUNT ⇲        \E[0m"
-            echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-			echo ""
-			echo "A client with the specified name was already created, please choose another name."
-			echo ""
-			echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-			echo ""
-		    read -n 1 -s -r -p "Press any key to back on menu"
-            wg-menu
-		fi
+	    if [[ ${CLIENT_EXISTS} == '1' ]]; then
+            echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+            echo -e "\033[1;46m    🔰 AKUN TRIAL WIREGUARD 🔰     \e[m"
+            echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+	    echo ""
+            echo "A client with the specified name was already created, please choose another name."
+	    echo ""
+            echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+            echo -e "\033[1;46m    🔰SOLO THE SPIRIT OF JAVA🔰    \e[m"
+            echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+            echo ""
+            read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
+            l2tppmenu
+	    fi
 	done
 
 	echo "IPv4 Detected"
@@ -44,7 +46,7 @@ fi
 	if [[ "$LASTIP" = "" ]]; then
 	CLIENT_ADDRESS="10.11.11.2"
 	else
-	CLIENT_ADDRESS="10.11.qq.$((LASTIP+1))"
+	CLIENT_ADDRESS="10.11.11.$((LASTIP+1))"
 	fi
 
 	# Adguard DNS by default
@@ -88,14 +90,15 @@ AllowedIPs = $CLIENT_ADDRESS/32" >>"/etc/wireguard/$SERVER_WG_NIC.conf"
 	sleep 0.5
 	echo Generate PresharedKey
 	clear
-	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\E[44;1;39m       ⇱ TRIAL WG ACCOUNT ⇲        \E[0m"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-	echo -e "Wireguard : http://$MYIP:88/$WgTrial.conf"
-	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-	echo -e "Expired On : $exp"
-	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-   	rm -f /root/wg0-client-$WgTrial.conf
-read -n 1 -s -r -p "Press any key to back on menu"
-
-menu
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[1;46m    🔰 AKUN TRIAL WIREGUARD 🔰     \e[m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "Wireguard : http://$MYIP:88/$WgTrial.conf"
+echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "Expired On : $exp"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[1;46m    🔰SOLO THE SPIRIT OF JAVA🔰    \e[m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+rm -f /root/wg0-client-$WgTrial.conf
+read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
+l2tppmenu
