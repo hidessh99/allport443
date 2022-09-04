@@ -45,8 +45,8 @@ check_pid(){
 	PID=`ps -ef |grep -v grep | grep server.py |awk '{print $2}'`
 }
 Add_iptables(){
-		iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
-		iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+		iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 1444-1944 -j ACCEPT
+		iptables -I INPUT -m state --state NEW -m udp -p udp --dport 1444-1944 -j ACCEPT
 }
 Save_iptables(){
 if [[ ${OS} == "centos" ]]; then
