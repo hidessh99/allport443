@@ -146,7 +146,7 @@ echo -e " 🔰 PORT STUNNEL5                  : 500"         |tee -a log-install
 echo -e " 🔰 PORT PRIVOXY                   : 3128,3228"   |tee -a log-install.txt
 echo -e " 🔰 PORT UDPGW                     : 99"          |tee -a log-install.txt
 echo -e " 🔰 NGINX                          : 88"          |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS-R                  : 443"   |tee -a log-install.txt
+echo -e " 🔰 SHADOWSOCKS-R                  : 1444-1944"   |tee -a log-install.txt
 echo -e " 🔰 SS-OBFS TLS                    : 2444-2943"   |tee -a log-install.txt
 echo -e " 🔰 SS-OBFS HTTP                   : 2944-3442"   |tee -a log-install.txt
 echo -e " 🔰 WEBSOCKET NON TLS              : 8880,80"     |tee -a log-install.txt
@@ -181,7 +181,7 @@ echo -e " 🔰 VMESS HTTP NON TLS             : 808"         |tee -a log-install
 echo -e " 🔰 SHADOWSOCKS 2022 HTTP NON TLS  : 888"         |tee -a log-install.txt
 echo -e " 🔰 SOCKS5 HTTP NON TLS            : 8888"        |tee -a log-install.txt
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " 🔰 TROJAN XTLS                    : 1440"        |tee -a log-install.txt
+echo -e " 🔰 TROJAN XTLS                    : 1443"        |tee -a log-install.txt
 echo -e " 🔰 TROJAN QUIC TLS                : 401"         |tee -a log-install.txt
 echo -e " 🔰 VMESS QUIC TLS                 : 501"         |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 QUIC TLS      : 601"         |tee -a log-install.txt
