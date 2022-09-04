@@ -155,8 +155,8 @@ conn shared
 
 conn l2tp-psk
   auto=add
-  leftprotoport=17/443
-  rightprotoport=17/%any
+  leftprotoport=443
+  rightprotoport=443
   type=transport
   phase2=esp
   also=shared
