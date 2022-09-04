@@ -14,15 +14,15 @@ LIGHT='\033[0;37m'
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
 clear
-echo "----------------------------------";
-echo "----=[ SS - OBFS User Login ]=----";
-echo "----------------------------------";
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[44;1;39m      ⇱ SS - OBFS User Login ⇲     \E[0m"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 data=( `cat /etc/shadowsocks-libev/akun.conf | grep '^###' | cut -d ' ' -f 2`);
 x=1
-echo "----------------------------------";
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo " User | TLS"
-echo "----------------------------------";
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 for akun in "${data[@]}"
 do
 port=$(cat /etc/shadowsocks-libev/akun.conf | grep '^port_tls' | cut -d ' ' -f 2 | tr '\n' ' ' | awk '{print $'"$x"'}')
@@ -32,16 +32,16 @@ echo > /dev/null
 else
 echo " $akun - $port"
 echo "$jum";
-echo "----------------------------------"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 fi
 x=$(( "$x" + 1 ))
 done
 data=( `cat /etc/shadowsocks-libev/akun.conf | grep '^###' | cut -d ' ' -f 2`);
 x=1
 echo ""
-echo "----------------------------------";
-echo " User |  No TLS"
-echo "----------------------------------";
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo " User |  HTTP"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 for akun in "${data[@]}"
 do
 port=$(cat /etc/shadowsocks-libev/akun.conf | grep '^port_http' | cut -d ' ' -f 2 | tr '\n' ' ' | awk '{print $'"$x"'}')
@@ -51,7 +51,10 @@ echo > /dev/null
 else
 echo " $akun - $port"
 echo "$jum";
-echo "----------------------------------"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 fi
 x=$(( "$x" + 1 ))
 done
+echo ""
+read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"            
+ss-menu
