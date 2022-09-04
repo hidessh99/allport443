@@ -57,4 +57,4 @@ x=$(( "$x" + 1 ))
 done
 echo ""
 read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"            
-ss-menu
+ssmenu
