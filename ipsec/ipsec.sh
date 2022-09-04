@@ -298,6 +298,6 @@ wget -O /usr/bin/addpptp https://${wisnuvpn}/addpptp.sh && chmod +x /usr/bin/add
 wget -O /usr/bin/delpptp https://${wisnuvpn}/delpptp.sh && chmod +x /usr/bin/delpptp
 wget -O /usr/bin/renewpptp https://${wisnuvpn}/renewpptp.sh && chmod +x /usr/bin/renewpptp
 wget -O /usr/bin/renewl2tp https://${wisnuvpn}/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
-touch /var/lib/crot/data-user-l2tp
-touch /var/lib/crot/data-user-pptp
+touch /var/lib/wisnucs/data-user-l2tp
+touch /var/lib/wisnucs/data-user-pptp
 rm -f /root/ipsec.sh
