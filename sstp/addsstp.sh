@@ -40,8 +40,9 @@ cat >> /home/sstp/sstp_account <<EOF
 $user * $pass *
 EOF
 
-cat ### $user $exp >> /var/lib/wisnucs/data-user-sstp << EOF
+echo -e "### $user $exp >> /var/lib/wisnucs/data-user-sstp"
 clear
+cat <<EOF
 echo -e ""
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[46;1;46m         🔰 AKUN SSTP 🔰          \E[0m"   
@@ -57,6 +58,7 @@ echo -e "✨ Kadaluarsa ➡️ $exp"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[46;1;46m  🔰LUXURY EDITION BY ZEROSSL🔰   \E[0m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+EOF
 echo ""
 read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
 menu
