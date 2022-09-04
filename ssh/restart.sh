@@ -15,7 +15,7 @@ clear
 echo -e ""
 echo -e "🔰RESTART LAYANAN TUNNEL DIMULAI🔰"
 systemctl daemon-reload
-systemctl restart ssrku
+systemctl restart ssrmu
 systemctl restart stunnelws
 systemctl restart otls
 systemctl restart nontls
@@ -47,6 +47,6 @@ systemctl restart trojan-go
 /etc/init.d/fail2ban restart
 /etc/init.d/cron restart
 /etc/init.d/nginx restart
-systemctl restart ssrku
+systemctl restart ssrmu
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:99
 echo -e "🔰RESTART LAYANAN TUNNEL SELESAI✅"
