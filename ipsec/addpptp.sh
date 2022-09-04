@@ -13,24 +13,23 @@ PUBLIC_IP=$IP
 fi
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  | tee -a /etc/log-create-user.log
 echo -e "\E[46;1;46m        🔰 AKUN PPTP 🔰           \E[0m"   | tee -a /etc/log-create-user.log
-echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log		
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 
 until [[ $VPN_USER =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username: " -e VPN_USER
-		CLIENT_EXISTS=$(grep -w $VPN_USER /var/lib/wisnucs/data-user-pptp | wc -l)
-
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
+read -rp "Username: " -e VPN_USER
+CLIENT_EXISTS=$(grep -w $VPN_USER /var/lib/wisnucs/data-user-pptp | wc -l)
+if [[ ${CLIENT_EXISTS} == '1' ]]; then
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  | tee -a /etc/log-create-user.log
 echo -e "\E[46;1;46m        🔰 AKUN PPTP 🔰           \E[0m"   | tee -a /etc/log-create-user.log
-echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log		
-			echo ""
-			echo "A client with the specified name was already created, please choose another name."
-			echo ""
-            read -n 1 -s -r -p "Press any key to back on menu"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo ""
+echo "A client with the specified name was already created, please choose another name."
+echo ""
+read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
             
-            l2tppmenu
-		fi
-	done
+l2tppmenu
+fi
+done
 read -p "Password: " VPN_PASSWORD
 read -p "Expired (days): " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
@@ -62,5 +61,4 @@ echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"  | tee -a /etc/
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo "" | tee -a /etc/log-create-user.log
 read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
-
 l2tppmenu
