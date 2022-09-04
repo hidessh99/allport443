@@ -44,6 +44,7 @@ mkdir -p /usr/bin/xray
 mkdir -p /etc/xray
 mkdir -p /etc/ssl/private
 mkdir -p /usr/local/etc/xray
+mkdir -p /home/sstp
 mkdir -p /home/vps/public_html
 # / / Unzip Xray Linux 64
 cd `mktemp -d`
@@ -863,6 +864,7 @@ cp /root/domain /etc/xray
 cp /root/domain /usr/local/etc/xray
 cp /etc/ssl/private/fullchain.pem /etc/xray/xray.crt
 cp /etc/ssl/private/privkey.pem /etc/xray/xray.key
+cp /etc/xray/xray.crt /home/sstp/server.crt
 cp /etc/xray/xray.crt /home/vps/public_html/server.crt
 cp /etc/xray/xray.key home/vps/public_html/server.crt
 rm -f ins-xray.sh >/dev/null 2>&1
