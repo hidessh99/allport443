@@ -1,21 +1,17 @@
 #!/bin/bash
-# Debian 9 & 10 64bit
-# Ubuntu 18.04 & 20.04 bit
-# Centos 7 & 8 64bit 
-# Mod By gandring
 # ==========================================
 # Color
 RED='\033[0;31m'
 NC='\033[0m'
-GREEN='\033[0;32m'
-ORANGE='\033[0;33m'
+#GREEN='\033[0;32m'
+#ORANGE='\033[0;33m'
 BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
-CYAN='\033[0;36m'
+#CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
+off='\x1b[m'
 # ==========================================
 # Getting
-MYIP=$(wget -qO- ipinfo.io/ip);
 
 # ==================================================
 # Link Hosting Kalian
@@ -54,6 +50,7 @@ yum -y install nss-devel nspr-devel pkgconfig pam-devel \
   flex bison gcc make ppp 
 
 yum "$REPO1" -y install xl2tpd 
+
 
 if [[ $ver == '7' ]]; then
   yum -y install systemd-devel iptables-services 
@@ -298,6 +295,6 @@ wget -O /usr/bin/addpptp https://${wisnuvpn}/addpptp.sh && chmod +x /usr/bin/add
 wget -O /usr/bin/delpptp https://${wisnuvpn}/delpptp.sh && chmod +x /usr/bin/delpptp
 wget -O /usr/bin/renewpptp https://${wisnuvpn}/renewpptp.sh && chmod +x /usr/bin/renewpptp
 wget -O /usr/bin/renewl2tp https://${wisnuvpn}/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
-touch /var/lib/crot/data-user-l2tp
-touch /var/lib/crot/data-user-pptp
+touch /var/lib/wisnucs/data-user-l2tp
+touch /var/lib/wisnucs/data-user-pptp
 rm -f /root/ipsec.sh
