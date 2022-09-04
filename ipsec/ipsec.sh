@@ -20,6 +20,9 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 # ==================================================
 # Link Hosting Kalian
 wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec"
+domain=$(cat /etc/xray/domain)
+cert=$(cat /etc/xray/xray.crt)
+key=$(cat /etc/xray/xray.key)
 
 VPN_IPSEC_PSK='gandring'
 NET_IFACE=$(ip -o $NET_IFACE -4 route show to default | awk '{print $5}');
@@ -152,7 +155,7 @@ conn shared
 
 conn l2tp-psk
   auto=add
-  leftprotoport=17/1701
+  leftprotoport=17/443
   rightprotoport=17/%any
   type=transport
   phase2=esp
@@ -190,7 +193,7 @@ EOF
 # Create xl2tpd config
 cat > /etc/xl2tpd/xl2tpd.conf <<EOF
 [global]
-port = 1701
+port = 443
 
 [lns default]
 ip range = $L2TP_POOL
@@ -298,6 +301,6 @@ wget -O /usr/bin/addpptp https://${wisnuvpn}/addpptp.sh && chmod +x /usr/bin/add
 wget -O /usr/bin/delpptp https://${wisnuvpn}/delpptp.sh && chmod +x /usr/bin/delpptp
 wget -O /usr/bin/renewpptp https://${wisnuvpn}/renewpptp.sh && chmod +x /usr/bin/renewpptp
 wget -O /usr/bin/renewl2tp https://${wisnuvpn}/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
-touch /var/lib/crot/data-user-l2tp
-touch /var/lib/crot/data-user-pptp
+touch /var/lib/wisnucs/data-user-l2tp
+touch /var/lib/wisnucs/data-user-pptp
 rm -f /root/ipsec.sh
