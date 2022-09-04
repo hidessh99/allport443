@@ -190,7 +190,7 @@ EOF
 # Create xl2tpd config
 cat > /etc/xl2tpd/xl2tpd.conf <<EOF
 [global]
-port = 443
+port = 10809
 
 [lns default]
 ip range = $L2TP_POOL
