@@ -81,7 +81,7 @@ alias acme.sh=~/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
 #/root/.acme.sh/acme.sh --issue -d "${domain}" --standalone --keylength ec-2048
-/root/.acme.sh/acme.sh --issue -d "${domain}" --standalone --keylength ec-256
+/root/.acme.sh/acme.sh --issue -d "${domain}" --standalone --keylength ec-4096
 /root/.acme.sh/acme.sh --install-cert -d "${domain}" --ecc \
 --fullchain-file /etc/ssl/private/fullchain.pem \
 --key-file /etc/ssl/private/privkey.pem
