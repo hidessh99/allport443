@@ -47,10 +47,15 @@ exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 sed -i "s/### $user $exp/### $user $exp4/g" /etc/trojan-go/akun.conf
 clear
 echo ""
-echo "============================"
-echo "  TrojanGo Account Renewed  "
-echo "============================"
-echo "Username : $user"
-echo "Expired  : $exp4"
-echo "=========================="
-echo "Script By @zerossl"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m 🔰 PERPANJANG AKUN TROJAN-GO 🔰  \E[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo "✨Nama User ➡️ $user"
+echo "✨Kadaluarsa ➡️ $exp4"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo ""
+read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"            
+trojanmenu
+
