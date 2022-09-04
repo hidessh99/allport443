@@ -34,10 +34,10 @@ hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 lastport=$(cat /usr/local/shadowsocksr/mudb.json | grep '"port": ' | tail -n1 | awk '{print $2}' | cut -d "," -f 1 | cut -d ":" -f 1 )
 if [[ $lastport == '' ]]; then
-ssr_port=443
-#else
-#ssr_port=$((lastport+1))
-#fi
+ssr_port=1444
+else
+ssr_port=$((lastport+1))
+fi
 ssr_password="$ssr_user"
 ssr_method="aes-128-ctr"
 ssr_protocol="origin"
