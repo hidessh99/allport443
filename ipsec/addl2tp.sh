@@ -2,7 +2,7 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
-
+domain=$(cat /etc/xray/domain)
 clear
 source /var/lib/wisnucs/ipvps.conf
 if [[ "$IP" = "" ]]; then
@@ -31,6 +31,7 @@ until [[ $VPN_USER =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 	done
 read -p "Password: " VPN_PASSWORD
 read -p "Expired (days): " masaaktif
+hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 clear
 
@@ -57,6 +58,7 @@ echo -e "✨ Domain ➡️ $domain" | tee -a /etc/log-create-user.log
 echo -e "✨ IPsec PSK ➡️ gandring" | tee -a /etc/log-create-user.log
 echo -e "✨ Username ➡️ $VPN_USER" | tee -a /etc/log-create-user.log
 echo -e "✨ Password ➡️ $VPN_PASSWORD" | tee -a /etc/log-create-user.log
+echo -e "✨ Dibuat ➡️ $hariini" | tee -a /etc/log-create-user.log
 echo -e "✨ Kadaluarsa ➡️ $exp" | tee -a /etc/log-create-user.log
 echo -e "" | tee -a /etc/log-create-user.log
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
