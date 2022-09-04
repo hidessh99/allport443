@@ -16,30 +16,29 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/usr/local/shadowsocksr/akun.conf")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        echo -e "\033[1;46m  🔰 Renew Akun SSR 🔰   \E[0m"
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\E[46;1;46m     🔰 PERPANJANG AKUN SSR 🔰    \E[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo ""
         echo "You have no existing clients!"
         echo ""
-        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
-        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo ""
         read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"            
         ssmenu
 	fi
-
-        echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        echo -e "\033[1;46m  🔰 Renew Akun SSR 🔰   \E[0m"
-        echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\E[46;1;46m     🔰 PERPANJANG AKUN SSR 🔰    \E[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo ""
 	grep -E "^### " "/usr/local/shadowsocksr/akun.conf" | cut -d ' ' -f 2-3 | nl -s ') '
 	echo -e "     0) Cancel"
 	echo ""
-        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-        echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
-        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
 			read -rp "Select one client [1]: " CLIENT_NUMBER
@@ -61,15 +60,14 @@ bln=$(echo "$exp4" | cut -d- -f2)
 sed -i "s/### $user $exp/### $user $exp4/g" /usr/local/shadowsocksr/akun.conf
 clear
 echo ""
-echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo " Shadowsocks-R Account Has Been Successfully Renewed"
-echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo ""
-echo " Client Name : $user"
-echo " Expired On  : $exp4"
-echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
-echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m     🔰 PERPANJANG AKUN SSR 🔰    \E[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo "✨Nama User ➡️ $user"
+echo "✨Kadaluarsa ➡️ $exp4"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"            
 ssmenu
