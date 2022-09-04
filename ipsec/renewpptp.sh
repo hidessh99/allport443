@@ -6,24 +6,24 @@ date=`date +"%Y-%m-%d" -d "$dateFromServer"`
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/var/lib/wisnucs/data-user-pptp")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		clear
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━\033[0m"		
-        echo -e "\E[44;1;39m        🔰 Renew PPTP User 🔰        \E[0m"
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━\033[0m"		
-		echo ""
-		echo "You have no existing clients!"
-		echo ""
-		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"		
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\E[46;1;46m    🔰 PERPANJANG AKUN PPTP 🔰    \E[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"		
+	echo ""
+	echo "You have no existing clients!"
+	echo ""
+	echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"		
         read -n 1 -s -r -p "Press any key to back on menu"
         l2tppmenu
 	fi
 
 	clear
-	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"		
-	echo -e "\E[44;1;39m        🔰 Renew PPTP User 🔰        \E[0m"
-	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"		
+	echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\E[46;1;46m    🔰 PERPANJANG AKUN PPTP 🔰    \E[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"			
 	grep -E "^### " "/var/lib/wisnucs/data-user-pptp" | cut -d ' ' -f 2-3 | nl -s ') '
 	echo -e "     0) Cancel"
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
@@ -45,13 +45,16 @@ exp3=$(($exp2 + $masaaktif))
 exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 sed -i "s/### $user $exp/### $user $exp4/g" /var/lib/wisnucs/data-user-pptp
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"		
-mecho " PPTP Account Has Been Successfully Renewed"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"		
-echo " Client Name : $user"
-echo " Expired On  : $exp4"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"		
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m    🔰 PERPANJANG AKUN PPTP 🔰    \E[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"	
+echo "✨Nama User ➡️ $user"
+echo "✨Kadaluarsa ➡️ $exp4"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"		
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
+read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
 
-ipsec-menu
+l2tppmenu
+
