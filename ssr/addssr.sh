@@ -34,10 +34,10 @@ hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 lastport=$(cat /usr/local/shadowsocksr/mudb.json | grep '"port": ' | tail -n1 | awk '{print $2}' | cut -d "," -f 1 | cut -d ":" -f 1 )
 if [[ $lastport == '' ]]; then
-ssr_port=1444
-else
-ssr_port=$((lastport+1))
-fi
+ssr_port=443
+#else
+#ssr_port=$((lastport+1))
+#fi
 ssr_password="$ssr_user"
 ssr_method="aes-128-ctr"
 ssr_protocol="origin"
@@ -57,7 +57,7 @@ SSRobfs=$(echo ${ssr_obfs} | sed 's/_compatible//g')
 tmp2=$(echo -n "$domain:${ssr_port}:${ssr_protocol}:${ssr_method}:${SSRobfs}:${tmp1}/obfsparam=" | base64 -w0)
 ssr_link="ssr://${tmp2}"
 /etc/init.d/ssrmu restart
-systemctl restart ssrku
+systemctl restart ssrmu
 service cron restart
 IP=$(wget -qO- ifconfig.co);
 clear
