@@ -26,7 +26,7 @@ until [[ $VPN_USER =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			echo ""
             read -n 1 -s -r -p "Press any key to back on menu"
             
-            ipsec-menu
+            l2tppmenu
 		fi
 	done
 read -p "Password: " VPN_PASSWORD
@@ -62,7 +62,7 @@ echo -e "✨ Dibuat ➡️ $hariini" | tee -a /etc/log-create-user.log
 echo -e "✨ Kadaluarsa ➡️ $exp" | tee -a /etc/log-create-user.log
 echo -e "" | tee -a /etc/log-create-user.log
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "\E[46;1;46m  🔰LUXURY EDITION BY ZEROSSL🔰   \E[0m"  | tee -a /etc/log-create-user.log
+echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"  | tee -a /etc/log-create-user.log
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo "" | tee -a /etc/log-create-user.log
 read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
