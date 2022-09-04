@@ -39,9 +39,9 @@ exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 cat >> /home/sstp/sstp_account <<EOF
 $user * $pass *
 EOF
-echo -e "### $user $exp">>"/var/lib/wisnucs/data-user-sstp"
+
+cat ### $user $exp >> /var/lib/wisnucs/data-user-sstp << EOF
 clear
-cat <<EOF
 echo -e ""
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[46;1;46m         🔰 AKUN SSTP 🔰          \E[0m"   
