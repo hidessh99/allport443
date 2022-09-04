@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # Debian 9 & 10 64bit
 # Ubuntu 18.04 & 20.04 bit
@@ -21,9 +20,6 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 # ==================================================
 # Link Hosting Kalian
 wisnuvpn="raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec"
-domain=$(cat /etc/xray/domain)
-cert=$(cat /etc/xray/xray.crt)
-key=$(cat /etc/xray/xray.key)
 
 VPN_IPSEC_PSK='gandring'
 NET_IFACE=$(ip -o $NET_IFACE -4 route show to default | awk '{print $5}');
@@ -122,8 +118,8 @@ L2TP_LOCAL=192.168.42.1
 L2TP_POOL=192.168.42.10-192.168.42.250
 XAUTH_NET=192.168.43.0/24
 XAUTH_POOL=192.168.43.10-192.168.43.250
-DNS_SRV1=1.1.1.1
-DNS_SRV2=8.8.8.8
+DNS_SRV1=8.8.8.8
+DNS_SRV2=8.8.4.4
 DNS_SRVS="\"$DNS_SRV1 $DNS_SRV2\""
 [ -n "$VPN_DNS_SRV1" ] && [ -z "$VPN_DNS_SRV2" ] && DNS_SRVS="$DNS_SRV1"
 
@@ -253,8 +249,8 @@ refuse-chap
 refuse-mschap
 require-mschap-v2
 require-mppe-128
-ms-dns 1.1.1.1
-ms-dns 1.0.0.1
+ms-dns 8.8.8.8
+ms-dns 8.8.4.4
 proxyarp
 lock
 nobsdcomp 
@@ -302,6 +298,6 @@ wget -O /usr/bin/addpptp https://${wisnuvpn}/addpptp.sh && chmod +x /usr/bin/add
 wget -O /usr/bin/delpptp https://${wisnuvpn}/delpptp.sh && chmod +x /usr/bin/delpptp
 wget -O /usr/bin/renewpptp https://${wisnuvpn}/renewpptp.sh && chmod +x /usr/bin/renewpptp
 wget -O /usr/bin/renewl2tp https://${wisnuvpn}/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
-touch /var/lib/wisnucs/data-user-l2tp
-touch /var/lib/wisnucs/data-user-pptp
+touch /var/lib/crot/data-user-l2tp
+touch /var/lib/crot/data-user-pptp
 rm -f /root/ipsec.sh
