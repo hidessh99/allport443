@@ -79,7 +79,7 @@ openssl genrsa -out server.key 4096
 openssl req -new -key server.key -out ia.csr \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 openssl x509 -req -days 3650 -in ia.csr -CA ca.crt -CAkey ca.key -set_serial 01 -out server.crt
-#cp /home/sstp/server.crt /home/vps/public_html/server.crt
+cp /home/sstp/server.crt /home/vps/public_html/server.crt
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
