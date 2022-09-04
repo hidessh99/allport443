@@ -46,12 +46,14 @@ exp3=$(($exp2 + $masaaktif))
 exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 sed -i "s/### $user $exp/### $user $exp4/g" /var/lib/wisnucs/data-user-l2tp
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"		
-echo " AKUN L2TP YANG DIPERPANJANG"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"		
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m    🔰 PERPANJANG AKUN L2TP 🔰    \E[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"	
 echo "✨Nama User ➡️ $user"
 echo "✨Kadaluarsa ➡️ $exp4"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"		
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"		
 echo ""
 read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
 
