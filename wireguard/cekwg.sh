@@ -61,6 +61,9 @@ listClients(){
     } | column -t -s $'\t'
 }
 listClients
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-read -n 1 -s -r -p "Tekan Bebas Untuk Ke menu"
-menu
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo ""
+read -n 1 -s -r -p "Tekan Bebas Untuk Ke Menu"
+l2tppmenu
