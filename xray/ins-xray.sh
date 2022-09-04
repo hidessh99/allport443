@@ -812,9 +812,9 @@ RestartPreventExitStatus=23
 WantedBy=multi-user.target
 EOF
 
-cat <<EOF > /etc/trojan-go/uuid.txt
-$uuid
-EOF
+#cat <<EOF > /etc/trojan-go/uuid.txt
+#$uuid
+#EOF
 
 # Starting
 systemctl daemon-reload
@@ -864,7 +864,7 @@ cp /root/domain /etc/xray
 cp /root/domain /usr/local/etc/xray
 cp /etc/ssl/private/fullchain.pem /etc/xray/xray.crt
 cp /etc/ssl/private/privkey.pem /etc/xray/xray.key
-cp /etc/xray/xray.crt /home/sstp/server.crt
-cp /etc/xray/xray.crt /home/vps/public_html/server.crt
-cp /etc/xray/xray.key home/vps/public_html/server.crt
+#cp /etc/xray/xray.crt /home/sstp/server.crt
+#cp /etc/xray/xray.crt /home/vps/public_html/server.crt
+#cp /etc/xray/xray.key home/vps/public_html/server.crt
 rm -f ins-xray.sh >/dev/null 2>&1
