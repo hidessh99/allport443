@@ -57,7 +57,7 @@ SSRobfs=$(echo ${ssr_obfs} | sed 's/_compatible//g')
 tmp2=$(echo -n "$domain:${ssr_port}:${ssr_protocol}:${ssr_method}:${SSRobfs}:${tmp1}/obfsparam=" | base64 -w0)
 ssr_link="ssr://${tmp2}"
 /etc/init.d/ssrmu restart
-systemctl restart ssrmu
+systemctl restart ssrku
 service cron restart
 IP=$(wget -qO- ifconfig.co);
 clear
