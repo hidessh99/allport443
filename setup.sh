@@ -116,7 +116,11 @@ echo -e " 🔰 PORT OPENSSH                   : 443"         |tee -a log-install
 echo -e " 🔰 PORT OVPN SSL                  : 443"         |tee -a log-install.txt
 echo -e " 🔰 PORT DROPBEAR                  : 443"         |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN WS TLS               : 443"         |tee -a log-install.txt
-echo -e " 🔰 WEBSOCKET TLS                  : 8443"        |tee -a log-install.txt
+echo -e " 🔰 WEBSOCKET TLS                  : 8443,2096,2053,443" |tee -a log-install.txt
+echo -e " 🔰 WIREGUARD                      : 443"         |tee -a log-install.txt
+echo -e " 🔰 L2TP/IPSEC VPN                 : 443"         |tee -a log-install.txt
+echo -e " 🔰 PPTP VPN                       : 443"         |tee -a log-install.txt
+echo -e " 🔰 SSTP VPN                       : 443"         |tee -a log-install.txt
 echo -e " 🔰 VLESS XTLS                     : 443"         |tee -a log-install.txt
 echo -e " 🔰 VLESS GFW                      : 443"         |tee -a log-install.txt
 echo -e " 🔰 VLESS WS TLS                   : 443"         |tee -a log-install.txt
@@ -142,10 +146,6 @@ echo -e " 🔰 PORT STUNNEL5                  : 500"         |tee -a log-install
 echo -e " 🔰 PORT PRIVOXY                   : 3128,3228"   |tee -a log-install.txt
 echo -e " 🔰 PORT UDPGW                     : 99"          |tee -a log-install.txt
 echo -e " 🔰 NGINX                          : 88"          |tee -a log-install.txt
-echo -e " 🔰 WIREGUARD                      : 443"         |tee -a log-install.txt
-echo -e " 🔰 L2TP/IPSEC VPN                 : 1701"        |tee -a log-install.txt
-echo -e " 🔰 PPTP VPN                       : 1732"        |tee -a log-install.txt
-echo -e " 🔰 SSTP VPN                       : 443"         |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS-R                  : 1444-1543"   |tee -a log-install.txt
 echo -e " 🔰 SS-OBFS TLS                    : 2444-2943"   |tee -a log-install.txt
 echo -e " 🔰 SS-OBFS HTTP                   : 2944-3442"   |tee -a log-install.txt
