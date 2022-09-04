@@ -36,7 +36,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/var/lib/wisnucs/data-user-pptp")
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
 			read -rp "Select one client [1]: " CLIENT_NUMBER
 	    elif [[ ${CLIENT_NUMBER} == '0' ]]; then
-            ipsec-menu
+            l2tppmenu
 		else
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
