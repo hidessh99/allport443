@@ -27,46 +27,60 @@ vlhduanon="$(cat ~/log-install.txt | grep -w "VLESS H2C NON TLS" | cut -d: -f2|s
 vlhttp="$(cat ~/log-install.txt | grep -w "VLESS HTTP TLS" | cut -d: -f2|sed 's/ //g')"
 vlhttpnon="$(cat ~/log-install.txt | grep -w "VLESS HTTP NON TLS" | cut -d: -f2|sed 's/ //g')"
 vlkcp="$(cat ~/log-install.txt | grep -w "VLESS KCP TLS" | cut -d: -f2|sed 's/ //g')"
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 #uuid=$(cat /proc/sys/kernel/random/uuid)
 #uuid=$(openssl rand -base64 16)
 uuid=$(openssl rand -hex 7)
@@ -146,51 +160,51 @@ clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m 🔰 AKUN VLESS TESTER 🔰  \e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ Protokol ➡️ WS,GRPC,HTTP,KCP,H2C,GFW,XTLS,QUIC"
-echo -e "✨ IP ➡️ ${MYIP} / $domain"
-echo -e "✨ NAMA ➡️ ${user}"
-echo -e "✨ Flow ➡️ ONLY ORIGIN'S TYPE NOT ALLOWED"
-echo -e "✨ Port GRPC ➡️ $vlgrpc/ $vlgrpcnon"
-echo -e "✨ Port HTTP ➡️ $vlhttp/ $vlhttpnon"
-echo -e "✨ Port H2C ➡️ $vlhdua"
-echo -e "✨ Port QUIC ➡️ $vlquic"
-echo -e "✨ Port XTLS ➡️ $vlxtls"
-echo -e "✨ Port WS ➡️ $vltls / $vlnontls "
-echo -e "✨ Satpam ➡️ tls,xtls"
-echo -e "✨ Path GRPC ➡️ COKRO"
-echo -e "✨ Path HTTP ➡️ /WISNU-TCP"
-echo -e "✨ Path H2C ➡️ WISNU-HTTP"
-echo -e "✨ Path WS ➡️ /WISNU"
-echo -e "✨ Path KCP ➡️ WISNU-KCP"
-echo -e "✨ Path QUIC ➡️ WISNU-QUIC"
-echo -e "✨ UserID ➡️ ${uuid}"
-echo -e "✨ Dibuat ➡️ $hariini"
-echo -e "✨ Kadaluarsa ➡️ $exp"
+echo -e "🔺️Protokol➡️ WS,GRPC,HTTP,KCP,H2C,GFW,XTLS,QUIC"
+echo -e "🔺️IP➡️ ${MYIP} / $domain"
+echo -e "🔺️NAMA➡️ ${user}"
+echo -e "🔺️Flow➡️ ONLY ORIGIN'S TYPE NOT ALLOWED"
+echo -e "🔺️Port GRPC➡️ $vlgrpc/ $vlgrpcnon"
+echo -e "🔺️Port HTTP➡️ $vlhttp/ $vlhttpnon"
+echo -e "🔺️Port H2C➡️ $vlhdua"
+echo -e "🔺️Port QUIC➡️ $vlquic"
+echo -e "🔺️Port XTLS➡️ $vlxtls"
+echo -e "🔺️Port WS➡️ $vltls / $vlnontls "
+echo -e "🔺️Satpam➡️ tls,xtls"
+echo -e "🔺️Path GRPC➡️ COKRO"
+echo -e "🔺️Path HTTP➡️ /WISNU-TCP"
+echo -e "🔺️Path H2C➡️ WISNU-HTTP"
+echo -e "🔺️Path WS➡️ /WISNU"
+echo -e "🔺️Path KCP➡️ WISNU-KCP"
+echo -e "🔺️Path QUIC➡️ WISNU-QUIC"
+echo -e "🔺️UserID➡️ ${uuid}"
+echo -e "🔺️Dibuat➡️ $hariini"
+echo -e "🔺️Kadaluarsa➡️ $exp"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ QUIC ➡️  ${vlessquic}"
+echo -e "🔺️QUIC➡️  ${vlessquic}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ XTLS ➡️  ${vlessxtls}"
+echo -e "🔺️XTLS➡️  ${vlessxtls}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ GRPC TLS ➡️  ${vlessgrpc}"
+echo -e "🔺️GRPC TLS➡️  ${vlessgrpc}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-#echo -e "✨ GRPC NONTLS ➡️  ${vlessgrpcnon}"
+#echo -e "🔺️GRPC NONTLS➡️  ${vlessgrpcnon}"
 #echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ GFW ➡️  ${vlessgfw}"
+echo -e "🔺️GFW➡️  ${vlessgfw}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ WS TLS ➡️  ${vlesstls}"
+echo -e "🔺️WS TLS➡️  ${vlesstls}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ WS NONTLS ➡️  ${vlessnontls}"
+echo -e "🔺️WS NONTLS➡️  ${vlessnontls}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ H2C ➡️  ${vlesshdua}"
+echo -e "🔺️H2C➡️  ${vlesshdua}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ HTTP TLS ➡️  ${vlesshttp}"
+echo -e "🔺️HTTP TLS➡️  ${vlesshttp}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ HTTP NONTLS ➡️  ${vlesshttpnon}"
+echo -e "🔺️HTTP NONTLS➡️  ${vlesshttpnon}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ KCP TLS ➡️  ${vlesskcp}"
+echo -e "🔺️KCP TLS➡️  ${vlesskcp}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
-menu
+vlessmenu
