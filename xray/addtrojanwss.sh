@@ -21,55 +21,59 @@ date=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ttls="$(cat ~/log-install.txt | grep -w "TROJAN WS TLS" | cut -d: -f2|sed 's/ //g')"
 tnontls="$(cat ~/log-install.txt | grep -w "TROJAN WS NON TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 #uuid=$(openssl rand -base64 16)
 uuid=$(openssl rand -hex 7)
 read -p "Expired (Days) : " masaaktif
@@ -100,20 +104,20 @@ echo -e ""
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰AKUN TROJAN WEBSOCKET 🔰\e[m"       
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ Nama ➡️ ${user}"
-echo -e "✨ IP ➡️ ${MYIP}"
-echo -e "✨ Host ➡️ ${domain}"
-echo -e "✨ Protocol ➡️ websocket"
-echo -e "✨ Path ➡️ /GANDRING"
-echo -e "✨ Port tls ➡️ ${ttls}"
-echo -e "✨ Port nontls ➡️ ${tnontls}"
-echo -e "✨ Sandi ➡️ ${uuid}"
-echo -e "✨ Dibuat ➡️ $hariini"
-echo -e "✨ Kadaluarsa ➡️ $exp"
+echo -e "🔺️Nama➡️ ${user}"
+echo -e "🔺️IP➡️ ${MYIP}"
+echo -e "🔺️Host➡️ ${domain}"
+echo -e "🔺️Protocol➡️ websocket"
+echo -e "🔺️Path➡️ /GANDRING"
+echo -e "🔺️Port tls➡️ ${ttls}"
+echo -e "🔺️Port nontls➡️ ${tnontls}"
+echo -e "🔺️Sandi➡️ ${uuid}"
+echo -e "🔺️Dibuat➡️ $hariini"
+echo -e "🔺️Kadaluarsa➡️ $exp"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ WS TLS➡️  ${trojantls}"
+echo -e "🔺️WS TLS➡️  ${trojantls}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ WS NONTLS➡️  ${trojannontls}"
+echo -e "🔺️WS NONTLS➡️  ${trojannontls}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
