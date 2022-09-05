@@ -32,25 +32,59 @@ tkcp="$(cat ~/log-install.txt | grep -w "TROJAN KCP TLS" | cut -d: -f2|sed 's/ /
 sswstls="$(cat ~/log-install.txt | grep -w "SHADOWSOCKS WS TLS" | cut -d: -f2|sed 's/ //g')"
 sswsnontls="$(cat ~/log-install.txt | grep -w "SHADOWSOCKS WS NON TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 #uuid=$(openssl rand -base64 16)
 uuid=$(openssl rand -hex 7)
 read -p "Expired (Days) : " masaaktif
@@ -114,7 +148,7 @@ trojannontls="trojan://${uuid}@${domain}:$tnontls?type=ws&security=none&host=$do
 trojanhttp="trojan://${uuid}@${domain}:$thttp?sni=gesekan.penghancur-janda.com&type=tcp&security=tls&host=$domain&path=/GANDRING-TCP&headerType=http#%F0%9F%94%B0+HTTP+TLS+${user}"
 trojanhttpnon="trojan://${uuid}@${domain}:$thttpnon?sni=gesekan.penghancur-janda.com&type=tcp&security=none&host=$domain&headerType=http#%F0%9F%94%B0TROJAN+HTTP+NONTLS+${user}"
 trojanquic="trojan://$uuid@$MYIP:$tquic?sni=$domain&quicSecurity=$domain&key=GANDRING-QUIC&security=tls&type=quic&headerType=none#%F0%9F%94%B0TROJAN+QUIC+TLS+$user"
-trojankcp="trojan://$uuid@$domain:$tkcp?sni=minakdjinggo.org&seed=GANDRING-TCP&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
+trojankcp="trojan://$uuid@$domain:$tkcp?sni=minakdjinggo.org&seed=GANDRING-KCP&security=tls&type=kcp&headerType=none#%F0%9F%94%B0TROJAN+KCP+TLS+$user"
 
 uid=$(cat /etc/trojan-go/uuid.txt)
 sed -i '/"'""$uid""'"$/a\,"'""$user""'"' /etc/trojan-go/config.json
@@ -134,54 +168,54 @@ echo -e ""
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m 🔰 AKUN TROJAN TESTER 🔰 \e[m"       
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ IP ➡️ ${MYIP} / $domain"
-echo -e "✨ NAMA ➡️ ${user}"
-echo -e "✨ Protokol ➡️ GRPC,H2C,GFW,XTLS,WS,KCP,HTTP,GO,QUIC"
-echo -e "✨ Flow xtls ➡️ only origin type not supported"
-echo -e "✨ ServiceName ➡️ SATRIO"
-echo -e "✨ Path HTTP ➡️ /GANDRING-TCP"
-echo -e "✨ Path H2C ➡️ /GANDRING-HTTP"
-echo -e "✨ Path WS ➡️ /GANDRING"
-echo -e "✨ Path QUIC ➡️ GANDRING-QUIC"
-echo -e "✨ Path GO ➡️ /gandring-go"
-echo -e "✨ Path KCP ➡️ GANDRING-KCP"
-echo -e "✨ Port GRPC ➡️ ${tgrpc}"
-echo -e "✨ Port WS TLS ➡️ ${ttls} , $tnontls"
-echo -e "✨ Port H2C ➡️ ${thdua}"
-echo -e "✨ Port HTTP TLS ➡️ ${thttp} , $thttpnon"
-echo -e "✨ Port GFW ➡️ ${tgfw}"
-echo -e "✨ Port XTLS ➡️ ${txtls}"
-echo -e "✨ Port QUIC ➡️ ${tquic}"
-echo -e "✨ Port KCP ➡️ ${tkcp}"
-echo -e "✨ Port GO ➡️ ${trgo}"
-echo -e "✨ Sandi ➡️ ${uuid}"
-echo -e "✨ Dibuat  ➡️ $hariini"
-echo -e "✨ Kadaluarsa ➡️ $exp"
+echo -e "🔺️IP➡️ ${MYIP} / $domain"
+echo -e "🔺️NAMA➡️ ${user}"
+echo -e "🔺️Protokol➡️ GRPC,H2C,GFW,XTLS,WS,KCP,HTTP,GO,QUIC"
+echo -e "🔺️Flow xtls➡️ only origin type not supported"
+echo -e "🔺️ServiceName➡️ SATRIO"
+echo -e "🔺️Path HTTP➡️ /GANDRING-TCP"
+echo -e "🔺️Path H2C➡️ /GANDRING-HTTP"
+echo -e "🔺️Path WS➡️ /GANDRING"
+echo -e "🔺️Path QUIC➡️ GANDRING-QUIC"
+echo -e "🔺️Path GO➡️ /gandring-go"
+echo -e "🔺️Path KCP➡️ GANDRING-KCP"
+echo -e "🔺️Port GRPC➡️ ${tgrpc}"
+echo -e "🔺️Port WS TLS➡️ ${ttls} , $tnontls"
+echo -e "🔺️Port H2C➡️ ${thdua}"
+echo -e "🔺️Port HTTP TLS➡️ ${thttp} , $thttpnon"
+echo -e "🔺️Port GFW➡️ ${tgfw}"
+echo -e "🔺️Port XTLS➡️ ${txtls}"
+echo -e "🔺️Port QUIC➡️ ${tquic}"
+echo -e "🔺️Port KCP➡️ ${tkcp}"
+echo -e "🔺️Port GO➡️ ${trgo}"
+echo -e "🔺️Sandi➡️ ${uuid}"
+echo -e "🔺️Dibuat➡️ $hariini"
+echo -e "🔺️Kadaluarsa➡️ $exp"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ QUIC➡️  ${trojanquic}"
+echo -e "🔺️QUIC➡️  ${trojanquic}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ GRPC➡️  ${trojangrpc}"
+echo -e "🔺️GRPC➡️  ${trojangrpc}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ XTLS➡️  ${trojanxtls}"
+echo -e "🔺️XTLS➡️  ${trojanxtls}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ GFW➡️  ${trojangfw}"
+echo -e "🔺️GFW➡️  ${trojangfw}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ H2C➡️  ${trojanhdua}"
+echo -e "🔺️H2C➡️  ${trojanhdua}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ WS TLS➡️  ${trojantls}"
+echo -e "🔺️WS TLS➡️  ${trojantls}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ WS NONTLS➡️  ${trojannontls}"
+echo -e "🔺️WS NONTLS➡️  ${trojannontls}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ HTTP TLS➡️  ${trojanhttp}"
+echo -e "🔺️HTTP TLS➡️  ${trojanhttp}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ HTTP NONTLS➡️  ${trojanhttpnon}"
+echo -e "🔺️HTTP NONTLS➡️  ${trojanhttpnon}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ KCP TLS➡️  ${trojankcp}"
+echo -e "🔺️KCP TLS➡️  ${trojankcp}"
 echo -e "━━━━━━━━━━━━━━━━━━━"
-echo -e "✨ GO➡️  ${trojango}"
+echo -e "🔺️GO➡️  ${trojango}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
-menu
+trojanmenu
