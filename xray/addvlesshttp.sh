@@ -18,56 +18,60 @@ domain=$(cat /etc/xray/domain)
 
 vlhttp="$(cat ~/log-install.txt | grep -w "VLESS HTTP TLS" | cut -d: -f2|sed 's/ //g')"
 vlhttpnon="$(cat ~/log-install.txt | grep -w "VLESS HTTP NON TLS" | cut -d: -f2|sed 's/ //g')"
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Username : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 #uuid=$(cat /proc/sys/kernel/random/uuid)
 #uuid=$(openssl rand -base64 16)
 uuid=$(openssl rand -hex 7)
@@ -103,23 +107,23 @@ clear
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m  🔰 AKUN VLESS HTTP 🔰   \e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ Nama ➡️ ${user}"
-echo -e "✨ IP/Host ➡️ ${MYIP}"
-echo -e "✨ Address ➡️ ${domain}"
-echo -e "✨ Port TLS ➡️ $vlhttp"
-echo -e "✨ Port NON TLS ➡️ $vlhttpnon"
-echo -e "✨ Protokol ➡️ tcp"
-echo -e "✨ Path ➡️ /WISNU-TCP"
-echo -e "✨ UserID ➡️ ${uuid}"
-echo -e "✨ Dibuat ➡️ $hariini"
-echo -e "✨ Kadaluarsa ➡️ $exp"
+echo -e "🔺️Nama➡️ ${user}"
+echo -e "🔺️IP/Host➡️ ${MYIP}"
+echo -e "🔺️Address➡️ ${domain}"
+echo -e "🔺️Port TLS➡️ $vlhttp"
+echo -e "🔺️Port NON TLS➡️ $vlhttpnon"
+echo -e "🔺️Protokol➡️ tcp"
+echo -e "🔺️Path➡️ /WISNU-TCP"
+echo -e "🔺️UserID➡️ ${uuid}"
+echo -e "🔺️Dibuat➡️ $hariini"
+echo -e "🔺️Kadaluarsa➡️ $exp"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ HTTP TLS ➡️  ${vlesshttp}"
+echo -e "🔺️HTTP TLS➡️  ${vlesshttp}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ HTTP NONTLS ➡️  ${vlesshttpnon}"
+echo -e "🔺️HTTP NONTLS➡️  ${vlesshttpnon}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
-menu
+vlessmenu
