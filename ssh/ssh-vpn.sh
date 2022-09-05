@@ -39,9 +39,9 @@ ver=$VERSION_ID
 country=ID
 state=Jawa-Tengah
 locality=Sukoharjo
-organization=GANDRING-VPN
+organization=GANDRING
 organizationalunit=GANDRING
-commonname=GANDRING-VPN
+commonname=GANDRING
 email=rengganis@gmail.com
 
 # simple password minimal
