@@ -14,55 +14,60 @@ domain=$(cat /etc/xray/domain)
 vmhdua="$(cat ~/log-install.txt | grep -w "VMESS H2C TLS" | cut -d: -f2|sed 's/ //g')"
 #none="$(cat ~/log-install.txt | grep -w "Vmess None TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "User: " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo "A Client Username Was Already Created, Please Enter New Username"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "User: " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo "A Client Username Was Already Created, Please Enter New Username"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "User: " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo "A Client Username Was Already Created, Please Enter New Username"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "User: " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo "A Client Username Was Already Created, Please Enter New Username"
-			exit 1
-		fi
-	done
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "User: " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo "A Client Username Was Already Created, Please Enter New Username"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 #uuid=$(cat /proc/sys/kernel/random/uuid)
 #uuid=$(openssl rand -base64 16)
 uuid=$(openssl rand -hex 7)
@@ -116,18 +121,18 @@ echo -e ""
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m  🔰 AKUN VMESS HTTP/2 🔰 \e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ Nama ➡️ ${user}"
-echo -e "✨ Host ➡️ ${domain}"
-echo -e "✨ IP ➡️ ${MYIP}"
-echo -e "✨ Port TLS ➡️ ${vmhdua}"
-echo -e "✨ Network ➡️ H2"
-echo -e "✨ Host  ➡️ ${domain}"
-echo -e "✨ Path  ➡️ /SHANUM-HTTP"
-echo -e "✨ Uuid  ➡️ ${uuid}"
-echo -e "✨ Dibuat  ➡️ $hariini"
-echo -e "✨ Kadaluarsa ➡️ $exp"
+echo -e "🔺️Nama➡️ ${user}"
+echo -e "🔺️Host➡️ ${domain}"
+echo -e "🔺️IP➡️ ${MYIP}"
+echo -e "🔺️Port TLS➡️ ${vmhdua}"
+echo -e "🔺️Network➡️ H2"
+echo -e "🔺️Host➡️ ${domain}"
+echo -e "🔺️Path➡️ /SHANUM-HTTP"
+echo -e "🔺️Uuid➡️ ${uuid}"
+echo -e "🔺️Dibuat➡️ $hariini"
+echo -e "🔺️Kadaluarsa➡️ $exp"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ H2C TLS ➡️  ${vmesshdua}"   
+echo -e "🔺️H2C TLS➡️  ${vmesshdua}"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 #echo -e "H2C NONTLS: ${vmesshduanon}"   
 #echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -135,4 +140,4 @@ echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
-menu
+vlessmenu
