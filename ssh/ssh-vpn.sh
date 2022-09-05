@@ -37,7 +37,7 @@ ver=$VERSION_ID
 
 #detail nama perusahaan
 country=ID
-state=Jawa-Tengah
+state=CENTRAL_JAVA
 locality=Sukoharjo
 organization=GANDRING
 organizationalunit=GANDRING
@@ -357,7 +357,7 @@ END
 
 # make a certificate
 openssl genrsa -out key.pem 2048
-openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
+openssl req -new -x509 -key key.pem -out cert.pem -days 3650 \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 cat key.pem cert.pem >> /etc/stunnel5/stunnel5.pem
 
