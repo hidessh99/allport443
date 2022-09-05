@@ -19,13 +19,13 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/var/lib/wisnucs/data-user-sstp")
         echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\E[44;1;39m  🔰 Hapus Akun SSTP🔰  \E[0m"
         echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-		echo ""
-		echo "You have no existing clients!"
-		echo ""
+	echo ""
+	echo "You have no existing clients!"
+	echo ""
 	echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
         echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-		read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu"
+	read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu"
         l2tppmenu
 	fi
 
@@ -43,13 +43,13 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/var/lib/wisnucs/data-user-sstp")
         echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-	    elif [[ ${CLIENT_NUMBER} == '0' ]]; then
-            l2tppmenu
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
+	if [[ ${CLIENT_NUMBER} == '1' ]]; then
+	read -rp "Select one client [1]: " CLIENT_NUMBER
+	elif [[ ${CLIENT_NUMBER} == '0' ]]; then
+        l2tppmenu
+	else
+	read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+	fi
 	done
 Client=$(grep -E "^###" /var/lib/wisnucs/data-user-sstp | cut -d ' ' -f 2-3 | sed -n "$CLIENT_NUMBER"p)
 user=$(grep -E "^###" /var/lib/wisnucs/data-user-sstp | cut -d ' ' -f 2 | sed -n "$CLIENT_NUMBER"p)
@@ -60,11 +60,11 @@ clear
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo " SSTP Account Has Been Successfully Deleted"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo " Client Name : $user"
-echo " Expired On  : $exp"
+echo " 🔺️Client Name : $user"
+echo " 🔺️Expired On  : $exp"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m🔰LUXURY EDITION ZEROSSL🔰\e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
-menu
+l2tppmenu
