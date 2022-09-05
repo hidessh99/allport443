@@ -75,14 +75,13 @@ cd /home/sstp
 openssl genrsa -out ca.key 2048
 openssl req -new -x509 -days 36500 -key ca.key -out ca.crt \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
-
 openssl genrsa -out server.key 2048 > /dev/null 2>&1
-openssl req -new -key server.key -out ia.csr \
+openssl req -new -days 36500 -key server.key -out ia.csr \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email" > /dev/null 2>&1
-
+openssl genrsa -out server.crt 2048 > /dev/null 2>&1
 openssl x509 -req -days 36500 -in ia.csr -CA ca.crt -CAkey ca.key -set_serial 01 -out server.crt > /dev/null 2>&1
 openssl genrsa -out ta.key
-openssl req -new -x509 -days 36500 -key ta.key -out ta.key \
+openssl req -new -x509 -days 36500 -in ta.csr -TA ta.key -TAkey ta.key -out ta.key \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 cp /home/sstp/server.crt /home/vps/public_html/server.crt
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 444 -j ACCEPT
