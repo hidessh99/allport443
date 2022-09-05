@@ -357,7 +357,8 @@ END
 
 # make a certificate
 openssl genrsa -out key.pem 2048
-openssl req -new -x509 -key key.pem -out cert.pem -days 3650 \
+#openssl req -new -x509 -key key.pem -out cert.pem -days 3650 \
+openssl x509 -req -days 36500 -in ia.csr -TAkey ta.key -CA ca.crt -CAkey ca.key -set_serial 01 -out -key key.pem -out cert.pem \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 cat key.pem cert.pem >> /etc/stunnel5/stunnel5.pem
 
