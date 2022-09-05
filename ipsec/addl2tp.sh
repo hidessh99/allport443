@@ -53,13 +53,13 @@ echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[46;1;46m        🔰 AKUN L2TP 🔰           \E[0m"   | tee -a /etc/log-create-user.log
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "" | tee -a /etc/log-create-user.log
-echo -e "✨ IP ➡️ $PUBLIC_IP" | tee -a /etc/log-create-user.log
-echo -e "✨ Domain ➡️ $domain" | tee -a /etc/log-create-user.log
-echo -e "✨ IPsec PSK ➡️ gandring" | tee -a /etc/log-create-user.log
-echo -e "✨ Username ➡️ $VPN_USER" | tee -a /etc/log-create-user.log
-echo -e "✨ Password ➡️ $VPN_PASSWORD" | tee -a /etc/log-create-user.log
-echo -e "✨ Dibuat ➡️ $hariini" | tee -a /etc/log-create-user.log
-echo -e "✨ Kadaluarsa ➡️ $exp" | tee -a /etc/log-create-user.log
+echo -e "🔺️IP ➡️ $PUBLIC_IP" | tee -a /etc/log-create-user.log
+echo -e "🔺️Domain ➡️ $domain" | tee -a /etc/log-create-user.log
+echo -e "🔺️IPsec PSK ➡️ gandring" | tee -a /etc/log-create-user.log
+echo -e "🔺️Username ➡️ $VPN_USER" | tee -a /etc/log-create-user.log
+echo -e "🔺️Password ➡️ $VPN_PASSWORD" | tee -a /etc/log-create-user.log
+echo -e "🔺️Dibuat ➡️ $hariini" | tee -a /etc/log-create-user.log
+echo -e "🔺️Kadaluarsa ➡️ $exp" | tee -a /etc/log-create-user.log
 echo -e "" | tee -a /etc/log-create-user.log
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"  | tee -a /etc/log-create-user.log
