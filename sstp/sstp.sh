@@ -40,20 +40,20 @@ touch /home/sstp/sstp_account
 touch /var/lib/wisnucs/data-user-sstp
 #detail nama perusahaan
 country=ID
-state="Jawa-Tengah"
-locality="Sukoharjo"
-organization="GANDRING-VPN"
+state="CENTRAL_JAVA"
+locality="SUKOHARJO"
+organization="GANDRING"
 organizationalunit="GANDRING"
-commonname="GANDRING-VPN"
-email="djarumpentol01@gmail.com"
+commonname="GANDRING"
+email="rengganis@gmail.com"
 export KEY_COUNTRY="ID"
-export KEY_PROVINCE="Jawa-Tengah"
-export KEY_CITY="Sukoharjo"
-export KEY_ORG="GANDRING-VPN"
-export KEY_EMAIL="djarumpentol01@gmail.com"
+export KEY_PROVINCE="CENTRAL_JAVA"
+export KEY_CITY="SUKOHARJO"
+export KEY_ORG="GANDRING"
+export KEY_EMAIL="rengganis@gmail.com"
 export KEY_OU="GANDRING"
 # X509 Subject Field
-export KEY_NAME="GANDRING-VPN"
+export KEY_NAME="GANDRING"
 
 #install sstp
 apt-get install -y build-essential cmake gcc linux-headers-`uname -r` git libpcre3-dev libssl-dev liblua5.1-0-dev ppp
@@ -72,10 +72,10 @@ systemctl start accel-ppp
 systemctl enable accel-ppp
 #gen cert sstp
 cd /home/sstp
-openssl genrsa -out ca.key 4096
+openssl genrsa -out ca.key 2048
 openssl req -new -x509 -days 3650 -key ca.key -out ca.crt \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
-openssl genrsa -out server.key 4096
+openssl genrsa -out server.key 2048
 openssl req -new -key server.key -out ia.csr \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 openssl x509 -req -days 3650 -in ia.csr -CA ca.crt -CAkey ca.key -set_serial 01 -out server.crt
