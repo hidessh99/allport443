@@ -46,7 +46,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/shadowsocks-libev/akun.conf")
     if [[ ${CLIENT_NUMBER} == '1' ]]; then
     read -rp "Select one client [1]: " CLIENT_NUMBER
     elif [[ ${CLIENT_NUMBER} == '0' ]]; then
-    ss-menu
+    ssmenu
     else
     read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
     fi
