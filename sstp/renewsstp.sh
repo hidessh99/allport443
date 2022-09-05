@@ -15,11 +15,11 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/var/lib/wisnucs/data-user-sstp")
-		if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
+	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+	clear
+	echo ""
+	echo "You have no existing clients!"
+	exit 1
 	fi
 
 	clear
@@ -33,13 +33,13 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/var/lib/wisnucs/data-user-sstp")
         echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-	    elif [[ ${CLIENT_NUMBER} == '0' ]]; then
-            l2tppmenu
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
+	if [[ ${CLIENT_NUMBER} == '1' ]]; then
+	read -rp "Select one client [1]: " CLIENT_NUMBER
+	elif [[ ${CLIENT_NUMBER} == '0' ]]; then
+        l2tppmenu
+	else
+	read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+	fi
 	done
 read -p "Expired (days): " masaaktif
 user=$(grep -E "^### " "/var/lib/wisnucs/data-user-sstp" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
