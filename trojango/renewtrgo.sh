@@ -16,10 +16,10 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/trojan-go/akun.conf")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
+	clear
+	echo ""
+	echo "You have no existing clients!"
+	exit 1
 	fi
 
 	clear
@@ -29,11 +29,11 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/trojan-go/akun.conf")
 	echo -e "==============================="
 	grep -E "^### " "/etc/trojan-go/akun.conf" | cut -d ' ' -f 2-3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
+	if [[ ${CLIENT_NUMBER} == '1' ]]; then
+	read -rp "Select one client [1]: " CLIENT_NUMBER
+	else
+	read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+	fi
 	done
 read -p "Expired (Days) : " masaaktif
 user=$(grep -E "^### " "/etc/trojan-go/akun.conf" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
@@ -50,8 +50,8 @@ echo ""
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[46;1;46m 🔰 PERPANJANG AKUN TROJAN-GO 🔰  \E[0m"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo "✨Nama User ➡️ $user"
-echo "✨Kadaluarsa ➡️ $exp4"
+echo "🔺️Nama User ➡️ $user"
+echo "🔺️Kadaluarsa ➡️ $exp4"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[46;1;46m    🔰LUXURY EDITION ZEROSSL🔰    \E[0m"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
