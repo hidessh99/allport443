@@ -19,15 +19,15 @@ domain=$(cat /etc/xray/domain)
 
 trgo="$(cat ~/log-install.txt | grep -w "TROJAN GO" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/trojan-go/akun.conf | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/trojan-go/akun.conf | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 #uuid=$(cat /proc/sys/kernel/random/uuid)
 uuid=$(cat /etc/trojan-go/uuid.txt)
 
@@ -40,16 +40,16 @@ systemctl restart trojan-go.service
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m      🔰 AKUN TROJAN-GO 🔰        \e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ Nama➡️ ${user}"
-echo -e "✨ IP➡️ ${MYIP}"
-echo -e "✨ Address➡️ ${domain}"
-echo -e "✨ Port➡️ ${trgo}"
-echo -e "✨ Key➡️ ${user}"
-echo -e "✨ Path➡️ /gandring-go"
-echo -e "✨ Dibuat➡️ $hariini"
-echo -e "✨ Kadaluarsa ➡️ $exp"
+echo -e "🔺️Nama➡️ ${user}"
+echo -e "🔺️IP➡️ ${MYIP}"
+echo -e "🔺️Address➡️ ${domain}"
+echo -e "🔺️Port➡️ ${trgo}"
+echo -e "🔺️Key➡️ ${user}"
+echo -e "🔺️Path➡️ /gandring-go"
+echo -e "🔺️Dibuat➡️ $hariini"
+echo -e "🔺️Kadaluarsa➡️ $exp"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "✨ TROJAN GO ➡️  ${link}"
+echo -e "🔺️TROJAN GO➡️  ${link}"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;46m  🔰LUXURY EDITION BY ZEROSSL🔰   \e[m"   
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
