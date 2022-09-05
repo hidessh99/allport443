@@ -22,49 +22,59 @@ date=`date +"%Y-%m-%d" -d "$dateFromServer"`
 uuid=$(openssl rand -hex 7)
 tgrpc="$(cat ~/log-install.txt | grep -w "TROJAN GRPC" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xtrojan.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
-#uuid=$(cat /proc/sys/kernel/random/uuid)
-#uuid=$(openssl rand -base64 16)
-uuid=$(openssl rand -hex 7)
-tgrpc="$(cat ~/log-install.txt | grep -w "TROJAN GRPC TLS" | cut -d: -f2|sed 's/ //g')"
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvmess.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xvless.json | wc -l)
 
-		if [[ ${user_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
+
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+read -rp "Password : " -e user
+user_EXISTS=$(grep -w $user /etc/xray/xss.json | wc -l)
+
+if [[ ${user_EXISTS} == '1' ]]; then
+echo ""
+echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+exit 1
+fi
+done
 #uuid=$(openssl rand -base64 16)
 uuid=$(openssl rand -hex 7)
 read -p "Expired (Days) : " masaaktif
