@@ -199,7 +199,7 @@ echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━�
 echo -e " 🔰 TROJAN GO                      : 8443"        |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 UDP           : 212"         |tee -a log-install.txt
 echo -e " 🔰 SHADOWSOCKS 2022 TCP           : 414"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 TCP TLS                 : 10809"       |tee -a log-install.txt
+echo -e " 🔰 SOCKS5 TCP TLS                 : 1080"       |tee -a log-install.txt
 echo -e " 🔰 SOCKS UDP                      : 999"         |tee -a log-install.txt
 echo -e " 🔰 XRAY MT PROTO                  : 111"         |tee -a log-install.txt
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  |tee -a log-install.txt
