@@ -86,7 +86,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/ohpserver -port 2086 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:8080
+ExecStart=/usr/local/bin/ohpserver -port 2082 -proxy 127.0.0.1:3128 -tunnel 127.0.0.1:2083
 Restart=on-failure
 LimitNOFILE=infinity
 
@@ -119,7 +119,7 @@ else
 	echo 'Dropbear OHP Redirection Not Found, please check manually'
 fi
 sleep 0.5
-if [ -n "$(ss -tupln | grep ohpserver | grep -w 2086)" ]
+if [ -n "$(ss -tupln | grep ohpserver | grep -w 2082)" ]
 then
 	echo 'OpenVPN OHP Redirection Running'
 else
