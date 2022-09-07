@@ -309,11 +309,10 @@ wget -q -O /usr/bin/renewl2tp https://raw.githubusercontent.com/inoyaksorojawi/l
 touch /var/lib/wisnucs/data-user-l2tp > /dev/null 2>&1
 touch /var/lib/wisnucs/data-user-pptp > /dev/null 2>&1
 
-wget -q -O /usr/bin/l2tppmenu "https://raw.githubusercontent.com/inoyaksorojawi/large/sae/update/l2tppmenu.sh" && chmod +x /usr/bin/l2tppmenu
+#wget -q -O /usr/bin/l2tppmenu "https://raw.githubusercontent.com/inoyaksorojawi/large/sae/update/l2tppmenu.sh" && chmod +x /usr/bin/l2tppmenu
 
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 yellow "L2TP / PPTP successfully installed.."
-sleep 5
 clear
 rm -f /root/ipsec.sh
