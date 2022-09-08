@@ -496,7 +496,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray run -config /etc/xray/config.json
+ExecStart=/usr/local/bin/xray -config /etc/xray/config.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -519,7 +519,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray run -config /etc/xray/tes.json
+ExecStart=/usr/local/bin/xray -config /etc/xray/tes.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -541,7 +541,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray run -config /etc/xray/xvmess.json
+ExecStart=/usr/local/bin/xray -config /etc/xray/xvmess.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -564,7 +564,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray run -config /etc/xray/xss.json
+ExecStart=/usr/local/bin/xray -config /etc/xray/xss.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -587,7 +587,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray run -config /etc/xray/xtrojan.json
+ExecStart=/usr/local/bin/xray -config /etc/xray/xtrojan.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -610,7 +610,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray run -config /etc/xray/xvless.json
+ExecStart=/usr/local/bin/xray -config /etc/xray/xvless.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -619,48 +619,6 @@ LimitNOFILE=1000000
 [Install]
 WantedBy=multi-user.target
 END
-
-cat > /etc/systemd/system/run.service <<EOF
-[Unit]
-Description=DATA XRAY ACTIVATED BY GANDRING
-After=network.target
-
-[Service]
-Type=simple
-ExecStartPre=-/bin/mkdir -p /var/run/xray
-ExecStart=/bin/chown www-data:www-data /var/run/xray
-Restart=on-abort
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-cat > /etc/systemd/system/run.service <<EOF
-[Unit]
-Description=Caddy
-Documentation=https://caddyserver.com/docs/
-After=network.target
-
-[Service]
-User=root
-User=www-data
-ExecStart=/usr/local/bin/caddy/caddy run --environ --config /usr/local/etc/caddy/caddy2.json
-ExecReload=/usr/local/bin/caddy/caddy reload --config /usr/local/etc/caddy/caddy2.json
-TimeoutStopSec=5s
-LimitNOFILE=1000000
-LimitNPROC=10000
-PrivateTmp=true
-ProtectSystem=full
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-systemctl daemon-reload
-systemctl enable caddy.service
-systemctl start caddy.service
-systemctl restart caddy.service
 
 systemctl daemon-reload
 systemctl enable xray.service
@@ -695,12 +653,6 @@ systemctl enable xvmess.service
 systemctl start xvmess.service
 systemctl restart xvmess.service
 
-##restart&start service
-systemctl daemon-reload
-systemctl enable run.service
-systemctl start run.service
-systemctl restart run.service
-
 # Trojan Go Akun 
 mkdir -p /etc/trojan-go/
 touch /etc/trojan-go/akun.conf
@@ -722,8 +674,8 @@ touch /etc/trojan-go/akun.conf
 touch /var/log/trojan-go/trojan-go.log
 touch /etc/trojan-go/trojan-go.pid
 
-wget -O /etc/trojan-go/geoip.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/geoip.dat
-wget -O /etc/trojan-go/geosite.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/geosite.dat
+wget -O /etc/xray/geoip.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geoip.dat
+wget -O /etc/xray/geosite.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geosite.dat
 # Buat Config Trojan Go
 cat > /etc/trojan-go/config.json << END
 {
@@ -758,7 +710,7 @@ cat > /etc/trojan-go/config.json << END
     "plain_http_response": "",
      "fallback_addr": "127.0.0.1",
       "fallback_port": 9443,
-       "fingerprint": "chrome"
+       "fingerprint": "firefox"
   },
   "tcp": {
    "no_delay": true,
@@ -781,8 +733,8 @@ cat > /etc/trojan-go/config.json << END
      "api_port": 10808,
       "ssl": {
        "enabled": true,
-        "key": "/etc/xray/xray.crt",
-         "cert": "etc/xray/xray.key",
+        "key": "/etc/ssl/private/privkey.pem",
+         "cert": "/etc/ssl/private/fullchain.pem",
           "verify_client": false,
            "client_cert": []
     }
