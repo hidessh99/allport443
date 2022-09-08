@@ -38,7 +38,7 @@ ver=$VERSION_ID
 #detail nama perusahaan
 country=ID
 state=CENTRAL_JAVA
-locality=Sukoharjo
+locality=SUKOHARJO
 organization=GANDRING
 organizationalunit=GANDRING
 commonname=GANDRING
@@ -633,7 +633,7 @@ wget -O delvlesstester "https://${wisnuvpnn}/delvlesstester.sh"
 wget -O delvmesstester "https://${wisnuvpnn}/delvmesstester.sh"
 wget -O cektrojantester "https://${wisnuvpnn}/cektrojantester.sh"
 
-wget -O certv2ray "https://${wisnuvpnn}/certv2ray.sh"
+wget -O certxray "https://${wisnuvpnn}/certxray.sh"
 
 wget -O addtrgo "https://${wisnuvpnnn}/addtrgo.sh"
 wget -O deltrgo "https://${wisnuvpnnn}/deltrgo.sh"
@@ -829,7 +829,7 @@ chmod +x renewss22
 chmod +x renewsocks
 #chmod +x renewxrayss
 
-chmod +x certv2ray
+chmod +x certxray
 chmod +x addtrgo
 chmod +x deltrgo
 chmod +x renewtrgo
