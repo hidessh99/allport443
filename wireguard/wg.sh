@@ -72,7 +72,7 @@ SERVER_PUB_KEY=$(echo "$SERVER_PRIV_KEY" | wg pubkey)
 echo "SERVER_PUB_NIC=$SERVER_PUB_NIC
 SERVER_WG_NIC=wg0
 SERVER_WG_IPV4=10.11.11.1
-SERVER_PORT=591
+SERVER_PORT=443
 SERVER_PRIV_KEY=$SERVER_PRIV_KEY
 SERVER_PUB_KEY=$SERVER_PUB_KEY" >/etc/wireguard/params
 
@@ -90,8 +90,8 @@ iptables -t nat -I POSTROUTING -s 10.11.11.1 -o $SERVER_PUB_NIC -j MASQUERADE
 iptables -I INPUT 1 -i wg0 -j ACCEPT
 iptables -I FORWARD 1 -i $SERVER_PUB_NIC -o wg0 -j ACCEPT
 iptables -I FORWARD 1 -i wg0 -o $SERVER_PUB_NIC -j ACCEPT
-iptables -I INPUT 1 -i $SERVER_PUB_NIC -p udp --dport 591 -j ACCEPT
-iptables -I INPUT 1 -i $SERVER_PUB_NIC -p tcp --dport 591 -j ACCEPT
+iptables -I INPUT 1 -i $SERVER_PUB_NIC -p udp --dport 443 -j ACCEPT
+iptables -I INPUT 1 -i $SERVER_PUB_NIC -p tcp --dport 443 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
