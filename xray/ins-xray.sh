@@ -116,9 +116,7 @@ domain=$(cat /root/domain)
 # // Certificate File
 path_crt="/etc/xray/xray.cer"
 path_key="/etc/xray/xray.key"
-base64=$(openssl rand -base64 16)
-password=$base64
-cp password /etc/xray/passwd
+uuid=$(openssl rand -hex 7)
 #domain.key=$(cat /root/.acme.sh/$domain_ecc)
 #path_crt="/root/.acme.sh/$domain_ecc/fullchain.cer"
 #path_key="/root/.acme.sh/$domain_ecc/$domain.key"
@@ -139,7 +137,7 @@ cat > /etc/xray/config.json << END
           {
             "id": "${uuid1}",
             "alterId": 32
-#xray-vmess-tls
+#xray-vmess-tl
           }
         ]
       },
@@ -213,54 +211,7 @@ cat > /etc/xray/tes.json << END
     }
 END
 
-#path_key="/root/.acme.sh/$domain_ecc/$domain.key"
-# Buat Config Xray
-cat > /usr/local/etc/xray/%i.json << END
-{
-  "log": {
-    "access": "/var/log/xray/access.log",
-    "error": "/var/log/xray/error.log",
-    "loglevel": "info"
-  },
-  "inbounds": [
-    {
-      "port": 8765,
-      "protocol": "vmess",
-      "settings": {
-        "clients": [
-          {
-            "id": "${uuid1}",
-            "alterId": 32
-#xray-vmess-tls
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "certificates": [
-            {
-              "certificateFile": "${path_crt}",
-              "keyFile": "${path_key}"
-            }
-          ]
-        },
-        "tcpSettings": {},
-        "kcpSettings": {},
-        "httpSettings": {},
-        "wsSettings": {
-          "path": "/vmess/",
-          "headers": {
-            "Host": ""
-          }
-        },
-        "quicSettings": {}
-      }
-    }
-END
-
-uuid=$(cat /proc/sys/kernel/random/uuid)
+#uuid=$(cat /proc/sys/kernel/random/uuid)
 domain=$(cat /root/domain)
 # // Certificate File
 path_crt="/etc/xray/xray.crt"
@@ -315,7 +266,7 @@ cat > /etc/xray/xvless.json << END
     }
 END
 
-uuid=$(cat /proc/sys/kernel/random/uuid)
+#uuid=$(cat /proc/sys/kernel/random/uuid)
 
 domain=$(cat /root/domain)
 # // Certificate File
@@ -371,7 +322,7 @@ cat > /etc/xray/xtrojan.json << END
     }
 END
 
-uuid=$(cat /proc/sys/kernel/random/uuid)
+#uuid=$(cat /proc/sys/kernel/random/uuid)
 domain=$(cat /root/domain)
 # // Certificate File
 path_crt="/etc/xray/xray.crt"
@@ -427,7 +378,7 @@ cat > /etc/xray/xvmess.json << END
     }
 END
 
-uuid=$(cat /proc/sys/kernel/random/uuid)
+#uuid=$(cat /proc/sys/kernel/random/uuid)
 base64=$(openssl rand -base64 16)
 domain=$(cat /root/domain)
 # // Certificate File
