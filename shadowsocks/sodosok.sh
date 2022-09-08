@@ -90,7 +90,7 @@ cat > /etc/shadowsocks-libev.json <<END
     "mode":"tcp_and_udp",
     "fast_open":true,
     "plugin":"/usr/bin/obfs-local",
-    "plugin_opts":"obfs=tls;failover=127.0.0.1:443;fast-open"
+    "plugin_opts":"obfs=tls;failover=127.0.0.1:1444;fast-open"
 }
 END
 chmod +x /etc/shadowsocks-libev.json
