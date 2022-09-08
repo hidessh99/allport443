@@ -51,7 +51,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/nontls 8080
+ExecStart=/usr/bin/python -O /usr/local/bin/nontls 2086
 Restart=on-failure
 
 [Install]
@@ -79,7 +79,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/otls 8880
+ExecStart=/usr/bin/python -O /usr/local/bin/otls 2095
 Restart=on-failure
 
 [Install]
