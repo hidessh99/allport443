@@ -496,7 +496,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray -config /etc/xray/config.json
+ExecStart=/usr/local/bin/xray run -config /etc/xray/config.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -519,7 +519,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray -config /etc/xray/tes.json
+ExecStart=/usr/local/bin/xray run -config /etc/xray/tes.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -541,7 +541,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray -config /etc/xray/xvmess.json
+ExecStart=/usr/local/bin/xray run -config /etc/xray/xvmess.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -564,7 +564,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray -config /etc/xray/xss.json
+ExecStart=/usr/local/bin/xray run -config /etc/xray/xss.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -587,7 +587,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray -config /etc/xray/xtrojan.json
+ExecStart=/usr/local/bin/xray run -config /etc/xray/xtrojan.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -610,7 +610,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray -config /etc/xray/xvless.json
+ExecStart=/usr/local/bin/xray run -config /etc/xray/xvless.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
@@ -674,8 +674,8 @@ touch /etc/trojan-go/akun.conf
 touch /var/log/trojan-go/trojan-go.log
 touch /etc/trojan-go/trojan-go.pid
 
-wget -O /etc/xray/geoip.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geoip.dat
-wget -O /etc/xray/geosite.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geosite.dat
+#wget -O /etc/xray/geoip.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geoip.dat
+#wget -O /etc/xray/geosite.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geosite.dat
 # Buat Config Trojan Go
 cat > /etc/trojan-go/config.json << END
 {
@@ -710,7 +710,7 @@ cat > /etc/trojan-go/config.json << END
     "plain_http_response": "",
      "fallback_addr": "127.0.0.1",
       "fallback_port": 9443,
-       "fingerprint": "firefox"
+       "fingerprint": "chrome"
   },
   "tcp": {
    "no_delay": true,
