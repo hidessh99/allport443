@@ -53,7 +53,7 @@ case $menu in
 addhost
 ;;
 2)
-certv2ray
+certxray
 ;;
 3)
 changeport
