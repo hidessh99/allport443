@@ -138,7 +138,7 @@ echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━�
 echo -e "🔺️Nama➡️ ${user}"
 echo -e "🔺️Host➡️ ${domain}"
 echo -e "🔺️IP➡️ ${MYIP}"
-echo -e "🔺️Port TLS➡️ ${vmhttp}"
+echo -e "🔺️Port TLS➡️ ${vmhttp},8443,2096"
 echo -e "🔺️Port NON TLS➡️ ${vmhttpnon}"
 echo -e "🔺️Network➡️ tcp"
 echo -e "🔺️Host➡️ ${domain}"
