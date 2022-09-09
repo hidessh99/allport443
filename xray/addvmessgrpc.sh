@@ -137,7 +137,7 @@ echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━�
 echo -e "🔺️Nama➡️ ${user}"
 echo -e "🔺️Host➡️ ${domain}"
 echo -e "🔺️IP➡️ ${MYIP}"
-echo -e "🔺️Port TLS➡️ ${vmgrpc}"
+echo -e "🔺️Port TLS➡️ ${vmgrpc},8443,2096,2087,2053"
 #echo -e "🔺️Port no TLS➡️ ${vmgrpcnon}"
 echo -e "🔺️Protokol➡️ GRPC"
 echo -e "🔺️serviceName➡️ AYESHA"
