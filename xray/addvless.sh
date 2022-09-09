@@ -109,8 +109,8 @@ echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━�
 echo -e "🔺️Nama➡️ ${user}"
 echo -e "🔺️IP➡️ ${MYIP}"
 echo -e "🔺️Host➡️ ${domain}"
-echo -e "🔺️Port TLS➡️ $vltls"
-echo -e "🔺️Port No TLS➡️ $vlnontls"
+echo -e "🔺️Port TLS➡️ $vltls,8443,2096,2087,2053"
+echo -e "🔺️Port No TLS➡️ $vlnontls,2095,2086,2052"
 echo -e "🔺️Protokol➡️ WS"
 echo -e "🔺️Path➡️ /WISNU"
 echo -e "🔺️User ID➡️ ${uuid}"
@@ -125,4 +125,4 @@ echo -e "\033[1;46m 🔰LUXURY EDITION ZEROSSL🔰\e[m"
 echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 read -n 1 -s -r -p "Ketik Bebas Untuk Ke Menu Utama"
-menu
+vlessmenu
