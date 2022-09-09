@@ -625,14 +625,14 @@ touch /etc/trojan-go/akun.conf
 touch /var/log/trojan-go/trojan-go.log
 touch /etc/trojan-go/trojan-go.pid
 
-#wget -O /etc/xray/geoip.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geoip.dat
-#wget -O /etc/xray/geosite.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geosite.dat
+wget -O /etc/xray/geoip.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geoip.dat
+wget -O /etc/xray/geosite.dat https://raw.githubusercontent.com/inoyaksorojawi/large/sae/xray/geosite.dat
 # Buat Config Trojan Go
 cat > /etc/trojan-go/config.json << END
 {
   "run_type": "server",
    "local_addr": "0.0.0.0",
-    "local_port": 8443,
+    "local_port": 2083,
      "remote_addr": "127.0.0.1",
       "remote_port": 88,
        "log_level": 1,
