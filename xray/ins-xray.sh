@@ -639,55 +639,94 @@ cat > /etc/trojan-go/config.json << END
         "log_file": "/var/log/trojan-go/trojan-go.log",
          "password": [
           "$uuid"
-  ],
-  "disable_http_check": true,
-   "udp_timeout": 60,
-    "ssl": {
-     "verify": false,
-      "verify_hostname": false,
-       "cert": "/etc/xray/xray.crt",
-        "key": "/etc/xray/xray.key",
-         "key_password": "",
-          "cipher": "",
-           "curves": "",
-            "prefer_server_cipher": false,
-             "sni": "$domain",
-              "alpn": [
-               "h2",
-                "http/1.1"
-  ],
-  "session_ticket": true,
-   "reuse_session": true,
-    "plain_http_response": "",
-     "fallback_addr": "127.0.0.1",
-      "fallback_port": 9443,
-       "fingerprint": "chrome"
-  },
-  "tcp": {
-   "no_delay": true,
-    "keep_alive": true,
-     "prefer_ipv4": true
-  },
-  "mux": {
-   "enabled": true,
-    "concurrency": 8,
-     "idle_timeout": 3060
-  },
-  "websocket": {
-   "enabled": true,
-    "path": "/gandring-go",
-     "host": "$domain"
-  },
-  "api": {
-   "enabled": true,
-    "api_addr": "127.0.0.1",
-     "api_port": 10808,
+    ],
+    "disable_http_check": false,
+     "udp_timeout": 60,
       "ssl": {
-       "enabled": true,
-        "key": "/etc/ssl/private/privkey.pem",
-         "cert": "/etc/ssl/private/fullchain.pem",
-          "verify_client": false,
-           "client_cert": []
+       "verify": true,
+        "verify_hostname": true,
+         "cert": "/etc/xray/xray.crt",
+          "key": "/etc/xray/xray.key",
+           "key_password": "",
+            "cipher": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+             "curves": "",
+              "prefer_server_cipher": true,
+               "sni": "$domain",
+                "alpn": [
+                 "h2",
+                  "http/1.1"
+    ],
+    "session_ticket": true,
+     "reuse_session": true,
+      "plain_http_response": "",
+       "fallback_addr": "127.0.0.1",
+        "fallback_port": 443,
+         "fingerprint": "chrome"
+    },
+    "tcp": {
+     "no_delay": true,
+      "keep_alive": true,
+       "prefer_ipv4": false
+    },
+    "mux": {
+     "enabled": true,
+      "concurrency": 8,
+       "idle_timeout": 3600
+    },
+    "router": {
+     "enabled": false,
+      "bypass": [],
+       "proxy": [],
+        "block": [],
+         "default_policy": "proxy",
+          "domain_strategy": "as_is",
+           "geoip": "/etc/xray/geoip.dat",
+            "geosite": "/etc/xray/geosite.dat"
+    },
+    "websocket": {
+     "enabled": true,
+      "path": "/gandring-go",
+       "host": "$domain"
+    },
+    "shadowsocks": {
+     "enabled": false,
+      "method": "AES-128-GCM",
+       "password": ""
+    },
+    "transport_plugin": {
+     "enabled": false,
+      "type": "",
+       "command": "",
+        "plugin_option": "",
+         "arg": [],
+          "env": []
+    },
+    "forward_proxy": {
+     "enabled": false,
+      "proxy_addr": "",
+       "proxy_port": 0,
+        "username": "",
+         "password": ""
+    },
+    "mysql": {
+     "enabled": false,
+      "server_addr": "localhost",
+       "server_port": 3306,
+        "database": "",
+         "username": "",
+          "password": "",
+           "check_rate": 60
+    },
+    "api": {
+     "enabled": true,
+      "api_addr": "127.0.0.1",
+       "api_port": 10808,
+        "ssl": {
+         "enabled": true,
+          "key": "/etc/xray/xray.key",
+           "cert": "/etc/xray/xray.crt",
+            "verify_client": false,
+             "client_cert": []
     }
   }
 }
@@ -728,23 +767,23 @@ cat > /etc/trojan-go/uuid.txt << END
 $uuid
 END
 
-#sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2096 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2096 -j ACCEPT
 sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2087 -j ACCEPT
 sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-#sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2083 -j ACCEPT
-#sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
-#sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
-#sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2053 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2083 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2053 -j ACCEPT
 
-#sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2096 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2096 -j ACCEPT
 sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2087 -j ACCEPT
 sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
 sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
-#sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2083 -j ACCEPT
-#sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880 -j ACCEPT
-#sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
-#sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2053 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2083 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
+sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2053 -j ACCEPT
 
 sudo iptables -I INPUT -p tcp --dport 80 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 sudo iptables -I INPUT -p udp --dport 80 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
