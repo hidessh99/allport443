@@ -110,7 +110,7 @@ echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━�
 echo -e "🔺️Nama➡️ ${user}"
 echo -e "🔺️IP/Host➡️ ${MYIP}"
 echo -e "🔺️Address➡️ ${domain}"
-echo -e "🔺️Port TLS➡️ $vlhttp"
+echo -e "🔺️Port TLS➡️ $vlhttp,8443,2096"
 echo -e "🔺️Port NON TLS➡️ $vlhttpnon"
 echo -e "🔺️Protokol➡️ tcp"
 echo -e "🔺️Path➡️ /WISNU-TCP"
