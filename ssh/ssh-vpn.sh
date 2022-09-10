@@ -37,7 +37,7 @@ ver=$VERSION_ID
 
 #detail nama perusahaan
 country=ID
-state=CENTRAL_JAVA
+state=CENTRAL-JAVA
 locality=SUKOHARJO
 organization=GANDRING
 organizationalunit=GANDRING
@@ -287,7 +287,7 @@ RUN=yes
 # systemd users: don't forget to modify /lib/systemd/system/sslh.service
 DAEMON=/usr/sbin/sslh
 
-DAEMON_OPTS="--user sslh --listen 0.0.0.0:2053 --ssl 127.0.0.1:500 --ssh 127.0.0.1:300 --openvpn 127.0.0.1:650 --openvpn 127.0.0.1:600 --pidfile /var/run/sslh/sslh.pid"
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:2053 --ssl 127.0.0.1:500 --ssh 127.0.0.1:200 --openvpn 127.0.0.1:650 --openvpn 127.0.0.1:600 --pidfile /var/run/sslh/sslh.pid"
 
 END
 
@@ -864,7 +864,7 @@ sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:99' /etc/rc.
 /etc/init.d/stunnel5 restart
 /etc/init.d/vnstat restart
 /etc/init.d/fail2ban restart
-#/etc/init.d/squid restart
+/etc/init.d/squid restart
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:99
 echo "0 4 * * * root clearlog && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
