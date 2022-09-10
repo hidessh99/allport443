@@ -117,7 +117,6 @@ echo -e " 🔰 PORT OVPN SSL                  : 443"         |tee -a log-install
 echo -e " 🔰 PORT DROPBEAR                  : 443"         |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN WS TLS               : 443"         |tee -a log-install.txt
 echo -e " 🔰 WEBSOCKET TLS                  : 8443,2096,2053,443" |tee -a log-install.txt
-echo -e " 🔰 WIREGUARD                      : 443"         |tee -a log-install.txt
 echo -e " 🔰 VLESS XTLS                     : 443"         |tee -a log-install.txt
 echo -e " 🔰 VLESS GFW                      : 443"         |tee -a log-install.txt
 echo -e " 🔰 VLESS WS TLS                   : 443"         |tee -a log-install.txt
@@ -150,6 +149,7 @@ echo -e " 🔰 SHADOWSOCKS-R                  : 1444-1944"   |tee -a log-install
 echo -e " 🔰 SS-OBFS TLS                    : 2444-2943"   |tee -a log-install.txt
 echo -e " 🔰 SS-OBFS HTTP                   : 2944-3442"   |tee -a log-install.txt
 echo -e " 🔰 WEBSOCKET NON TLS              : 8880,80"     |tee -a log-install.txt
+echo -e " 🔰 WIREGUARD                      : 600"         |tee -a log-install.txt
 echo -e " 🔰 PORT OVPN WS NON TLS           : 8080,80"     |tee -a log-install.txt
 echo -e " 🔰 OHP SSH                        : 8181"        |tee -a log-install.txt
 echo -e " 🔰 OHP DROPBEAR                   : 8282"        |tee -a log-install.txt
