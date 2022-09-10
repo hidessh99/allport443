@@ -1,14 +1,26 @@
 #!/bin/bash
 # Debian 9 & 10 64bit
 # Ubuntu 18.04 & 20.04 bit
+# Centos 7 & 8 64bit 
+# By wisnucokrosatrio
+# My Telegram : https://t.me/zerossl
+# ==========================================
+# Color
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+# ==========================================
+# Getting
+MYIP=$(wget -qO- ipinfo.io/ip);
+
 # ==================================================
-dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-date=`date +"%Y-%m-%d" -d "$dateFromServer"`
-#########################
-clear
-red='\e[1;31m'
-green='\e[0;32m'
-NC='\e[0m'
+# Link Hosting Kalian
+wisnuvpn="raw.githubusercontent.com/samratu/large/file/ipsec"
 
 VPN_IPSEC_PSK='gandring'
 NET_IFACE=$(ip -o $NET_IFACE -4 route show to default | awk '{print $5}');
@@ -16,23 +28,25 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 source /etc/os-release
 OS=$ID
 ver=$VERSION_ID
-sleep 1
-echo -e "[ ${green}INFO${NC} ] VPN setup in progress... Please be patient."
-
+bigecho() { echo; echo "## $1"; echo; }
+bigecho "VPN setup in progress... Please be patient."
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 # Create and change to working dir
 mkdir -p /opt/src
 cd /opt/src
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Trying to auto discover IP of this server..."
-PUBLIC_IP=$(curl -sS ifconfig.me);
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Installing packages required for the VPN..."
+
+bigecho "Trying to auto discover IP of this server..."
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+PUBLIC_IP=$(wget -qO- ipinfo.io/ip);
+
+bigecho "Installing packages required for the VPN..."
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 if [[ ${OS} == "centos" ]]; then
 epel_url="https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm"
-yum -y install epel-release || yum -y install "$epel_url" > /dev/null 2>&1l
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Installing packages required for the VPN..."
+yum -y install epel-release || yum -y install "$epel_url" 
 
+bigecho "Installing packages required for the VPN..."
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 REPO1='--enablerepo=epel'
 REPO2='--enablerepo=*server-*optional*'
 REPO3='--enablerepo=*releases-optional*'
@@ -40,37 +54,35 @@ REPO4='--enablerepo=PowerTools'
 
 yum -y install nss-devel nspr-devel pkgconfig pam-devel \
   libcap-ng-devel libselinux-devel curl-devel nss-tools \
-  flex bison gcc make ppp > /dev/null 2>&1
+  flex bison gcc make ppp 
 
-yum "$REPO1" -y install xl2tpd > /dev/null 2>&1
+yum "$REPO1" -y install xl2tpd 
 
 
 if [[ $ver == '7' ]]; then
-  yum -y install systemd-devel iptables-services > /dev/null 2>&1
-  yum "$REPO2" "$REPO3" -y install libevent-devel fipscheck-devel > /dev/null 2>&1
+  yum -y install systemd-devel iptables-services 
+  yum "$REPO2" "$REPO3" -y install libevent-devel fipscheck-devel 
 elif [[ $ver == '8' ]]; then
-  yum "$REPO4" -y install systemd-devel libevent-devel fipscheck-devel > /dev/null 2>&1
+  yum "$REPO4" -y install systemd-devel libevent-devel fipscheck-devel 
 fi
 else
-apt install openssl iptables iptables-persistent -y > /dev/null 2>&1
-pengkol="libnss3-dev libnspr4-dev pkg-config \
+apt install openssl iptables iptables-persistent -y
+apt-get -y install libnss3-dev libnspr4-dev pkg-config \
   libpam0g-dev libcap-ng-dev libcap-ng-utils libselinux1-dev \
   libcurl4-nss-dev flex bison gcc make libnss3-tools \
-  libevent-dev ppp xl2tpd pptpd"
-if ! dpkg -s $pengkol >/dev/null 2>&1; then
- apt install -y $pengkol >/dev/null 2>&1
+  libevent-dev ppp xl2tpd pptpd
 fi
-fi
-
+bigecho "Compiling and installing Libreswan..."
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 SWAN_VER=3.32
 swan_file="libreswan-$SWAN_VER.tar.gz"
 swan_url1="https://github.com/libreswan/libreswan/archive/v$SWAN_VER.tar.gz"
 swan_url2="https://download.libreswan.org/$swan_file"
-if ! { wget -q -t 3 -T 30 -nv -O "$swan_file" "$swan_url1" || wget -q -t 3 -T 30 -nv -O "$swan_file" "$swan_url2"; }; then
+if ! { wget -t 3 -T 30 -nv -O "$swan_file" "$swan_url1" || wget -t 3 -T 30 -nv -O "$swan_file" "$swan_url2"; }; then
   exit 1
 fi
-/bin/rm -rf "/opt/src/libreswan-$SWAN_VER" > /dev/null 2>&1
-tar xzf "$swan_file" && /bin/rm -f "$swan_file" > /dev/null 2>&1
+/bin/rm -rf "/opt/src/libreswan-$SWAN_VER"
+tar xzf "$swan_file" && /bin/rm -f "$swan_file"
 cd "libreswan-$SWAN_VER" || exit 1
 cat > Makefile.inc.local <<'EOF'
 WERROR_CFLAGS = -w
@@ -85,46 +97,32 @@ if ! grep -qs IFLA_XFRM_LINK /usr/include/linux/if_link.h; then
   echo "USE_XFRM_INTERFACE_IFLA_HEADER = true" >> Makefile.inc.local
 fi
 if [[ ${OS} == "debian" ]]; then
-#if [ "$(packaging/utils/lswan_detect.sh init)" = "systemd" ]; then
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Debian packages detected..."
-  apt-get -y install libsystemd-dev > /dev/null 2>&1
-#  fi
+if [ "$(packaging/utils/lswan_detect.sh init)" = "systemd" ]; then
+  apt-get -y install libsystemd-dev
+  fi
 elif [[ ${OS} == "ubuntu" ]]; then
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Ubuntu packages detected..."
-#if [ "$(packaging/utils/lswan_detect.sh init)" = "systemd" ]; then
-  apt-get -y install libsystemd-dev > /dev/null 2>&1
-#fi
+if [ "$(packaging/utils/lswan_detect.sh init)" = "systemd" ]; then
+  apt-get -y install libsystemd-dev
 fi
-
-if [ ! -d /usr/local/libexec/ipsec ]; then
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Compiling and installing Libreswan..."
+fi
 NPROCS=$(grep -c ^processor /proc/cpuinfo)
 [ -z "$NPROCS" ] && NPROCS=1
-make "-j$((NPROCS))" -s base > /dev/null 2>&1 && make -s install-base > /dev/null 2>&1
-else
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Skip compiling because already installed..."
-fi
+make "-j$((NPROCS+1))" -s base && make -s install-base
 
-cd /opt/src || exit 1 > /dev/null 2>&1
-/bin/rm -rf "/opt/src/libreswan-$SWAN_VER" > /dev/null 2>&1
+cd /opt/src || exit 1
+/bin/rm -rf "/opt/src/libreswan-$SWAN_VER"
 if ! /usr/local/sbin/ipsec --version 2>/dev/null | grep -qF "$SWAN_VER"; then
-  #exiterr "Libreswan $SWAN_VER failed to build." 2>/dev/null
-  echo -ne
+  exiterr "Libreswan $SWAN_VER failed to build."
 fi
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Creating VPN configuration..."
-
+bigecho "Creating VPN configuration..."
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 L2TP_NET=192.168.42.0/24
 L2TP_LOCAL=192.168.42.1
 L2TP_POOL=192.168.42.10-192.168.42.250
 XAUTH_NET=192.168.43.0/24
 XAUTH_POOL=192.168.43.10-192.168.43.250
-DNS_SRV1=8.8.8.8
-DNS_SRV2=1.1.1.1
+DNS_SRV1=1.1.1.1
+DNS_SRV2=1.0.0.1
 DNS_SRVS="\"$DNS_SRV1 $DNS_SRV2\""
 [ -n "$VPN_DNS_SRV1" ] && [ -z "$VPN_DNS_SRV2" ] && DNS_SRVS="$DNS_SRV1"
 
@@ -254,8 +252,8 @@ refuse-chap
 refuse-mschap
 require-mschap-v2
 require-mppe-128
-ms-dns 8.8.8.8
-ms-dns 8.8.4.4
+ms-dns 1.1.1.1
+ms-dns 1.0.0.1
 proxyarp
 lock
 nobsdcomp 
@@ -263,56 +261,46 @@ novj
 novjccomp
 nologfd
 END
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Updating IPTables rules..."
-service fail2ban stop >/dev/null 2>&1
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+bigecho "Updating IPTables rules....."
+sudo service fail2ban stop >/dev/null 2>&1
 sudo iptables -t nat -I POSTROUTING -s 192.168.43.0/24 -o $NET_IFACE -j MASQUERADE
 sudo iptables -t nat -I POSTROUTING -s 192.168.42.0/24 -o $NET_IFACE -j MASQUERADE
 sudo iptables -t nat -I POSTROUTING -s 192.168.41.0/24 -o $NET_IFACE -j MASQUERADE
 if [[ ${OS} == "centos" ]]; then
-service iptables save > /dev/null 2>&1
+sudo service iptables save
 sudo iptables-restore < /etc/sysconfig/iptables 
 else
 sudo iptables-save > /etc/iptables.up.rules
 sudo iptables-restore -t < /etc/iptables.up.rules
-sudo netfilter-persistent save > /dev/null 2>&1
-sudo netfilter-persistent reload > /dev/null 2>&1
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
 fi
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Enabling services on boot..."
-systemctl enable xl2tpd > /dev/null 2>&1
-systemctl enable ipsec > /dev/null 2>&1
-systemctl enable pptpd > /dev/null 2>&1
+echo -e "\033[1;31m══════════════════════════════════\033[0m"
+bigecho "Enabling services on boot....."
+systemctl enable xl2tpd
+systemctl enable ipsec
+systemctl enable pptpd
 
 for svc in fail2ban ipsec xl2tpd; do
   update-rc.d "$svc" enable >/dev/null 2>&1
-  systemctl enable "$svc" >/dev/null 2>&1
+  systemctl enable "$svc" 2>/dev/null
 done
-sleep 1
-echo -e "[ ${green}INFO${NC} ] Starting services..."
-sysctl -e -q -p > /dev/null 2>&1
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+bigecho "Starting services......"
+echo -e "\033[1;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+sysctl -e -q -p
 chmod 600 /etc/ipsec.secrets* /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
-
-mkdir -p /run/pluto > /dev/null 2>&1
-service fail2ban restart > /dev/null 2>&1
-service ipsec restart > /dev/null 2>&1
-service xl2tpd restart > /dev/null 2>&1
-wget -q -O /usr/bin/addl2tp https://raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec/addl2tp.sh && chmod +x /usr/bin/addl2tp
-wget -q -O /usr/bin/dell2tp https://raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec/dell2tp.sh && chmod +x /usr/bin/dell2tp
-wget -q -O /usr/bin/addpptp https://raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec/addpptp.sh && chmod +x /usr/bin/addpptp
-wget -q -O /usr/bin/delpptp https://raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec/delpptp.sh && chmod +x /usr/bin/delpptp
-wget -q -O /usr/bin/renewpptp https://raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec/renewpptp.sh && chmod +x /usr/bin/renewpptp
-wget -q -O /usr/bin/renewl2tp https://raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
-#wget -q -O /usr/bin/trialpptp https://raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec/trialpptp.sh && chmod +x /usr/bin/trialpptp
-#wget -q -O /usr/bin/triall2tp https://raw.githubusercontent.com/inoyaksorojawi/large/sae/ipsec/triall2tp.sh && chmod +x /usr/bin/triall2tp
-
-touch /var/lib/wisnucs/data-user-l2tp > /dev/null 2>&1
-touch /var/lib/wisnucs/data-user-pptp > /dev/null 2>&1
-
-#wget -q -O /usr/bin/l2tppmenu "https://raw.githubusercontent.com/inoyaksorojawi/large/sae/update/l2tppmenu.sh" && chmod +x /usr/bin/l2tppmenu
-
-sleep 1
-yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-yellow "L2TP / PPTP successfully installed.."
-clear
+mkdir -p /run/pluto
+sudo service fail2ban restart 2>/dev/null
+sudo service ipsec restart 2>/dev/null
+sudo service xl2tpd restart 2>/dev/null
+wget -O /usr/bin/addl2tp https://${wisnuvpn}/addl2tp.sh && chmod +x /usr/bin/addl2tp
+wget -O /usr/bin/dell2tp https://${wisnuvpn}/dell2tp.sh && chmod +x /usr/bin/dell2tp
+wget -O /usr/bin/addpptp https://${wisnuvpn}/addpptp.sh && chmod +x /usr/bin/addpptp
+wget -O /usr/bin/delpptp https://${wisnuvpn}/delpptp.sh && chmod +x /usr/bin/delpptp
+wget -O /usr/bin/renewpptp https://${wisnuvpn}/renewpptp.sh && chmod +x /usr/bin/renewpptp
+wget -O /usr/bin/renewl2tp https://${wisnuvpn}/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
+touch /var/lib/wisnucs/data-user-l2tp
+touch /var/lib/wisnucs/data-user-pptp
 rm -f /root/ipsec.sh
