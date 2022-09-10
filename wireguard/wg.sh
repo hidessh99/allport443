@@ -90,8 +90,8 @@ iptables -t nat -I POSTROUTING -s 10.11.11.1 -o $SERVER_PUB_NIC -j MASQUERADE
 iptables -I INPUT 1 -i wg0 -j ACCEPT
 iptables -I FORWARD 1 -i $SERVER_PUB_NIC -o wg0 -j ACCEPT
 iptables -I FORWARD 1 -i wg0 -o $SERVER_PUB_NIC -j ACCEPT
-#iptables -I INPUT 1 -i $SERVER_PUB_NIC -p udp --dport 443 -j ACCEPT
-#iptables -I INPUT 1 -i $SERVER_PUB_NIC -p tcp --dport 443 -j ACCEPT
+iptables -I INPUT 1 -i $SERVER_PUB_NIC -p udp --dport 443 -j ACCEPT
+iptables -I INPUT 1 -i $SERVER_PUB_NIC -p tcp --dport 443 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
